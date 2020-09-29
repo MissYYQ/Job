@@ -1,0 +1,15 @@
+<view wx:for="{{companyData}}" wx:key="index" data-index="{{index}}">
+  <view class="row">
+    <image src="{{item.src}}"></image>
+    <view>
+      <view class="name">{{item.name}}</view>
+      <view>{{item.size}} | {{financingStage}}</view>
+      <view class="row">
+        <image src="/images/jobDetails/address.png"></image>
+        <view>{{item.address}}</view>
+      </view>
+      <view class="row">
+      </view>
+    </view>
+  </view>
+</view>

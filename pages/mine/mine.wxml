@@ -1,0 +1,72 @@
+<!-- 未登录 -->
+<view wx:if="{{!isWxLogin}}">
+	<!-- 未登录关闭时 -->
+	<view class="not-login">
+		<image src="/images/login/login.png"></image>
+		<view class="not-login-text" bindtap="loginAgain">还未登录，点此，登录解锁更多 </view>
+	</view>
+	<!-- 登录模态框 -->
+	<view class="fadeIn" wx:if="{{!isWxLogin && showLogin}}">
+		<view class="weui-mask"></view>
+		<view class="weui-dialog">
+			<view class="weui-dialog__hd"><strong class="weui-dialog__title">微信登录</strong></view>
+			<view class="weui-dialog__bd">申请获取你的昵称、头像、地区、性别信息，解锁更多功能</view>
+			<view class="weui-dialog__ft">
+				<a class="weui-dialog__btn weui-dialog__btn_default" bindtap="close">取消</a>
+				<button class="weui-dialog__btn weui-dialog__btn_primary" bindtap="wxLogin" open-type="getUserInfo">允许</button>
+			</view>
+		</view>
+	</view>
+</view>
+
+
+
+<!-- 已登录 -->
+<view wx:else>
+	<!-- 顶部 -->
+	<view class="top">
+		<view class="top-back"></view>
+		<view class="top-front">
+			<view class="top-front-user row">
+				<view class="userInfo">
+					<image src="{{userInfo.avatarUrl}}"></image>
+					<view class="userKind">{{userKind}}</view>
+				</view>
+				<view class="userInfo-right">
+					<view class="nickName">{{userInfo.nickName}}</view>
+					<view class="expect">期望职位 / {{expect}}</view>
+				</view>
+			</view>
+			<view class="top-front-data row">
+				<view class="data-item">
+					<view class="data-num">{{communicationNum}}</view>
+					<view class="data-name">沟通</view>
+				</view>
+				<view class="data-item">
+					<view class="data-num">{{interviewNum}}</view>
+					<view class="data-name">面试</view>
+				</view>
+				<view class="data-item">
+					<view class="data-num">{{deliveryNum}}</view>
+					<view class="data-name">已投</view>
+				</view>
+				<view class="data-item">
+					<view class="data-num">{{favoritesNum}}</view>
+					<view class="data-name">收藏</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 底部 -->
+	<view class="bottom">
+		<view wx:for="{{myMsg}}" wx:key="index" data-index="{{index}}" class="bottom-item">
+			<view class="row">
+				<view class="row mineItem">
+					<image src="{{item.imgUrl}}"></image>
+					<view>{{item.name}}</view>
+				</view>
+				<image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
+			</view>
+		</view>
+	</view>
+</view>

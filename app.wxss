@@ -1,0 +1,9 @@
+@import "style/weui.wxss";      /*引入weui样式库*/
+@import "/pages/login/login.wxss";      /*引入login样式*/
+
+
+::-webkit-scrollbar{  /*隐藏滚动条 */
+  width: 0;
+  height: 0;
+  color: transparent;
+}

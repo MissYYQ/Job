@@ -1,0 +1,65 @@
+{
+  "pages":[
+    "pages/find/find",
+
+    "pages/index/index",
+    "pages/index/jobDetails/jobDetails",
+    "pages/index/search/search",    
+    "pages/index/expect/expect",
+    
+    "pages/news/news",
+    "pages/news/communication/communication",
+    
+    "pages/mine/mine",
+    
+    "pages/login/login",
+    "pages/logs/logs"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+    }
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#F6B501",
+    "navigationBarTitleText": "职为你",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar":{
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tabBar/homepage01.png",
+        "selectedIconPath": "images/tabBar/homepage02.png"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "text": "发现",
+        "iconPath": "images/tabBar/find01.png",
+        "selectedIconPath": "images/tabBar/find02.png"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "text": "消息",
+        "iconPath": "images/tabBar/news01.png",
+        "selectedIconPath": "images/tabBar/news02.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/tabBar/mine01.png",
+        "selectedIconPath": "images/tabBar/mine02.png"
+      }
+    ],
+    "color":"#DBDBDB",
+    "selectedColor":"#F6B501"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

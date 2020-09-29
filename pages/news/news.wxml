@@ -1,0 +1,42 @@
+<!-- 未登录 -->
+<view wx:if="{{!isWxLogin}}">
+	<!-- 未登录关闭时 -->
+	<view wx:if="{{!isWxLogin}}" class="not-login">
+		<image src="/images/login/login.png"></image>
+		<view class="not-login-text" bindtap="loginAgain">还未登录，点此，登录解锁更多 </view>
+	</view>
+	<!-- 登录模态框 -->
+	<view class="fadeIn" wx:if="{{!isWxLogin && showLogin}}">
+		<view class="weui-mask"></view>
+		<view class="weui-dialog">
+			<view class="weui-dialog__hd"><strong class="weui-dialog__title">微信登录</strong></view>
+			<view class="weui-dialog__bd">申请获取你的昵称、头像、地区、性别信息，解锁更多功能</view>
+			<view class="weui-dialog__ft">
+				<a class="weui-dialog__btn weui-dialog__btn_default" bindtap="close">取消</a>
+				<button class="weui-dialog__btn weui-dialog__btn_primary" bindtap="wxLogin" open-type="getUserInfo">允许</button>
+			</view>
+		</view>
+	</view>
+</view>
+
+<!-- 已登录 -->
+<view wx:else>
+	<!-- 没消息 -->
+	<view wx:if="{{!news}}" class="noNews">
+		<image src="/images/news/noNews.png"></image>
+		<view>还没有消息呢，去浏览打个招呼吧</view>
+	</view>
+	<!-- 有消息 -->
+	<view wx:else>
+		<view wx:for="{{news}}" wx:key="index" data-index="{{index}}" bindtap="toCommunicationPage">
+			<view class="row">
+				<image src="{{item.src}}"></image>
+				<view>
+					<view class="personName">{{item.personName}}</view>
+					<view class="lastMsg">{{item.lastMsg}}</view>
+				</view>
+				<view class="lastChatTime">{{item.lastChatTime}}</view>
+			</view>
+		</view>
+	</view>
+</view>

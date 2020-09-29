@@ -1,0 +1,262 @@
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;  /*隐藏滚动条实现滚动 */
+  margin: 0 20rpx;
+}
+
+.container-top {
+  position: fixed;
+  height: 100rpx;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-bottom: #f3f3f3 solid 1rpx;
+  font-size: 10pt;
+  color: #888;
+  background-color: white;
+  z-index: 10;
+}
+
+.top-left {
+  margin-left: 20rpx;
+}
+
+.showKindActive {
+  color: #F6B501;
+  font-weight: 600;
+}
+
+.top-left text {
+  margin-right: 60rpx;
+}
+
+.top-mid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mid-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mid-item image {
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 15rpx;
+  margin-left: -9rpx;
+}
+
+.mid-item {
+  padding-right: 35rpx;
+}
+
+.chooseActive {
+  color: #f6b501;
+}
+
+.top-right {
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.top-right image {
+  width: 55rpx;
+  height: 55rpx;
+}
+
+.top-right image:first-child {
+  padding-right: 15rpx;
+  border-right: #F6B501 solid 3rpx;
+}
+
+.top-right image:last-child {
+  margin-left: 15rpx;
+}
+
+/* 筛选 */
+.filter {
+  width: 95%;
+  font-size: 9pt;
+  z-index: 1;
+  background-color: #fffefe;
+  color: black;
+  margin-top: 120rpx;
+  letter-spacing: 2rpx;
+}
+
+.filterItem {
+  margin: 0 20rpx;
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filterName {
+  font-size: 11pt;
+  font-weight: 600;
+  width: 100%;
+  line-height: 60rpx;
+}
+
+.itemOptions {
+  background-color: #f3f3f3;
+  padding: 15rpx 30rpx;
+  border-radius: 10rpx;
+  margin-top: 22rpx;
+  width: 150rpx;
+  line-height: 50rpx;
+  text-align: center;
+}
+
+.filter_button {
+  height: 150rpx;
+  background-color: white;
+  z-index: 2;
+  border-top: #f3f3f3 solid 1rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  font-size: 10pt;
+  margin-top: 60rpx;
+  line-height: 60rpx;
+}
+
+.choose {
+  color: white;
+  background-color: #F6B501;
+  font-weight: 600;
+}
+
+.button_reset {
+  background-color: #f3f3f3;
+  padding: 20rpx 50rpx;
+  border-radius: 10rpx;
+  width: 120rpx;
+  margin-left: 20rpx;
+}
+
+.button_determine {
+  background-color: #F6B501;
+  color: white;
+  padding: 20rpx 50rpx;
+  border-radius: 10rpx;
+  width: 330rpx;
+  margin-right: 20rpx;
+}
+
+/* 内容 */
+scroll-view {
+  margin-top: 100rpx;
+}
+
+.container-content {
+  width: 95%;
+  margin: 0 20rpx;
+  font-size: 9pt;
+  color: #888;
+  margin-top: 20rpx;
+  letter-spacing: 2rpx;
+  line-height: 70rpx;
+}
+
+.content-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 80rpx;
+  padding-bottom: 10rpx;
+}
+
+.content-top .name {
+  font-size: 14pt;
+  color: black;
+  font-weight: 600;
+}
+
+.content-top .salary {
+  font-size: 12pt;
+  color: #F6B501;
+  margin-right: 40rpx;
+  letter-spacing: 10rpx;
+}
+
+.content-request {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.content-request view {
+  background-color: #f3f3f3;
+  color: #888;
+  font-size: 9pt;
+  padding: 0 16rpx;
+  margin: 0 10rpx;
+  border-radius: 5rpx;
+  line-height: 50rpx;
+}
+
+.content-request view:first-child {
+  margin-left: 0;
+}
+
+.content-bottom {
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10rpx;
+  justify-content: space-between;
+}
+
+.content-ecruiter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.content-ecruiter image {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  display: block;
+  padding-right: 15rpx;
+}
+
+.content-bottom .company {
+  margin-right: 40rpx;
+  color: #888;
+}
+
+/* 分隔线 */
+.divider {
+  width: 94%;
+  background-color: #f3f3f3;
+  height: 5rpx;
+  margin-top: 35rpx;
+  border-radius: 20rpx;
+}

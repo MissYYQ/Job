@@ -1,0 +1,38 @@
+<view class="weui-cells weui-cells_after-title">
+	<view class="weui-cell weui-cell_active">
+		<view class="weui-cell__hd">
+			<view class="weui-label">期望职位</view>
+		</view>
+		<view class="weui-cell__bd">
+			<input class="weui-input" placeholder="如：前端开发" />
+		</view>
+	</view>
+	<view class="weui-cell weui-cell_active">
+		<view class="weui-cell__hd">
+			<view class="weui-label">工作城市</view>
+		</view>
+		<view class="weui-cell__bd">
+			<input class="weui-input" placeholder="如：杭州" />
+		</view>
+	</view>
+	<view class="weui-cell weui-cell_active">
+		<view class="weui-cell__hd">
+			<view class="weui-label">薪资要求</view>
+		</view>
+		<view class="weui-cell__bd">
+			<picker value="{{salaryIndex}}" range="{{salary}}" bindchange="bindSalaryChange">
+				<input class="weui-input" placeholder="如：5-10K" value="{{salary[salaryIndex]}}">{{salary[salaryIndex]}}</input>
+			</picker>
+		</view>
+	</view>
+	<view class="weui-cell weui-cell_active">
+		<view class="weui-cell__hd">
+			<view class="weui-label">求职状态</view>
+		</view>
+		<view class="weui-cell__bd">
+			<picker value="{{statusIndex}}" range="{{status}}" bindchange="bindStatusChange">
+				<input class="weui-input" placeholder="如：离职，随时到岗" value="{{status[statusIndex]}}">{{status[statusIndex]}}</input>
+			</picker>
+		</view>
+	</view>
+</view>

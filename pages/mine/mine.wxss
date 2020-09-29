@@ -1,0 +1,140 @@
+/* 未登录 */
+.not-login{
+  width: 100%;
+  text-align: center;
+  font-size: 9pt;
+  color: #999;
+}
+
+.not-login image{
+  width: 80%;
+  margin-top: 15%;
+}
+
+/* 已登录 */
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.top{
+  width: 100%;
+}
+
+.top-back{
+  width: 120%;
+  padding: 10%;
+  margin-left: -20%;
+  margin-top: -6%;
+  height: 100rpx;
+  border-radius: 50%;
+  background: linear-gradient(rgba(246, 181, 1),rgba(246, 181, 1,0.5));
+  box-shadow: rgba(246, 181, 1, 0.3) 0rpx 10rpx 15rpx 2rpx;
+  overflow: hidden;
+  z-index: -1;
+  position: relative;
+  top: 0;
+}
+
+.top-front{
+  width: 80%;
+  margin: 5%;
+  padding: 5%;
+  border-radius: 30rpx;
+  background-color: white;
+  box-shadow: rgba(246, 181, 1, 0.2) 0rpx 5rpx 15rpx 3rpx;
+  letter-spacing: 3rpx;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  margin-top: 0;
+}
+
+.userInfo{
+  text-align: center;
+}
+
+.userInfo image{
+  width: 146rpx;
+  height: 146rpx;
+  border-radius: 50%;
+  position: relative;
+}
+
+.userKind{
+  width: 82rpx;
+  font-size: 8pt;
+  position: relative;
+  margin-top: -50rpx;
+  margin-left: 32rpx;
+  background-color: rgba(246, 181, 1);
+  color: white;
+  border-radius: 30rpx;
+}
+
+.userInfo-right{
+  position: absolute;
+  left: 220rpx;
+}
+
+.nickName{
+  color: black;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+  font-size: 13pt;
+  line-height: 2em;
+}
+
+.expect{
+  color: #999;
+  font-size: 10pt;
+  line-height: 2em;
+}
+
+.top-front-data{
+  margin-top: 40rpx;
+}
+
+.data-item{
+  text-align: center;
+}
+
+.data-num{
+  color: black;
+  font-size: 12pt;
+  font-weight: 550;
+}
+
+.data-name{
+  color: #999;
+  font-size: 9pt;
+}
+
+/* 底部 */
+.bottom{
+  margin-left: 5%;
+  width: 85%;
+  margin-top: 190rpx;
+}
+
+.bottom-item{
+  line-height: 2.8em;
+  border-bottom: rgba(246, 181, 1, 0.2) solid 1rpx;
+}
+.mineItem image{
+  width: 52rpx;
+  height: 52rpx;
+  border-radius: 50%;
+}
+
+.mineItem view{
+  font-size: 10pt;
+  color: black;
+  margin-left: 35rpx;
+  letter-spacing: 4rpx;
+}
+
+

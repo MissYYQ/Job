@@ -1,0 +1,35 @@
+		<!-- 顶部 -->
+		<view class="top">
+			<view class="top_city">
+				<view wx:if="{{city}}" class="city">
+					<view>{{city}}</view>
+					<image src="/images/common/down.png" bindtap="changeCity"></image>
+				</view>
+				<image wx:else src="/images/jobDetails/address.png" bindtap="getCity"></image>
+			</view>
+			<view class="top_search">
+				<i class="weui-icon-search"></i>
+				<input type="text" focus value="{{inputVal}}" confirm-type="search" placeholder="请输入职位/公司名称" placeholder-class="placeholderClass" bindinput="inputVal" />
+				<span class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput"></span>
+			</view>
+			<view class="top_search_btn" bindtap="search_btn">搜索</view>
+		</view>
+
+		<!-- 内容区域 -->
+		<view class="key">
+			<!-- 历史搜索 -->
+			<view class="item_name" wx:if="{{history}}">历史搜索</view>
+			<view wx:if="{{history}}" class="key" wx:for="{{history}}" wx:key="index" data-index="{{index}}" bindtap="history">
+				<view wx:if="{{index<6}}" class="item_key history_item">{{item}}</view>
+			</view>
+			<!-- 热门城市 -->
+			<view class="item_name">热门城市</view>
+			<view class="key" wx:for="{{hotCity}}" wx:key="index" data-index="{{index}}" bindtap="hotCity">
+				<view style="background-color: {{item.color}};" class="item_key">{{item.city}}</view>
+			</view>
+			<!-- 热门职位 -->
+			<view class="item_name">热门职位</view>
+			<view class="key" wx:for="{{hotJob}}" wx:key="index" data-index="{{index}}" bindtap="hotJob">
+				<view style="background-color: {{item.color}};" class="item_key">{{item.key}}</view>
+			</view>
+		</view>

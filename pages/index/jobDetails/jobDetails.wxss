@@ -1,0 +1,129 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+/* 顶部 */
+.top-job {
+  width: 80%;
+  margin: 5%;
+  padding: 5%;
+  border-radius: 30rpx;
+  box-shadow: rgba(246, 181, 1, 0.2) 0rpx 5rpx 15rpx 3rpx;
+  letter-spacing: 3rpx;
+}
+
+.job-name {
+  font-size: 15pt;
+  font-weight: 600;
+  color: black;
+}
+
+.job-salary {
+  font-size: 12pt;
+  font-weight: 600;
+  color: #f6b501;
+}
+
+.job-information {
+  font-size: 10pt;
+  line-height: 3.8em;
+}
+
+.job-information image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.job-information view {
+  margin-left: 20rpx;
+}
+
+.company {
+  font-size: 10pt;
+  border-top: solid 1rpx rgba(246, 181, 1, 0.3);
+}
+
+.address {
+  line-height: 2.5em;
+}
+
+.company-info {
+  line-height: 1.2em;
+}
+
+.company-info .row image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 15rpx;
+}
+
+.companyName {
+  font-size: 12pt;
+  line-height: 3em;
+  font-weight: 550;
+}
+
+.company image {
+  width: 45rpx;
+  height: 45rpx;
+}
+
+/* 内容区域 */
+.skill {
+  font-size: 10pt;
+  font-weight: 600;
+  margin-left: 40rpx;
+  line-height: 3.3em;
+}
+
+.skills {
+  margin: 0 40rpx;
+}
+
+.skill-item {
+  font-size: 9pt;
+  padding: 0 30rpx;
+  border: rgba(246, 181, 1, 0.5) 2rpx solid;
+  border-radius: 50rpx;
+  line-height: 2.2em;
+  margin-right: 12rpx;
+  margin-bottom: 22rpx;
+}
+
+.require-item {
+  font-size: 9pt;
+}
+
+/* 底部 */
+.null {
+  height: 220rpx;
+}
+
+.bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 2;
+}
+
+.bottom .row image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-left: 40rpx;
+}
+
+.btn {
+  line-height: 3em;
+  color: white;
+  background-color: #f6b501;
+  padding: 0 200rpx;
+  font-size: 13pt;
+  font-weight: 600;
+  letter-spacing: 5rpx;
+}

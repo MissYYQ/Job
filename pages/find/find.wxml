@@ -1,0 +1,16 @@
+<!-- 标签页标题 -->
+<view class="tab">
+	<view class="tab-item {{tab==0?'active':''}}" bindtap="changeItem" data-item="0">公司</view>
+	<view class="tab-item {{tab==1?'active':''}}" bindtap="changeItem" data-item="1">校园招聘</view>
+</view>
+<!-- 内容区域 -->
+<view class="content">
+	<swiper current="{{item}}" bindchange="changeTab">
+		<swiper-item>
+			<include src="company.wxml"></include>
+		</swiper-item>
+		<swiper-item>
+			<include src="school.wxml"></include>
+		</swiper-item>
+	</swiper>
+</view>

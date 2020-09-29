@@ -1,0 +1,11 @@
+.not-login{
+  width: 100%;
+  text-align: center;
+  font-size: 9pt;
+  color: #999;
+}
+
+.not-login image{
+  width: 80%;
+  margin-top: 15%;
+}

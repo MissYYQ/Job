@@ -1,0 +1,24 @@
+@import "../index/index.wxss";
+
+
+.tab{
+  display: flex;
+}
+
+.tab-item{
+  flex: 1;
+  font-size: 10pt;
+  text-align: center;
+  line-height: 72rpx;
+  border-bottom: 6rpx solid #eee;
+}
+
+.tab-item.active{
+  color: #f6b501;
+  border-bottom-color: #f6b501;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+}
