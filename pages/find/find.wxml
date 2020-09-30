@@ -5,7 +5,7 @@
 </view>
 <!-- 内容区域 -->
 <view class="content">
-	<swiper current="{{item}}" bindchange="changeTab">
+	<swiper current="{{item}}" bindchange="changeTab" >
 		<swiper-item>
 			<include src="company.wxml"></include>
 		</swiper-item>

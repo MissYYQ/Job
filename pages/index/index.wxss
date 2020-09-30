@@ -192,7 +192,7 @@ scroll-view {
 }
 
 .content-top .name {
-  font-size: 14pt;
+  font-size: 12pt;
   color: black;
   font-weight: 600;
 }
@@ -215,13 +215,9 @@ scroll-view {
   color: #888;
   font-size: 9pt;
   padding: 0 16rpx;
-  margin: 0 10rpx;
-  border-radius: 5rpx;
+  margin-right: 18rpx;
+  border-radius: 10rpx;
   line-height: 50rpx;
-}
-
-.content-request view:first-child {
-  margin-left: 0;
 }
 
 .content-bottom {

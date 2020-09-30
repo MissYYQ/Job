@@ -1,20 +1,26 @@
-<view class="container-content" bindtap="toJobDetailsPage" wx:for="{{jobData}}" wx:key="index" data-index="{{index}}">
-	<view class="content-top">
-		<text class="name">{{item.name}}</text>
-		<text class="salary">{{item.salary}}</text>
-	</view>
-	<view class="content-request">
-		<view>{{item.education}}</view>
-		<view>{{item.experience}}</view>
-		<view>{{item.city}}</view>
-	</view>
-	<view class="content-bottom">
-		<view class="content-ecruiter">
-			<image src="{{item.ecruiterImgUrl}}"></image>
-			<view>{{item.ecruiterName}}</view>
+<!-- 内容区域 -->
+<scroll-view scroll-y class="content-list">
+	<view class="container-content" bindtap="toJobDetailsPage" wx:for="{{jobData}}" wx:key="index" data-index="{{index}}">
+		<view class="content-top">
+      <view class="row">
+        <view class="school">{{}}</view>
+			<text class="name">{{item.name}}</text>
+      </view>
+			<text class="salary">{{item.salary}}</text>
 		</view>
-		<view class="company">{{item.companyName}} | {{item.companySize}} | {{item.financingStage}}</view>
+		<view class="content-request">
+			<view>{{item.education}}</view>
+			<view>{{item.experience}}</view>
+			<view>{{item.city}}</view>
+		</view>
+		<view class="content-bottom">
+			<view class="content-ecruiter">
+				<image src="{{item.ecruiterImgUrl}}"></image>
+				<view>{{item.ecruiterName}}</view>
+			</view>
+			<view class="company">{{item.companyName}} | {{item.companySize}} | {{item.financingStage}}</view>
+		</view>
+		<!-- 分隔线 -->
+		<view class="divider"></view>
 	</view>
-	<!-- 分隔线 -->
-	<view class="divider"></view>
-</view>
+</scroll-view>

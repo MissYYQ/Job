@@ -1,5 +1,25 @@
 @import "../index/index.wxss";
 
+page{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content{
+  flex: 1;
+}
+.content > swiper{
+  height: 100%;
+}
+
+.content-list{
+  height: 100%;
+}
+
+scroll-view {
+  margin-top: 0;
+}
 
 .tab{
   display: flex;
@@ -9,16 +29,71 @@
   flex: 1;
   font-size: 10pt;
   text-align: center;
-  line-height: 72rpx;
-  border-bottom: 6rpx solid #eee;
+  line-height: 80rpx;
+  border-bottom: 5rpx solid #f3f3f3;
+  letter-spacing: 4rpx;
 }
 
 .tab-item.active{
   color: #f6b501;
   border-bottom-color: #f6b501;
+  font-weight: 550;
 }
 
 .row{
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
+
+.data{
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  font-size: 10pt;
+}
+
+.companyData{
+  margin-top: 10rpx;
+  padding-bottom: 30rpx;
+  border-bottom: #f3f3f3 4rpx solid;
+}
+
+.companyData image{
+  width: 130rpx;
+  height: 130rpx;
+  margin-right: 30rpx;
+}
+
+.name{
+  font-size: 11pt;
+  font-weight: 550;
+  letter-spacing: 3rpx;
+  line-height: 2.1em;
+}
+
+.address{
+  margin-top: 5rpx;
+}
+
+.address image{
+  width: 32rpx;
+  height: 36rpx;
+}
+
+.address view{
+  margin-left: -25rpx;
+}
+
+.treatment{
+  margin-top: 10rpx;
+  flex-wrap: wrap;
+}
+
+/* .treatment-item{
+  background-color: #f6b501;
+  color: white;
+  font-size: 9pt;
+  padding: 0 20rpx;
+  margin-right: 15rpx;
+  border-radius: 30rpx;
+} */

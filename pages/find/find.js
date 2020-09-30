@@ -6,6 +6,7 @@ Page({
   data: {
     item: 0,
     tab: 0,
+    region: '', // 城市  [市，省，县]
     jobData: [{
         name: "前端开发",
         salary: "6-10K",
@@ -31,13 +32,32 @@ Page({
         ecruiterName: "林慧慧"
       },
     ],
-    companyData: [{
-      name: "云程科技",
-      src: '/images/jobDetails/company.png',
-      size: "20-99人",
-      financingStage: "B轮",
-      address: "××省××市××县（区）××",
-    }, ]
+    companyData: [
+      {
+        name: "云程科技",
+        src: '/images/jobDetails/company.png',
+        size: "20-99人",
+        financingStage: "B轮",
+        address: "××省××市××县（区）××",
+        treatment: [
+        "五险一金",
+        "年终奖",
+        "全勤奖",
+        ],
+      }, 
+      {
+        name: "云程科技",
+        src: '/images/jobDetails/company.png',
+        size: "20-99人",
+        financingStage: "B轮",
+        address: "××省××市××县（区）××",
+        treatment: [
+        "五险一金",
+        "年终奖",
+        "全勤奖",
+        ],
+      }, 
+    ]
   },
 
   //标签栏点击切换页面时的监听函数
@@ -62,11 +82,32 @@ Page({
     })
   },
 
+  //跳转至职位详情页面
+  toJobDetailsPage: function () {
+    wx.navigateTo({
+      url: '../index/jobDetails/jobDetails'
+    })
+  },
+
+    //城市切换
+    bindRegionChange: function (e) {
+      console.log(e.detail.value)
+      var city = e.detail.value[1] //市名
+      city = city.substring(0, city.length - 1) //去掉市
+      console.log(city)
+      this.setData({
+        region: city
+      })
+    },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var city = wx.getStorageSync('city')
+    this.setData({
+      region: city
+    })
   },
 
   /**
