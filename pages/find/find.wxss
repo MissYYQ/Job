@@ -59,8 +59,8 @@ scroll-view {
 }
 
 .companyData image{
-  width: 130rpx;
-  height: 130rpx;
+  width: 110rpx;
+  height: 110rpx;
   margin-right: 30rpx;
 }
 
@@ -89,11 +89,3 @@ scroll-view {
   flex-wrap: wrap;
 }
 
-/* .treatment-item{
-  background-color: #f6b501;
-  color: white;
-  font-size: 9pt;
-  padding: 0 20rpx;
-  margin-right: 15rpx;
-  border-radius: 30rpx;
-} */

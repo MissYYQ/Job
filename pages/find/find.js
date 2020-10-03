@@ -17,7 +17,8 @@ Page({
         companySize: "20-99人",
         financingStage: "B轮",
         ecruiterImgUrl: "/images/tabBar/mine02.png",
-        ecruiterName: "姜先生"
+        ecruiterName: "姜先生",
+        kind: 1
       },
       {
         name: "前端开发工程师",
@@ -29,7 +30,8 @@ Page({
         companySize: "100-499人",
         financingStage: "未融资",
         ecruiterImgUrl: "/images/tabBar/mine02.png",
-        ecruiterName: "林慧慧"
+        ecruiterName: "林慧慧",
+        kind: 2
       },
     ],
     companyData: [
@@ -72,6 +74,13 @@ Page({
     console.log(e.detail)
     this.setData({
       tab: e.detail.current
+    })
+  },
+
+  //跳转至公司页面
+  toCompanyPage: function() {
+    wx.navigateTo({
+      url: '../mine/company/company',
     })
   },
 

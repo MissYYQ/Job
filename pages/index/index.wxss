@@ -3,6 +3,12 @@ page {
   height: 100%;
 }
 
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .container {
   height: 100%;
   width: 100%;
@@ -14,9 +20,6 @@ page {
   position: fixed;
   height: 100rpx;
   top: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
   border-bottom: #f3f3f3 solid 1rpx;
@@ -39,17 +42,7 @@ page {
   margin-right: 60rpx;
 }
 
-.top-mid {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .mid-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: space-between;
 }
 
@@ -66,15 +59,12 @@ page {
 
 .chooseActive {
   color: #f6b501;
+  font-weight: 600;
 }
 
 .top-right {
-  margin-left: 20rpx;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
+  position: relative;
+  right: 20rpx;
 }
 
 .top-right image {
@@ -105,10 +95,7 @@ page {
 .filterItem {
   margin: 0 20rpx;
   margin-top: 30rpx;
-  display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: space-between;
 }
 
@@ -134,9 +121,6 @@ page {
   background-color: white;
   z-index: 2;
   border-top: #f3f3f3 solid 1rpx;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   text-align: center;
   justify-content: space-between;
   font-size: 10pt;
@@ -183,9 +167,6 @@ scroll-view {
 }
 
 .content-top {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: space-between;
   line-height: 80rpx;
   padding-bottom: 10rpx;
@@ -197,17 +178,29 @@ scroll-view {
   font-weight: 600;
 }
 
+
+.school{
+  font-size: 8pt;
+  padding: 0 13rpx;
+  border-radius: 20rpx;
+  margin-left: 13rpx;
+  color: white;
+  line-height: 1.7em;
+}
+
+.school-recruitment{
+  background-color: #A5D5C9;
+}
+
+.practice{
+  background-color: #99C85C;
+}
+
 .content-top .salary {
   font-size: 12pt;
   color: #F6B501;
   margin-right: 40rpx;
   letter-spacing: 10rpx;
-}
-
-.content-request {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }
 
 .content-request view {
@@ -222,17 +215,8 @@ scroll-view {
 
 .content-bottom {
   color: black;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   margin-top: 10rpx;
   justify-content: space-between;
-}
-
-.content-ecruiter {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }
 
 .content-ecruiter image {

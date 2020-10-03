@@ -7,7 +7,7 @@
 <view class="content">
 	<swiper current="{{item}}" bindchange="changeTab" >
 		<swiper-item>
-			<include src="company.wxml"></include>
+			<include src="companyList.wxml"></include>
 		</swiper-item>
 		<swiper-item>
 			<include src="school.wxml"></include>

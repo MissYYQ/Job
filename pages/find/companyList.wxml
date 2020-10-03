@@ -1,5 +1,5 @@
 <scroll-view class="content-list" scroll-y>
-	<view wx:for="{{companyData}}" wx:key="index" data-index="{{index}}" class="data">
+	<view wx:for="{{companyData}}" wx:key="index" data-index="{{index}}" class="data" bindtap="toCompanyPage">
 		<view class="row companyData">
 			<image src="{{item.src}}"></image>
 			<view>
