@@ -83,16 +83,19 @@
 
 .skills {
   margin: 0 40rpx;
+  justify-content: left;
 }
 
 .skill-item {
   font-size: 9pt;
   padding: 0 30rpx;
-  border: rgba(246, 181, 1, 0.5) 2rpx solid;
+  border: rgba(246, 181, 1, 0.8) 2rpx solid;
   border-radius: 50rpx;
   line-height: 2.2em;
-  margin-right: 12rpx;
+  margin-right: 19rpx;
   margin-bottom: 22rpx;
+  width: 145rpx;
+  text-align: center;
 }
 
 .require-item {

@@ -30,7 +30,7 @@ scroll-view {
   font-size: 10pt;
   text-align: center;
   line-height: 80rpx;
-  border-bottom: 5rpx solid #f3f3f3;
+  border-bottom: 6rpx solid #f3f3f3;
   letter-spacing: 4rpx;
 }
 
@@ -55,7 +55,7 @@ scroll-view {
 .companyData{
   margin-top: 10rpx;
   padding-bottom: 30rpx;
-  border-bottom: #f3f3f3 4rpx solid;
+  border-bottom: rgba(246, 181, 1, 0.15) solid 4rpx;
 }
 
 .companyData image{
@@ -88,4 +88,3 @@ scroll-view {
   margin-top: 10rpx;
   flex-wrap: wrap;
 }
-

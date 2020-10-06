@@ -1,7 +1,5 @@
 {
   "pages":[
-    "pages/find/find",
-    
     "pages/index/index",
     "pages/index/jobDetails/jobDetails",
     "pages/index/search/search",    
@@ -9,6 +7,8 @@
     
     "pages/news/news",
     "pages/news/communication/communication",
+    
+    "pages/find/find",
     
     "pages/mine/mine",
     "pages/mine/company/company",

@@ -45,6 +45,13 @@ Page({
 
   },
 
+    //跳转至公司页面
+    toCompanyPage: function () {
+      wx.navigateTo({
+        url: '/pages/mine/company/company'
+      })
+    },
+
   // 收藏（取消收藏）
   favorites:function(){
     this.setData({

@@ -18,7 +18,7 @@
 			<view>{{education}}</view>
 		</view>
 	</view>
-	<view class="company row">
+	<view class="company row" bindtap="toCompanyPage">
 		<view class="company-info">
 			<view class="companyName">{{companyName}}</view>
 			<view>{{companySize}} · {{financingStage}}</view>

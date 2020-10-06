@@ -50,7 +50,7 @@
 					<view class="data-num">{{deliveryNum}}</view>
 					<view class="data-name">已投</view>
 				</view>
-				<view class="data-item">
+								<view class="data-item">
 					<view class="data-num">{{favoritesNum}}</view>
 					<view class="data-name">收藏</view>
 				</view>
