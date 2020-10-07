@@ -1,4 +1,5 @@
 <!-- 顶部框框 -->
+<view class="top-back"></view>
 <view class="top-job">
 	<view class="row">
 		<view class="job-name">{{name}}</view>
@@ -30,6 +31,9 @@
 		<image src="/images/jobDetails/right.png"></image>
 	</view>
 </view>
+
+<!-- 底部内容 -->
+<view class="bottom-job">
 <!-- 公司待遇 -->
 <view class="skill">公司待遇</view>
 <view class="skills row">
@@ -58,4 +62,5 @@
 		<image wx:else src="/images/jobDetails/favorites.png" bindtap="favorites"></image>
 		<view class="btn" bindtap="toCommunicationPage">立即沟通</view>
 	</view>
+</view>
 </view>

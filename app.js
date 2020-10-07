@@ -3,9 +3,10 @@ App({
    * 全局数据
    */
   globalData: {
-    isWxLogin: false, //是否微信登录
-    userInfo: null, //用户信息
-    city: '' //用户所在城市
+    userKind: 0,             //用户类型【0-学生，1-企业】，默认学生
+    isWxLogin: false,   //是否微信登录
+    userInfo: null,      //用户信息
+    city: ''                 //用户所在城市
   },
 
 
