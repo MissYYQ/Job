@@ -1,0 +1,20 @@
+<!-- 轮播图 -->
+<swiper indicator-color="#f3f3f3" indicator-active-color="#F6B501" indicator-dots circular autoplay class="slider">
+	<swiper-item>
+		<image src="/images/login/look.png"></image>
+		<view class="txt">找工作？上“职为你”</view>
+	</swiper-item>
+	<swiper-item>
+		<image src="/images/login/interactive.png"></image>
+		<view class="txt">看着聊着把工作搞定</view>
+	</swiper-item>
+	<swiper-item>
+		<image src="/images/login/login.png"></image>
+		<view class="txt">登录解锁更多哦，快来体验吧</view>
+	</swiper-item>
+</swiper>
+<!--用户类型选择 -->
+<view class="row">
+	<view bindtap="toCompanyDataPage">招人</view>
+	<view bindtap="toResumePage">应聘</view>
+</view>

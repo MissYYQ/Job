@@ -1,5 +1,8 @@
 {
   "pages":[
+    "pages/login/userKind/userKind",
+    "pages/login/login",
+
     "pages/index/index",
     "pages/index/jobDetails/jobDetails",
     "pages/index/search/search",    
@@ -12,8 +15,9 @@
     
     "pages/mine/mine",
     "pages/mine/company/company",
+    "pages/mine/resume/resume",
+    "pages/mine/companyData/companyData",
     
-    "pages/login/login",
     "pages/logs/logs"
   ],
   "permission": {

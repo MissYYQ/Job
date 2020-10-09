@@ -3,7 +3,7 @@ App({
    * 全局数据
    */
   globalData: {
-    userKind: 0,             //用户类型【0-学生，1-企业】，默认学生
+    userKind: -1,             //用户类型【0-学生，1-企业】
     isWxLogin: false,   //是否微信登录
     userInfo: null,      //用户信息
     city: ''                 //用户所在城市
@@ -12,6 +12,13 @@ App({
 
   onLaunch: function () {
     var _this = this
+    console.log("app.js====wx.getStorageSync('userKind')：",wx.getStorageSync('userKind'))
+    if(wx.getStorageSync('userKind') != -1){
+      _this.globalData.userKind = wx.getStorageSync('userKind')
+    }
+    if(!wx.getStorageSync('userKind')){
+      wx.setStorageSync('userKind', -1)
+    }
     if (wx.getStorageSync('isWxLogin')) {
       _this.globalData.isWxLogin = wx.getStorageSync('isWxLogin')
     } else {
