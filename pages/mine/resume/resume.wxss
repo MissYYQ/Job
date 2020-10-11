@@ -1,1 +1,76 @@
-/* pages/mine/resume/resume.wxss */
+page{
+  font-size: 10pt;
+  width: 100%;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.item{
+  border-bottom: rgba(246, 181, 1, 0.15) solid 3rpx;
+  margin-left: 6%;
+  width: 88%;
+}
+
+.title {
+  font-size: 11pt;
+  font-weight: 600;
+  color: #F6B501;
+  line-height: 3.5em;
+  letter-spacing: 3rpx;
+}
+
+.add-img{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.top-left{
+  width: 60%;
+}
+
+.top-right{
+  margin-left: 5%;
+  width: 35%;
+  text-align: center;
+  margin-top: -5rpx;
+}
+
+.msg{
+  margin-top: 10rpx;
+  padding-bottom: 30rpx;
+}
+
+.msg-item{
+  border-bottom: #f3f3f3 solid 1rpx;
+}
+
+.item-name{
+  line-height: 2.5em;
+  font-size: 10pt;
+}
+
+.data{
+  position: absolute;
+  left: 210rpx;
+}
+
+.addAvatar{
+  height: 170rpx;
+  width: 170rpx;
+}
+
+.avatar{
+  height: 185rpx;
+  width: 185rpx;
+  border-radius: 50%;
+}
+
+.name{
+  font-size: 11pt;
+}

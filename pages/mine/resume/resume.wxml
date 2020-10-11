@@ -1,2 +1,71 @@
-<!--pages/mine/resume/resume.wxml-->
-<text>pages/mine/resume/resume.wxml</text>
+<view class="item">
+	<!-- 项名 -->
+	<view class="row" bindtap="edit" data-mark="basicInformation">
+		<view class="title">基本信息</view>
+		<image src="/images/mine/resume/add.png" class="add-img"></image>
+	</view>
+	<!-- 编辑基本信息 -->
+	<view wx:if="{{mark === 'basicInformation' && isEdit}}" class="msg">
+		<view class="row">
+			<!-- 左边 -->
+			<view class="top-left">
+				<view class="row msg-item">
+					<view class="item-name">生日</view>
+					<view class="data">
+						<picker mode="date" value="{{resume.birthday}}" bindchange="bindDateChange">
+							<input class="input" value="{{birthday}}">{{resume.birthday}}</input>
+						</picker>
+					</view>
+				</view>
+				<view class="row msg-item">
+					<view class="item-name">籍贯</view>
+					<input class="data">{{resume.hometown}}</input>
+				</view>
+				<view class="row msg-item">
+					<view class="item-name">政治面貌</view>
+					<input class="data">{{resume.political}}</input>
+				</view>
+				<view class="row msg-item">
+					<view class="item-name">电话</view>
+					<input class="data">{{resume.phone}}</input>
+				</view>
+				<view class="row msg-item">
+					<view class="item-name">邮箱</view>
+					<input class="data">{{resume.mailbox}}</input>
+				</view>
+			</view>
+			<!-- 右边 -->
+			<view class="top-right">
+				<view>
+					<image wx:if="{{!resume.avatar}}" src="/images/mine/resume/addImg.png" class="addAvatar" bindtap="addAvatar"></image>
+					<image wx:else src="{{resume.avatar}}" class="avatar"></image>
+				</view>
+				<view>
+					<input wx:if="{{resume.name}}" class="input" value="{{name}}" bindtap="editName" class="name">{{resume.name}}</input>
+					<input wx:else class="input" placeholder="姓名" value="{{resume.name}}" bindtap="editName" class="name">姓名</input>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="item">
+	<view class="row">
+		<view class="title">教育背景</view>
+		<image src="/images/mine/resume/add.png" class="add-img"></image>
+	</view>
+</view>
+
+<view class="item">
+	<view class="row">
+		<view class="title">职业技能</view>
+		<image src="/images/mine/resume/add.png" class="add-img"></image>
+	</view>
+</view>
+
+<view class="item">
+	<view class="row">
+		<view class="title">项目经历</view>
+		<image src="/images/mine/resume/add.png" class="add-img"></image>
+	</view>
+</view>
