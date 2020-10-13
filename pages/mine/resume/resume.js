@@ -7,17 +7,25 @@ Page({
     mark: '',
     isEdit: false,
     resume: {
-      //基本信息
       avatar: '',
       name: '',
       birthday: '',
-      education: '',
       hometown: '',
       political: '',
       phone: '',
       mailbox: '',
     }
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.setData({
+      resume: wx.getStorageSync('resume')
+    })
+  },
+
 
   //编辑
   edit: function (e) {
@@ -28,6 +36,7 @@ Page({
     })
   },
 
+  //添加头像
   addAvatar: function () {
     var that = this
     wx.chooseImage({
@@ -39,36 +48,50 @@ Page({
         var tempFilePaths = res.tempFilePaths //图片的本地临时文件路径列表 
         var filePath = tempFilePaths[0]; //图片本地临时路径
         //前台显示
-        console.log("上传图片 res：", res)
+        
         that.setData({
           ['resume.avatar']: filePath
         })
+        wx.setStorageSync('resume', that.data.resume)
       }
     })
   },
 
-  //编辑姓名
-  editName: function (e) {
+  //编辑内容
+  editMsg: function (e) {
+    var key = e.currentTarget.dataset.key;
+    let name="resume."+key;
     this.setData({
-      ['resume.name']: e.detail.value
+      [name]  : e.detail.value
     })
-    console.log(this.data.resume.name)
+    wx.setStorageSync('resume', this.data.resume)
   },
 
   //日期改变
   bindDateChange: function (e) {
+    var that = this
     console.log('日期picker发送选择改变，携带值为：', e.detail.value)
     this.setData({
-      birthday: e.detail.value
+      ['resume.birthday']: e.detail.value
+    })
+    wx.setStorageSync('resume', that.data.resume)
+  },
+
+  //重置
+  resetBtn: function() {
+    this.setData({
+      resume: ''
+    })
+    wx.setStorageSync('resume', this.data.resume)
+  },
+
+  //跳转至首页
+  toIndexPage: function() {
+    wx.switchTab({
+      url: '/pages/index/index',
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

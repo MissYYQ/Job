@@ -13,25 +13,25 @@
 					<view class="item-name">生日</view>
 					<view class="data">
 						<picker mode="date" value="{{resume.birthday}}" bindchange="bindDateChange">
-							<input class="input" value="{{birthday}}">{{resume.birthday}}</input>
+							<input value="{{resume.birthday}}">{{resume.birthday}}</input>
 						</picker>
 					</view>
 				</view>
 				<view class="row msg-item">
 					<view class="item-name">籍贯</view>
-					<input class="data">{{resume.hometown}}</input>
+					<input class="data" value="{{resume.hometown}}" data-key="hometown" bindinput="editMsg">{{resume.hometown}}</input>
 				</view>
 				<view class="row msg-item">
 					<view class="item-name">政治面貌</view>
-					<input class="data">{{resume.political}}</input>
+					<input class="data" value="{{resume.political}}" data-key="political" bindinput="editMsg">{{resume.political}}</input>
 				</view>
 				<view class="row msg-item">
 					<view class="item-name">电话</view>
-					<input class="data">{{resume.phone}}</input>
+					<input class="data" value="{{resume.phone}}" data-key="phone" bindinput="editMsg">{{resume.phone}}</input>
 				</view>
 				<view class="row msg-item">
 					<view class="item-name">邮箱</view>
-					<input class="data">{{resume.mailbox}}</input>
+					<input class="data" value="{{resume.mailbox}}" data-key="mailbox" bindinput="editMsg">{{resume.mailbox}}</input>
 				</view>
 			</view>
 			<!-- 右边 -->
@@ -41,31 +41,69 @@
 					<image wx:else src="{{resume.avatar}}" class="avatar"></image>
 				</view>
 				<view>
-					<input wx:if="{{resume.name}}" class="input" value="{{name}}" bindtap="editName" class="name">{{resume.name}}</input>
-					<input wx:else class="input" placeholder="姓名" value="{{resume.name}}" bindtap="editName" class="name">姓名</input>
+					<input placeholder="姓名" value="{{resume.name}}" class="name" data-key="name" bindinput="editMsg">{{resume.name}}</input>
 				</view>
 			</view>
+		</view>
+		<!-- 按钮 -->
+		<view class="row button">
+			<view class="btn resetBtn" bindtap="resetBtn">重置</view>
+			<view class="btn determineBtn">确定</view>
+		</view>
+	</view>
+	<!-- 基本信息显示 -->
+	<view wx:if="{{!isEdit}}">
+		<view wx:if="{{resume.birthday}}" class="row showImg">
+			<image src="/images/mine/resume/birthday.png"></image>
+			<view>生日：{{resume.birthday}}</view>
+		</view>
+		<view wx:if="{{resume.hometown}}" class="row showImg">
+			<image src="/images/mine/resume/hometown.png"></image>
+			<view>籍贯：{{resume.hometown}}</view>
+		</view>
+		<view wx:if="{{resume.political}}" class="row showImg">
+			<image src="/images/mine/resume/political.png"></image>
+			<view>政治面貌：{{resume.political}}</view>
+		</view>
+		<view wx:if="{{resume.phone}}" class="row showImg">
+			<image src="/images/mine/resume/phone.png"></image>
+			<view>电话：{{resume.phone}}</view>
+		</view>
+		<view wx:if="{{resume.mailbox}}" class="row showImg">
+			<image src="/images/mine/resume/mailbox.png"></image>
+			<view>邮箱：{{resume.mailbox}}</view>
 		</view>
 	</view>
 </view>
 
+
 <view class="item">
-	<view class="row">
+	<!-- 项名 -->
+	<view class="row" bindtap="edit" data-mark="educationBackground">
 		<view class="title">教育背景</view>
 		<image src="/images/mine/resume/add.png" class="add-img"></image>
 	</view>
 </view>
 
+
 <view class="item">
-	<view class="row">
+	<view class="row" bindtap="edit" data-mark="professionalSkills">
 		<view class="title">职业技能</view>
 		<image src="/images/mine/resume/add.png" class="add-img"></image>
 	</view>
 </view>
 
+
 <view class="item">
-	<view class="row">
+	<view class="row" bindtap="edit" data-mark="projectExperience">
 		<view class="title">项目经历</view>
 		<image src="/images/mine/resume/add.png" class="add-img"></image>
 	</view>
+</view>
+
+
+<!-- 按钮 -->
+<view class="row button">
+	<view class="btn resetBtn" bindtap="toIndexPage">取消</view>
+	<view class="btn determineBtn" bindtap="toIndexPage">确定</view>
 </view>

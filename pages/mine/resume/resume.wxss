@@ -38,7 +38,7 @@ page{
   margin-left: 5%;
   width: 35%;
   text-align: center;
-  margin-top: -5rpx;
+  margin-top: -6rpx;
 }
 
 .msg{
@@ -57,7 +57,7 @@ page{
 
 .data{
   position: absolute;
-  left: 210rpx;
+  left: 220rpx;
 }
 
 .addAvatar{
@@ -73,4 +73,42 @@ page{
 
 .name{
   font-size: 11pt;
+}
+
+.showImg{
+  justify-content: left;
+}
+
+.showImg > image{
+  width: 45rpx;
+  height: 45rpx;
+}
+
+.showImg > view {
+  line-height: 2.8em;
+  font-size: 10pt;
+  margin-left: 30rpx;
+}
+
+.button{
+  margin-top: 50rpx;
+  padding-bottom: 20rpx;
+}
+
+.btn{
+  font-size: 11pt;
+  letter-spacing: 3rpx;
+  padding: 0 120rpx;
+  line-height: 2.5em;
+  border-radius: 50rpx;
+}
+
+.resetBtn{
+  background-color: #f3f3f3;
+  color: black;
+}
+
+.determineBtn{
+  background-color: #F6B501;
+  color: white;
 }
