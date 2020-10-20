@@ -25,9 +25,9 @@ page{
   letter-spacing: 3rpx;
 }
 
-.add-img{
-  width: 50rpx;
-  height: 50rpx;
+.edit-img{
+  width: 46rpx;
+  height: 46rpx;
 }
 
 .top-left{
@@ -38,12 +38,7 @@ page{
   margin-left: 5%;
   width: 35%;
   text-align: center;
-  margin-top: -6rpx;
-}
-
-.msg{
-  margin-top: 10rpx;
-  padding-bottom: 30rpx;
+  margin-top: -30rpx;
 }
 
 .msg-item{
@@ -80,8 +75,8 @@ page{
 }
 
 .showImg > image{
-  width: 45rpx;
-  height: 45rpx;
+  width: 50rpx;
+  height: 50rpx;
 }
 
 .showImg > view {
@@ -92,7 +87,7 @@ page{
 
 .button{
   margin-top: 50rpx;
-  padding-bottom: 20rpx;
+  padding-bottom: 50rpx;
 }
 
 .btn{
@@ -103,6 +98,47 @@ page{
   border-radius: 50rpx;
 }
 
+.eB{
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
+.eB view{
+  color: white;
+  background-color: #F6B501;
+  border-radius: 30rpx;
+  margin-right: 20rpx;
+  padding: 0 23rpx;
+  font-size: 9pt;
+  line-height: 2em;
+  margin-bottom: 20rpx;
+}
+
+.okImg image{
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.skill{
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
+.skill view{
+  color: #F6B501;
+  border-radius: 30rpx;
+  margin-right: 20rpx;
+  padding: 0 25rpx;
+  font-size: 9pt;
+  line-height: 2em;
+  margin-bottom: 20rpx;
+}
+
+.skill image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
 .resetBtn{
   background-color: #f3f3f3;
   color: black;
@@ -111,4 +147,9 @@ page{
 .determineBtn{
   background-color: #F6B501;
   color: white;
+}
+
+.bottomBtn{
+  margin-left: 5%;
+  width: 90%;
 }

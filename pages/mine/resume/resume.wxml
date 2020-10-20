@@ -1,11 +1,13 @@
+<!-- 基本信息 -->
 <view class="item">
 	<!-- 项名 -->
 	<view class="row" bindtap="edit" data-mark="basicInformation">
 		<view class="title">基本信息</view>
-		<image src="/images/mine/resume/add.png" class="add-img"></image>
+		<image wx:if="{{isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img"></image>
+		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
 	</view>
 	<!-- 编辑基本信息 -->
-	<view wx:if="{{mark === 'basicInformation' && isEdit}}" class="msg">
+	<view wx:if="{{mark === 'basicInformation' && isEdit}}">
 		<view class="row">
 			<!-- 左边 -->
 			<view class="top-left">
@@ -19,15 +21,15 @@
 				</view>
 				<view class="row msg-item">
 					<view class="item-name">籍贯</view>
-					<input class="data" value="{{resume.hometown}}" data-key="hometown" bindinput="editMsg">{{resume.hometown}}</input>
+					<input class="data" type="text" value="{{resume.hometown}}" data-key="hometown" bindinput="editMsg">{{resume.hometown}}</input>
 				</view>
 				<view class="row msg-item">
 					<view class="item-name">政治面貌</view>
-					<input class="data" value="{{resume.political}}" data-key="political" bindinput="editMsg">{{resume.political}}</input>
+					<input class="data" type="text" value="{{resume.political}}" data-key="political" bindinput="editMsg">{{resume.political}}</input>
 				</view>
 				<view class="row msg-item">
 					<view class="item-name">电话</view>
-					<input class="data" value="{{resume.phone}}" data-key="phone" bindinput="editMsg">{{resume.phone}}</input>
+					<input class="data" type="number" maxlength="11" value="{{resume.phone}}" data-key="phone" bindinput="editMsg">{{resume.phone}}</input>
 				</view>
 				<view class="row msg-item">
 					<view class="item-name">邮箱</view>
@@ -48,48 +50,183 @@
 		<!-- 按钮 -->
 		<view class="row button">
 			<view class="btn resetBtn" bindtap="resetBtn">重置</view>
-			<view class="btn determineBtn">确定</view>
+			<view class="btn determineBtn" bindtap="editOverBtn">确定</view>
 		</view>
 	</view>
 	<!-- 基本信息显示 -->
 	<view wx:if="{{!isEdit}}">
-		<view wx:if="{{resume.birthday}}" class="row showImg">
-			<image src="/images/mine/resume/birthday.png"></image>
-			<view>生日：{{resume.birthday}}</view>
+		<view class="row">
+			<!-- 左边 -->
+			<view class="top-left">
+				<view wx:if="{{resume.birthday}}" class="row">
+					<view class="item-name">生日</view>
+					<view class="data">{{resume.birthday}}</view>
+				</view>
+				<view wx:if="{{resume.hometown}}" class="row">
+					<view class="item-name">籍贯</view>
+					<view class="data">{{resume.hometown}}</view>
+				</view>
+				<view wx:if="{{resume.political}}" class="row">
+					<view class="item-name">政治面貌</view>
+					<view class="data">{{resume.political}}</view>
+				</view>
+				<view wx:if="{{resume.phone}}" class="row">
+					<view class="item-name">电话</view>
+					<view class="data">{{resume.phone}}</view>
+				</view>
+				<view wx:if="{{resume.mailbox}}" class="row">
+					<view class="item-name">邮箱</view>
+					<view class="data">{{resume.mailbox}}</view>
+				</view>
+			</view>
+			<!-- 右边 -->
+			<view class="top-right">
+				<view>
+					<image wx:if="{{resume.avatar}}" src="{{resume.avatar}}" class="avatar"></image>
+				</view>
+				<view>
+					<view wx:if="{{resume.name}}" class="name">{{resume.name}}</view>
+				</view>
+			</view>
 		</view>
-		<view wx:if="{{resume.hometown}}" class="row showImg">
-			<image src="/images/mine/resume/hometown.png"></image>
-			<view>籍贯：{{resume.hometown}}</view>
-		</view>
-		<view wx:if="{{resume.political}}" class="row showImg">
-			<image src="/images/mine/resume/political.png"></image>
-			<view>政治面貌：{{resume.political}}</view>
-		</view>
-		<view wx:if="{{resume.phone}}" class="row showImg">
-			<image src="/images/mine/resume/phone.png"></image>
-			<view>电话：{{resume.phone}}</view>
-		</view>
-		<view wx:if="{{resume.mailbox}}" class="row showImg">
-			<image src="/images/mine/resume/mailbox.png"></image>
-			<view>邮箱：{{resume.mailbox}}</view>
-		</view>
+		<!-- <view>
+			<view wx:if="{{resume.birthday}}" class="row showImg">
+				<image src="/images/mine/resume/birthday.png"></image>
+				<view>生日：{{resume.birthday}}</view>
+			</view>
+			<view wx:if="{{resume.hometown}}" class="row showImg">
+				<image src="/images/mine/resume/hometown.png"></image>
+				<view>籍贯：{{resume.hometown}}</view>
+			</view>
+			<view wx:if="{{resume.political}}" class="row showImg">
+				<image src="/images/mine/resume/political.png"></image>
+				<view>政治面貌：{{resume.political}}</view>
+			</view>
+			<view wx:if="{{resume.phone}}" class="row showImg">
+				<image src="/images/mine/resume/phone.png"></image>
+				<view>电话：{{resume.phone}}</view>
+			</view>
+			<view wx:if="{{resume.mailbox}}" class="row showImg">
+				<image src="/images/mine/resume/mailbox.png"></image>
+				<view>邮箱：{{resume.mailbox}}</view>
+			</view>
+		</view> -->
 	</view>
 </view>
 
 
+<!-- 教育背景 -->
 <view class="item">
 	<!-- 项名 -->
 	<view class="row" bindtap="edit" data-mark="educationBackground">
 		<view class="title">教育背景</view>
-		<image src="/images/mine/resume/add.png" class="add-img"></image>
+		<image wx:if="{{isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img"></image>
+		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
+	</view>
+	<!-- 编辑教育背景 -->
+	<view wx:if="{{mark === 'educationBackground' && isEdit}}">
+		<view>
+			<view class="row msg-item">
+				<view class="item-name">学校</view>
+				<input class="data" type="text" value="{{educationBackground.school}}" data-key="school" bindinput="editEB">{{educationBackground.school}}</input>
+			</view>
+			<view class="row msg-item">
+				<view class="item-name">专业</view>
+				<input class="data" type="text" value="{{educationBackground.profession}}" data-key="profession" bindinput="editEB">{{educationBackground.profession}}</input>
+			</view>
+			<view class="row msg-item">
+				<view class="item-name">学历</view>
+				<input class="data" type="text" value="{{educationBackground.degree}}" data-key="degree" bindinput="editEB">{{educationBackground.degree}}</input>
+			</view>
+		</view>
+		<!-- 按钮 -->
+		<view class="row button">
+			<view class="btn resetBtn" bindtap="resetBtn">重置</view>
+			<view class="btn determineBtn" bindtap="editOverBtn">确定</view>
+		</view>
+	</view>
+	<!-- 教育背景信息显示 -->
+	<view wx:if="{{!isEdit}}">
+		<view class="row  eB">
+			<view wx:if="{{educationBackground.school}}">{{educationBackground.school}}</view>
+			<view wx:if="{{educationBackground.profession}}">{{educationBackground.profession}}</view>
+			<view wx:if="{{educationBackground.degree}}">{{educationBackground.degree}}</view>
+		</view>
 	</view>
 </view>
 
 
+<!-- 求职意向 -->
 <view class="item">
+	<!-- 项名 -->
+	<view class="row" bindtap="edit" data-mark="intentionJob">
+		<view class="title">求职意向</view>
+		<image wx:if="{{isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img"></image>
+		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
+	</view>
+	<!-- 编辑求职意向 -->
+	<view wx:if="{{mark === 'intentionJob' && isEdit}}">
+		<view class="row msg-item">
+			<view class="item-name">工作岗位</view>
+			<input class="data" type="text" value="{{intentionJob}}" data-key="intentionJob" bindinput="editIJ">{{intentionJob}}</input>
+		</view>
+		<!-- 按钮 -->
+		<view class="row button">
+			<view class="btn resetBtn" bindtap="resetBtn">重置</view>
+			<view class="btn determineBtn" bindtap="editOverBtn">确定</view>
+		</view>
+	</view>
+	<!-- 求职意向信息显示 -->
+	<view wx:if="{{!isEdit}}">
+		<view class="row  eB" wx:if="{{intentionJob}}">
+			<view>{{intentionJob}}</view>
+		</view>
+	</view>
+</view>
+
+
+<!-- 职业技能 -->
+<view class="item">
+	<!-- 项名 -->
 	<view class="row" bindtap="edit" data-mark="professionalSkills">
 		<view class="title">职业技能</view>
-		<image src="/images/mine/resume/add.png" class="add-img"></image>
+		<image wx:if="{{isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img"></image>
+		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
+	</view>
+	<!-- 编辑职业技能 -->
+	<view wx:if="{{mark === 'professionalSkills' && isEdit}}">
+		<!-- 添加的技能显示 -->
+		<view wx:if="{{professionalSkills}}">
+			<view wx:for="{{professionalSkills}}" wx:key="index" data-index="{{index}}">
+				<view class="row skill">
+					<view class="item">{{item}}</view>
+					<image src="/images/mine/resume/delete.png"></image>
+				</view>
+			</view>
+		</view>
+		<!-- 添加技能 -->
+		<view class="row msg-item">
+			<view class="item-name">添加技能</view>
+			<input class="data" type="text" maxlength="8" value="{{addSkill}}" placeholder="技能限长8" data-key="professionalSkills" bindinput="editPS">{{addSkill}}</input>
+			<view class="okImg">
+				<image src="/images/mine/resume/seleted.png" bindtap="addSkill"></image>
+			</view>
+		</view>
+		<!-- 按钮 -->
+		<view class="row button">
+			<view class="btn resetBtn" bindtap="resetBtn">重置</view>
+			<view class="btn determineBtn" bindtap="editOverBtn">确定</view>
+		</view>
+	</view>
+	<!-- 职业技能信息显示 -->
+	<view wx:if="{{!isEdit}}">
+		<view wx:if="{{professionalSkills}}">
+			<view wx:for="{{professionalSkills}}" wx:key="index" data-index="{{index}}">
+				<view class="row skill">
+					<view>{{item}}</view>
+				</view>
+			</view>
+		</view>
 	</view>
 </view>
 
@@ -97,13 +234,14 @@
 <view class="item">
 	<view class="row" bindtap="edit" data-mark="projectExperience">
 		<view class="title">项目经历</view>
-		<image src="/images/mine/resume/add.png" class="add-img"></image>
+		<image wx:if="{{isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img"></image>
+		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
 	</view>
 </view>
 
 
-<!-- 按钮 -->
-<view class="row button">
+<!-- 底部按钮 -->
+<view class="row button bottomBtn">
 	<view class="btn resetBtn" bindtap="toIndexPage">取消</view>
 	<view class="btn determineBtn" bindtap="toIndexPage">确定</view>
 </view>

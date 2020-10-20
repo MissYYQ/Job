@@ -99,12 +99,14 @@ Page({
       inputVal: ""
     });
   },
+
   //输入的内容
   inputVal: function (e) {
     this.setData({
       inputVal: e.detail.value
     });
   },
+
   //搜索按钮点击事件
   search_btn: function () {
     var inputVal = this.data.inputVal;
@@ -116,8 +118,8 @@ Page({
       var obj = inputVal
       var tag = []
       tag[0] = obj;
-      for(var i=1; i<=length; i++){
-        tag[i] = history[length-i]
+      for (var i = 1; i <= length; i++) {
+        tag[i] = history[length - i]
       }
       this.setData({
         history: tag
@@ -125,7 +127,7 @@ Page({
       wx.setStorageSync('history', this.data.history);
       //页面跳转
       wx.switchTab({
-        url:  '../../index/index?inputVal=' + inputVal,
+        url: '../../index/index?inputVal=' + inputVal,
       })
       console.log("===========搜索内容===========")
       console.log(inputVal)
@@ -138,6 +140,7 @@ Page({
       })
     }
   },
+
   //历史搜索点击事件
   history: function (e) {
     var index = e.currentTarget.dataset.index
@@ -147,6 +150,7 @@ Page({
     })
     wx.setStorageSync('inputVal', this.data.inputVal)
   },
+
   //热门城市的选择
   hotCity: function (e) {
     var index = e.currentTarget.dataset.index
@@ -158,6 +162,7 @@ Page({
     app.globalData.city = city
     wx.setStorageSync('city', this.data.city)
   },
+  
   //热门职位的选择
   hotJob: function (e) {
     var index = e.currentTarget.dataset.index

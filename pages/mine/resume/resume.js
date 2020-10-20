@@ -6,15 +6,11 @@ Page({
   data: {
     mark: '',
     isEdit: false,
-    resume: {
-      avatar: '',
-      name: '',
-      birthday: '',
-      hometown: '',
-      political: '',
-      phone: '',
-      mailbox: '',
-    }
+    resume: {},
+    educationBackground: {},
+    intentionJob: '',
+    professionalSkills: [],
+    addSkill: '',
   },
 
   /**
@@ -22,7 +18,10 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      resume: wx.getStorageSync('resume')
+      resume: wx.getStorageSync('resume'),
+      educationBackground: wx.getStorageSync('educationBackground'),
+      intentionJob: wx.getStorageSync('intentionJob'),
+      professionalSkills: wx.getStorageSync('professionalSkills'),
     })
   },
 
@@ -36,6 +35,66 @@ Page({
     })
   },
 
+
+  //编辑基本信息
+  editMsg: function (e) {
+    var key = e.currentTarget.dataset.key;
+    let name = "resume." + key;
+    this.setData({
+      [name]: e.detail.value
+    })
+    wx.setStorageSync('resume', this.data.resume)
+  },
+
+
+  //编辑教育背景
+  editEB: function (e) {
+    var key = e.currentTarget.dataset.key;
+    let name = "educationBackground." + key;
+    this.setData({
+      [name]: e.detail.value
+    })
+    wx.setStorageSync('educationBackground', this.data.educationBackground)
+  },
+
+
+  //编辑求职意向
+  editIJ: function (e) {
+    this.setData({
+      intentionJob: e.detail.value
+    })
+    wx.setStorageSync('intentionJob', this.data.intentionJob)
+  },
+
+
+  //编辑职业技能
+  editPS: function (e) {
+    if(e.detail.value) {
+      this.setData({
+        addSkill: e.detail.value
+      })
+    }
+  },
+
+  //添加技能
+  addSkill: function(e) {
+    var addSkill = this.data.addSkill;
+    var professionalSkills = this.data.professionalSkills;
+    var length = professionalSkills.length;
+    professionalSkills[length] = addSkill
+    var tag = []
+    for (var i = 0; i < length; i++) {
+      tag[i] = professionalSkills[i]
+    }
+    tag[length] = addSkill
+    this.setData({
+      professionalSkills: tag,
+      addSkill: ''
+    })
+    wx.setStorageSync('professionalSkills', this.data.professionalSkills)
+  },
+
+
   //添加头像
   addAvatar: function () {
     var that = this
@@ -48,23 +107,13 @@ Page({
         var tempFilePaths = res.tempFilePaths //图片的本地临时文件路径列表 
         var filePath = tempFilePaths[0]; //图片本地临时路径
         //前台显示
-        
+
         that.setData({
           ['resume.avatar']: filePath
         })
         wx.setStorageSync('resume', that.data.resume)
       }
     })
-  },
-
-  //编辑内容
-  editMsg: function (e) {
-    var key = e.currentTarget.dataset.key;
-    let name="resume."+key;
-    this.setData({
-      [name]  : e.detail.value
-    })
-    wx.setStorageSync('resume', this.data.resume)
   },
 
   //日期改变
@@ -78,15 +127,32 @@ Page({
   },
 
   //重置
-  resetBtn: function() {
+  resetBtn: function () {
+    var mark = this.data.mark
+    console.log("重置", mark)
     this.setData({
-      resume: ''
+      [mark]: ''
     })
-    wx.setStorageSync('resume', this.data.resume)
+    if (mark == basicInformation) {
+      wx.setStorageSync("basicInformation", this.data.basicInformation)
+    }
+    if (mark == educationBackground) {
+      wx.setStorageSync("educationBackground", this.data.educationBackground)
+    }
+    if (mark == intentionJob) {
+      wx.setStorageSync("intentionJob", this.data.intentionJob)
+    }
+  },
+
+  //编辑确定按钮
+  editOverBtn: function () {
+    this.setData({
+      isEdit: false
+    })
   },
 
   //跳转至首页
-  toIndexPage: function() {
+  toIndexPage: function () {
     wx.switchTab({
       url: '/pages/index/index',
     })
