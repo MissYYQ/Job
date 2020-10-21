@@ -105,17 +105,17 @@ Page({
     var addSkill = this.data.addSkill;
     var professionalSkills = this.data.professionalSkills;
     var length = professionalSkills.length;
-    professionalSkills[length] = addSkill
-    var tag = []
+    professionalSkills[length] = addSkill;
+    var tag = [];
     for (var i = 0; i < length; i++) {
       tag[i] = professionalSkills[i]
-    }
-    tag[length] = addSkill
+    };
+    tag[length] = addSkill;
     this.setData({
       professionalSkills: tag,
       addSkill: ''
-    })
-    wx.setStorageSync('professionalSkills', this.data.professionalSkills)
+    });
+    wx.setStorageSync('professionalSkills', this.data.professionalSkills);
   },
 
   //删除技能
@@ -137,19 +137,37 @@ Page({
     var length = parseInt(value.length);
     this.setData({
       currentWordNumber: length,
-      textareaValue: e.detail.value
+      textareaValue: e.detail.value,
+      ['tempExperience.description']: e.detail.value
     });
   },
 
   //编辑工作/项目经历
   editE: function(e) {
-    console.log(e)
     var key = e.currentTarget.dataset.key;
     let name = "tempExperience." + key;
     this.setData({
     [name]: e.detail.value,
-    })
-    // wx.setStorageSync('experience', this.data.experience)
+    });
+  },
+
+
+  //添加工作/项目经历
+  addExperience: function(e){
+    var tempExperience = this.data.tempExperience;
+    var experience = JSON.parse(JSON.stringify(this.data.experience));
+    var length = experience.length;
+    var tag = [];
+    for (var i = 0; i < length; i++) {
+      tag[i] = experience[i]
+    }
+    tag[length] = tempExperience;
+    this.setData({
+      experience: tag,
+      tempExperience: {},
+      textareaValue: ''
+    });
+    wx.setStorageSync('experience', this.data.experience);
   },
 
 
@@ -177,18 +195,17 @@ Page({
   //日期改变
   bindDateChange: function (e) {
     var key = e.currentTarget.dataset.key;
-    console.log(key)
     if(key == 'birthday') {
       this.setData({
         ['resume.birthday']: e.detail.value
       })
       wx.setStorageSync('resume', this.data.resume)
     } else {
-      let name = "experience." + key;
+      let name = "tempExperience." + key;
       this.setData({
         [name]: e.detail.value
       })
-      wx.setStorageSync('experience', this.data.experience)
+      wx.setStorageSync('tempExperience', this.data.tempExperience)
     }
   },
 

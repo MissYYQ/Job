@@ -250,7 +250,7 @@
 		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
 	</view>
 	<!-- 经历信息显示 -->
-	<view wx:if="{{experience}}">
+	<view wx:if="{{experience && isEdit}}">
 		<view wx:for="{{experience}}" wx:key="index" data-index="{{index}}">
 			<view>{{item.startTime}} 至 {{item.endTime}}</view>
 			<view class="row experienceTime">
@@ -295,7 +295,7 @@
 		<view>
 			<view class="item-name">工作描述</view>
 			<view>
-				<textarea data-key="description" bindblur="editE" bindinput="textareaInput"
+				<textarea data-key="description" bindtap="editE" bindinput="textareaInput"
 					value="{{tempExperience.description}}" placeholder="请输入..." placeholder-class="placeholderStyle">
 				<text class="currentWordNumber">{{currentWordNumber|0}}/140</text>
 			</textarea>
@@ -303,18 +303,20 @@
 		</view>
 		<!-- 按钮 -->
 		<view class="row button">
-			<view class="btn resetBtn" bindtap="resetBtn">重置</view>
-			<view class="btn determineBtn" bindtap="editOverBtn">确定</view>
+			<view class="btn resetBtn" bindtap="editOverBtn">取消</view>
+			<view class="btn determineBtn" bindtap="addExperience">确定</view>
 		</view>
 	</view>
 	<!-- 经历信息显示 -->
-	<view wx:if="{{!isEdit}}" wx:for="{{experience}}" wx:key="index" data-index="{{index}}">
-		<view>{{item.startTime}} 至 {{item.endTime}}</view>
-		<view class="row experienceTime">
-			<view class="experienceName">{{item.name}}</view>
-			<view>{{item.position}}</view>
+	<view wx:if="{{!isEdit}}">
+		<view wx:for="{{experience}}" wx:key="index" data-index="{{index}}">
+			<view>{{item.startTime}} 至 {{item.endTime}}</view>
+			<view class="row experienceTime">
+				<view class="experienceName">{{item.name}}</view>
+				<view>{{item.position}}</view>
+			</view>
+			<view class="experienceDescription">{{item.description}}</view>
 		</view>
-		<view class="experienceDescription">{{item.description}}</view>
 	</view>
 </view>
 

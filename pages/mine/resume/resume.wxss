@@ -166,7 +166,7 @@ textarea{
 }
 
 .experienceDescription {
-  padding-bottom: 30rpx;
+  padding-bottom: 50rpx;
 }
 
 
