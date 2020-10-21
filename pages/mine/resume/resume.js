@@ -8,9 +8,20 @@ Page({
     isEdit: false,
     resume: {},
     educationBackground: {},
-    intentionJob: '',
+    intentionJob: {},
+    salaryIndex: 0,
+    salary: [
+      "不限",
+      "3K以下",
+      "3-5K",
+      "5-10K",
+      "10-20K",
+      "20-50K",
+      "50K以上"
+    ],
     professionalSkills: [],
     addSkill: '',
+    experience: {},
   },
 
   /**
@@ -60,8 +71,19 @@ Page({
 
   //编辑求职意向
   editIJ: function (e) {
+    var key = e.currentTarget.dataset.key;
+    let name = "intentionJob." + key;
     this.setData({
-      intentionJob: e.detail.value
+      [name]: e.detail.value
+    })
+    wx.setStorageSync('intentionJob', this.data.intentionJob)
+  },
+
+  //期望薪资改变
+  bindSalaryPickerChange: function(e) {
+    this.setData({
+      salaryIndex: e.detail.value,
+      ['intentionJob.salary']: this.data.salary[e.detail.value]
     })
     wx.setStorageSync('intentionJob', this.data.intentionJob)
   },
@@ -90,6 +112,19 @@ Page({
     this.setData({
       professionalSkills: tag,
       addSkill: ''
+    })
+    wx.setStorageSync('professionalSkills', this.data.professionalSkills)
+  },
+
+  //删除技能
+  deleteSkill: function(e) {
+    console.log(e);
+    var index = e.currentTarget.dataset.index;
+    var professionalSkills = this.data.professionalSkills;
+    professionalSkills.splice(index,1)
+    console.log(this.data.professionalSkills)
+    this.setData({
+      professionalSkills: professionalSkills
     })
     wx.setStorageSync('professionalSkills', this.data.professionalSkills)
   },
@@ -141,6 +176,9 @@ Page({
     }
     if (mark == intentionJob) {
       wx.setStorageSync("intentionJob", this.data.intentionJob)
+    }
+    if (mark == professionalSkills) {
+      wx.setStorageSync("professionalSkills", this.data.intentionJob)
     }
   },
 

@@ -85,19 +85,6 @@ page{
   margin-left: 30rpx;
 }
 
-.button{
-  margin-top: 50rpx;
-  padding-bottom: 50rpx;
-}
-
-.btn{
-  font-size: 11pt;
-  letter-spacing: 3rpx;
-  padding: 0 120rpx;
-  line-height: 2.5em;
-  border-radius: 50rpx;
-}
-
 .eB{
   justify-content: left;
   flex-wrap: wrap;
@@ -125,6 +112,16 @@ page{
 }
 
 .skill view{
+  padding: 0 35rpx;
+}
+
+.skill image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.skillShow{
+  border: solid 2rpx #F6B501;
   color: #F6B501;
   border-radius: 30rpx;
   margin-right: 20rpx;
@@ -132,11 +129,26 @@ page{
   font-size: 9pt;
   line-height: 2em;
   margin-bottom: 20rpx;
+  width: 520rpx;
 }
 
-.skill image{
-  width: 50rpx;
-  height: 50rpx;
+.skillShow image{
+  width: 35rpx;
+  height: 35rpx;
+}
+
+
+.button{
+  margin-top: 50rpx;
+  padding-bottom: 50rpx;
+}
+
+.btn{
+  font-size: 11pt;
+  letter-spacing: 3rpx;
+  padding: 0 120rpx;
+  line-height: 2.5em;
+  border-radius: 50rpx;
 }
 
 .resetBtn{
