@@ -137,6 +137,44 @@ page{
   height: 35rpx;
 }
 
+input{
+  color: #555555;
+}
+
+textarea{
+  color: #555555;
+  font-size: 9pt;
+}
+
+.currentWordNumber {
+  position: absolute;
+  bottom: 40rpx;
+  right: 26rpx;
+  font-size: 9pt;
+  color: #888;
+}
+
+.experienceName{
+  font-size: 11pt;
+  font-weight: 600;
+  padding-right: 35rpx;
+  line-height: 2.2em;
+}
+
+.experienceTime{
+  justify-content: left;
+}
+
+.experienceDescription {
+  padding-bottom: 30rpx;
+}
+
+
+.placeholderStyle{
+  font-size: 9pt;
+  color: #888;
+}
+
 
 .button{
   margin-top: 50rpx;

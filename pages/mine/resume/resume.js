@@ -21,7 +21,9 @@ Page({
     ],
     professionalSkills: [],
     addSkill: '',
-    experience: {},
+    experience: [],
+    tempExperience: {},
+    textareaValue: '',
   },
 
   /**
@@ -33,6 +35,7 @@ Page({
       educationBackground: wx.getStorageSync('educationBackground'),
       intentionJob: wx.getStorageSync('intentionJob'),
       professionalSkills: wx.getStorageSync('professionalSkills'),
+      experience: wx.getStorageSync('experience'),
     })
   },
 
@@ -88,7 +91,6 @@ Page({
     wx.setStorageSync('intentionJob', this.data.intentionJob)
   },
 
-
   //编辑职业技能
   editPS: function (e) {
     if(e.detail.value) {
@@ -129,6 +131,27 @@ Page({
     wx.setStorageSync('professionalSkills', this.data.professionalSkills)
   },
 
+  //输入域文本
+  textareaInput: function(e) {
+    var value = e.detail.value;
+    var length = parseInt(value.length);
+    this.setData({
+      currentWordNumber: length,
+      textareaValue: e.detail.value
+    });
+  },
+
+  //编辑工作/项目经历
+  editE: function(e) {
+    console.log(e)
+    var key = e.currentTarget.dataset.key;
+    let name = "tempExperience." + key;
+    this.setData({
+    [name]: e.detail.value,
+    })
+    // wx.setStorageSync('experience', this.data.experience)
+  },
+
 
   //添加头像
   addAvatar: function () {
@@ -153,12 +176,20 @@ Page({
 
   //日期改变
   bindDateChange: function (e) {
-    var that = this
-    console.log('日期picker发送选择改变，携带值为：', e.detail.value)
-    this.setData({
-      ['resume.birthday']: e.detail.value
-    })
-    wx.setStorageSync('resume', that.data.resume)
+    var key = e.currentTarget.dataset.key;
+    console.log(key)
+    if(key == 'birthday') {
+      this.setData({
+        ['resume.birthday']: e.detail.value
+      })
+      wx.setStorageSync('resume', this.data.resume)
+    } else {
+      let name = "experience." + key;
+      this.setData({
+        [name]: e.detail.value
+      })
+      wx.setStorageSync('experience', this.data.experience)
+    }
   },
 
   //重置
