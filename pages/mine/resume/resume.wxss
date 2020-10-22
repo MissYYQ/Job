@@ -149,7 +149,6 @@ input{
 
 textarea{
   color: #555555;
-  /* font-size: 9pt; */
 }
 
 .currentWordNumber {

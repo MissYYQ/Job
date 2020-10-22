@@ -24,6 +24,8 @@ Page({
     experience: [],
     tempExperience: {},
     textareaValue: '',
+    honor: [],
+    addHonor: '',
     resumeFile: {},
   },
 
@@ -38,6 +40,7 @@ Page({
       professionalSkills: wx.getStorageSync('professionalSkills'),
       experience: wx.getStorageSync('experience'),
       resumeFile: wx.getStorageSync('resumeFile'),
+      honor: wx.getStorageSync('honor'),
     })
   },
 
@@ -104,7 +107,6 @@ Page({
     var addSkill = this.data.addSkill;
     var professionalSkills = this.data.professionalSkills;
     var length = professionalSkills.length;
-    professionalSkills[length] = addSkill;
     var tag = [];
     for (var i = 0; i < length; i++) {
       tag[i] = professionalSkills[i]
@@ -175,6 +177,45 @@ Page({
       experience: experience
     })
     wx.setStorageSync('experience', this.data.experience)
+  },
+
+  
+  //编辑荣誉
+  editH: function (e) {
+    if(e.detail.value) {
+      this.setData({
+        addHonor: e.detail.value
+      })
+    }
+  },
+
+  //添加荣誉
+  addHonor: function(e) {
+    var addHonor = this.data.addHonor;
+    var honor = this.data.honor;
+    var length = honor.length;
+    // honor[length] = addHonor;
+    var tag = [];
+    for (var i = 0; i < length; i++) {
+      tag[i] = honor[i]
+    };
+    tag[length] = addHonor;
+    this.setData({
+      honor: tag,
+      addHonor: ''
+    });
+    wx.setStorageSync('honor', this.data.honor);
+  },
+
+  //删除荣誉
+  deleteHonor: function(e) {
+    var index = e.currentTarget.dataset.index;
+    var honor = this.data.honor;
+    honor.splice(index,1)
+    this.setData({
+      honor: honor
+    })
+    wx.setStorageSync('honor', this.data.honor)
   },
 
   //添加头像
