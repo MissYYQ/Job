@@ -24,6 +24,7 @@ Page({
     experience: [],
     tempExperience: {},
     textareaValue: '',
+    resumeFile: {},
   },
 
   /**
@@ -36,6 +37,7 @@ Page({
       intentionJob: wx.getStorageSync('intentionJob'),
       professionalSkills: wx.getStorageSync('professionalSkills'),
       experience: wx.getStorageSync('experience'),
+      resumeFile: wx.getStorageSync('resumeFile'),
     })
   },
 
@@ -49,7 +51,6 @@ Page({
     })
   },
 
-
   //编辑基本信息
   editMsg: function (e) {
     var key = e.currentTarget.dataset.key;
@@ -60,7 +61,6 @@ Page({
     wx.setStorageSync('resume', this.data.resume)
   },
 
-
   //编辑教育背景
   editEB: function (e) {
     var key = e.currentTarget.dataset.key;
@@ -70,7 +70,6 @@ Page({
     })
     wx.setStorageSync('educationBackground', this.data.educationBackground)
   },
-
 
   //编辑求职意向
   editIJ: function (e) {
@@ -120,11 +119,9 @@ Page({
 
   //删除技能
   deleteSkill: function(e) {
-    console.log(e);
     var index = e.currentTarget.dataset.index;
     var professionalSkills = this.data.professionalSkills;
     professionalSkills.splice(index,1)
-    console.log(this.data.professionalSkills)
     this.setData({
       professionalSkills: professionalSkills
     })
@@ -151,7 +148,6 @@ Page({
     });
   },
 
-
   //添加工作/项目经历
   addExperience: function(e){
     var tempExperience = this.data.tempExperience;
@@ -170,6 +166,16 @@ Page({
     wx.setStorageSync('experience', this.data.experience);
   },
 
+  //删除工作/项目经历
+  deleteExperience: function(e) {
+    var index = e.currentTarget.dataset.index;
+    var experience = this.data.experience;
+    experience.splice(index,1)
+    this.setData({
+      experience: experience
+    })
+    wx.setStorageSync('experience', this.data.experience)
+  },
 
   //添加头像
   addAvatar: function () {
@@ -183,11 +189,37 @@ Page({
         var tempFilePaths = res.tempFilePaths //图片的本地临时文件路径列表 
         var filePath = tempFilePaths[0]; //图片本地临时路径
         //前台显示
-
         that.setData({
           ['resume.avatar']: filePath
         })
         wx.setStorageSync('resume', that.data.resume)
+      }
+    })
+  },
+
+  //添加简历附件
+  addResume: function() {
+    var that = this;
+    wx.chooseMessageFile({
+      count: 1,
+      type: 'file',
+      success(res) {
+         var resumeFile = res.tempFiles[0]; //文件的本地临时文件路径列表 
+         that.setData({
+           resumeFile: resumeFile
+         });
+         wx.setStorageSync('resumeFile', that.data.resumeFile);
+      }
+    })
+  },
+
+  //查看附件简历
+  openResumeFile: function() {
+    var that = this;
+    wx.openDocument({
+      filePath: that.data.resumeFile.path,
+      success: function (res) {
+        console.log('成功打开简历附件')
       }
     })
   },

@@ -30,6 +30,11 @@ page{
   height: 46rpx;
 }
 
+.add-img{
+  width: 65rpx;
+  height: 65rpx;
+}
+
 .top-left{
   width: 60%;
 }
@@ -137,19 +142,20 @@ page{
   height: 35rpx;
 }
 
+
 input{
   color: #555555;
 }
 
 textarea{
   color: #555555;
-  font-size: 9pt;
+  /* font-size: 9pt; */
 }
 
 .currentWordNumber {
   position: absolute;
-  bottom: 40rpx;
-  right: 26rpx;
+  bottom: 10rpx;
+  right: 30rpx;
   font-size: 9pt;
   color: #888;
 }
@@ -166,9 +172,31 @@ textarea{
 }
 
 .experienceDescription {
-  padding-bottom: 50rpx;
+  padding-bottom: 40rpx;
 }
 
+.eItem{
+  border: rgba(246,181,1,0.5) 2rpx solid;
+  box-shadow: rgba(246,181,1,0.4) 4rpx 7rpx;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  padding-bottom: 0;
+  margin-bottom: 30rpx;
+  align-items: normal;
+}
+
+.experienceItem{
+  padding-bottom: 20rpx;
+}
+
+.deleteImg image{
+  width: 55rpx;
+  height: 55rpx;
+}
+
+.resumeFile{
+  padding-bottom: 35rpx;
+}
 
 .placeholderStyle{
   font-size: 9pt;
