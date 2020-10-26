@@ -1,1 +1,23 @@
-/* pages/mine/companyData/companyData.wxss */
+@import "/pages/mine/resume/resume.wxss";
+
+page{
+  margin-left: 5%;
+  width: 90%;
+}
+
+.logo{
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  background-color: white;
+}
+
+.logo image{
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.skillShow{
+  width: 300rpx;
+  margin-top: 10rpx;
+}

@@ -194,7 +194,6 @@ Page({
     var addHonor = this.data.addHonor;
     var honor = this.data.honor;
     var length = honor.length;
-    // honor[length] = addHonor;
     var tag = [];
     for (var i = 0; i < length; i++) {
       tag[i] = honor[i]
