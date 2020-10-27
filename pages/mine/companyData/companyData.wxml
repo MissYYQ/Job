@@ -1,7 +1,7 @@
 <view>
   <!-- 公司logo -->
   <view class="logo">
-    <image wx:if="{{!company.logoUrl}}" src="/images/mine/resume/addImg.png" bindtap="addCompanyLogo">
+    <image wx:if="{{!company.logoUrl}}" src="/images/mine/resume/addImg.png" style="width:150rpx;height:150rpx;" bindtap="addCompanyLogo">
     </image>
     <image wx:else src="{{company.logoUrl}}" style="border-radius: 50%;"></image>
   </view>

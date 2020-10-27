@@ -5,6 +5,10 @@ page{
   width: 90%;
 }
 
+.msg-item {
+  height: 3.1em;
+}
+
 .logo{
   position: absolute;
   right: 30rpx;
@@ -13,11 +17,11 @@ page{
 }
 
 .logo image{
-  width: 180rpx;
-  height: 180rpx;
+  width: 190rpx;
+  height: 190rpx;
 }
 
 .skillShow{
   width: 300rpx;
-  margin-top: 10rpx;
+  margin-top: 13rpx;
 }
