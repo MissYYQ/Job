@@ -13,7 +13,7 @@
 		<view class="txt">登录解锁更多哦，快来体验吧</view>
 	</swiper-item>
 </swiper>
-<!--用户类型选择 -->
+
 <view class="row">
 	<view bindtap="toCompanyDataPage">招人</view>
 	<view bindtap="toResumePage">应聘</view>

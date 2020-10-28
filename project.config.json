@@ -56,28 +56,7 @@
       "list": []
     },
     "miniprogram": {
-      "list": [
-        {
-          "id": -1,
-          "name": "未选择 用户类型",
-          "pathName": "pages/login/userKind/userKind",
-          "query": "userKind=-1",
-          "scene": null
-        },
-        {
-          "name": "企业-数据",
-          "pathName": "pages/mine/companyData/companyData",
-          "query": "userKind=1",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "学生-简历",
-          "pathName": "pages/mine/resume/resume",
-          "query": "userKind=0",
-          "scene": null
-        }
-      ]
+      "list": []
     }
   }
 }

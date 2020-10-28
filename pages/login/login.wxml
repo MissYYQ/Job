@@ -1,19 +1,6 @@
-<view>
-	<!-- 未登录关闭时 -->
-	<view wx:if="{{!isWxLogin}}" class="not-login">
-		<image src="/images/login/login.png"></image>
-		<view class="not-login-text" bindtap="loginAgain">还未登录，点此，登录解锁更多 </view>
-	</view>
-	<!-- 登录模态框 -->
-	<view class="fadeIn" wx:if="{{!isWxLogin && showLogin}}">
-		<view class="weui-mask"></view>
-		<view class="weui-dialog">
-			<view class="weui-dialog__hd"><strong class="weui-dialog__title">微信登录</strong></view>
-			<view class="weui-dialog__bd">申请获取你的昵称、头像、地区、性别信息，解锁更多功能</view>
-			<view class="weui-dialog__ft">
-				<a class="weui-dialog__btn weui-dialog__btn_default" bindtap="close">取消</a>
-				<button class="weui-dialog__btn weui-dialog__btn_primary" bindtap="wxLogin" open-type="getUserInfo">允许</button>
-			</view>
-		</view>
-	</view>
+<view class="not-login">
+	<image src="/images/login/login.png"></image>
+	<button  class="btn loginBtn" bindtap="wxLogin" open-type="getUserInfo" 
+	style="width: 80%; height: 2.3em;display: flex;justify-content: center;align-items: center;">微信授权登录</button>
+	<view class="btn cancelBtn" bindtap="cancel">取消</view>
 </view>

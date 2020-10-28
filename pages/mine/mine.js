@@ -6,11 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isWxLogin: null, //是否微信登录
-    showLogin: true, //是否显示微信登录模态框
-    userKind: '学生',
-    userInfo: '',
-    expect: '前端',
+    isWxLogin: null, 
+    userKind: null,
+    userInfo: null,
+    expect: null,
     communicationNum: 0,
     interviewNum: 0,
     deliveryNum: 0,
@@ -47,46 +46,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var isWxLogin = wx.getStorageSync('isWxLogin')
+    var userKind = wx.getStorageSync('userKind')
+    var userKindTag;
+    if(userKind == "学生"){
+      userKindTag = 1
+    }
+    if(userKind == "企业"){
+      userKindTag = 2
+    }
     this.setData({
-      isWxLogin: isWxLogin,
-      userInfo: wx.getStorageSync('userInfo')
-    })
-  },
-
-  //微信登录
-  wxLogin: function () {
-    wx.login({
-      success: res => {
-        console.log("登录成功")
-        app.globalData.isWxLogin = true
-        wx.setStorageSync('isWxLogin', app.globalData.isWxLogin)
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-
-      },
-      fail: res => {
-        console.log("登录失败")
-        console.log(res)
-      }
-    })
-    //关闭微信登录模态框
-    this.setData({
-      showLogin: false
-    })
-  },
-
-  //关闭微信登录模态框
-  close: function () {
-    this.setData({
-      showLogin: false
-    })
-
-  },
-
-  //跳出登录模态框
-  loginAgain: function () {
-    this.setData({
-      showLogin: true
+      isWxLogin: wx.getStorageSync('isWxLogin'),
+      userInfo: wx.getStorageSync('userInfo'),
+      userKind: wx.getStorageSync('userKind'),
+      userKindTag: userKindTag,
     })
   },
 

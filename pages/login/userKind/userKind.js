@@ -9,45 +9,58 @@ Page({
     userKind: null,
   },
 
-    /**
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.setData({
       userKind: app.globalData.userKind
-    })
+    });
     var userKind = wx.getStorageSync('userKind')
-    if(userKind === 0){
+    console.log("userKind.js===app.globalData.userKind：",app.globalData.userKind)
+    console.log("userKind.js===wx.getStorageSync('userKind')：",userKind);
+    var isWxLogin = wx.getStorageSync('isWxLogin')
+    if (userKind == "学生" && isWxLogin) { //学生，已登录
       wx.navigateTo({
         url: '/pages/mine/resume/resume',
       })
-    } 
-    if( userKind === 1) {
+    }
+    if (userKind == "企业" && isWxLogin) { //企业，已登录
       wx.navigateTo({
         url: '/pages/mine/companyData/companyData',
+      })
+    }
+    if (userKind == "学生" && !isWxLogin) { //学生，未登录
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+    }
+    if (userKind == "企业" && !isWxLogin) { //企业，未登录
+      wx.navigateTo({
+        url: '/pages/login/login',
       })
     }
   },
 
   // 跳转到公司数据页面
-  toCompanyDataPage: function() {
-    wx.setStorageSync('userKind', 1)
-    app.globalData.userKind = 1
-    console.log("userKind.js====app.globalData.userKind：",app.globalData.userKind)
+  toCompanyDataPage: function () {
+    wx.setStorageSync('userKind', "企业")
+    app.globalData.userKind = "企业"
+    console.log("userKind.js====app.globalData.userKind：", app.globalData.userKind)
     wx.navigateTo({
       url: '/pages/mine/companyData/companyData',
     })
   },
 
-    // 跳转到简历页面
-    toResumePage: function() {
-      wx.setStorageSync('userKind', 0)
-      app.globalData.userKind = 0
-      console.log("userKind.js====app.globalData.userKind：",app.globalData.userKind)
-      wx.navigateTo({
-        url: '/pages/mine/resume/resume',
-      })
-    },
+  // 跳转到简历页面
+  toResumePage: function () {
+    wx.setStorageSync('userKind', "学生")
+    app.globalData.userKind = "学生"
+    console.log("userKind.js====app.globalData.userKind：", app.globalData.userKind)
+    wx.navigateTo({
+      url: '/pages/mine/resume/resume',
+    })
+  },
 
 
   /**
