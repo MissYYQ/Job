@@ -1,14 +1,48 @@
+var app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userKind: '企业',
+    isWxLogin: null, 
+    userKind: null,
+    userInfo: null,
     communicationNum: 0,
     interviewNum: 0,
-    jobNum: 0,
     favoritesNum: 0,
+    // 学生
+    deliveryNum: 0,
+    expect: null,
+    myMsg: [
+      {
+        imgUrl: '/images/mine/jianli.png',
+        name: '简历'
+      },
+      {
+        imgUrl: '/images/mine/shoucang.png',
+        name: '收藏'
+      },
+      {
+        imgUrl: '/images/mine/bishi.png',
+        name: '笔试'
+      },
+      {
+        imgUrl: '/images/mine/mianshi.png',
+        name: '面试'
+      },
+      {
+        imgUrl: '/images/mine/peixun.png',
+        name: '培训'
+      },
+      {
+        imgUrl: '/images/mine/shezhi.png',
+        name: '设置'
+      },
+    ],
+    // 企业
+    jobNum: 0,
     company: {
       name: "云程科技", //公司名称
       src: '/images/jobDetails/company.png', //公司logo图片地址
@@ -67,6 +101,44 @@ Page({
     ],
   },
 
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var userKind = wx.getStorageSync('userKind')
+    var userKindTag;
+    if(userKind == "学生"){
+      userKindTag = 1
+    }
+    if(userKind == "企业"){
+      userKindTag = 2
+    }
+    this.setData({
+      isWxLogin: wx.getStorageSync('isWxLogin'),
+      userInfo: wx.getStorageSync('userInfo'),
+      userKind: wx.getStorageSync('userKind'),
+      userKindTag: userKindTag,
+      intentionJob: wx.getStorageSync('intentionJob'),
+    })
+  },
+
+  studentChangePage: function(e) {
+    console.log(e);
+    var index = e.currentTarget.dataset.index;
+    if(index === 0) {
+      wx.navigateTo({
+        url: '/pages/mine/resume/resume',
+      })
+    }
+  },
+
+  toUserKindPage: function() {
+    wx.setStorageSync('userKind', null);
+    wx.navigateTo({
+      url: '/pages/login/userKind/userKind',
+    })
+  },
+
   //跳转至职位详情页面
   toJobDetailsPage: function () {
     wx.navigateTo({
@@ -74,14 +146,6 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.setData({
-      isWxLogin: wx.getStorageSync('isWxLogin'),
-    })
-  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -131,4 +195,6 @@ Page({
   onShareAppMessage: function () {
 
   }
-})
+
+
+});
