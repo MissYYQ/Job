@@ -5,5 +5,5 @@
 
 <!-- 企业 -->
 <view wx:if="{{userKindTag == 2}}">
-	<include src="/pages/mine/company/company.wxml"></include>
+	<include src="/pages/mine/companyMine.wxml"></include>
 </view>

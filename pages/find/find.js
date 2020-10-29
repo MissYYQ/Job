@@ -5,7 +5,6 @@ Page({
    */
   data: {
     item: 0,
-    tab: 0,
     region: '', // 城市  [市，省，县]
     jobData: [{
         name: "前端开发",
@@ -62,18 +61,28 @@ Page({
     ]
   },
 
+  
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var userKind = wx.getStorageSync('userKind');
+    var userKindTag;
+    if(userKind == "学生"){
+      userKindTag = 1
+    }
+    if(userKind == "企业"){
+      userKindTag = 2
+    }
+    this.setData({
+      userKindTag: userKindTag
+    })
+  },
+
   //标签栏点击切换页面时的监听函数
   changeItem: function (e) {
     this.setData({
       item: e.currentTarget.dataset.item
-    })
-  },
-
-  //滑动滑块切换页面时的监听函数
-  changeTab: function (e) {
-    console.log(e.detail)
-    this.setData({
-      tab: e.detail.current
     })
   },
 
@@ -109,15 +118,6 @@ Page({
       })
     },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    var city = wx.getStorageSync('city')
-    this.setData({
-      region: city
-    })
-  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

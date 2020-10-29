@@ -5,7 +5,7 @@
     <view class="top-front-user row">
       <view class="userInfo">
         <image src="{{userInfo.avatarUrl}}"></image>
-        <view class="userKind">{{userKind}}</view>
+        <view class="userKind" bindtap="toUserKindPage">{{userKind}}</view>
       </view>
       <view class="userInfo-right">
         <view class="nickName">{{userInfo.nickName}}</view>
@@ -34,7 +34,7 @@
 </view>
 <!-- 底部 -->
 <view class="bottom">
-  <view wx:for="{{myMsg}}" wx:key="index" data-index="{{index}}" class="bottom-item">
+  <view wx:for="{{myMsg}}" wx:key="index" data-index="{{index}}" class="bottom-item" bindtap="studentChangePage">
     <view class="row">
       <view class="row mineItem">
         <image src="{{item.imgUrl}}"></image>

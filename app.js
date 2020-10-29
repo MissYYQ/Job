@@ -6,7 +6,6 @@ App({
     userKind: null,         //用户类型
     isWxLogin: false,   //是否微信登录
     userInfo: null,      //用户信息
-    city: ''                 //用户所在城市
   },
 
 

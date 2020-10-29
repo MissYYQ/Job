@@ -4,6 +4,6 @@
 </view>
 
 <!-- 企业 -->
-<view wx:if="userKindTag == 2">
+<view wx:if="{{userKindTag == 2}}">
   <include src="/pages/index/companyIndex.wxml"></include>
 </view>

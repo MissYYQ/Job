@@ -1,4 +1,5 @@
-/* @import "/pages/mine/company/company.wxss"; */
+@import "/pages/index/jobDetails/jobDetails.wxss";
+@import "/pages/index/index.wxss";
 
 .row{
   display: flex;
@@ -123,4 +124,48 @@
   color: black;
   margin-left: 35rpx;
   letter-spacing: 4rpx;
+}
+
+/* 公司 */
+
+.companyExpect {
+  color: black;
+}
+
+.companyFront {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 10pt;
+}
+
+/* 底部 */
+
+.companyMsg {
+  margin-top: 190rpx;
+  font-size: 10pt;
+}
+
+.skill {
+  font-size: 11pt;
+  margin-top: 10rpx;
+}
+
+.img image {
+  width: 38rpx;
+  height: 38rpx;
+  margin-right: 10rpx;
+}
+
+.img view {
+  padding-right: 22rpx;
+}
+
+.container-content {
+  padding-bottom: 35rpx;
+  border-bottom: rgba(246, 181, 1, 0.2) solid 2rpx;
+}
+
+.content-request {
+  justify-content: left;
 }

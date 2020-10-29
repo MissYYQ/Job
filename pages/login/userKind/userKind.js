@@ -18,22 +18,13 @@ Page({
     });
     var userKind = wx.getStorageSync('userKind');
     var isWxLogin = wx.getStorageSync('isWxLogin');
-    if (userKind == "学生" && isWxLogin) { //学生，已登录
-      wx.navigateTo({
-        url: '/pages/mine/resume/resume',
-      });
+
+    if (isWxLogin) { //已登录
+      wx.switchTab({
+        url: '/pages/index/index',
+      })
     }
-    if (userKind == "企业" && isWxLogin) { //企业，已登录
-      wx.navigateTo({
-        url: '/pages/mine/companyData/companyData',
-      });
-    }
-    if (userKind == "学生" && !isWxLogin) { //学生，未登录
-      wx.navigateTo({
-        url: '/pages/login/login',
-      });
-    }
-    if (userKind == "企业" && !isWxLogin) { //企业，未登录
+    if (!isWxLogin) { //未登录
       wx.navigateTo({
         url: '/pages/login/login',
       });

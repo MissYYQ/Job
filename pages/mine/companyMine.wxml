@@ -5,14 +5,14 @@
 		<view class="top-front-user row">
 			<view class="userInfo">
 				<image src="{{company.src}}"></image>
-				<view class="userKind">{{userKind}}</view>
+				<view class="userKind" bindtap="toUserKindPage">{{userKind}}</view>
 			</view>
 			<view class="userInfo-right">
 				<view class="nickName">{{company.name}}</view>
-				<view class="expect">{{company.size}} · {{company.financingStage}}</view>
+				<view class="expect companyExpect">{{company.size}} · {{company.financingStage}}</view>
 			</view>
 		</view>
-		<view class="top-front-data row">
+		<view class="top-front-data companyFront row">
 			<view class="data-item">
 				<view class="data-num">{{communicationNum}}</view>
 				<view class="data-name">沟通</view>

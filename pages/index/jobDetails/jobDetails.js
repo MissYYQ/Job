@@ -47,8 +47,8 @@ Page({
 
     //跳转至公司页面
     toCompanyPage: function () {
-      wx.navigateTo({
-        url: '/pages/mine/company/company'
+      wx.switchTab({
+        url: '/pages/mine/mine',
       })
     },
 

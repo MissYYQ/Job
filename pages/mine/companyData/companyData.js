@@ -19,11 +19,6 @@ Page({
       company: wx.getStorageSync('company'),
       welfare: wx.getStorageSync('welfare'),
     })
-    if(this.data.company.name != null || this.data.company.name != ''){
-      wx.switchTab({
-        url: '/pages/index/index',
-      })
-    }
   },
 
 
