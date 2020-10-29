@@ -100,9 +100,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    var city = wx.getStorageSync('city')
+    var userKind = wx.getStorageSync('userKind')
+    var userKindTag;
+    if(userKind == "学生"){
+      userKindTag = 1
+    }
+    if(userKind == "企业"){
+      userKindTag = 2
+    }
+    var city = wx.getStorageSync('userInfo').city;
     this.setData({
-      region: city
+      region: city,
+      userKindTag: userKindTag,
     })
   },
 

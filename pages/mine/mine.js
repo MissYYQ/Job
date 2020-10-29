@@ -59,6 +59,7 @@ Page({
       userInfo: wx.getStorageSync('userInfo'),
       userKind: wx.getStorageSync('userKind'),
       userKindTag: userKindTag,
+      intentionJob: wx.getStorageSync('intentionJob'),
     })
   },
 

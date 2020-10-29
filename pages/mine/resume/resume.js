@@ -42,6 +42,11 @@ Page({
       resumeFile: wx.getStorageSync('resumeFile'),
       honor: wx.getStorageSync('honor'),
     })
+    if(this.data.educationBackground  && this.data.intentionJob) {
+      wx.switchTab({
+        url: '/pages/index/index',
+      })
+    }
   },
 
 

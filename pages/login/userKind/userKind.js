@@ -16,40 +16,37 @@ Page({
     this.setData({
       userKind: app.globalData.userKind
     });
-    var userKind = wx.getStorageSync('userKind')
-    console.log("userKind.js===app.globalData.userKind：",app.globalData.userKind)
-    console.log("userKind.js===wx.getStorageSync('userKind')：",userKind);
-    var isWxLogin = wx.getStorageSync('isWxLogin')
+    var userKind = wx.getStorageSync('userKind');
+    var isWxLogin = wx.getStorageSync('isWxLogin');
     if (userKind == "学生" && isWxLogin) { //学生，已登录
       wx.navigateTo({
         url: '/pages/mine/resume/resume',
-      })
+      });
     }
     if (userKind == "企业" && isWxLogin) { //企业，已登录
       wx.navigateTo({
         url: '/pages/mine/companyData/companyData',
-      })
+      });
     }
     if (userKind == "学生" && !isWxLogin) { //学生，未登录
       wx.navigateTo({
         url: '/pages/login/login',
-      })
+      });
     }
     if (userKind == "企业" && !isWxLogin) { //企业，未登录
       wx.navigateTo({
         url: '/pages/login/login',
-      })
+      });
     }
   },
 
   // 跳转到公司数据页面
   toCompanyDataPage: function () {
-    wx.setStorageSync('userKind', "企业")
-    app.globalData.userKind = "企业"
-    console.log("userKind.js====app.globalData.userKind：", app.globalData.userKind)
+    wx.setStorageSync('userKind', "企业");
+    app.globalData.userKind = "企业";
     wx.navigateTo({
       url: '/pages/mine/companyData/companyData',
-    })
+    });
   },
 
   // 跳转到简历页面

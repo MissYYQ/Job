@@ -15,29 +15,29 @@
 					<view class="item-name">生日</view>
 					<view class="data">
 						<picker mode="date" value="{{resume.birthday}}" data-key="birthday" bindchange="bindDateChange">
-							<input value="{{resume.birthday}}" placeholder="请选择..." placeholder-class="placeholderStyle">{{resume.birthday}}</input>
+							<input value="{{resume.birthday}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
 						</picker>
 					</view>
 				</view>
 				<view class="row msg-item">
 					<view class="item-name">籍贯</view>
 					<input class="data" type="text" value="{{resume.hometown}}" data-key="hometown" bindinput="editMsg"
-						placeholder="请输入..." placeholder-class="placeholderStyle">{{resume.hometown}}</input>
+						placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 				</view>
 				<view class="row msg-item">
 					<view class="item-name">政治面貌</view>
 					<input class="data" type="text" value="{{resume.political}}" data-key="political" bindinput="editMsg"
-						placeholder="请输入..." placeholder-class="placeholderStyle">{{resume.political}}</input>
+						placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 				</view>
 				<view class="row msg-item">
 					<view class="item-name">电话</view>
 					<input class="data" type="number" maxlength="11" value="{{resume.phone}}" data-key="phone" bindinput="editMsg"
-						placeholder="请输入..." placeholder-class="placeholderStyle">{{resume.phone}}</input>
+						placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 				</view>
 				<view class="row msg-item">
 					<view class="item-name">邮箱</view>
 					<input class="data" value="{{resume.mailbox}}" data-key="mailbox" bindinput="editMsg"
-						placeholder="请输入..." placeholder-class="placeholderStyle">{{resume.mailbox}}</input>
+						placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 				</view>
 			</view>
 			<!-- 右边 -->
@@ -49,7 +49,7 @@
 				</view>
 				<view>
 					<input placeholder="请输入..." placeholder-class="placeholderStyle" value="{{resume.name}}" class="name" data-key="name"
-						bindinput="editMsg">{{resume.name}}</input>
+						bindinput="editMsg"></input>
 				</view>
 			</view>
 		</view>
@@ -112,19 +112,19 @@
 		<view class="row msg-item">
 			<view class="item-name">期望职业</view>
 			<input class="data" type="text" value="{{intentionJob.job}}" data-key="job" bindinput="editIJ"
-				placeholder="请输入..." placeholder-class="placeholderStyle">{{intentionJob.job}}</input>
+				placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 		</view>
 		<view class="row msg-item">
 			<view class="item-name">期望薪资</view>
-			<picker bindchange="bindSalaryPickerChange" value="{{salaryIndex}}" range="{{salary}}" data-key="salary"
+			<picker bindchange="bindSalaryPickerChange" value="{{salaryIndex}}"  data-key="salary"
 				class="data">
-				<input data-key="salary" placeholder="请选择..." placeholder-class="placeholderStyle">{{salary[salaryIndex]}}</input>
+				<input data-key="salary" placeholder="请选择..." placeholder-class="placeholderStyle" value="{{intentionJob.salary}}"></input>
 			</picker>
 		</view>
 		<view class="row msg-item">
 			<view class="item-name">期望城市</view>
 			<input class="data" type="text" value="{{intentionJob.city}}" data-key="city" bindinput="editIJ"
-				placeholder="请输入..." placeholder-class="placeholderStyle">{{intentionJob.city}}</input>
+				placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 		</view>
 		<!-- 按钮 -->
 		<view class="row button">
@@ -164,17 +164,17 @@
 			<view class="row msg-item">
 				<view class="item-name">学校</view>
 				<input class="data" type="text" value="{{educationBackground.school}}" data-key="school" bindinput="editEB"
-					placeholder="请输入..." placeholder-class="placeholderStyle">{{educationBackground.school}}</input>
+					placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 			</view>
 			<view class="row msg-item">
 				<view class="item-name">专业</view>
 				<input class="data" type="text" value="{{educationBackground.profession}}" data-key="profession"
-					bindinput="editEB" placeholder="请输入..." placeholder-class="placeholderStyle">{{educationBackground.profession}}</input>
+					bindinput="editEB" placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 			</view>
 			<view class="row msg-item">
 				<view class="item-name">学历</view>
 				<input class="data" type="text" value="{{educationBackground.degree}}" data-key="degree" bindinput="editEB"
-					placeholder="请输入..." placeholder-class="placeholderStyle">{{educationBackground.degree}}</input>
+					placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 			</view>
 		</view>
 		<!-- 按钮 -->
@@ -217,7 +217,7 @@
 		<view class="row msg-item">
 			<view class="item-name">添加技能</view>
 			<input class="data" maxlength="14" value="{{addSkill}}" placeholder="技能限长14个字符" placeholder-class="placeholderStyle" data-key="professionalSkills"
-				bindinput="editPS">{{addSkill}}</input>
+				bindinput="editPS"></input>
 			<view class="okImg">
 				<image src="/images/mine/resume/ok.png" bindtap="addSkill"></image>
 			</view>
@@ -267,12 +267,12 @@
 		<view class="row msg-item">
 			<view class="item-name">公司/项目</view>
 			<input class="data" type="text" value="{{tempExperience.name}}" data-key="name" bindinput="editE"
-				placeholder="请输入..." placeholder-class="placeholderStyle">{{tempExperience.name}}</input>
+				placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 		</view>
 		<view class="row msg-item">
 			<view class="item-name">职位/角色</view>
 			<input class="data" type="text" value="{{tempExperience.position}}" data-key="position" bindinput="editE"
-				placeholder="请输入..." placeholder-class="placeholderStyle">{{tempExperience.position}}</input>
+				placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 		</view>
 		<view class="row msg-item">
 			<view class="item-name">开始时间</view>
@@ -280,7 +280,7 @@
 				<picker mode="date" value="{{tempExperience.startTime}}" data-key="startTime" bindchange="bindDateChange"
 					bindtap="editE">
 					<input value="{{tempExperience.startTime}}" placeholder="请选择..."
-						placeholder-class="placeholderStyle">{{tempExperience.startTime}}</input>
+						placeholder-class="placeholderStyle"></input>
 				</picker>
 			</view>
 		</view>
@@ -290,7 +290,7 @@
 				<picker mode="date" value="{{tempExperience.endTime}}" data-key="endTime" bindchange="bindDateChange"
 					bindtap="editE">
 					<input value="{{tempExperience.endTime}}" placeholder="请选择..."
-						placeholder-class="placeholderStyle">{{tempExperience.endTime}}</input>
+						placeholder-class="placeholderStyle"></input>
 				</picker>
 			</view>
 		</view>
@@ -346,7 +346,7 @@
 		<view class="row msg-item">
 			<view class="item-name">添加荣誉</view>
 			<input class="data" maxlength="14" value="{{addHonor}}" placeholder="技能限长14个字符" placeholder-class="placeholderStyle" data-key="honor"
-				bindinput="editH">{{addHonor}}</input>
+				bindinput="editH"></input>
 			<view class="okImg">
 				<image src="/images/mine/resume/ok.png" bindtap="addHonor"></image>
 			</view>

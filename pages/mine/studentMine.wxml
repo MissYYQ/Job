@@ -1,0 +1,46 @@
+<!-- 顶部 -->
+<view class="top">
+  <view class="top-back"></view>
+  <view class="top-front">
+    <view class="top-front-user row">
+      <view class="userInfo">
+        <image src="{{userInfo.avatarUrl}}"></image>
+        <view class="userKind">{{userKind}}</view>
+      </view>
+      <view class="userInfo-right">
+        <view class="nickName">{{userInfo.nickName}}</view>
+        <view class="expect">期望职位 / {{intentionJob.job}}</view>
+      </view>
+    </view>
+    <view class="top-front-data row">
+      <view class="data-item">
+        <view class="data-num">{{communicationNum}}</view>
+        <view class="data-name">沟通</view>
+      </view>
+      <view class="data-item">
+        <view class="data-num">{{interviewNum}}</view>
+        <view class="data-name">面试</view>
+      </view>
+      <view class="data-item">
+        <view class="data-num">{{deliveryNum}}</view>
+        <view class="data-name">已投</view>
+      </view>
+      <view class="data-item">
+        <view class="data-num">{{favoritesNum}}</view>
+        <view class="data-name">收藏</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 底部 -->
+<view class="bottom">
+  <view wx:for="{{myMsg}}" wx:key="index" data-index="{{index}}" class="bottom-item">
+    <view class="row">
+      <view class="row mineItem">
+        <image src="{{item.imgUrl}}"></image>
+        <view>{{item.name}}</view>
+      </view>
+      <image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
+    </view>
+  </view>
+</view>

@@ -1,78 +1,9 @@
-<view class="container">
-	<!-- 顶部 -->
-	<view class="row container-top">
-		<view class="top-left">
-			<text bindtap="showKind" data-findex="1" class="{{showKindIndex==1?'showKindActive':''}}">推荐</text>
-			<text bindtap="showKind" data-findex="2" class="{{showKindIndex==2?'showKindActive':''}}">最新</text>
-		</view>
-		<view class="row mid-item">
-			<view class="row mid-item">
-				<picker mode="region" bindchange="bindRegionChange">
-					<text wx:if="{{region}}" class="chooseActive">{{region}}</text>
-					<text wx:else>城市</text>
-				</picker>
-				<image src="/images/common/down.png"></image>
-			</view>
-			<view class="row mid-item">
-				<text class="{{showfilter||chooseEducation||chooseSalary||chooseExperience ?  'chooseActive' : ''}}" bindtap="filter">筛选</text>
-				<image src="/images/common/down.png"></image>
-			</view>
-		</view>
-		<view class="row top-right">
-			<image bindtap="toSearchPage" src="/images/common/search.png"></image>
-			<image src="/images/common/add.png" bindtap="toExpectPage"></image>
-		</view>
-	</view>
-	<!-- 筛选 -->
-	<view wx:if="{{showfilter}}" class="filter">
-		<view class="row filterItem">
-			<text class="filterName">学历要求</text>
-			<view class="itemOptions {{educationIndex===index ? 'choose' : ''}}" wx:for="{{education}}" wx:key="index" data-index="{{index}}" bindtap="chooseEducation">
-				{{item}}
-			</view>
-		</view>
-		<view class="filterItem">
-			<text class="filterName">薪资待遇</text>
-			<view class="itemOptions {{salaryIndex===index ? 'choose' : ''}}" wx:for="{{salary}}" wx:key="index" data-index="{{index}}" bindtap="chooseSalary">
-				{{item}}
-			</view>
-		</view>
-		<view class="filterItem">
-			<text class="filterName">经验要求</text>
-			<view class="itemOptions {{experienceIndex===index ? 'choose' : ''}}" wx:for="{{experience}}" wx:key="index" data-index="{{index}}" bindtap="chooseExperience">
-				{{item}}
-			</view>
-		</view>
-		<view class="row filter_button">
-			<view class="button_reset" bindtap="reset">重置</view>
-			<view class="button_determine" bindtap="filter">确定</view>
-		</view>
-	</view>
-	<!-- 内容区域 -->
-	<scroll-view scroll-y wx:else>
-		<view class="container-content" bindtap="toJobDetailsPage" wx:for="{{jobData}}" wx:key="index" data-index="{{index}}">
-			<view class="row content-top">
-				<view class="row">
-					<text class="name">{{item.name}}</text>
-					<view wx:if="{{item.kind===1}}" class="school school-recruitment">校招</view>
-					<view wx:if="{{item.kind===2}}" class="school practice">实习</view>
-				</view>
-				<text class="salary">{{item.salary}}</text>
-			</view>
-			<view class="row content-request">
-				<view>{{item.education}}</view>
-				<view>{{item.experience}}</view>
-				<view>{{item.city}}</view>
-			</view>
-			<view class="row content-bottom">
-				<view class="row content-ecruiter">
-					<image src="{{item.ecruiterImgUrl}}"></image>
-					<view>{{item.ecruiterName}}</view>
-				</view>
-				<view class="company">{{item.companyName}} | {{item.companySize}} | {{item.financingStage}}</view>
-			</view>
-			<!-- 分隔线 -->
-			<view class="divider"></view>
-		</view>
-	</scroll-view>
+<!-- 学生 -->
+<view wx:if="{{userKindTag == 1}}">
+  <include src="/pages/index/studentIndex.wxml"></include>
+</view>
+
+<!-- 企业 -->
+<view wx:if="userKindTag == 2">
+  <include src="/pages/index/companyIndex.wxml"></include>
 </view>
