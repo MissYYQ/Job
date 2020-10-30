@@ -19,15 +19,15 @@ Page({
     var userKind = wx.getStorageSync('userKind');
     var isWxLogin = wx.getStorageSync('isWxLogin');
 
-    if (isWxLogin) { //已登录
+    if (userKind && isWxLogin) { //用户类型明确，已登录
       wx.switchTab({
         url: '/pages/index/index',
       })
     }
-    if (!isWxLogin) { //未登录
+    if (userKind && !isWxLogin) { //用户类型明确，未登录
       wx.navigateTo({
         url: '/pages/login/login',
-      });
+      })
     }
   },
 

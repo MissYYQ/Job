@@ -33,25 +33,25 @@ Page({
     wx.setStorageSync('company', this.data.company)
   },
 
-    //添加头像
-    addCompanyLogo: function () {
-      var that = this
-      wx.chooseImage({
-        count: 1,
-        sizeType: ['original', 'compressed'], //尺寸【原图，压缩图】
-        sourceType: ['album', 'camera'], //来源【从相册选图，使用相机】
-        success(res) {
-          // tempFilePath可以作为img标签的src属性显示图片
-          var tempFilePaths = res.tempFilePaths //图片的本地临时文件路径列表 
-          var filePath = tempFilePaths[0]; //图片本地临时路径
-          //前台显示
-          that.setData({
-            ['company.logoUrl']: filePath
-          })
-          wx.setStorageSync('company', that.data.company)
-        }
-      })
-    },
+  //添加logo
+  addCompanyLogo: function () {
+    var that = this
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'], //尺寸【原图，压缩图】
+      sourceType: ['album', 'camera'], //来源【从相册选图，使用相机】
+      success(res) {
+        // tempFilePath可以作为img标签的src属性显示图片
+        var tempFilePaths = res.tempFilePaths //图片的本地临时文件路径列表 
+        var filePath = tempFilePaths[0]; //图片本地临时路径
+        //前台显示
+        that.setData({
+          ['company.logoUrl']: filePath
+        })
+        wx.setStorageSync('company', that.data.company)
+      }
+    })
+  },
 
   //删除福利
   deleteWelfare: function (e) {
@@ -65,8 +65,8 @@ Page({
   },
 
   //编辑福利
-  editWelfare: function(e) {
-    if(e.detail.value) {
+  editWelfare: function (e) {
+    if (e.detail.value) {
       this.setData({
         addWelfare: e.detail.value
       })
@@ -98,12 +98,23 @@ Page({
     wx.setStorageSync('company', this.data.company)
   },
 
-    //跳转至首页
-    toIndexPage: function () {
-      wx.switchTab({
-        url: '/pages/index/index',
-      })
-    },
+  //输入域文本
+  textareaInput: function (e) {
+    var value = e.detail.value;
+    var length = parseInt(value.length);
+    this.setData({
+      currentWordNumber: length,
+      ['company.introduction']: e.detail.value
+    });
+    wx.setStorageSync('company', this.data.company)
+  },
+
+  //跳转至首页
+  toIndexPage: function () {
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
+  },
 
 
 

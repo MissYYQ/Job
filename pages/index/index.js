@@ -4,7 +4,7 @@ const app = getApp()
 Page({
   data: {
     showKindIndex: 1, //推荐-1，最新-2
-    region: '', // 城市  [市，省，县]
+    city: '', // 城市
     showfilter: false, //是否显示下拉筛选
     chooseEducation: '', //学历要求
     chooseSalary: '', //薪资待遇
@@ -51,19 +51,6 @@ Page({
         ecruiterName: "姜先生",
         kind: 2
       },
-      {
-        name: "前端开发工程师",
-        salary: "5-8K",
-        education: "大专",
-        experience: "经验不限",
-        city: "北京",
-        companyName: "蓝凌叮当云",
-        companySize: "100-499人",
-        financingStage: "未融资",
-        ecruiterImgUrl: "/images/tabBar/mine02.png",
-        ecruiterName: "林慧慧",
-        kind: 1
-      }
     ],
     education: [
       "不限",
@@ -110,7 +97,7 @@ Page({
       userKindTag = 2
     }
     this.setData({
-      region: city,
+      ciry: city,
       userKindTag: userKindTag,
     })
   },

@@ -368,9 +368,9 @@
 <!-- 上传简历附件 -->
 <view class="item">
 	<!-- 项名 -->
-	<view class="row">
+	<view class="row" bindtap="addResume">
 		<view class="title">上传简历</view>
-		<image src="/images/mine/resume/add.png" class="add-img" bindtap="addResume"></image>
+		<image src="/images/mine/resume/add.png" class="add-img"></image>
 	</view>
 	<!-- 简历附件名显示 -->
 	<view wx:if="{{resumeFile}}">

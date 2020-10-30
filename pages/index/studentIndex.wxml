@@ -7,10 +7,8 @@
     </view>
     <view class="row mid-item">
       <view class="row mid-item">
-        <picker mode="region" bindchange="bindRegionChange">
-          <text wx:if="{{region}}" class="chooseActive">{{region}}</text>
-          <text wx:else>城市</text>
-        </picker>
+        <view wx:if="{{city}}" class="chooseActive">{{city}}</view>
+        <view wx:else>城市</view>
         <image src="/images/common/down.png"></image>
       </view>
       <view class="row mid-item">

@@ -13,8 +13,8 @@ App({
     var _this = this;
     //判断用户类型
     var userKind = wx.getStorageSync('userKind');
-    if(userKind == null || userKind == -1 || userKind == ''){
-      wx.setStorageSync('userKind', -1)
+    if(userKind == null || userKind == ''){
+      wx.setStorageSync('userKind', null)
     } else {
       _this.globalData.userKind = wx.getStorageSync('userKind')
     }

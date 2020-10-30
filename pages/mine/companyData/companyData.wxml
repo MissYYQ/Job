@@ -37,12 +37,22 @@
     <input class="data" value="{{company.detailedAddress}}" data-key="detailedAddress" placeholder="请输入..."
       placeholder-class="placeholderStyle" bindinput="editCompany"></input>
   </view>
+  <!-- 公司简介 -->
+  <view class="textareaCss">
+			<view class="item-name">公司简介</view>
+			<view>
+				<textarea data-key="introduction" bindinput="textareaInput"
+					value="{{company.introduction}}" placeholder="请输入..." placeholder-class="placeholderStyle">
+				<text class="currentWordNumber">{{currentWordNumber|0}}/140</text>
+			</textarea>
+			</view>
+		</view>
   <!-- 福利待遇 -->
   <view>
     <!-- 添加福利 -->
     <view class="row msg-item">
       <view class="item-name">福利待遇</view>
-      <input class="data" maxlength="6" value="{{addWelfare}}" placeholder="福利待遇限长6个字符"
+      <input class="data"  value="{{addWelfare}}" placeholder="请输入..."
         placeholder-class="placeholderStyle" bindinput="editWelfare">{{addSkill}}</input>
       <view class="okImg" wx:if="{{addWelfare}}">
         <image src="/images/mine/resume/ok.png" bindtap="addWelfare"></image>
@@ -58,7 +68,6 @@
       </view>
     </view>
   </view>
-
 </view>
 
 <!-- 底部按钮 -->

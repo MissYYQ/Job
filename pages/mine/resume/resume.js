@@ -166,6 +166,7 @@ Page({
       textareaValue: ''
     });
     wx.setStorageSync('experience', this.data.experience);
+    wx.setStorageSync('tempExperience', this.data.tempExperience);
   },
 
   //删除工作/项目经历
