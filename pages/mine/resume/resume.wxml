@@ -48,7 +48,7 @@
 					<image wx:else src="{{resume.avatar}}" class="avatar"></image>
 				</view>
 				<view>
-					<input placeholder="请输入..." placeholder-class="placeholderStyle" value="{{resume.name}}" class="name" data-key="name"
+					<input placeholder="姓名..." placeholder-class="placeholderStyle" value="{{resume.name}}" class="name" data-key="name"
 						bindinput="editMsg"></input>
 				</view>
 			</view>
@@ -116,8 +116,7 @@
 		</view>
 		<view class="row msg-item">
 			<view class="item-name">期望薪资</view>
-			<picker bindchange="bindSalaryPickerChange" value="{{salaryIndex}}"  data-key="salary"
-				class="data">
+			<picker bindchange="bindSalaryPickerChange" range="{{salary}}" value="{{salary[salaryIndex]}}"  data-key="salary" class="data">
 				<input data-key="salary" placeholder="请选择..." placeholder-class="placeholderStyle" value="{{intentionJob.salary}}"></input>
 			</picker>
 		</view>

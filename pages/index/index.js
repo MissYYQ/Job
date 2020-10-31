@@ -4,7 +4,6 @@ const app = getApp()
 Page({
   data: {
     showKindIndex: 1, //推荐-1，最新-2
-    city: '', // 城市
     showfilter: false, //是否显示下拉筛选
     chooseEducation: '', //学历要求
     chooseSalary: '', //薪资待遇
@@ -90,14 +89,14 @@ Page({
     var city = wx.getStorageSync('userInfo').city;
     var userKind = wx.getStorageSync('userKind');
     var userKindTag;
-    if(userKind == "学生"){
+    if (userKind == "学生") {
       userKindTag = 1
     }
-    if(userKind == "企业"){
+    if (userKind == "企业") {
       userKindTag = 2
     }
     this.setData({
-      ciry: city,
+      city: city,
       userKindTag: userKindTag,
     })
   },
@@ -195,6 +194,20 @@ Page({
       salaryIndex: -1,
       experienceIndex: -1,
     })
+  },
+
+  //公司搜索内容
+  inputVal: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    });
+  },
+
+  //清空搜索
+  clearInput: function () {
+    this.setData({
+      inputVal: null
+    });
   },
 
 

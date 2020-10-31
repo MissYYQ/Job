@@ -34,6 +34,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
+      userInfo: wx.getStorageSync('userInfo'),
       resume: wx.getStorageSync('resume'),
       educationBackground: wx.getStorageSync('educationBackground'),
       intentionJob: wx.getStorageSync('intentionJob'),
@@ -42,6 +43,21 @@ Page({
       resumeFile: wx.getStorageSync('resumeFile'),
       honor: wx.getStorageSync('honor'),
     })
+    if(this.data.userInfo) {
+      var province = this.data.userInfo.province;
+      var city = this.data.userInfo.city;
+      province = province.substring(0,province.length);
+      city = city.substring(0,city.length);
+      let hometown = province + city;
+      this.setData({
+        ['resume.hometown']:hometown
+      })
+    }
+    // if(this.data.intentionJob && this.data.educationBackground && this.data.resume) {
+    //   wx.switchTab({
+    //     url: '/pages/index/index',
+    //   })
+    // }
   },
 
 

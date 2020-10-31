@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    inputVal: "",
+    inputVal: null,
     city: '',
     history: [],
     hotCity: [{
@@ -80,7 +80,7 @@ Page({
   onLoad: function () {
     var that = this
     // 加载定位城市
-    var city = wx.getStorageSync('city')
+    var city = wx.getStorageSync('userInfo').city
     if (city) {
       that.setData({
         city: city
@@ -96,7 +96,7 @@ Page({
   // 清空
   clearInput: function () {
     this.setData({
-      inputVal: ""
+      inputVal: null
     });
   },
 

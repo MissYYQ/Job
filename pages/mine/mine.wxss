@@ -1,6 +1,3 @@
-@import "/pages/index/jobDetails/jobDetails.wxss";
-@import "/pages/index/index.wxss";
-
 .row{
   display: flex;
   flex-direction: row;
@@ -17,8 +14,11 @@
   width: 120%;
   padding: 10%;
   margin-left: -20%;
+  /* margin-left: -5%;
+  margin-top: -15%; */
   margin-top: -6%;
-  height: 100rpx;
+  /* height: 150rpx; */
+  height: 120rpx;
   border-radius: 50%;
   background: linear-gradient(rgba(246, 181, 1),rgba(246, 181, 1,0.5));
   box-shadow: rgba(246, 181, 1, 0.3) 0rpx 10rpx 15rpx 2rpx;
@@ -106,7 +106,7 @@
 .bottom{
   margin-left: 5%;
   width: 85%;
-  margin-top: 190rpx;
+  margin-top: 180rpx;
 }
 
 .bottom-item{
@@ -114,8 +114,8 @@
   border-bottom: rgba(246, 181, 1, 0.2) solid 1rpx;
 }
 .mineItem image{
-  width: 52rpx;
-  height: 52rpx;
+  width: 50rpx;
+  height: 50rpx;
   border-radius: 50%;
 }
 
@@ -162,6 +162,15 @@
 }
 
 .container-content {
+  /* ==================== */
+  width: 95%;
+  margin: 0 20rpx;
+  font-size: 9pt;
+  color: #888;
+  margin-top: 20rpx;
+  letter-spacing: 2rpx;
+  line-height: 70rpx;
+  /* ======================== */
   padding-bottom: 35rpx;
   border-bottom: rgba(246, 181, 1, 0.2) solid 2rpx;
 }
@@ -169,3 +178,64 @@
 .content-request {
   justify-content: left;
 }
+
+.skill {
+  font-size: 11pt;
+  font-weight: 600;
+  margin-left: 40rpx;
+  line-height: 3em;
+  margin-top: 10rpx;
+}
+
+.skills {
+  margin: 0 40rpx;
+  justify-content: left;
+}
+
+/* ============== */
+.content-top {
+  justify-content: space-between;
+  line-height: 80rpx;
+  padding-bottom: 10rpx;
+}
+
+.content-top .name {
+  font-size: 12pt;
+  color: black;
+  font-weight: 600;
+}
+
+.content-top .salary {
+  font-size: 12pt;
+  color: #F6B501;
+  margin-right: 40rpx;
+  letter-spacing: 10rpx;
+}
+
+.content-request view {
+  background-color: #f3f3f3;
+  color: #888;
+  font-size: 9pt;
+  padding: 0 16rpx;
+  margin-right: 18rpx;
+  border-radius: 10rpx;
+  line-height: 50rpx;
+}
+
+.school{
+  font-size: 8pt;
+  padding: 0 13rpx;
+  border-radius: 20rpx;
+  margin-left: 13rpx;
+  color: white;
+  line-height: 1.7em;
+}
+
+.school-recruitment{
+  background-color: #A5D5C9;
+}
+
+.practice{
+  background-color: #99C85C;
+}
+/* ============== */

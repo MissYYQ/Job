@@ -89,14 +89,7 @@ Page({
   //跳转至公司页面
   toCompanyPage: function() {
     wx.navigateTo({
-      url: '../mine/company/company',
-    })
-  },
-
-  //跳转至职位详情页面
-  toJobDetailsPage: function () {
-    wx.navigateTo({
-      url: '../index/jobDetails/jobDetails'
+      url: '/pages/mine/mine',
     })
   },
 
