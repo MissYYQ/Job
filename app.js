@@ -3,7 +3,7 @@ App({
    * 全局数据
    */
   globalData: {
-    userKind: null,         //用户类型
+    userKind: "学生",         //用户类型，默认学生
     isWxLogin: false,   //是否微信登录
     userInfo: null,      //用户信息
   },
@@ -14,7 +14,7 @@ App({
     //判断用户类型
     var userKind = wx.getStorageSync('userKind');
     if(userKind == null || userKind == ''){
-      wx.setStorageSync('userKind', null)
+      wx.setStorageSync('userKind', "学生")
     } else {
       _this.globalData.userKind = wx.getStorageSync('userKind')
     }

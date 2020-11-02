@@ -4,12 +4,15 @@
   <view class="top-front">
     <view class="top-front-user row">
       <view class="userInfo">
-        <image src="{{userInfo.avatarUrl}}"></image>
+        <image wx:if="{{isWxLogin}}" src="{{userInfo.avatarUrl}}"></image>
+        <image wx:else src="/images/mine/head.png"></image>
         <view class="userKind" bindtap="toUserKindPage">{{userKind}}</view>
       </view>
       <view class="userInfo-right">
-        <view class="nickName">{{userInfo.nickName}}</view>
-        <view class="expect">期望职位 / {{intentionJob.job}}</view>
+        <view wx:if="{{isWxLogin}}" class="nickName">{{userInfo.nickName}}</view>
+        <button wx:else open-type="getUserInfo"  bindtap="wxLogin"  class="nickName" 	style="padding: 0; margin: 0;width: 200rpx;display: flex;background: white;">登录</button>
+        <view wx:if="{{!intentionJob.job}}" class="expect">点击登录解锁更多</view>
+        <view wx:else class="expect">期望职位 / {{intentionJob.job}}</view>
       </view>
     </view>
     <view class="top-front-data row">

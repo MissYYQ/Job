@@ -1,3 +1,5 @@
+var app = getApp();
+
 Page({
 
   /**
@@ -5,8 +7,6 @@ Page({
    */
   data: {
     isWxLogin: null, //是否登录
-    showLogin: true, //是否显示微信登录模态框
-    // news: '',
     news: [{
         src: "/images/news/person01.png",
         personName: "姜先生",
@@ -26,9 +26,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var isWxLogin = wx.getStorageSync('isWxLogin')
     this.setData({
-      isWxLogin: isWxLogin
+      isWxLogin: wx.getStorageSync('isWxLogin')
     })
   },
 
@@ -41,29 +40,42 @@ Page({
         wx.setStorageSync('isWxLogin', app.globalData.isWxLogin)
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
 
+        // 获取用户信息
+        wx.getSetting({
+          success: res => {
+            if (res.authSetting['scope.userInfo']) {
+              // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+              wx.getUserInfo({
+                lang: "zh_CN",
+                success: res => {
+                  console.log("获取用户信息成功")
+                  // 可以将 res 发送给后台解码出 unionId
+                  app.globalData.userInfo = res.userInfo;
+                  console.log("login.js=== app.globalData.userInfo ===");
+                  console.log(app.globalData.userInfo)
+                  wx.setStorageSync('userInfo', res.userInfo);
+                  // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+                  // 所以此处加入 callback 以防止这种情况
+                  if (this.userInfoReadyCallback) {
+                    this.userInfoReadyCallback(res)
+                  }
+                }
+              })
+            }
+          },
+          fail: res => {
+            console.log("获取用户信息失败");
+            console.log(res);
+          }
+        })
       },
       fail: res => {
-        console.log("登录失败")
-        console.log(res)
+        console.log("登录失败");
+        console.log(res);
       }
     })
-    this.setData({
-      showLogin: false
-    })
-  },
-
-  //关闭微信登录模态框
-  close: function () {
-    this.setData({
-      showLogin: false
-    })
-
-  },
-
-  //跳出登录模态框
-  loginAgain: function () {
-    this.setData({
-      showLogin: true
+    wx.navigateTo({
+      url: '/pages/login/userKind/userKind',
     })
   },
   

@@ -1,0 +1,23 @@
+<!-- 编辑求职意向 -->
+<view class="intentionJob">
+  <view class="row msg-item">
+    <view class="item-name">期望职业</view>
+    <input class="data" type="text" value="{{intentionJob.job}}" data-key="job" bindinput="editIJ" placeholder="请输入..."
+      placeholder-class="placeholderStyle"></input>
+  </view>
+  <view class="row msg-item">
+    <view class="item-name">期望薪资</view>
+    <input class="data" type="number" data-key="salary" bindinput="editIJ" placeholder="薪资/月..." placeholder-class="placeholderStyle"
+      value="{{intentionJob.salary}}"></input>
+  </view>
+  <view class="row msg-item">
+    <view class="item-name">期望城市</view>
+    <input class="data" type="text" value="{{intentionJob.city}}" data-key="city" bindinput="editIJ"
+      placeholder="请输入" placeholder-class="placeholderStyle"></input>
+  </view>
+  <!-- 按钮 -->
+  <view class="row button">
+    <view class="btn resetBtn" bindtap="resetBtn">重置</view>
+    <view class="btn determineBtn" bindtap="editOverBtn">确定</view>
+  </view>
+</view>

@@ -9,16 +9,6 @@ Page({
     resume: {},
     educationBackground: {},
     intentionJob: {},
-    salaryIndex: 0,
-    salary: [
-      "不限",
-      "3K以下",
-      "3-5K",
-      "5-10K",
-      "10-20K",
-      "20-50K",
-      "50K以上"
-    ],
     professionalSkills: [],
     addSkill: '',
     experience: [],
@@ -53,11 +43,6 @@ Page({
         ['resume.hometown']:hometown
       })
     }
-    // if(this.data.intentionJob && this.data.educationBackground && this.data.resume) {
-    //   wx.switchTab({
-    //     url: '/pages/index/index',
-    //   })
-    // }
   },
 
 
@@ -96,15 +81,6 @@ Page({
     let name = "intentionJob." + key;
     this.setData({
       [name]: e.detail.value
-    })
-    wx.setStorageSync('intentionJob', this.data.intentionJob)
-  },
-
-  //期望薪资改变
-  bindSalaryPickerChange: function(e) {
-    this.setData({
-      salaryIndex: e.detail.value,
-      ['intentionJob.salary']: this.data.salary[e.detail.value]
     })
     wx.setStorageSync('intentionJob', this.data.intentionJob)
   },

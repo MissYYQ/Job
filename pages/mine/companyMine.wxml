@@ -8,8 +8,10 @@
 				<view class="userKind" bindtap="toUserKindPage">{{userKind}}</view>
 			</view>
 			<view class="userInfo-right">
-				<view class="nickName">{{company.name}}</view>
-				<view class="expect companyExpect">{{company.size}} · {{company.financingStage}}</view>
+        <view wx:if="{{isWxLogin}}" class="nickName">{{company.name}}</view>
+        <button wx:else open-type="getUserInfo"  bindtap="wxLogin"  class="nickName" 	style="padding: 0; margin: 0;width: 200rpx;display: flex;background: white;">登录</button>
+				<view wx:if="{{company.size}}" class="expect companyExpect">{{company.size}} · {{company.financingStage}}</view>
+				<view wx:else class="expect companyExpect">点击登录解锁更多</view>
 			</view>
 		</view>
 		<view class="top-front-data companyFront row">

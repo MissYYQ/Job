@@ -1,0 +1,15 @@
+@import "/pages/mine/resume/resume.wxss";
+
+.intentionJob{
+  margin-top: 10rpx;
+  margin-left: 5%;
+  width: 90%;
+}
+
+.msg-item {
+  height: 3.3em;
+}
+
+/* .item-name {
+  font-weight: 600;
+} */

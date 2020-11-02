@@ -3,7 +3,8 @@
 	<!-- 项名 -->
 	<view class="row" bindtap="edit" data-mark="basicInformation">
 		<view class="title">基本信息</view>
-		<image wx:if="{{mark === 'basicInformation' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img"></image>
+		<image wx:if="{{mark === 'basicInformation' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img">
+		</image>
 		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
 	</view>
 	<!-- 编辑基本信息 -->
@@ -36,8 +37,8 @@
 				</view>
 				<view class="row msg-item">
 					<view class="item-name">邮箱</view>
-					<input class="data" value="{{resume.mailbox}}" data-key="mailbox" bindinput="editMsg"
-						placeholder="请输入..." placeholder-class="placeholderStyle"></input>
+					<input class="data" value="{{resume.mailbox}}" data-key="mailbox" bindinput="editMsg" placeholder="请输入..."
+						placeholder-class="placeholderStyle"></input>
 				</view>
 			</view>
 			<!-- 右边 -->
@@ -48,8 +49,8 @@
 					<image wx:else src="{{resume.avatar}}" class="avatar"></image>
 				</view>
 				<view>
-					<input placeholder="姓名..." placeholder-class="placeholderStyle" value="{{resume.name}}" class="name" data-key="name"
-						bindinput="editMsg"></input>
+					<input placeholder="姓名..." placeholder-class="placeholderStyle" value="{{resume.name}}" class="name"
+						data-key="name" bindinput="editMsg"></input>
 				</view>
 			</view>
 		</view>
@@ -116,9 +117,7 @@
 		</view>
 		<view class="row msg-item">
 			<view class="item-name">期望薪资</view>
-			<picker bindchange="bindSalaryPickerChange" range="{{salary}}" value="{{salary[salaryIndex]}}"  data-key="salary" class="data">
-				<input data-key="salary" placeholder="请选择..." placeholder-class="placeholderStyle" value="{{intentionJob.salary}}"></input>
-			</picker>
+			<input class="data" type="number" data-key="salary" value="{{intentionJob.salary}}" bindinput="editIJ" placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 		</view>
 		<view class="row msg-item">
 			<view class="item-name">期望城市</view>
@@ -154,7 +153,8 @@
 	<!-- 项名 -->
 	<view class="row" bindtap="edit" data-mark="educationBackground">
 		<view class="title">教育背景</view>
-		<image wx:if="{{mark === 'educationBackground' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img"></image>
+		<image wx:if="{{mark === 'educationBackground' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img">
+		</image>
 		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
 	</view>
 	<!-- 编辑教育背景 -->
@@ -198,7 +198,8 @@
 	<!-- 项名 -->
 	<view class="row" bindtap="edit" data-mark="professionalSkills">
 		<view class="title">职业技能</view>
-		<image wx:if="{{mark === 'professionalSkills' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img"></image>
+		<image wx:if="{{mark === 'professionalSkills' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img">
+		</image>
 		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
 	</view>
 	<!-- 编辑职业技能 -->
@@ -215,8 +216,8 @@
 		<!-- 添加技能 -->
 		<view class="row msg-item">
 			<view class="item-name">添加技能</view>
-			<input class="data" maxlength="14" value="{{addSkill}}" placeholder="技能限长14个字符" placeholder-class="placeholderStyle" data-key="professionalSkills"
-				bindinput="editPS"></input>
+			<input class="data" maxlength="14" value="{{addSkill}}" placeholder="技能限长14个字符"
+				placeholder-class="placeholderStyle" data-key="professionalSkills" bindinput="editPS"></input>
 			<view class="okImg">
 				<image src="/images/mine/resume/ok.png" bindtap="addSkill"></image>
 			</view>
@@ -278,8 +279,7 @@
 			<view class="data">
 				<picker mode="date" value="{{tempExperience.startTime}}" data-key="startTime" bindchange="bindDateChange"
 					bindtap="editE">
-					<input value="{{tempExperience.startTime}}" placeholder="请选择..."
-						placeholder-class="placeholderStyle"></input>
+					<input value="{{tempExperience.startTime}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
 				</picker>
 			</view>
 		</view>
@@ -288,8 +288,7 @@
 			<view class="data">
 				<picker mode="date" value="{{tempExperience.endTime}}" data-key="endTime" bindchange="bindDateChange"
 					bindtap="editE">
-					<input value="{{tempExperience.endTime}}" placeholder="请选择..."
-						placeholder-class="placeholderStyle"></input>
+					<input value="{{tempExperience.endTime}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
 				</picker>
 			</view>
 		</view>
@@ -344,8 +343,8 @@
 		<!-- 添加荣誉 -->
 		<view class="row msg-item">
 			<view class="item-name">添加荣誉</view>
-			<input class="data" maxlength="14" value="{{addHonor}}" placeholder="技能限长14个字符" placeholder-class="placeholderStyle" data-key="honor"
-				bindinput="editH"></input>
+			<input class="data" maxlength="14" value="{{addHonor}}" placeholder="技能限长14个字符"
+				placeholder-class="placeholderStyle" data-key="honor" bindinput="editH"></input>
 			<view class="okImg">
 				<image src="/images/mine/resume/ok.png" bindtap="addHonor"></image>
 			</view>

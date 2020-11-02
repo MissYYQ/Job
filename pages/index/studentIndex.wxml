@@ -9,17 +9,17 @@
       <view class="row mid-item">
         <view wx:if="{{city}}" class="chooseActive">{{city}}</view>
         <view wx:else>城市</view>
-        <image src="/images/common/down.png"></image>
+        <image src="/images/index/down.png"></image>
       </view>
       <view class="row mid-item">
         <text class="{{showfilter||chooseEducation||chooseSalary||chooseExperience ?  'chooseActive' : ''}}"
           bindtap="filter">筛选</text>
-        <image src="/images/common/down.png"></image>
+        <image src="/images/index/down.png"></image>
       </view>
     </view>
     <view class="row top-right">
-      <image bindtap="toSearchPage" src="/images/common/search.png"></image>
-      <image src="/images/common/add.png" bindtap="toExpectPage"></image>
+      <image bindtap="toSearchPage" src="/images/index/search.png"></image>
+      <image src="/images/index/add.png" bindtap="toExpectPage"></image>
     </view>
   </view>
   <!-- 筛选 -->

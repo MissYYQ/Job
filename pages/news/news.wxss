@@ -1,3 +1,4 @@
+/* 未登录 */
 .not-login{
   width: 100%;
   text-align: center;
@@ -7,8 +8,26 @@
 
 .not-login image{
   width: 80%;
-  margin-top: 15%;
-}/* 没消息 */
+  margin-top: 10%;
+}
+
+.btn {
+  margin-left: 10%;
+  width: 80%;
+  line-height: 2.3em;
+  border-radius: 90rpx;
+  text-align: center;
+  font-weight: 600;
+  font-size: 12pt;
+  letter-spacing: 3rpx;
+}
+
+.loginBtn {
+  color: white;
+  background-color: #F6B501;
+  box-shadow: rgba(246, 181, 1, 0.8) 4rpx 7rpx;
+}
+/* 没消息 */
 .noNews{
   width: 100%;
   text-align: center;

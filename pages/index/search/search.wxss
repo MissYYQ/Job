@@ -54,7 +54,7 @@ input {
   border: 1rpx solid #F6B501;
   border-radius: 50rpx;
   width: 450rpx;
-  box-shadow: rgba(246, 181, 1, 0.95) 3rpx 5rpx;
+  box-shadow: rgba(246, 181, 1, 0.9) 2rpx 4rpx;
 }
 
 .weui-icon-search {

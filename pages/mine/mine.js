@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isWxLogin: null, 
+    isWxLogin: null,
     userKind: null,
     userInfo: null,
     communicationNum: 0,
@@ -15,8 +15,7 @@ Page({
     // 学生
     deliveryNum: 0,
     expect: null,
-    myMsg: [
-      {
+    myMsg: [{
         imgUrl: '/images/mine/jianli.png',
         name: '简历'
       },
@@ -107,10 +106,10 @@ Page({
   onLoad: function (options) {
     var userKind = wx.getStorageSync('userKind')
     var userKindTag;
-    if(userKind == "学生"){
+    if (userKind == "学生") {
       userKindTag = 1
     }
-    if(userKind == "企业"){
+    if (userKind == "企业") {
       userKindTag = 2
     }
     this.setData({
@@ -122,21 +121,64 @@ Page({
     })
   },
 
-  studentChangePage: function(e) {
-    console.log(e);
-    var index = e.currentTarget.dataset.index;
-    if(index === 0) {
-      wx.navigateTo({
-        url: '/pages/mine/resume/resume',
-      })
-    }
-  },
+  //微信登录
+  wxLogin: function () {
+    wx.login({
+      success: res => {
+        console.log("登录成功")
+        app.globalData.isWxLogin = true
+        wx.setStorageSync('isWxLogin', app.globalData.isWxLogin)
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
 
-  toUserKindPage: function() {
-    wx.setStorageSync('userKind', null);
+        // 获取用户信息
+        wx.getSetting({
+          success: res => {
+            if (res.authSetting['scope.userInfo']) {
+              // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+              wx.getUserInfo({
+                lang: "zh_CN",
+                success: res => {
+                  console.log("获取用户信息成功")
+                  // 可以将 res 发送给后台解码出 unionId
+                  app.globalData.userInfo = res.userInfo;
+                  console.log("login.js=== app.globalData.userInfo ===");
+                  console.log(app.globalData.userInfo)
+                  wx.setStorageSync('userInfo', res.userInfo);
+                  // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+                  // 所以此处加入 callback 以防止这种情况
+                  if (this.userInfoReadyCallback) {
+                    this.userInfoReadyCallback(res)
+                  }
+                }
+              })
+            }
+          },
+          fail: res => {
+            console.log("获取用户信息失败");
+            console.log(res);
+          }
+        })
+      },
+      fail: res => {
+        console.log("登录失败");
+        console.log(res);
+      }
+    })
     wx.navigateTo({
       url: '/pages/login/userKind/userKind',
     })
+  },
+
+  //列表选择
+  studentChangePage: function (e) {
+    if(this.data.isWxLogin){
+      var index = e.currentTarget.dataset.index;
+      if (index === 0) {
+        wx.navigateTo({
+          url: '/pages/mine/resume/resume',
+        })
+      }
+    }
   },
 
   //跳转至职位详情页面

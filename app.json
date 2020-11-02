@@ -1,21 +1,19 @@
 {
   "pages":[
-    "pages/login/login",
-    "pages/login/userKind/userKind",
-
     "pages/index/index",
     "pages/index/jobDetails/jobDetails",
     "pages/index/search/search",    
-    "pages/index/expect/expect",
+    "pages/index/intentionJob/intentionJob",    
     
     "pages/news/news",
     "pages/news/communication/communication",
     
-    "pages/find/find",
-    
     "pages/mine/mine",
     "pages/mine/resume/resume",
     "pages/mine/companyData/companyData",
+
+    "pages/login/login",
+    "pages/login/userKind/userKind",
     
     "pages/logs/logs"
   ],
@@ -37,12 +35,6 @@
         "text": "首页",
         "iconPath": "images/tabBar/homepage01.png",
         "selectedIconPath": "images/tabBar/homepage02.png"
-      },
-      {
-        "pagePath": "pages/find/find",
-        "text": "发现",
-        "iconPath": "images/tabBar/find01.png",
-        "selectedIconPath": "images/tabBar/find02.png"
       },
       {
         "pagePath": "pages/news/news",

@@ -3,6 +3,7 @@ const app = getApp()
 
 Page({
   data: {
+    isWxLogin: null,  //是否登录
     showKindIndex: 1, //推荐-1，最新-2
     showfilter: false, //是否显示下拉筛选
     chooseEducation: '', //学历要求
@@ -86,7 +87,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    var city = wx.getStorageSync('userInfo').city;
     var userKind = wx.getStorageSync('userKind');
     var userKindTag;
     if (userKind == "学生") {
@@ -95,17 +95,29 @@ Page({
     if (userKind == "企业") {
       userKindTag = 2
     }
+    if(wx.getStorageSync('intentionJob').city) {
+      this.setData({
+        city: wx.getStorageSync('intentionJob').city
+      })
+    } else if (wx.getStorageSync('userInfo').city) {
+      this.setData({
+        city: wx.getStorageSync('userInfo').city
+      })
+    }
     this.setData({
-      city: city,
+      isWxLogin: wx.getStorageSync('isWxLogin'),
+      intentionJob: wx.getStorageSync('intentionJob'),
       userKindTag: userKindTag,
     })
   },
 
   //跳转至搜索页面
   toSearchPage: function () {
-    wx.navigateTo({
-      url: '../index/search/search'
-    })
+    if(this.data.isWxLogin){
+      wx.navigateTo({
+        url: '../index/search/search'
+      })
+    }
   },
 
   //跳转至职位详情页面
@@ -118,7 +130,7 @@ Page({
   //跳转至求职期望页面
   toExpectPage: function () {
     wx.navigateTo({
-      url: '../index/expect/expect',
+      url: '/pages/index/intentionJob/intentionJob',
     })
   },
 
@@ -137,12 +149,11 @@ Page({
 
   //城市切换
   bindRegionChange: function (e) {
-    console.log(e.detail.value)
     var city = e.detail.value[1] //市名
     city = city.substring(0, city.length - 1) //去掉市
     console.log(city)
     this.setData({
-      region: city
+      city: city
     })
   },
 
