@@ -258,3 +258,16 @@ input{
   color: #888;
   margin-right: 10rpx;
 }
+
+.addJobImg {
+  position: fixed;
+  background-color: white;
+  right: 5%;
+  bottom: 5%;
+}
+
+.addJobImg image{
+  width: 75rpx;
+  height: 75rpx;
+  border-radius: 50%;
+}

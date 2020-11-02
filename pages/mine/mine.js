@@ -23,22 +23,22 @@ Page({
         imgUrl: '/images/mine/shoucang.png',
         name: '收藏'
       },
-      {
-        imgUrl: '/images/mine/bishi.png',
-        name: '笔试'
-      },
-      {
-        imgUrl: '/images/mine/mianshi.png',
-        name: '面试'
-      },
+      // {
+      //   imgUrl: '/images/mine/bishi.png',
+      //   name: '笔试练习'
+      // },
+      // {
+      //   imgUrl: '/images/mine/mianshi.png',
+      //   name: '面试技巧'
+      // },
       {
         imgUrl: '/images/mine/peixun.png',
         name: '培训'
       },
-      {
-        imgUrl: '/images/mine/shezhi.png',
-        name: '设置'
-      },
+      // {
+      //   imgUrl: '/images/mine/shezhi.png',
+      //   name: '设置'
+      // },
     ],
     // 企业
     jobNum: 0,
@@ -121,6 +121,27 @@ Page({
     })
   },
 
+    /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    var userKind = wx.getStorageSync('userKind')
+    var userKindTag;
+    if (userKind == "学生") {
+      userKindTag = 1
+    }
+    if (userKind == "企业") {
+      userKindTag = 2
+    }
+    this.setData({
+      isWxLogin: wx.getStorageSync('isWxLogin'),
+      userInfo: wx.getStorageSync('userInfo'),
+      userKind: wx.getStorageSync('userKind'),
+      userKindTag: userKindTag,
+      intentionJob: wx.getStorageSync('intentionJob'),
+    })
+  },
+
   //微信登录
   wxLogin: function () {
     wx.login({
@@ -169,6 +190,13 @@ Page({
     })
   },
 
+  //跳转至用户类型选择页面
+  toUserKindPage: function() {
+    wx.navigateTo({
+      url: '/pages/mine/userKind/userKind',
+    })
+  },
+
   //列表选择
   studentChangePage: function (e) {
     if(this.data.isWxLogin){
@@ -186,14 +214,6 @@ Page({
     wx.navigateTo({
       url: '/pages/index/jobDetails/jobDetails'
     })
-  },
-
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
   },
 
   /**

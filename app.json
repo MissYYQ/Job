@@ -4,6 +4,7 @@
     "pages/index/jobDetails/jobDetails",
     "pages/index/search/search",    
     "pages/index/intentionJob/intentionJob",    
+    "pages/index/addJob/addJob",    
     
     "pages/news/news",
     "pages/news/communication/communication",
@@ -11,9 +12,7 @@
     "pages/mine/mine",
     "pages/mine/resume/resume",
     "pages/mine/companyData/companyData",
-
-    "pages/login/login",
-    "pages/login/userKind/userKind",
+    "pages/mine/userKind/userKind",
     
     "pages/logs/logs"
   ],

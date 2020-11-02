@@ -3,7 +3,7 @@ const app = getApp()
 
 Page({
   data: {
-    isWxLogin: null,  //是否登录
+    isWxLogin: null, //是否登录
     showKindIndex: 1, //推荐-1，最新-2
     showfilter: false, //是否显示下拉筛选
     chooseEducation: '', //学历要求
@@ -95,7 +95,35 @@ Page({
     if (userKind == "企业") {
       userKindTag = 2
     }
-    if(wx.getStorageSync('intentionJob').city) {
+    if (wx.getStorageSync('intentionJob').city) {
+      this.setData({
+        city: wx.getStorageSync('intentionJob').city
+      })
+    } else if (wx.getStorageSync('userInfo').city) {
+      this.setData({
+        city: wx.getStorageSync('userInfo').city
+      })
+    }
+    this.setData({
+      isWxLogin: wx.getStorageSync('isWxLogin'),
+      intentionJob: wx.getStorageSync('intentionJob'),
+      userKindTag: userKindTag,
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    var userKind = wx.getStorageSync('userKind');
+    var userKindTag;
+    if (userKind == "学生") {
+      userKindTag = 1
+    }
+    if (userKind == "企业") {
+      userKindTag = 2
+    }
+    if (wx.getStorageSync('intentionJob').city) {
       this.setData({
         city: wx.getStorageSync('intentionJob').city
       })
@@ -113,25 +141,50 @@ Page({
 
   //跳转至搜索页面
   toSearchPage: function () {
-    if(this.data.isWxLogin){
+    if (this.data.isWxLogin) {
       wx.navigateTo({
-        url: '../index/search/search'
+        url: '/pages/index/search/search'
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
       })
     }
   },
 
   //跳转至职位详情页面
   toJobDetailsPage: function () {
-    wx.navigateTo({
-      url: '../index/jobDetails/jobDetails'
-    })
+    if (this.data.isWxLogin) {
+      wx.navigateTo({
+        url: '../index/jobDetails/jobDetails'
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
   },
 
   //跳转至求职期望页面
   toExpectPage: function () {
-    wx.navigateTo({
-      url: '/pages/index/intentionJob/intentionJob',
-    })
+    if (this.data.isWxLogin) {
+      wx.navigateTo({
+        url: '/pages/index/intentionJob/intentionJob',
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
   },
 
   //推荐、最新 类型切换
@@ -221,13 +274,22 @@ Page({
     });
   },
 
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  //跳转至添加招聘职位页面
+  toAddJobPage: function () {
+    if (this.data.isWxLogin) {
+      wx.navigateTo({
+        url: '/pages/index/addJob/addJob',
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
   },
+
 
   /**
    * 生命周期函数--监听页面显示

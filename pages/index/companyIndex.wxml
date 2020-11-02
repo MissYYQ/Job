@@ -33,3 +33,7 @@
     <view class="divider"></view>
   </view>
 </view>
+<!-- 添加招聘职位 -->
+<view class="addJobImg" bindtap="toAddJobPage">
+  <image src="/images/index/addJob.png"></image>
+</view>

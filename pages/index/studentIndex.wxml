@@ -18,7 +18,7 @@
       </view>
     </view>
     <view class="row top-right">
-      <image bindtap="toSearchPage" src="/images/index/search.png"></image>
+      <image src="/images/index/search.png" bindtap="toSearchPage"></image>
       <image src="/images/index/add.png" bindtap="toExpectPage"></image>
     </view>
   </view>
