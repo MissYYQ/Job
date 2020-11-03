@@ -1,2 +1,88 @@
-<!--pages/index/addJob/addJob.wxml-->
-<text>pages/index/addJob/addJob.wxml</text>
+<view>
+  <!-- 职位名称 -->
+  <view class="row msg-item">
+    <view class="item-name">职位名称</view>
+    <input class="data" value="{{addJob.name}}" data-key="name" placeholder="请输入..."
+      placeholder-class="placeholderStyle" bindinput="addJob"></input>
+  </view>
+  <!-- 最低薪资 -->
+  <view class="row msg-item">
+    <view class="item-name">最低薪资</view>
+    <input class="data" value="{{addJob.lowSalary}}" data-key="lowSalary" placeholder="薪资/月..."
+      placeholder-class="placeholderStyle" bindinput="addJob"></input>
+  </view>
+  <!-- 最高薪资 -->
+  <view class="row msg-item">
+    <view class="item-name">最高薪资</view>
+    <input class="data" value="{{addJob.highSalary}}" data-key="highSalary" placeholder="薪资/月..."
+      placeholder-class="placeholderStyle" bindinput="addJob"></input>
+  </view>
+  <!-- 工作城市 -->
+  <view class="row msg-item">
+    <view class="item-name">工作城市</view>
+    <input class="data" value="{{addJob.city}}" data-key="city" placeholder="请输入..."
+      placeholder-class="placeholderStyle" bindinput="addJob"></input>
+  </view>
+  <!-- 经验要求 -->
+  <view class="row msg-item">
+    <view class="item-name">经验要求</view>
+    <picker bindchange="experiencePicker" value="{{experience[experienceIndex]}}" range="{{experience}}"
+      data-key="experience" class="data">
+      <input data-key="experience" value="{{experience[experienceIndex]}}" placeholder="请选择..."
+        placeholder-class="placeholderStyle"></input>
+    </picker>
+  </view>
+  <!-- 学历要求 -->
+  <view class="row msg-item">
+    <view class="item-name">学历要求</view>
+    <picker bindchange="degreePicker" value="{{degree[degreeIndex]}}" range="{{degree}}" data-key="degree" class="data">
+      <input data-key="degree" value="{{degree[degreeIndex]}}" placeholder="请选择..."
+        placeholder-class="placeholderStyle"></input>
+    </picker>
+  </view>
+  <!-- 公司简介 -->
+  <view class="textareaCss">
+    <view class="item-name">岗位要求</view>
+    <view>
+      <textarea bindinput="claimTextarea" value="{{addJob.claim}}" placeholder="请输入..."
+        placeholder-class="placeholderStyle">
+			</textarea>
+    </view>
+  </view>
+  <!-- 岗位职责 -->
+  <view class="textareaCss">
+    <view class="item-name">岗位职责</view>
+    <view>
+      <textarea bindinput="dutyTextarea" value="{{addJob.duty}}" placeholder="请输入..."
+        placeholder-class="placeholderStyle">
+			</textarea>
+    </view>
+  </view>
+  <!-- 技能标签 -->
+  <view>
+    <!-- 添加福利 -->
+    <view class="row msg-item">
+      <view class="item-name">技能标签</view>
+      <input class="data" value="{{addSkill}}" placeholder="请输入..." placeholder-class="placeholderStyle"
+        bindinput="editSkill"></input>
+      <view class="okImg" wx:if="{{addSkill}}">
+        <image src="/images/mine/resume/ok.png" bindtap="addSkill"></image>
+      </view>
+    </view>
+    <!--添加的福利信息显示 -->
+    <view wx:if="{{jobSkill}}">
+      <view wx:for="{{jobSkill}}" wx:key="index" data-index="{{index}}" bindtap="deleteSkill">
+        <view class="row skillShow">
+          <view>{{item}}</view>
+          <image src="/images/mine/resume/delete.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 底部按钮 -->
+<view class="row button">
+  <view class="btn resetBtn" bindtap="toIndexPage">取消</view>
+  <view class="btn determineBtn" bindtap="toIndexPage">确定</view>
+</view>

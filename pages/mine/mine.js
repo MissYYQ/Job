@@ -185,9 +185,6 @@ Page({
         console.log(res);
       }
     })
-    wx.navigateTo({
-      url: '/pages/login/userKind/userKind',
-    })
   },
 
   //跳转至用户类型选择页面

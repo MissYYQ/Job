@@ -58,8 +58,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/mine/mine",
-          "pathName": "pages/mine/mine",
+          "name": "添加job",
+          "pathName": "pages/index/addJob/addJob",
           "query": "",
           "scene": null
         }

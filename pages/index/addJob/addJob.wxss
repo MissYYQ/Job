@@ -1,1 +1,35 @@
-/* pages/index/addJob/addJob.wxss */
+@import "/pages/mine/resume/resume.wxss";
+
+page{
+  margin-left: 5%;
+  width: 90%;
+}
+
+.msg-item {
+  height: 3.1em;
+}
+
+.item-name {
+  font-weight: 600;
+}
+
+.logo{
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  background-color: white;
+}
+
+.logo image{
+  width: 190rpx;
+  height: 190rpx;
+}
+
+.skillShow{
+  width: 300rpx;
+  margin-top: 13rpx;
+}
+
+.textareaCss {
+  border-bottom: #f3f3f3 solid 1rpx;
+}
