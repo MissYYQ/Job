@@ -6,9 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isWxLogin: null,
-    userKind: null,
-    userInfo: null,
     communicationNum: 0,
     interviewNum: 0,
     favoritesNum: 0,
@@ -121,27 +118,6 @@ Page({
     })
   },
 
-    /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    var userKind = wx.getStorageSync('userKind')
-    var userKindTag;
-    if (userKind == "学生") {
-      userKindTag = 1
-    }
-    if (userKind == "企业") {
-      userKindTag = 2
-    }
-    this.setData({
-      isWxLogin: wx.getStorageSync('isWxLogin'),
-      userInfo: wx.getStorageSync('userInfo'),
-      userKind: wx.getStorageSync('userKind'),
-      userKindTag: userKindTag,
-      intentionJob: wx.getStorageSync('intentionJob'),
-    })
-  },
-
   //微信登录
   wxLogin: function () {
     wx.login({
@@ -188,7 +164,7 @@ Page({
   },
 
   //跳转至用户类型选择页面
-  toUserKindPage: function() {
+  toUserKindPage: function () {
     wx.navigateTo({
       url: '/pages/mine/userKind/userKind',
     })
@@ -196,7 +172,7 @@ Page({
 
   //列表选择
   studentChangePage: function (e) {
-    if(this.data.isWxLogin){
+    if (this.data.isWxLogin) {
       var index = e.currentTarget.dataset.index;
       if (index === 0) {
         wx.navigateTo({
@@ -217,6 +193,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
+  },
+
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
 
   },
 

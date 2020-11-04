@@ -5,6 +5,14 @@
   width: 100%;
 }
 
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+
 ::-webkit-scrollbar{  /*隐藏滚动条 */
   width: 0;
   height: 0;

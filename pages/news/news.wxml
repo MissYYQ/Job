@@ -12,7 +12,7 @@
 	</view>
 	<!-- 有消息 -->
 	<view wx:else>
-		<view wx:for="{{news}}" wx:key="index" data-index="{{index}}" bindtap="toCommunicationPage">
+		<view wx:for="{{news}}" wx:key="index" data-index="{{index}}" bindtap="toChatPage">
 			<view class="row">
 				<image src="{{item.src}}"></image>
 				<view>

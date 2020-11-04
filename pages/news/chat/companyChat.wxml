@@ -1,0 +1,13 @@
+<!-- <view class="row top">
+  <view class="job">
+    <view>{{userName}}</view>
+    <view>{{job}}</view>
+  </view>
+  <view class="resume">
+    <image src="/images/mine/jianli.png"></image>
+    <view>请求简历</view>
+  </view>
+</view> -->
+
+
+<view></view>

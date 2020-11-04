@@ -7,7 +7,7 @@
     "pages/index/addJob/addJob",    
     
     "pages/news/news",
-    "pages/news/communication/communication",
+    "pages/news/chat/chat",
     
     "pages/mine/mine",
     "pages/mine/resume/resume",

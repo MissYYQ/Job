@@ -1,0 +1,33 @@
+page{
+  background-color: #F5F5F6;
+}
+/* .top {
+  background-color: white;
+  padding-bottom: 20rpx;
+}
+.job {
+  margin-top: 20rpx;
+  margin-left: 5%;
+}
+.resume{
+  margin-right: 5%;
+  margin-top: 20rpx;
+  text-align: center;
+}
+.job view{
+  font-size: 11pt;
+  color: black;
+  line-height: 2.2em;
+}
+
+.resume image{
+  width: 80rpx;
+  height: 90rpx;
+}
+
+.resume view{
+  color: #f6b501;
+  font-size: 9pt;
+} */
+
+

@@ -54,7 +54,7 @@
   width: 82rpx;
   font-size: 8pt;
   position: relative;
-  margin-top: -50rpx;
+  margin-top: -45rpx;
   margin-left: 42rpx;
   background-color: rgba(246, 181, 1);
   color: white;

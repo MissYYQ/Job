@@ -1,0 +1,9 @@
+<!-- 学生 -->
+<view wx:if="{{userKindTag == 1}}">
+  <include src="/pages/news/chat/studentChat.wxml"></include>
+</view>
+
+<!-- 企业 -->
+<view wx:if="{{userKindTag == 2}}">
+	<include src="/pages/news/chat/companyChat.wxml"></include>
+</view>

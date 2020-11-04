@@ -80,9 +80,9 @@ Page({
   },
   
   // 跳转至交流页面
-  toCommunicationPage: function () {
+  toChatPage: function () {
     wx.navigateTo({
-      url: '/pages/news/communication/communication',
+      url: '/pages/news/chat/chat',
     })
   },
 
