@@ -1,1 +1,30 @@
-<view>学生chat</view>
+<!-- 消息区域 -->
+<scroll-view style="height: {{height}}px" scroll-y="true" scroll-top="{{scrollTop}}">
+  <view wx:for="{{msg}}" wx:key="index" data-index="{{index}}">
+    <!-- 企业消息 -->
+    <view wx:if="{{item.userKind == 1}}" class="row msgItem leftMsg">
+      <image src="{{companyAvatar}}"></image>
+      <view class="itemMsgLeft">{{item.msg}}</view>
+    </view>
+    <!-- 学生消息 -->
+    <view wx:if="{{item.userKind == 1}}" class="row msgItem rightMsg">
+      <view class="itemMsgRight">{{item.msg}}</view>
+      <image src="{{studentAvatar}}"></image>
+    </view>
+  </view>
+</scroll-view>
+
+<!-- 底部发送消息区域 -->
+<view class="row bottom">
+  <!-- input -->
+  <view class="row bottomInput">
+    <image src="/images/news/chat/audio.png"></image>
+    <input value="{{inputMsg}}" bindinput="inputMsg" placeholder="请输入..." style="width: 60%" />
+    <image src="/images/news/chat/smile.png"></image>
+    <image src="/images/news/chat/more.png" bindtap="more"></image>
+  </view>
+  <!-- 更多 -->
+  <view wx:if="{{more}}" class="more">
+    <image src="/images/mine/jianli.png"></image>
+  </view>
+</view>

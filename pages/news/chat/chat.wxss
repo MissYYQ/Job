@@ -1,33 +1,96 @@
-page{
+page {
   background-color: #F5F5F6;
 }
-/* .top {
-  background-color: white;
-  padding-bottom: 20rpx;
-}
-.job {
-  margin-top: 20rpx;
-  margin-left: 5%;
-}
-.resume{
-  margin-right: 5%;
-  margin-top: 20rpx;
-  text-align: center;
-}
-.job view{
-  font-size: 11pt;
-  color: black;
-  line-height: 2.2em;
-}
 
-.resume image{
-  width: 80rpx;
-  height: 90rpx;
-}
-
-.resume view{
-  color: #f6b501;
-  font-size: 9pt;
+/* 隐藏滚动条 */
+/* ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
 } */
 
+.all {
+  padding-bottom: 200rpx;
+}
 
+.msgItem {
+  font-size: 10pt;
+  letter-spacing: 2rpx;
+  margin-top: 50rpx;
+  align-items: flex-start;
+}
+
+.avatar image {
+  width: 95rpx;
+  height: 95rpx;
+  border-radius: 50%;
+  padding: 0 25rpx;
+}
+
+.msgItem view {
+  font-size: 10pt;
+}
+
+.leftMsg {
+  justify-content: flex-start;
+}
+
+.rightMsg {
+  justify-content: flex-end;
+}
+
+.itemMsgLeft {
+  padding: 22rpx;
+  background-color: white;
+  color: black;
+  width: fit-content;
+  word-break: break-all;
+  margin-right: 25%;
+  border-radius: 0rpx 10rpx 10rpx 10rpx;
+}
+
+.itemMsgRight {
+  padding: 22rpx;
+  background-color: #f6b501;
+  color: white;
+  width: fit-content;
+  word-break: break-all;
+  margin-left: 25%;
+  border-radius: 10rpx 0rpx 10rpx 10rpx;
+}
+
+
+/* 底部发送消息区域 */
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.bottomInput {
+  background-color: white;
+  height: 3em;
+}
+
+.bottomInput image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
+.bottomInput image:last-child {
+  margin-left: 0;
+}
+
+.more {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.more image {
+  width: 100rpx;
+  height: 100rpx;
+  padding: 30rpx;
+}

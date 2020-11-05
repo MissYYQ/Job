@@ -1,13 +1,37 @@
-<!-- <view class="row top">
-  <view class="job">
-    <view>{{userName}}</view>
-    <view>{{job}}</view>
+<!-- 消息区域 -->
+<scroll-view scroll-y="true"  scroll-into-view="{{toLastId}}" scroll-with-animation="true" class="all">
+  <view wx:for="{{msg}}" wx:key="index"  id="msg{{index+1}}">
+    <!-- 学生消息 -->
+    <view wx:if="{{item.userKind == 0}}" class="row msgItem leftMsg">
+      <view class="avatar">
+        <image src="{{studentAvatar}}" mode="widthFix"></image>
+      </view>
+      <view class="itemMsgLeft">{{item.msg}}</view>
+    </view>
+    <!-- 企业消息 -->
+    <view wx:if="{{item.userKind == 1}}" class="row msgItem rightMsg">
+      <view class="itemMsgRight">{{item.msg}}</view>
+      <view class="avatar">
+        <image src="{{companyAvatar}}" mode="widthFix"></image>
+      </view>
+    </view>
   </view>
-  <view class="resume">
-    <image src="/images/mine/jianli.png"></image>
-    <view>请求简历</view>
+</scroll-view>
+
+<!-- 底部发送消息区域 -->
+<view class="bottom">
+  <!-- input -->
+  <view class="row bottomInput">
+    <image src="/images/news/chat/audio.png"></image>
+    <input value="{{inputMsg}}" bindinput="inputMsg" placeholder="请输入..." style="width: 60%" />
+    <image src="/images/news/chat/smile.png"></image>
+    <image src="/images/news/chat/more.png" bindtap="more"></image>
   </view>
-</view> -->
-
-
-<view></view>
+  <!-- 更多 -->
+  <view wx:if="{{isMore}}" class="row more">
+    <image src="/images/news/chat/resume.png"></image>
+    <image src="/images/news/chat/picture.png"></image>
+    <image src="/images/news/chat/take-pic.png"></image>
+    <image src="/images/news/chat/video.png"></image>
+  </view>
+</view>
