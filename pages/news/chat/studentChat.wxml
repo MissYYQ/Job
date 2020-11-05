@@ -1,5 +1,5 @@
 <!-- 消息区域 -->
-<scroll-view style="height: {{height}}px" scroll-y="true" scroll-top="{{scrollTop}}">
+<scroll-view scroll-y="true" style="height:{{height}}px"  scroll-into-view="{{lastId}}" scroll-with-animation="true">
   <view wx:for="{{msg}}" wx:key="index" data-index="{{index}}">
     <!-- 企业消息 -->
     <view wx:if="{{item.userKind == 1}}" class="row msgItem leftMsg">

@@ -2,21 +2,10 @@ page {
   background-color: #F5F5F6;
 }
 
-/* 隐藏滚动条 */
-/* ::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
-} */
-
-.all {
-  padding-bottom: 200rpx;
-}
-
 .msgItem {
   font-size: 10pt;
-  letter-spacing: 2rpx;
-  margin-top: 50rpx;
+  letter-spacing: 3rpx;
+  margin-top: 40rpx;
   align-items: flex-start;
 }
 
@@ -27,8 +16,16 @@ page {
   padding: 0 25rpx;
 }
 
-.msgItem view {
+.sendBtn{
   font-size: 10pt;
+  line-height: 2.1em;
+  width: 120rpx;
+  text-align: center;
+  margin-left: -10rpx;
+  margin-right: 20rpx;
+  color: white;
+  background-color: #f6b501;
+  border-radius: 10%;
 }
 
 .leftMsg {
@@ -89,8 +86,24 @@ page {
   justify-content: center;
 }
 
-.more image {
-  width: 100rpx;
-  height: 100rpx;
-  padding: 30rpx;
+.moreItem{
+  text-align: center;
+  font-size: 9pt;
+  color: #4C4C4C;
+}
+
+.moreItem image {
+  width: 55rpx;
+  height: 55rpx;
+  background-color: white;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+  padding: 28rpx;
+  border-radius: 12%;
+}
+
+.moreItem view{
+  padding-bottom: 40rpx;
 }

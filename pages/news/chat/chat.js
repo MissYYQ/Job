@@ -64,7 +64,8 @@ Page({
     this.setData({
       userKindTag: userKindTag,
       userKind: userKind,
-      toLastId: lastId
+      height: wx.getSystemInfoSync().windowHeight-55,
+      lastId: lastId
     })
   },
 
@@ -79,7 +80,8 @@ Page({
   more: function(){
     var isMore = this.data.isMore
     this.setData({
-      isMore: !isMore
+      isMore: !isMore,
+      height: wx.getSystemInfoSync().windowHeight-160,
     })
   },
 
