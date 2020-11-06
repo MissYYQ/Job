@@ -16,32 +16,66 @@ Page({
         msg: "希望了解一下贵公司福利",
         requestResume: false,
         requestAgree: false,
+        requestDeal: false,
         sendResume: false,
         sendAgree: false,
+        sendDeal: false,
+        imgSrc: null,
       },
       {
         userKind: "1",
         msg: "根据个人技术实力，实习生这块是采用日薪的，要求本科，150-200元/日",
         requestResume: false,
         requestAgree: false,
+        requestDeal: false,
         sendResume: false,
         sendAgree: false,
+        sendDeal: false,
+        imgSrc: null,
       },
       {
         userKind: "0",
-        msg: "贵公司招聘截止日期是什么时候？",
-        requestResume: false,
+        msg: null,
+        requestResume: true,
         requestAgree: false,
+        requestDeal: false,
         sendResume: false,
         sendAgree: false,
+        sendDeal: false,
+        imgSrc: null,
       },
       {
         userKind: "1",
-        msg: "十一月中旬",
-        requestResume: false,
+        msg: null,
+        requestResume: true,
         requestAgree: false,
+        requestDeal: false,
         sendResume: false,
         sendAgree: false,
+        sendDeal: false,
+        imgSrc: null,
+      },
+      {
+        userKind: "0",
+        msg: null,
+        requestResume: true,
+        requestAgree: false,
+        requestDeal: true,
+        sendResume: false,
+        sendAgree: false,
+        sendDeal: false,
+        imgSrc: null,
+      },
+      {
+        userKind: "1",
+        msg: null,
+        requestResume: true,
+        requestAgree: true,
+        requestDeal: true,
+        sendResume: false,
+        sendAgree: false,
+        sendDeal: false,
+        imgSrc: null,
       },
     ]
   },
@@ -79,7 +113,7 @@ Page({
   //发送消息
   sendBtn: function () {
     let newMsg = {};
-    if (this.userKindTag == 1) {
+    if (this.data.userKindTag == 1) {
       newMsg.userKind = 1;
     } else {
       newMsg.userKind = 0; //学生版
@@ -126,7 +160,6 @@ Page({
 
   //企业-请求简历
   requestResume: function (e) {
-    console.log(e)
     let newMsg = {};
     newMsg.userKind = 1;
     newMsg.requestResume = true;
@@ -146,6 +179,100 @@ Page({
       lastId: lastId
     })
   },
+
+  //学生-请求发送简历
+  sendResume: function () {
+    let newMsg = {};
+    newMsg.userKind = 0;
+    newMsg.requestResume = true;
+    var msg = this.data.msg;
+    var length = msg.length;
+    var tag = [];
+    for (var i = 0; i < length; i++) {
+      tag[i] = msg[i];
+    }
+    tag[length] = newMsg;
+    //消息重定位
+    var length = this.data.msg.length;
+    let lastId = 'msg' + length;
+    this.setData({
+      msg: tag,
+      inputMsg: null,
+      lastId: lastId
+    })
+  },
+
+  //是否同意简历请求
+  isAgree: function (e) {
+    console.log(e)
+    var index = e.currentTarget.dataset.index;
+    console.log("index：", index)
+    var requestagree = e.currentTarget.dataset.requestagree
+    console.log("requestagree：", requestagree);
+    let name = "msg[" + index + "]" + ".requestAgree"
+    let deal = "msg[" + index + "]" + ".requestDeal"
+    this.setData({
+      [name]: requestagree,
+      [deal]: deal
+    })
+
+  },
+
+  //发送图片
+  sendImg: function () {
+    var that = this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'], //尺寸【原图，压缩图】
+      sourceType: ['album', 'camera'], //来源【从相册选图，使用相机】
+      success(res) {
+        // tempFilePath可以作为img标签的src属性显示图片
+        var tempFilePaths = res.tempFilePaths //图片的本地临时文件路径列表 
+        var filePath = tempFilePaths[0]; //图片本地临时路径
+        //存入数据
+        let newMsg = {};
+        if (that.data.userKindTag == 1) {
+          newMsg.userKind = 1;
+        } else {
+          newMsg.userKind = 0;
+        }
+        newMsg.imgSrc = filePath;
+        var msg = that.data.msg;
+        var length = msg.length;
+        var tag = [];
+        for (var i = 0; i < length; i++) {
+          tag[i] = msg[i];
+        }
+        tag[length] = newMsg;
+        //消息重定位
+        var length = that.data.msg.length;
+        let lastId = 'msg' + length;
+        that.setData({
+          msg: tag,
+          lastId: lastId
+        })
+      }
+    })
+  },
+
+  //拍摄
+  shoot: function () {
+    var that = this;
+    wx.chooseVideo({
+      sourceType: ['album', 'camera'],
+      maxDuration: 60,
+      camera: 'back',
+      success: function (res) {
+        console.log(res)
+        // that.setData({
+        //   src: res.tempFilePath
+        // })
+      }
+    })
+  },
+
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

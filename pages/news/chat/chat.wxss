@@ -145,3 +145,36 @@ page {
   border-radius: 8rpx;
   margin-left: 35rpx;
 }
+
+.requestTxtLeft image{
+  width: 70rpx;
+  height: 60rpx;
+  background-color: #F5F5F6;
+  padding: 20rpx;
+  border-radius: 10%;
+}
+
+.requestTxtLeft view{
+  color: black;
+  font-size: 10pt;
+  margin-left: 20rpx;
+}
+
+.refuseBtnLeft{
+  background-color: #F5F5F6;
+  color: #333;
+  border-radius: 8rpx;
+}
+
+.agreeBtnLeft{
+  background-color: #F5F5F6;
+  color: #f6b501;
+  border-radius: 8rpx;
+  margin-left: 35rpx;
+}
+
+/* 发送图片 */
+.imgSrc image{
+  width: 300rpx;
+  height: 300rpx;
+}
