@@ -9,12 +9,43 @@
       <view class="itemMsgLeft">{{item.msg}}</view>
     </view>
     <!-- 企业消息 -->
-    <view wx:if="{{item.userKind == 1}}" class="row msgItem rightMsg">
+    <!-- <view wx:if="{{item.userKind == 1}}" class="row msgItem rightMsg">
+      <view class="itemMsgRight">{{item.msg}}</view>
+      <view class="avatar">
+        <image src="{{companyAvatar}}" mode="widthFix"></image>
+      </view>
+    </view> -->
+
+
+    <!-- 企业文字消息 -->
+    <view wx:if="{{item.userKind == 1 && item.msg != null}}" class="row msgItem rightMsg">
       <view class="itemMsgRight">{{item.msg}}</view>
       <view class="avatar">
         <image src="{{companyAvatar}}" mode="widthFix"></image>
       </view>
     </view>
+
+
+    <!-- 企业请求简历模板 -->
+    <view wx:if="{{item.userKind == 1 && item.msg == null && item.requestResume}}" class="row msgItem rightMsg">
+      <view wx:if="{{item.requestResume}}" class="itemMsgRight">
+        <view class="requestResume">
+          <view class="row requestTxt">
+            <image src="/images/news/chat/resume.png"></image>
+            <view>我想要一份您的附件简历</view>
+          </view>
+          <view class="row requestBtn">
+            <view class="refuseBtn">拒绝</view>
+            <view class="agreeBtn">同意</view>
+          </view>
+        </view>
+      </view>
+      <view class="avatar">
+        <image src="{{companyAvatar}}" mode="widthFix"></image>
+      </view>
+    </view>
+
+
   </view>
 </scroll-view>
 
@@ -25,7 +56,7 @@
     <view class="row inputImg">
       <image src="/images/news/chat/audio.png"></image>
     </view>
-    <input value="{{inputMsg}}" bindinput="inputMsg" placeholder="请输入..."  />
+    <input value="{{inputMsg}}" bindinput="inputMsg" placeholder="请输入..." />
     <view class="row inputImg">
       <image src="/images/news/chat/smile.png"></image>
       <view wx:if="{{inputMsg}}" class="sendBtn" bindtap="sendBtn">发送</view>
@@ -34,7 +65,7 @@
   </view>
   <!-- 更多 -->
   <view wx:if="{{isMore}}" class="row more">
-    <view class="moreItem">
+    <view class="moreItem" bindtap="requestResume">
       <image src="/images/news/chat/resume.png"></image>
       <view>征求简历</view>
     </view>

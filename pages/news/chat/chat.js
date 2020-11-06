@@ -4,28 +4,44 @@ Page({
    * 页面的初始数据
    */
   data: {
+    requestResume: false,
     isMore: false,
     userName: "南笙Y",
     companyName: "云程科技",
     job: "前端开发工程师",
     studentAvatar: "/images/news/person01.png",
     companyAvatar: '/images/news/person02.png',
-    msg: [
-      {
+    msg: [{
         userKind: "0",
-        msg: "希望了解一下贵公司福利"
+        msg: "希望了解一下贵公司福利",
+        requestResume: false,
+        requestAgree: false,
+        sendResume: false,
+        sendAgree: false,
       },
       {
         userKind: "1",
-        msg: "根据个人技术实力，实习生这块是采用日薪的，要求本科，150-200元/日"
+        msg: "根据个人技术实力，实习生这块是采用日薪的，要求本科，150-200元/日",
+        requestResume: false,
+        requestAgree: false,
+        sendResume: false,
+        sendAgree: false,
       },
       {
         userKind: "0",
-        msg: "贵公司招聘截止日期是什么时候？"
+        msg: "贵公司招聘截止日期是什么时候？",
+        requestResume: false,
+        requestAgree: false,
+        sendResume: false,
+        sendAgree: false,
       },
       {
         userKind: "1",
-        msg: "十一月中旬"
+        msg: "十一月中旬",
+        requestResume: false,
+        requestAgree: false,
+        sendResume: false,
+        sendAgree: false,
       },
     ]
   },
@@ -47,6 +63,7 @@ Page({
     this.setData({
       userKindTag: userKindTag,
       userKind: userKind,
+      resumeFile: wx.getStorageSync('resumeFile'),
       height: wx.getSystemInfoSync().windowHeight - 55,
       lastId: lastId
     })
@@ -62,7 +79,7 @@ Page({
   //发送消息
   sendBtn: function () {
     let newMsg = {};
-    if (this.userKindTag == 1) { 
+    if (this.userKindTag == 1) {
       newMsg.userKind = 1;
     } else {
       newMsg.userKind = 0; //学生版
@@ -96,7 +113,7 @@ Page({
     let lastId = 'msg' + length;
     var height
     if (this.data.isMore) {
-      height = wx.getSystemInfoSync().windowHeight - 155
+      height = wx.getSystemInfoSync().windowHeight - 158
     } else {
       height = wx.getSystemInfoSync().windowHeight - 55
     }
@@ -105,6 +122,29 @@ Page({
       lastId: lastId,
     })
 
+  },
+
+  //企业-请求简历
+  requestResume: function (e) {
+    console.log(e)
+    let newMsg = {};
+    newMsg.userKind = 1;
+    newMsg.requestResume = true;
+    var msg = this.data.msg;
+    var length = msg.length;
+    var tag = [];
+    for (var i = 0; i < length; i++) {
+      tag[i] = msg[i];
+    }
+    tag[length] = newMsg;
+    //消息重定位
+    var length = this.data.msg.length;
+    let lastId = 'msg' + length;
+    this.setData({
+      msg: tag,
+      inputMsg: null,
+      lastId: lastId
+    })
   },
 
   /**

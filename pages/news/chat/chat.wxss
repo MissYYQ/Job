@@ -107,3 +107,41 @@ page {
 .moreItem view{
   padding-bottom: 40rpx;
 }
+
+/* 请求简历模板 */
+.requestTxt image{
+  width: 70rpx;
+  height: 60rpx;
+  background-color: #F5F5F6;
+  padding: 20rpx;
+  border-radius: 10%;
+}
+
+.requestTxt view{
+  font-size: 10pt;
+  color: white;
+  margin-left: 20rpx;
+}
+
+.requestBtn{
+  justify-content: center;
+  margin-top: 20rpx;
+}
+
+.requestBtn view{
+  line-height: 2.2em;
+  padding: 0 50rpx;
+}
+
+.refuseBtn{
+  background-color: white;
+  color: #333;
+  border-radius: 8rpx;
+}
+
+.agreeBtn{
+  background-color: white;
+  color: #f6b501;
+  border-radius: 8rpx;
+  margin-left: 35rpx;
+}
