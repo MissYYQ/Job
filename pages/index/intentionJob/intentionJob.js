@@ -11,19 +11,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-
-    })
+    // this.setData({
+    //   intentionJob: wx.getStorageSync('intentionJob'),
+    // })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    this.setData({
-      intentionJob: wx.getStorageSync('intentionJob'),
-    })
-  },
 
   //编辑求职意向
   editIJ: function (e) {
@@ -36,18 +28,32 @@ Page({
   },
 
   //重置
-  resetBtn: function() {
+  resetBtn: function () {
     this.setData({
       intentionJob: null
     })
     wx.setStorageSync('intentionJob', null)
   },
 
-  //确定
-  editOverBtn: function() {
+  //确定，跳转至首页
+  editOverBtn: function () {
     wx.switchTab({
       url: '/pages/index/index',
+      success: function (e) {
+        var page = getCurrentPages().pop();
+        if (page == undefined || page == null) return;
+        page.onLoad();
+      }
     })
+  },
+
+
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
   },
 
   /**

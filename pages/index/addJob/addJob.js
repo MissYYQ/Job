@@ -31,7 +31,7 @@ Page({
     jobSkill: [],
   },
 
-    /**
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
@@ -123,11 +123,16 @@ Page({
   },
 
   //跳转至首页
-  toIndexPage: function() {
+  toIndexPage: function () {
     wx.setStorageSync('addJob', {});
     wx.setStorageSync('jobSkill', []);
     wx.switchTab({
       url: '/pages/index/index',
+      success: function (e) {
+        var page = getCurrentPages().pop();
+        if (page == undefined || page == null) return;
+        page.onLoad();
+      }
     })
   },
 

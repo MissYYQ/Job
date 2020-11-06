@@ -1,30 +1,54 @@
 <!-- 消息区域 -->
-<scroll-view scroll-y="true" style="height:{{height}}px"  scroll-into-view="{{lastId}}" scroll-with-animation="true">
-  <view wx:for="{{msg}}" wx:key="index" data-index="{{index}}">
+<scroll-view scroll-y="true" style="height:{{height}}px" scroll-into-view="{{lastId}}" scroll-with-animation="true">
+  <view wx:for="{{msg}}" wx:key="index" id="msg{{index+1}}">
     <!-- 企业消息 -->
     <view wx:if="{{item.userKind == 1}}" class="row msgItem leftMsg">
-      <image src="{{companyAvatar}}"></image>
+      <view class="avatar">
+        <image src="{{studentAvatar}}" mode="widthFix"></image>
+      </view>
       <view class="itemMsgLeft">{{item.msg}}</view>
     </view>
     <!-- 学生消息 -->
-    <view wx:if="{{item.userKind == 1}}" class="row msgItem rightMsg">
+    <view wx:if="{{item.userKind == 0}}" class="row msgItem rightMsg">
       <view class="itemMsgRight">{{item.msg}}</view>
-      <image src="{{studentAvatar}}"></image>
+      <view class="avatar">
+        <image src="{{companyAvatar}}" mode="widthFix"></image>
+      </view>
     </view>
   </view>
 </scroll-view>
 
 <!-- 底部发送消息区域 -->
-<view class="row bottom">
+<view class="bottom">
   <!-- input -->
   <view class="row bottomInput">
-    <image src="/images/news/chat/audio.png"></image>
-    <input value="{{inputMsg}}" bindinput="inputMsg" placeholder="请输入..." style="width: 60%" />
-    <image src="/images/news/chat/smile.png"></image>
-    <image src="/images/news/chat/more.png" bindtap="more"></image>
+    <view class="row inputImg">
+      <image src="/images/news/chat/audio.png"></image>
+    </view>
+    <input value="{{inputMsg}}" bindinput="inputMsg" placeholder="请输入..." />
+    <view class="row inputImg">
+      <image src="/images/news/chat/smile.png"></image>
+      <view wx:if="{{inputMsg}}" class="sendBtn" bindtap="sendBtn">发送</view>
+      <image wx:else src="/images/news/chat/more.png" bindtap="more"></image>
+    </view>
   </view>
   <!-- 更多 -->
-  <view wx:if="{{more}}" class="more">
-    <image src="/images/mine/jianli.png"></image>
+  <view wx:if="{{isMore}}" class="row more">
+    <view class="moreItem">
+      <image src="/images/news/chat/resume.png"></image>
+      <view>征求简历</view>
+    </view>
+    <view class="moreItem">
+      <image src="/images/news/chat/picture.png"></image>
+      <view>相册</view>
+    </view>
+    <view class="moreItem">
+      <image src="/images/news/chat/take-pic.png"></image>
+      <view>拍摄</view>
+    </view>
+    <view class="moreItem">
+      <image src="/images/news/chat/video.png"></image>
+      <view>视频通话</view>
+    </view>
   </view>
 </view>

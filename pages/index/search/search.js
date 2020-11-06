@@ -128,6 +128,11 @@ Page({
       //页面跳转
       wx.switchTab({
         url: '../../index/index?inputVal=' + inputVal,
+        success: function (e) {
+          var page = getCurrentPages().pop();
+          if (page == undefined || page == null) return;
+          page.onLoad();
+        }
       })
       console.log("===========搜索内容===========")
       console.log(inputVal)

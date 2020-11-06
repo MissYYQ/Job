@@ -22,11 +22,15 @@
 <view class="bottom">
   <!-- input -->
   <view class="row bottomInput">
-    <image src="/images/news/chat/audio.png"></image>
-    <input value="{{inputMsg}}" bindinput="inputMsg" placeholder="请输入..." style="width: 55%" />
-    <image src="/images/news/chat/smile.png"></image>
-    <view wx:if="{{inputMsg}}" class="sendBtn">发送</view>
-    <image wx:else src="/images/news/chat/more.png" bindtap="more"></image>
+    <view class="row inputImg">
+      <image src="/images/news/chat/audio.png"></image>
+    </view>
+    <input value="{{inputMsg}}" bindinput="inputMsg" placeholder="请输入..."  />
+    <view class="row inputImg">
+      <image src="/images/news/chat/smile.png"></image>
+      <view wx:if="{{inputMsg}}" class="sendBtn" bindtap="sendBtn">发送</view>
+      <image wx:else src="/images/news/chat/more.png" bindtap="more"></image>
+    </view>
   </view>
   <!-- 更多 -->
   <view wx:if="{{isMore}}" class="row more">

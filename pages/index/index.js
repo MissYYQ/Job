@@ -111,33 +111,6 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    var userKind = wx.getStorageSync('userKind');
-    var userKindTag;
-    if (userKind == "学生") {
-      userKindTag = 1
-    }
-    if (userKind == "企业") {
-      userKindTag = 2
-    }
-    if (wx.getStorageSync('intentionJob').city) {
-      this.setData({
-        city: wx.getStorageSync('intentionJob').city
-      })
-    } else if (wx.getStorageSync('userInfo').city) {
-      this.setData({
-        city: wx.getStorageSync('userInfo').city
-      })
-    }
-    this.setData({
-      isWxLogin: wx.getStorageSync('isWxLogin'),
-      intentionJob: wx.getStorageSync('intentionJob'),
-      userKindTag: userKindTag,
-    })
-  },
 
   //跳转至搜索页面
   toSearchPage: function () {
@@ -288,6 +261,15 @@ Page({
         mask: true
       })
     }
+  },
+
+
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
   },
 
 

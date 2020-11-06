@@ -172,7 +172,6 @@ Page({
     wx.setStorageSync('experience', this.data.experience)
   },
 
-  
   //编辑荣誉
   editH: function (e) {
     if(e.detail.value) {
@@ -306,6 +305,11 @@ Page({
   toIndexPage: function () {
     wx.switchTab({
       url: '/pages/index/index',
+      success: function (e) {
+        var page = getCurrentPages().pop();
+        if (page == undefined || page == null) return;
+        page.onLoad();
+      }
     })
   },
 

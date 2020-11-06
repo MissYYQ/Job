@@ -24,7 +24,6 @@ Page({
 
   //编辑
   editCompany: function (e) {
-    console.log(e);
     var key = e.currentTarget.dataset.key;
     let name = "company." + key;
     this.setData({
@@ -113,6 +112,11 @@ Page({
   toIndexPage: function () {
     wx.switchTab({
       url: '/pages/index/index',
+      success: function (e) {
+        var page = getCurrentPages().pop();
+        if (page == undefined || page == null) return;
+        page.onLoad();
+      }
     })
   },
 

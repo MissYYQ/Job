@@ -70,14 +70,14 @@ page {
   height: 3em;
 }
 
-.bottomInput image {
+.inputImg image {
   width: 60rpx;
   height: 60rpx;
   margin-left: 30rpx;
   margin-right: 30rpx;
 }
 
-.bottomInput image:last-child {
+.bottomInput image:nth-child(2) {
   margin-left: 0;
 }
 

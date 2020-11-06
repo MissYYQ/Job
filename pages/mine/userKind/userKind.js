@@ -5,9 +5,7 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {
-    userKind: null,
-  },
+  data: {},
 
   /**
    * 生命周期函数--监听页面加载
@@ -22,15 +20,20 @@ Page({
   toIndexPage: function (e) {
     console.log(e);
     var userKind = e.currentTarget.dataset.user;
-    if(userKind == "student") {
+    if (userKind == "student") {
       wx.setStorageSync('userKind', "学生");
       app.globalData.userKind = "学生";
-    }else{
+    } else {
       wx.setStorageSync('userKind', "企业");
       app.globalData.userKind = "企业";
     }
     wx.switchTab({
       url: '/pages/index/index',
+      success: function (e) {
+        var page = getCurrentPages().pop();
+        if (page == undefined || page == null) return;
+        page.onLoad();
+      }
     })
   },
 

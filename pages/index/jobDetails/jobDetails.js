@@ -12,10 +12,10 @@ Page({
     companyName: "云程科技",
     companySize: "20-99人",
     financingStage: "B轮",
-    address:"××省××市××县（区）××",
+    address: "××省××市××县（区）××",
     ecruiterImgUrl: "/images/tabBar/mine02.png",
     ecruiterName: "姜先生",
-    skill:[
+    skill: [
       "Node.js",
       "React",
       "Java",
@@ -41,32 +41,37 @@ Page({
       "定期团游",
       "股票期权"
     ],
-    favorites: false  //是否收藏
+    favorites: false //是否收藏
 
   },
 
-    //跳转至公司页面
-    toCompanyPage: function () {
-      wx.switchTab({
-        url: '/pages/mine/mine',
-      })
-    },
+  //跳转至公司页面
+  toCompanyPage: function () {
+    wx.switchTab({
+      url: '/pages/mine/mine',
+      success: function (e) {
+        var page = getCurrentPages().pop();
+        if (page == undefined || page == null) return;
+        page.onLoad();
+      }
+    })
+  },
 
   // 收藏（取消收藏）
-  favorites:function(){
+  favorites: function () {
     this.setData({
       favorites: !this.data.favorites
     })
-    console.log("是否收藏：",this.data.favorites)
+    console.log("是否收藏：", this.data.favorites)
   },
 
   //跳转至聊天页面
-  toCommunicationPage:function(){
+  toCommunicationPage: function () {
     wx.navigateTo({
-      url:  '/pages/news/communication/communication',
+      url: '/pages/news/communication/communication',
     })
   },
-  
+
   /**
    * 生命周期函数--监听页面加载
    */
