@@ -271,3 +271,52 @@ input{
   height: 75rpx;
   border-radius: 50%;
 }
+
+/* studentIndex */
+.studentIndex-search{
+  background-color: #F6B501;
+  font-size: 10pt;
+  margin-left: -3%;
+  width: 100%;
+  /* border-radius: 0 0 30rpx 30rpx; */
+}
+
+.search-body{
+  margin-left: 6%;
+  width: 88%;
+  line-height: 2.5em;
+  padding-bottom: 40rpx;
+}
+
+.search-box{
+  background-color: white;
+  border-radius: 12rpx;
+}
+
+.weui-icon-search{
+  margin-left: 30rpx;
+}
+
+.search-placeholder{
+  font-size: 10pt;
+  margin-left: 20rpx;
+  color: #888;
+}
+
+/* 板块 */
+.studentPlate{
+  justify-content: center;
+  margin-left: -5%;
+}
+.plate-item{
+  text-align: center;
+  font-size: 8pt;
+  color: #888;
+  margin-top: 10rpx;
+  padding: 15rpx 40rpx;
+}
+
+.plate-item image {
+  width: 75rpx;
+  height: 70rpx;
+}

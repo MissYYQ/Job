@@ -58,20 +58,9 @@
     "miniprogram": {
       "list": [
         {
-          "name": "添加job",
-          "pathName": "pages/index/addJob/addJob",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "chat",
           "pathName": "pages/news/chat/chat",
           "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/index/companyDetails/companyDetails",
-          "pathName": "pages/index/companyDetails/companyDetails",
           "scene": null
         }
       ]

@@ -3,7 +3,7 @@
 			<view class="top_city">
 				<view wx:if="{{city}}" class="city">
 					<view>{{city}}</view>
-					<image src="/images/common/down.png" bindtap="changeCity"></image>
+					<image src="/images/index/down.png" bindtap="changeCity"></image>
 				</view>
 				<image wx:else src="/images/jobDetails/address.png" bindtap="getCity"></image>
 			</view>

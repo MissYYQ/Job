@@ -74,8 +74,13 @@ Page({
         console.log(res);
       }
     })
-    wx.navigateTo({
-      url: '/pages/login/userKind/userKind',
+    wx.switchTab({
+      url: '/pages/news/news',
+      success: function (e) {
+        var page = getCurrentPages().pop();
+        if (page == undefined || page == null) return;
+        page.onLoad();
+      }
     })
   },
   

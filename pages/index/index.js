@@ -112,6 +112,34 @@ Page({
   },
 
 
+  //跳转至热门公司页面
+  toHotCompanyPage: function(){
+    wx.navigateTo({
+      url: '/pages/index/hotCompany/hotCompany',
+    })
+  },
+
+  //跳转至热门职位页面
+  toHotJobPage: function() {
+    wx.navigateTo({
+      url: '/pages/index/hotJob/hotJob',
+    })
+  },
+
+  //跳转至校园招聘页面
+  toCampusRecruitingPage: function(){
+    wx.navigateTo({
+      url: '/pages/index/campusRecruiting/campusRecruiting',
+    })
+  },
+
+  //跳转至求职攻略页面
+  toJobStrategyPage:function(){
+    wx.navigateTo({
+      url: '/pages/index/jobStrategy/jobStrategy',
+    })
+  },
+
   //跳转至搜索页面
   toSearchPage: function () {
     if (this.data.isWxLogin) {

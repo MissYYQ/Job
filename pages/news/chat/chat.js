@@ -34,6 +34,17 @@ Page({
         imgSrc: null,
       },
       {
+        userKind: "1",
+        msg: null,
+        requestResume: true,
+        requestAgree: false,
+        requestDeal: false,
+        sendResume: false,
+        sendAgree: false,
+        sendDeal: false,
+        imgSrc: null,
+      },
+      {
         userKind: "0",
         msg: null,
         requestResume: true,
@@ -170,20 +181,19 @@ Page({
   },
 
   //是否同意简历请求
-  isAgree: function (e) {
-    console.log(e)
-    var index = e.currentTarget.dataset.index;
-    console.log("index：", index)
-    var requestagree = e.currentTarget.dataset.requestagree
-    console.log("requestagree：", requestagree);
-    let name = "msg[" + index + "]" + ".requestAgree"
-    let deal = "msg[" + index + "]" + ".requestDeal"
-    this.setData({
-      [name]: requestagree,
-      [deal]: deal
-    })
-
-  },
+  // isAgree: function (e) {
+  //   console.log(e)
+  //   var index = e.currentTarget.dataset.index;
+  //   console.log("index：", index)
+  //   var requestagree = e.currentTarget.dataset.requestagree
+  //   console.log("requestagree：", requestagree);
+  //   let name = "msg[" + index + "]" + ".requestAgree"
+  //   let deal = "msg[" + index + "]" + ".requestDeal"
+  //   this.setData({
+  //     [name]: requestagree,
+  //     [deal]: deal
+  //   })
+  // },
 
   //发送图片
   sendImg: function () {

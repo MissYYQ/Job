@@ -1,6 +1,10 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/index/hotCompany/hotCompany",
+    "pages/index/hotJob/hotJob",
+    "pages/index/campusRecruiting/campusRecruiting",
+    "pages/index/jobStrategy/jobStrategy",
     "pages/index/jobDetails/jobDetails",
     "pages/index/search/search",    
     "pages/index/intentionJob/intentionJob",    
