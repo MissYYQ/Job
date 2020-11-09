@@ -5,6 +5,7 @@
     "pages/index/search/search",    
     "pages/index/intentionJob/intentionJob",    
     "pages/index/addJob/addJob",    
+    "pages/index/companyDetails/companyDetails",    
     
     "pages/news/news",
     "pages/news/chat/chat",

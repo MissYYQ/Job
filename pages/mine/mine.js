@@ -20,22 +20,22 @@ Page({
         imgUrl: '/images/mine/shoucang.png',
         name: '收藏'
       },
-      // {
-      //   imgUrl: '/images/mine/bishi.png',
-      //   name: '笔试练习'
-      // },
-      // {
-      //   imgUrl: '/images/mine/mianshi.png',
-      //   name: '面试技巧'
-      // },
       {
-        imgUrl: '/images/mine/peixun.png',
-        name: '培训'
+        imgUrl: '/images/mine/bishi.png',
+        name: '笔试练习'
+      },
+      {
+        imgUrl: '/images/mine/mianshi.png',
+        name: '面试技巧'
       },
       // {
-      //   imgUrl: '/images/mine/shezhi.png',
-      //   name: '设置'
+      //   imgUrl: '/images/mine/peixun.png',
+      //   name: '培训'
       // },
+      {
+        imgUrl: '/images/mine/shezhi.png',
+        name: '设置'
+      },
     ],
     // 企业
     jobNum: 0,

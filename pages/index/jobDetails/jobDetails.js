@@ -47,13 +47,8 @@ Page({
 
   //跳转至公司页面
   toCompanyPage: function () {
-    wx.switchTab({
-      url: '/pages/mine/mine',
-      success: function (e) {
-        var page = getCurrentPages().pop();
-        if (page == undefined || page == null) return;
-        page.onLoad();
-      }
+    wx.navigateTo({
+      url: '/pages/index/companyDetails/companyDetails',
     })
   },
 

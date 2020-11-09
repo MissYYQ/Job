@@ -66,6 +66,12 @@
         {
           "name": "chat",
           "pathName": "pages/news/chat/chat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/companyDetails/companyDetails",
+          "pathName": "pages/index/companyDetails/companyDetails",
           "scene": null
         }
       ]

@@ -178,3 +178,9 @@ page {
   width: 300rpx;
   height: 300rpx;
 }
+
+/* 拍摄 */
+video{
+  height: 300rpx;
+  width: 400rpx;
+}

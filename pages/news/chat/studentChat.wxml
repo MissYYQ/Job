@@ -44,6 +44,14 @@
       </view>
     </view>
 
+    <!-- 拍摄 -->
+    <view wx:if="{{item.userKind == 0 && item.videoSrc != null}}" class="row msgItem leftMsg">
+      <view class="avatar">
+        <image src="{{companyAvatar}}" mode="widthFix"></image>
+      </view>
+      <video src="{{item.videoSrc}}" enable-progress-gesture="true"></video>
+    </view>
+
 
     <!-- ===========右边消息========== -->
     <!-- 学生文字消息 -->
@@ -82,6 +90,14 @@
       <view class="imgSrc">
         <image src="{{item.imgSrc}}" mode="aspectFit"></image>
       </view>
+      <view class="avatar">
+        <image src="{{studentAvatar}}" mode="widthFix"></image>
+      </view>
+    </view>
+
+    <!-- 拍摄 -->
+    <view wx:if="{{item.userKind == 0 && item.videoSrc != null}}" class="row msgItem rightMsg">
+      <video src="{{item.videoSrc}}" enable-progress-gesture="true"></video>
       <view class="avatar">
         <image src="{{studentAvatar}}" mode="widthFix"></image>
       </view>
