@@ -1,6 +1,19 @@
+page{
+  font-size: 10pt;
+  letter-spacing: 3rpx;
+}
+
 .placeholderClass {
   color: var(--weui-FG-1);
   font-size: 10pt;
+}
+
+.spaceBetween{
+  justify-content: space-between;
+}
+
+input{
+  width: 470rpx;
 }
 
 /* 搜索 */
@@ -22,9 +35,9 @@
   border: 1rpx solid #F6B501;
   border-radius: 50rpx;
   margin-left: 30rpx;
-  width: 520rpx;
+  width: 550rpx;
   box-shadow: rgba(246, 181, 1, 0.9) 2rpx 4rpx;
-  height: 1.8em;
+  height: 2.1em;
 }
 
 .top_search_btn{
@@ -46,3 +59,51 @@
 }
 
 /* 内容 */
+.seminar{
+  margin-top: 120rpx;
+  margin-left: 5%;
+  width: 90%;
+}
+
+.seminar-item{
+  margin-top: 30rpx;
+  padding-bottom: 40rpx;
+  border-bottom: rgba(246, 181, 1, 0.15) 3rpx solid;
+}
+
+.logoImg image{
+  width: 110rpx;
+  height: 110rpx;
+  margin-left: 10rpx;
+  padding-right: 50rpx;
+}
+
+.data-item{
+  width: 100%;
+}
+
+.companyName{
+  font-size: 11pt;
+  color: black;
+  text-shadow: #ccc 1rpx 1rpx;
+}
+
+.date{
+  color: #888;
+  font-size: 10pt;
+}
+
+.school image{
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 13rpx;
+}
+
+.school view{
+  color: #888;
+  font-size: 9pt;
+}
+
+.time{
+  color: #F6B501;
+}

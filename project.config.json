@@ -62,6 +62,11 @@
           "pathName": "pages/index/seminar/seminar",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "seminarDetails",
+          "pathName": "pages/index/seminar/seminarDetails/seminarDetails",
+          "scene": null
         }
       ]
     }

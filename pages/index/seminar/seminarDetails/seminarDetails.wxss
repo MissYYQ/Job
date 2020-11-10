@@ -1,0 +1,51 @@
+page{
+  letter-spacing: 2rpx;
+  font-size: 10pt;
+  color: #888;
+  margin-left: 5%;
+  width: 90%;
+}
+
+/* 公司 */
+.seminar-top{
+  margin-top: 15rpx;
+  padding-bottom: 30rpx;
+  border-bottom: solid 3rpx #ebebec;
+}
+
+.seminar-top image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 10rpx;
+  margin-right: 50rpx;
+}
+
+.companyName{
+  font-size: 12pt;
+  color: black;
+  text-shadow: #ebebec 1rpx 1rpx;
+}
+
+.industry{
+  font-size: 9pt;
+}
+
+/* 基本信息 */
+.basic{
+  margin-top: 25rpx;
+  padding-bottom: 25rpx;
+  border-bottom: solid 3rpx #ebebec;
+}
+.basic-item image{
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 12rpx;
+}
+
+.basic-item view{
+  font-size: 9pt;
+}
+
+.date-time{
+  color: #F6B501;
+}

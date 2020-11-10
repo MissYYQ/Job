@@ -15,8 +15,6 @@ page {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
-  /*隐藏滚动条实现滚动 */
-  /* margin: 0 20rpx; */
 }
 
 .container-top {

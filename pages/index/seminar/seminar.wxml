@@ -10,6 +10,29 @@
 </view>
 
 <!-- 内容 -->
-<view>
-  
+<view class="seminar">
+  <view wx:for="{{seminarList}}" wx:key="index" class="seminar-item" bindtap="toSeminarDetailsPage">
+    <view class="row">
+      <view class="logoImg">
+        <image src="{{item.logoImgUrl}}"></image>
+      </view>
+      <view class="data-item">
+        <view class="row spaceBetween">
+          <view class="companyName">{{item.companyName}}</view>
+          <view class="date">{{item.date}}</view>
+        </view>
+        <view class="row spaceBetween">
+          <view class="row school">
+            <image src="/images/index/seminarSchool.png"></image>
+            <view>{{item.school}}</view>
+          </view>
+          <view class="time">{{item.time}}</view>
+        </view>
+        <view class="row school">
+          <image src="/images/index/seminarPosition.png"></image>
+          <view>{{item.position}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

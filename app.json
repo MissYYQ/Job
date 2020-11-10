@@ -4,6 +4,7 @@
     "pages/index/hotCompany/hotCompany",
     "pages/index/hotJob/hotJob",
     "pages/index/seminar/seminar",
+    "pages/index/seminar/seminarDetails/seminarDetails",
     "pages/index/doubleElection/doubleElection",
     "pages/index/jobStrategy/jobStrategy",
     "pages/index/jobDetails/jobDetails",

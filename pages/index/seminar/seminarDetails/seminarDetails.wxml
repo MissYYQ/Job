@@ -1,0 +1,28 @@
+<!-- 公司 -->
+<view class="row seminar-top">
+  <image src="{{seminar.logoImgUrl}}"></image>
+  <view>
+    <view class="companyName">{{seminar.companyName}}</view>
+    <view class="industry">{{seminar.industry}}</view>
+  </view>
+</view>
+<!-- 基本信息 -->
+<view class="basic">
+  <view class="row basic-item">
+    <image src="/images/index/seminarSchool.png"></image>
+    <view>学校： {{seminar.school}}</view>
+  </view>
+  <view class="row basic-item">
+    <image src="/images/index/seminarPosition.png"></image>
+    <view>地点： {{seminar.position}}</view>
+  </view>
+  <view class="row basic-item">
+    <image src="/images/index/email.png"></image>
+    <view>投递邮箱： {{email}}</view>
+  </view>
+  <view class="row basic-item">
+    <image src="/images/index/deadline.png"></image>
+    <view class="date-time">截止时间： {{seminar.date}} {{seminar.time}}</view>
+  </view>
+</view>
+<!-- 招聘简章 -->
