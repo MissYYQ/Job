@@ -58,8 +58,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "chat",
-          "pathName": "pages/news/chat/chat",
+          "name": "seminar",
+          "pathName": "pages/index/seminar/seminar",
           "query": "",
           "scene": null
         }

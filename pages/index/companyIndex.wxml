@@ -8,32 +8,28 @@
   </view>
   <view class="top_search_btn">搜索</view>
 </view>
-  <!-- 内容 -->
+<!-- 内容 -->
 <view class="container">
-  <view class="container-content" bindtap="toJobDetailsPage" wx:for="{{jobData}}" wx:key="index" data-index="{{index}}">
+  <view class="container-content" bindtap="toPreviewResumePage" wx:for="{{studentData}}" wx:key="index" data-index="{{index}}">
     <view class="row content-top">
       <view class="row">
-        <text class="name">{{item.name}}</text>
+        <view class="name">{{item.intentionJob}}</view>
       </view>
-      <text class="salary">{{item.salary}}</text>
+      <view class="salary">{{item.expectedSalary}}</view>
     </view>
-    <view class="row content-request">
-      <view>{{item.education}}</view>
-      <view>{{item.experience}}</view>
-      <view>{{item.city}}</view>
+    <view class="row request-content">
+      <view class="content-request" wx:for="{{studentData[index].skills}}" wx:key="index">
+        <view>{{item}}</view>
+      </view>
     </view>
     <view class="row content-bottom">
       <view class="row content-ecruiter">
-        <image src="{{item.ecruiterImgUrl}}"></image>
-        <view>{{item.ecruiterName}}</view>
+        <image src="{{item.avatar}}"></image>
+        <view>{{item.name}}</view>
       </view>
-      <view class="company">{{item.companyName}} | {{item.companySize}} | {{item.financingStage}}</view>
+      <view class="company">{{item.school}} | {{item.degree}} | {{item.profession}}</view>
     </view>
     <!-- 分隔线 -->
     <view class="divider"></view>
   </view>
-</view>
-<!-- 添加招聘职位 -->
-<view class="addJobImg" bindtap="toAddJobPage">
-  <image src="/images/index/addJob.png"></image>
 </view>

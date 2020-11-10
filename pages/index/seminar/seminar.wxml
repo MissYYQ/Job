@@ -1,0 +1,15 @@
+<!-- 搜索 -->
+<view class="row top">
+  <view class="top_search">
+    <i class="weui-icon-search"></i>
+    <input type="text" focus value="{{inputVal}}" confirm-type="search" placeholder="请输入职位名称"
+      placeholder-class="placeholderClass" bindinput="inputVal" />
+    <span class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput"></span>
+  </view>
+  <view class="top_search_btn">搜索</view>
+</view>
+
+<!-- 内容 -->
+<view>
+  
+</view>

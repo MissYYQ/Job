@@ -19,9 +19,10 @@ Page({
         experience: "1-3年",
         city: "杭州",
         companyName: "云程科技",
+        industry: "计算机软件",
         companySize: "20-99人",
         financingStage: "B轮",
-        ecruiterImgUrl: "/images/tabBar/mine02.png",
+        logoImgUrl: "/images/tabBar/mine02.png",
         ecruiterName: "姜先生",
         kind: 0
       },
@@ -32,25 +33,48 @@ Page({
         experience: "经验不限",
         city: "北京",
         companyName: "蓝凌叮当云",
+        industry: "信息安全",
         companySize: "100-499人",
         financingStage: "未融资",
-        ecruiterImgUrl: "/images/tabBar/mine02.png",
-        ecruiterName: "林慧慧",
+        logoImgUrl: "/images/tabBar/mine02.png",
         kind: 1
       },
+    ],
+    studentData: [
       {
-        name: "前端开发",
-        salary: "6-10K",
-        education: "本科",
-        experience: "1-3年",
-        city: "杭州",
-        companyName: "云程科技",
-        companySize: "20-99人",
-        financingStage: "B轮",
-        ecruiterImgUrl: "/images/tabBar/mine02.png",
-        ecruiterName: "姜先生",
-        kind: 2
+        intentionJob: "前端开发",
+        expectedSalary: "6-10K",
+        school: "九江学院",
+        degree: "本科",
+        profession: "计算机科学与技术",
+        avatar: "/images/tabBar/mine02.png",
+        name: "姜先生",
+        skills: [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "微信小程序",
+          "SpringMVC",
+          "BootStrap"
+        ]
       },
+      {
+        intentionJob: "Java开发工程师",
+        expectedSalary: "8-12K",
+        school: "南昌大学",
+        degree: "本科",
+        profession: "软件工程",
+        avatar: "/images/tabBar/mine02.png",
+        name: "南笙Y",
+        skills: [
+          "Java",
+          "JavaScript",
+          "SSM",
+          "SpringMVC",
+          "BootStrap"
+        ]
+      },
+
     ],
     education: [
       "不限",
@@ -111,30 +135,43 @@ Page({
     })
   },
 
+  bindJobChange: function (e) {
+    console.log(e.detail)
+  },
+  bindcolumnChange: function (e) {
+    console.log(e.detail)
+  },
 
   //跳转至热门公司页面
-  toHotCompanyPage: function(){
+  toHotCompanyPage: function () {
     wx.navigateTo({
       url: '/pages/index/hotCompany/hotCompany',
     })
   },
 
   //跳转至热门职位页面
-  toHotJobPage: function() {
+  toHotJobPage: function () {
     wx.navigateTo({
       url: '/pages/index/hotJob/hotJob',
     })
   },
 
-  //跳转至校园招聘页面
-  toCampusRecruitingPage: function(){
+  //跳转至宣讲会页面
+  toSeminarPage: function (e) {
     wx.navigateTo({
-      url: '/pages/index/campusRecruiting/campusRecruiting',
+      url: '/pages/index/seminar/seminar',
+    })
+  },
+
+  //跳转至双选会页面
+  toDoubleElectionPage: function (e) {
+    wx.navigateTo({
+      url: '/pages/index/doubleElection/doubleElection',
     })
   },
 
   //跳转至求职攻略页面
-  toJobStrategyPage:function(){
+  toJobStrategyPage: function () {
     wx.navigateTo({
       url: '/pages/index/jobStrategy/jobStrategy',
     })
@@ -173,7 +210,7 @@ Page({
   },
 
   //跳转至求职期望页面
-  toExpectPage: function () {
+  toIntentionJobPage: function () {
     if (this.data.isWxLogin) {
       wx.navigateTo({
         url: '/pages/index/intentionJob/intentionJob',
@@ -188,34 +225,10 @@ Page({
     }
   },
 
-  //推荐、最新 类型切换
-  showKind: function () {
-    let index = this.data.showKindIndex
-    if (index === 1) {
-      index = 2
-    } else {
-      index = 1
-    }
-    this.setData({
-      showKindIndex: index
-    })
-  },
-
-  //城市切换
-  bindRegionChange: function (e) {
-    var city = e.detail.value[1] //市名
-    city = city.substring(0, city.length - 1) //去掉市
-    console.log(city)
-    this.setData({
-      city: city
-    })
-  },
-
-  // 筛选 显示/隐藏
-  filter: function () {
-    var showfilter = this.data.showfilter
-    this.setData({
-      showfilter: !showfilter
+  //跳转至预览简历页面
+  toPreviewResumePage:function(){
+    wx.navigateTo({
+      url: '/pages/mine/previewResume/previewResume',
     })
   },
 

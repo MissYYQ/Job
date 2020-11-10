@@ -17,14 +17,23 @@
     <image src="/images/index/hotJob.png"></image>
     <view>热门职位</view>
   </view>
-  <view class="plate-item" bindtap="toCampusRecruitingPage">
-    <image src="/images/index/campusRecruiting.png"></image>
-    <view>校园招聘</view>
+  <view class="plate-item" bindtap="toSeminarPage">
+    <image src="/images/index/seminar.png"></image>
+    <view>宣讲会</view>
+  </view>
+  <view class="plate-item" bindtap="toDoubleElectionPage">
+    <image src="/images/index/doubleElection.png"></image>
+    <view>双选会</view>
   </view>
   <view class="plate-item" bindtap="toJobStrategyPage">
     <image src="/images/index/jobStrategy.png"></image>
     <view>求职攻略</view>
   </view>
+</view>
+<!-- 推荐职位 -->
+<view class="row recommendJob">
+  <view>推荐职位</view>
+  <image src="/images/index/edit.png" bindtap="toIntentionJobPage"></image>
 </view>
 <!--job 内容 -->
 <view class="container">
@@ -42,10 +51,10 @@
     </view>
     <view class="row content-bottom">
       <view class="row content-ecruiter">
-        <image src="{{item.ecruiterImgUrl}}"></image>
-        <view>{{item.ecruiterName}}</view>
+        <image src="{{item.logoImgUrl}}"></image>
+        <view>{{item.companyName}}</view>
       </view>
-      <view class="company">{{item.companyName}} | {{item.companySize}} | {{item.financingStage}}</view>
+      <view class="company">{{item.industry}} | {{item.companySize}} | {{item.financingStage}}</view>
     </view>
     <!-- 分隔线 -->
     <view class="divider"></view>

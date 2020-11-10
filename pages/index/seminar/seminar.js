@@ -1,19 +1,40 @@
-// pages/index/campusRecruiting/campusRecruiting.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    item:0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var kind = options.kind;
+    this.setData({
+      item: kind
+    })
   },
+
+    //搜索内容
+    inputVal: function (e) {
+      this.setData({
+        inputVal: e.detail.value
+      });
+    },
+  
+    //清空搜索
+    clearInput: function () {
+      this.setData({
+        inputVal: null
+      });
+    },
+
+
+
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -1,2 +1,15 @@
-<!--pages/index/hotCompany/hotCompany.wxml-->
-<text>pages/index/hotCompany/hotCompany.wxml</text>
+<view wx:for="{{companyData}}" wx:key="index" data-index="{{index}}" class="data" bindtap="toCompanyPage">
+  <view class="row companyImg">
+    <image src="{{item.src}}"></image>
+    <view class="companyData">
+      <view class="name">{{item.name}}</view>
+      <view class="sizeAndFinancingStage">{{item.industry}} · {{item.size}} · {{item.financingStage}}</view>
+      <view>{{item.address}}</view>
+      <view class="row treatment">
+        <view wx:for="{{companyData[index].treatment}}" wx:key="index" class="content-request">
+          <view>{{item}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

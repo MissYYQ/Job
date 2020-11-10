@@ -1,11 +1,95 @@
-// pages/index/hotJob/hotJob.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    jobData: [{
+        name: "前端开发",
+        salary: "6-10K",
+        education: "本科",
+        experience: "1-3年",
+        companyName: "云程科技",
+        industry: "计算机软件",
+        companySize: "20-99人",
+        financingStage: "B轮",
+        logoImgUrl: "/images/tabBar/mine02.png",
+        kind: 0
+      },
+      {
+        name: "前端开发工程师",
+        salary: "5-8K",
+        education: "大专",
+        experience: "经验不限",
+        companyName: "蓝凌叮当云",
+        industry: "信息安全",
+        companySize: "100-499人",
+        financingStage: "未融资",
+        kind: 1
+      },
+      {
+        name: "前端开发工程师",
+        salary: "5-8K",
+        education: "大专",
+        experience: "经验不限",
+        companyName: "蓝凌叮当云",
+        industry: "信息安全",
+        companySize: "100-499人",
+        financingStage: "未融资",
+        kind: 1
+      },
+      {
+        name: "前端开发工程师",
+        salary: "5-8K",
+        education: "大专",
+        experience: "经验不限",
+        companyName: "蓝凌叮当云",
+        industry: "信息安全",
+        companySize: "100-499人",
+        financingStage: "未融资",
+        kind: 1
+      },
+      {
+        name: "前端开发工程师",
+        salary: "5-8K",
+        education: "大专",
+        experience: "经验不限",
+        companyName: "蓝凌叮当云",
+        industry: "信息安全",
+        companySize: "100-499人",
+        financingStage: "未融资",
+        kind: 1
+      },
+      {
+        name: "前端开发工程师",
+        salary: "5-8K",
+        education: "大专",
+        experience: "经验不限",
+        companyName: "蓝凌叮当云",
+        industry: "信息安全",
+        companySize: "100-499人",
+        financingStage: "未融资",
+        kind: 1
+      },
+      {
+        name: "前端开发工程师",
+        salary: "5-8K",
+        education: "大专",
+        experience: "经验不限",
+        companyName: "蓝凌叮当云",
+        industry: "信息安全",
+        companySize: "100-499人",
+        financingStage: "未融资",
+        kind: 1
+      },
+    ],
+  },
 
+  //跳转至职位详情页面
+  toJobDetailsPage: function(){
+    wx.navigateTo({
+      url: '/pages/index/jobDetails/jobDetails',
+    })
   },
 
   /**

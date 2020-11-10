@@ -1,11 +1,36 @@
-// pages/index/hotCompany/hotCompany.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    companyData: [{
+        name: "云程科技",
+        src: '/images/jobDetails/company.png',
+        industry: "计算机软件",
+        size: "20-99人",
+        financingStage: "B轮",
+        address: "××省××市××县（区）××",
+        treatment: [
+          "五险一金",
+          "年终奖",
+          "全勤奖",
+        ],
+      },
+      {
+        name: "云程科技",
+        src: '/images/jobDetails/company.png',
+        industry: "计算机软件",
+        size: "20-99人",
+        financingStage: "B轮",
+        address: "××省××市××县（区）××",
+        treatment: [
+          "五险一金",
+          "年终奖",
+          "全勤奖",
+        ],
+      },
+    ]
   },
 
   /**
@@ -13,6 +38,13 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+
+  //跳转至公司详情页面
+  toCompanyPage:function(){
+    wx.navigateTo({
+      url: '/pages/index/companyDetails/companyDetails',
+    })
   },
 
   /**

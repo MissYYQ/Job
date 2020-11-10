@@ -1,19 +1,22 @@
 <!-- 编辑求职意向 -->
 <view class="intentionJob">
   <view class="row msg-item">
-    <view class="item-name">期望职业</view>
-    <input class="data" type="text" value="{{intentionJob.job}}" data-key="job" bindinput="editIJ" placeholder="请输入..."
-      placeholder-class="placeholderStyle"></input>
+    <view class="item-name">期望岗位</view>
+    <picker class="data" mode="multiSelector" bindchange="bindJobChange" bindcolumnchange="bindcolumnchange"
+      value="{{industryIndex}}" range="{{jobIndustry}}">
+      <input type="text" value=" " data-key="job" bindinput="editIJ" placeholder="请选择..."
+        placeholder-class="placeholderStyle"></input>
+    </picker>
   </view>
   <view class="row msg-item">
     <view class="item-name">期望薪资</view>
-    <input class="data" type="number" data-key="salary" bindinput="editIJ" placeholder="薪资/月..." placeholder-class="placeholderStyle"
-      value="{{intentionJob.salary}}"></input>
+    <input class="data" type="number" data-key="salary" bindinput="editIJ" placeholder="薪资/月..."
+      placeholder-class="placeholderStyle" value="{{intentionJob.salary}}"></input>
   </view>
   <view class="row msg-item">
     <view class="item-name">期望城市</view>
-    <input class="data" type="text" value="{{intentionJob.city}}" data-key="city" bindinput="editIJ"
-      placeholder="请输入" placeholder-class="placeholderStyle"></input>
+    <input class="data" type="text" value="{{intentionJob.city}}" data-key="city" bindinput="editIJ" placeholder="请输入"
+      placeholder-class="placeholderStyle"></input>
   </view>
   <!-- 按钮 -->
   <view class="row button">
