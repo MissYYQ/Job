@@ -1,4 +1,3 @@
-// pages/index/doubleElection/doubleElection.js
 Page({
 
   /**

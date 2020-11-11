@@ -1,0 +1,8 @@
+<view class="strategy">
+  <view wx:for="{{resumeGuide}}" wx:key="index" data-index="{{index}}" class="strategy-item">
+    <view class="title">{{item.title}}</view>
+    <view wx:for="{{resumeGuide[index].content}}" wx:key="index">
+      <view class="content-item">{{item}}</view>
+    </view>
+  </view>
+</view>

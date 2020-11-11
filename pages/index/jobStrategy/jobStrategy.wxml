@@ -6,7 +6,7 @@
 </view>
 
 <!-- 求职入门 -->
-<view wx:if="{{item == 0}}" >
+<view wx:if="{{item == 0}}">
   <include src="gettingStarted.wxml"></include>
 </view>
 <!-- 简历指南 -->

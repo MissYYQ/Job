@@ -1,20 +1,53 @@
+page{
+  background-color: #F5F5F6;
+}
+
+/* 顶部tab */
 .tab{
+  position: fixed;
+  top: 0;
+  width: 100%;
   justify-content: center;
+  background-color: white;
 }
 
 .tab-item{
-  width: 22%;
+  flex: 1;
   font-size: 10pt;
   text-align: center;
   line-height: 80rpx;
   border-bottom: 6rpx solid #f3f3f3;
-  letter-spacing: 2rpx;
-  margin-left: 35rpx;
-  margin-right: 35rpx;
+  letter-spacing: 3rpx;
 }
 
 .tab-item.active{
   color: #f6b501;
-  border-bottom-color: #f6b501;
+  border-bottom: #f6b501 6rpx solid;
   font-weight: 600;
+}
+
+/* 内容 */
+.strategy{
+  margin-top: 100rpx;
+}
+
+.strategy-item{
+  background-color: white;
+  margin: 15rpx;
+  border-radius: 15rpx;
+}
+
+.title{
+  font-size: 10pt;
+  font-weight: 600;
+  line-height: 3.8em;
+  margin-left: 35rpx;
+}
+
+.content-item{
+  font-size: 9pt;
+  color: #333;
+  padding-bottom: 30rpx;
+  margin-left: 35rpx;
+  margin-right: 35rpx;
 }

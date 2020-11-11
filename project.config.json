@@ -56,14 +56,7 @@
       "list": []
     },
     "miniprogram": {
-      "list": [
-        {
-          "name": "求职攻略",
-          "pathName": "pages/index/jobStrategy/jobStrategy",
-          "query": "",
-          "scene": null
-        }
-      ]
+      "list": []
     }
   }
 }
