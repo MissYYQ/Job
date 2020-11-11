@@ -1,1 +1,20 @@
-/* pages/index/jobStrategy/jobStrategy.wxss */
+.tab{
+  justify-content: center;
+}
+
+.tab-item{
+  width: 22%;
+  font-size: 10pt;
+  text-align: center;
+  line-height: 80rpx;
+  border-bottom: 6rpx solid #f3f3f3;
+  letter-spacing: 2rpx;
+  margin-left: 35rpx;
+  margin-right: 35rpx;
+}
+
+.tab-item.active{
+  color: #f6b501;
+  border-bottom-color: #f6b501;
+  font-weight: 600;
+}

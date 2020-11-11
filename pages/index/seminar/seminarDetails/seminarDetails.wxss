@@ -1,51 +1,123 @@
-page{
+page {
   letter-spacing: 2rpx;
   font-size: 10pt;
-  color: #888;
+  color: #333;
   margin-left: 5%;
   width: 90%;
 }
 
 /* 公司 */
-.seminar-top{
+.seminar-top {
   margin-top: 15rpx;
   padding-bottom: 30rpx;
   border-bottom: solid 3rpx #ebebec;
 }
 
-.seminar-top image{
+.seminar-top image {
   width: 80rpx;
   height: 80rpx;
   margin-left: 10rpx;
   margin-right: 50rpx;
 }
 
-.companyName{
+.companyName {
   font-size: 12pt;
   color: black;
   text-shadow: #ebebec 1rpx 1rpx;
 }
 
-.industry{
+.industry {
   font-size: 9pt;
 }
 
 /* 基本信息 */
-.basic{
+.basic {
   margin-top: 25rpx;
   padding-bottom: 25rpx;
   border-bottom: solid 3rpx #ebebec;
 }
-.basic-item image{
+
+.basic-item image {
   width: 35rpx;
   height: 35rpx;
   margin-right: 12rpx;
 }
 
-.basic-item view{
+.basic-item view {
   font-size: 9pt;
 }
 
-.date-time{
+.date-time {
   color: #F6B501;
+}
+
+/* 招聘简章 */
+
+.title {
+  color: #333;
+  font-size: 16pt;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.hiring-item {
+  padding-bottom: 10rpx;
+}
+
+.hiring-title {
+  font-size: 12pt;
+  font-weight: 600;
+  line-height: 2.8em;
+  margin-top: 10rpx;
+}
+
+.introduction {
+  text-indent: 2em;
+  font-size: 9pt;
+}
+
+.welfare {
+  text-indent: 2em;
+  flex-wrap: wrap;
+  font-size: 9pt;
+}
+
+.job{
+  margin-left: 5%;
+  width: 90%;
+  padding-bottom: 50rpx;
+}
+
+.job-item{
+  padding-bottom: 20rpx;
+  border-bottom: solid 3rpx #ebebec;
+}
+
+.job-top{
+  justify-content: space-between;
+}
+
+.name{
+  font-size: 11pt;
+  font-weight: 600;
+  line-height: 2.2em;
+}
+
+.salary{
+  font-size: 10pt;
+  color: #F6B501;
+}
+
+.content-request{
+  flex-wrap: wrap;
+}
+
+.content-request view{
+  font-size: 8pt;
+  background-color: #ebebec;
+  color: #333;
+  padding: 0 12rpx;
+  border-radius: 8rpx;
+  margin-right: 15rpx;
 }

@@ -58,14 +58,9 @@
     "miniprogram": {
       "list": [
         {
-          "name": "seminar",
-          "pathName": "pages/index/seminar/seminar",
+          "name": "求职攻略",
+          "pathName": "pages/index/jobStrategy/jobStrategy",
           "query": "",
-          "scene": null
-        },
-        {
-          "name": "seminarDetails",
-          "pathName": "pages/index/seminar/seminarDetails/seminarDetails",
           "scene": null
         }
       ]

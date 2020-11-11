@@ -21,6 +21,8 @@
     "pages/mine/previewResume/previewResume",
     "pages/mine/companyData/companyData",
     "pages/mine/userKind/userKind",
+    "pages/mine/studentCollect/studentCollect",
+    "pages/mine/companyCollect/companyCollect",
     
     "pages/logs/logs"
   ],

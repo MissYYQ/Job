@@ -18,15 +18,8 @@ Page({
 
   // 跳转到首页
   toIndexPage: function (e) {
-    console.log(e);
-    var userKind = e.currentTarget.dataset.user;
-    if (userKind == "student") {
-      wx.setStorageSync('userKind', "学生");
-      app.globalData.userKind = "学生";
-    } else {
-      wx.setStorageSync('userKind', "企业");
-      app.globalData.userKind = "企业";
-    }
+    wx.setStorageSync('userKind', "学生");
+    app.globalData.userKind = "学生";
     wx.switchTab({
       url: '/pages/index/index',
       success: function (e) {
@@ -34,6 +27,15 @@ Page({
         if (page == undefined || page == null) return;
         page.onLoad();
       }
+    })
+  },
+
+  //跳转到公司数据页面
+  toCompanyDataPage: function () {
+    wx.setStorageSync('userKind', "企业");
+    app.globalData.userKind = "企业";
+    wx.navigateTo({
+      url: '/pages/mine/companyData/companyData',
     })
   },
 

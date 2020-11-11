@@ -14,20 +14,20 @@ Page({
     expect: null,
     myMsg: [{
         imgUrl: '/images/mine/jianli.png',
-        name: '简历'
+        name: '我的简历'
       },
       {
         imgUrl: '/images/mine/shoucang.png',
-        name: '收藏'
+        name: '我的收藏'
       },
       {
         imgUrl: '/images/mine/bishi.png',
-        name: '已投'
+        name: '已投岗位'
       },
-      {
-        imgUrl: '/images/mine/mianshi.png',
-        name: '面试'
-      },
+      // {
+      //   imgUrl: '/images/mine/mianshi.png',
+      //   name: '面试'
+      // },
       {
         imgUrl: '/images/mine/shezhi.png',
         name: '设置'
@@ -173,6 +173,16 @@ Page({
       if (index === 0) {
         wx.navigateTo({
           url: '/pages/mine/resume/resume',
+        })
+      }
+      if (index === 1) {
+        wx.navigateTo({
+          url: '/pages/mine/studentCollect/studentCollect',
+        })
+      }
+      if (index === 2) {
+        wx.navigateTo({
+          url: '/pages/mine/studentCollect/studentCollect',
         })
       }
     }

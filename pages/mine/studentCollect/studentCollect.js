@@ -4,8 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    jobData: [
-      {
+    jobData: [{
         name: "前端开发",
         salary: "6-10K",
         degree: "本科",
@@ -32,18 +31,11 @@ Page({
     ],
   },
 
-  //搜索内容
-  inputVal: function (e) {
-    this.setData({
-      inputVal: e.detail.value
-    });
-  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
 
-  //清空搜索
-  clearInput: function () {
-    this.setData({
-      inputVal: null
-    });
   },
 
   //跳转至职位详情页面
@@ -53,12 +45,7 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
 
-  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

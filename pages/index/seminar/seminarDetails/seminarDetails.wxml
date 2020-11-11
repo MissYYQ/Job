@@ -26,3 +26,30 @@
   </view>
 </view>
 <!-- 招聘简章 -->
+<view class="title">{{seminar.companyName}}招聘简章</view>
+<view class="hiring-item">
+  <view class="hiring-title">公司简介</view>
+  <view class="introduction">{{introduction}}</view>
+</view>
+<view class="hiring-item">
+  <view class="hiring-title">福利待遇</view>
+  <view class="row welfare">
+    <view wx:for="{{welfare}}" wx:key="index">{{item}}</view>
+  </view>
+</view>
+<view class="hiring-item">
+  <view class="hiring-title">招聘岗位</view>
+  <view class="job">
+    <view wx:for="{{jobData}}" wx:key="index" data-index="{{index}}" bindtap="toJobDetailsPage" class="job-item">
+      <view class="row job-top">
+        <view class="name">{{item.name}}</view>
+        <view class="salary">{{item.salary}}</view>
+      </view>
+      <view class="row content-request">
+        <view>{{item.degree}}</view>
+        <view>{{item.experience}}</view>
+        <view>{{item.city}}</view>
+      </view>
+    </view>
+  </view>
+</view>

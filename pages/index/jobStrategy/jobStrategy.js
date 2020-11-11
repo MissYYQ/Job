@@ -1,11 +1,10 @@
-// pages/index/jobStrategy/jobStrategy.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    item: 0,
   },
 
   /**
@@ -14,6 +13,23 @@ Page({
   onLoad: function (options) {
 
   },
+
+
+  //标签栏点击切换页面时的监听函数
+  changeItem: function (e) {
+    this.setData({
+      item: e.currentTarget.dataset.item
+    })
+  },
+
+
+
+
+
+
+
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

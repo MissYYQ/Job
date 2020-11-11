@@ -1,2 +1,19 @@
-<!--pages/index/jobStrategy/jobStrategy.wxml-->
-<text>pages/index/jobStrategy/jobStrategy.wxml</text>
+<!-- 标签页标题 -->
+<view class="row tab">
+  <view class="tab-item {{item==0?'active':''}}" bindtap="changeItem" data-item="0">求职入门</view>
+  <view class="tab-item {{item==1?'active':''}}" bindtap="changeItem" data-item="1">简历指南</view>
+  <view class="tab-item {{item==2?'active':''}}" bindtap="changeItem" data-item="2">面试指南</view>
+</view>
+
+<!-- 求职入门 -->
+<view wx:if="{{item == 0}}" >
+  <include src="gettingStarted.wxml"></include>
+</view>
+<!-- 简历指南 -->
+<view wx:if="{{item == 1}}">
+  <include src="resumeGuide.wxml"></include>
+</view>
+<!-- 面试指南 -->
+<view wx:if="{{item == 2}}">
+  <include src="interviewGuide.wxml"></include>
+</view>

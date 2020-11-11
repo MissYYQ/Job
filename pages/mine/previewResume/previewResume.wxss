@@ -1,1 +1,1 @@
-/* pages/mine/previewResume/previewResume.wxss */
+@import "/pages/mine/resume/resume.wxss";

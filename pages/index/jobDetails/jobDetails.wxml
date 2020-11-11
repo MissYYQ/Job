@@ -34,33 +34,33 @@
 
 <!-- 底部内容 -->
 <view class="bottom-job">
-<!-- 公司待遇 -->
-<view class="skill">公司待遇</view>
-<view class="skills row">
-	<view class="skill-item" wx:for="{{pay}}" wx:key="index" data-index="{{index}}">{{item}}</view>
-</view>
-<!-- 技能标签 -->
-<view class="skill">技能标签</view>
-<view class="skills row">
-	<view class="skill-item" wx:for="{{skill}}" wx:key="index" data-index="{{index}}">{{item}}</view>
-</view>
-<!-- 岗位要求 -->
-<view class="skill">岗位要求</view>
-<view class="skills row">
-	<view class="require-item" wx:for="{{require}}" wx:key="index" data-index="{{index}}">{{index+1}}、{{item}}</view>
-</view>
-<!-- 岗位职责 -->
-<view class="skill">岗位职责</view>
-<view class="skills row">
-	<view class="require-item" wx:for="{{duty}}" wx:key="index" data-index="{{index}}">{{index+1}}、{{item}}</view>
-</view>
-<!-- 底部功能按钮 -->
-<view class="null"></view>
-<view class="bottom">
-	<view class="row">
-		<image wx:if="{{favorites}}" src="/images/jobDetails/favorites-fill.png" bindtap="favorites"></image>
-		<image wx:else src="/images/jobDetails/favorites.png" bindtap="favorites"></image>
-		<view class="btn" bindtap="toCommunicationPage">立即沟通</view>
+	<!-- 公司待遇 -->
+	<view class="skill">公司待遇</view>
+	<view class="skills row">
+		<view class="skill-item" wx:for="{{pay}}" wx:key="index" data-index="{{index}}">{{item}}</view>
 	</view>
-</view>
+	<!-- 技能标签 -->
+	<view class="skill">技能标签</view>
+	<view class="skills row">
+		<view class="skill-item" wx:for="{{skill}}" wx:key="index" data-index="{{index}}">{{item}}</view>
+	</view>
+	<!-- 岗位要求 -->
+	<view class="skill">岗位要求</view>
+	<view class="skills row">
+		<view class="require-item" wx:for="{{require}}" wx:key="index" data-index="{{index}}">{{index+1}}、{{item}}</view>
+	</view>
+	<!-- 岗位职责 -->
+	<view class="skill">岗位职责</view>
+	<view class="skills row">
+		<view class="require-item" wx:for="{{duty}}" wx:key="index" data-index="{{index}}">{{index+1}}、{{item}}</view>
+	</view>
+	<!-- 底部功能按钮 -->
+	<view class="null"></view>
+	<view class="bottom">
+		<view class="row">
+			<image wx:if="{{favorites}}" src="/images/jobDetails/favorites-fill.png" bindtap="favorites"></image>
+			<image wx:else src="/images/jobDetails/favorites.png" bindtap="favorites"></image>
+			<view class="btn" bindtap="toChatPage">立即沟通</view>
+		</view>
+	</view>
 </view>

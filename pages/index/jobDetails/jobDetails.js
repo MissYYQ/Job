@@ -61,9 +61,9 @@ Page({
   },
 
   //跳转至聊天页面
-  toCommunicationPage: function () {
+  toChatPage: function () {
     wx.navigateTo({
-      url: '/pages/news/communication/communication',
+      url: '/pages/news/chat/chat',
     })
   },
 

@@ -1,2 +1,144 @@
-<!--pages/mine/previewResume/previewResume.wxml-->
-<text>pages/mine/previewResume/previewResume.wxml</text>
+<!-- 基本信息 -->
+<view wx:if="{{resume}}" class="item">
+	<!-- 项名 -->
+	<view class="row" >
+		<view class="title">基本信息</view>
+	</view>
+	<!-- 基本信息显示 -->
+		<view class="row">
+			<!-- 左边 -->
+			<view class="top-left">
+				<view wx:if="{{resume.birthday}}" class="row">
+					<view class="item-name">生日</view>
+					<view class="data">{{resume.birthday}}</view>
+				</view>
+				<view wx:if="{{resume.hometown}}" class="row">
+					<view class="item-name">籍贯</view>
+					<view class="data">{{resume.hometown}}</view>
+				</view>
+				<view wx:if="{{resume.political}}" class="row">
+					<view class="item-name">政治面貌</view>
+					<view class="data">{{resume.political}}</view>
+				</view>
+				<view wx:if="{{resume.phone}}" class="row">
+					<view class="item-name">电话</view>
+					<view class="data">{{resume.phone}}</view>
+				</view>
+				<view wx:if="{{resume.mailbox}}" class="row">
+					<view class="item-name">邮箱</view>
+					<view class="data">{{resume.mailbox}}</view>
+				</view>
+			</view>
+			<!-- 右边 -->
+			<view class="top-right">
+				<view>
+					<image wx:if="{{resume.avatar}}" src="{{resume.avatar}}" class="avatar"></image>
+				</view>
+				<view>
+					<view wx:if="{{resume.name}}" class="name">{{resume.name}}</view>
+				</view>
+			</view>
+		</view>
+</view>
+
+
+<!-- 求职意向 -->
+<view class="item" wx:if="{{intentionJob}}" >
+	<!-- 项名 -->
+	<view class="row">
+		<view class="title">求职意向</view>
+	</view>
+	<!-- 求职意向信息显示 -->
+		<view wx:if="{{intentionJob.job}}" class="row">
+			<view class="item-name">期望职业</view>
+			<view class="data">{{intentionJob.job}}</view>
+		</view>
+		<view wx:if="{{intentionJob.salary}}" class="row">
+			<view class="item-name">期望薪资</view>
+			<view class="data">{{intentionJob.salary}}</view>
+		</view>
+		<view wx:if="{{intentionJob.city}}" class="row">
+			<view class="item-name">期望城市</view>
+			<view class="data">{{intentionJob.city}}</view>
+	</view>
+</view>
+
+
+<!-- 教育背景 -->
+<view class="item" wx:if="{{educationBackground}}">
+	<!-- 项名 -->
+	<view class="row">
+		<view class="title">教育背景</view>
+	</view>
+	<!-- 教育背景信息显示 -->
+		<view class="row  eB">
+			<view wx:if="{{educationBackground.school}}">{{educationBackground.school}}</view>
+			<view wx:if="{{educationBackground.profession}}">{{educationBackground.profession}}</view>
+			<view wx:if="{{educationBackground.degree}}">{{educationBackground.degree}}</view>
+		</view>
+</view>
+
+
+<!-- 职业技能 -->
+<view class="item" wx:if="{{professionalSkills}}">
+	<!-- 项名 -->
+	<view class="row">
+		<view class="title">职业技能</view>
+	</view>
+	<!-- 职业技能信息显示 -->
+		<view>
+			<view wx:for="{{professionalSkills}}" wx:key="index" data-index="{{index}}" class="row">
+				<view class="eB skill">
+					<view>{{item}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+
+<!-- 工作/项目经历 -->
+<view class="item" wx:if="{{experience}}">
+	<!-- 项名 -->
+	<view class="row">
+		<view class="title">工作/项目经历</view>
+	</view>
+	<!-- 经历信息显示 -->
+		<view wx:for="{{experience}}" wx:key="index" data-index="{{index}}" class="experienceItem eItem">
+			<view wx:if="{{item.startTime && item.endTime}}">{{item.startTime}} 至 {{item.endTime}}</view>
+			<view class="row experienceTime">
+				<view class="experienceName">{{item.name}}</view>
+				<view>{{item.position}}</view>
+			</view>
+			<view wx:if="{{item.description}}" class="experienceDescription">{{item.description}}</view>
+		</view>
+	</view>
+
+
+<!-- 荣誉证书 -->
+<view class="item" wx:if="{{honor}}">
+	<!-- 项名 -->
+	<view class="row">
+		<view class="title">荣誉证书</view>
+	</view>
+	<!-- 荣誉信息显示 -->
+		<view>
+			<view wx:for="{{honor}}" wx:key="index" data-index="{{index}}" class="row">
+				<view class="eB skill">
+					<view>{{item}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+
+<!-- 简历附件 -->
+<view class="item" wx:if="{{resumeFile}}">
+	<!-- 项名 -->
+	<view class="row">
+		<view class="title">简历附件</view>
+	</view>
+	<!-- 简历附件名显示 -->
+	<view>
+		<view class="resumeFile" bindtap="openResumeFile">{{resumeFile.name}}</view>
+	</view>
+</view>
