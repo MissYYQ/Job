@@ -135,13 +135,6 @@ Page({
     })
   },
 
-  bindJobChange: function (e) {
-    console.log(e.detail)
-  },
-  bindcolumnChange: function (e) {
-    console.log(e.detail)
-  },
-
   //跳转至热门公司页面
   toHotCompanyPage: function () {
     wx.navigateTo({
@@ -160,13 +153,6 @@ Page({
   toSeminarPage: function (e) {
     wx.navigateTo({
       url: '/pages/index/seminar/seminar',
-    })
-  },
-
-  //跳转至双选会页面
-  toDoubleElectionPage: function (e) {
-    wx.navigateTo({
-      url: '/pages/index/doubleElection/doubleElection',
     })
   },
 

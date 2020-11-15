@@ -1,26 +1,10 @@
-<!-- 未登录 -->
-<view wx:if="{{!isWxLogin}}">
-  <include src="/pages/news/login.wxml"></include>
+<!-- 学生 -->
+<view wx:if="{{userKindTag == 1}}">
+  <include src="/pages/news/studentChat.wxml"></include>
 </view>
 
-<!-- 已登录 -->
-<view wx:else>
-	<!-- 没消息 -->
-	<view wx:if="{{!news}}" class="noNews">
-		<image src="/images/news/noNews.png"></image>
-		<view>还没有消息呢，去浏览打个招呼吧</view>
-	</view>
-	<!-- 有消息 -->
-	<view wx:else>
-		<view wx:for="{{news}}" wx:key="index" data-index="{{index}}" bindtap="toChatPage">
-			<view class="row">
-				<image src="{{item.src}}"></image>
-				<view>
-					<view class="personName">{{item.personName}}</view>
-					<view class="lastMsg">{{item.lastMsg}}</view>
-				</view>
-				<view class="lastChatTime">{{item.lastChatTime}}</view>
-			</view>
-		</view>
-	</view>
+<!-- 企业 -->
+<view wx:if="{{userKindTag == 2}}">
+	<include src="/pages/news/companyChat.wxml"></include>
 </view>
+

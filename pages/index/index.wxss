@@ -4,166 +4,44 @@ page {
   width: 100%;
 }
 
-.row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
+/* ===== companyIndex================ */
 
-.container {
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
-}
-
-.container-top {
-  position: fixed;
-  height: 100rpx;
-  top: 0;
-  justify-content: space-between;
-  box-sizing: border-box;
-  border-bottom: #f3f3f3 solid 1rpx;
-  font-size: 10pt;
-  color: #888;
-  background-color: white;
-  z-index: 10;
-}
-
-.top-left {
-  margin-left: 20rpx;
-}
-
-.showKindActive {
-  color: #F6B501;
-  font-weight: 600;
-}
-
-.top-left text {
-  margin-right: 60rpx;
-}
-
-.mid-item {
-  justify-content: space-between;
-}
-
-.mid-item image {
-  width: 50rpx;
-  height: 50rpx;
-  margin-top: 15rpx;
-  margin-left: -9rpx;
-}
-
-.mid-item {
-  padding-right: 35rpx;
-}
-
-.chooseActive {
-  color: #f6b501;
-  font-weight: 600;
-}
-
-.top-right {
-  position: relative;
-  right: 20rpx;
-}
-
-.top-right image {
-  width: 55rpx;
-  height: 55rpx;
-}
-
-.top-right image:first-child {
-  padding-right: 15rpx;
-  border-right: #F6B501 solid 3rpx;
-}
-
-.top-right image:last-child {
+/* 顶部搜索 */
+.top {
   margin-left: 15rpx;
+  width: 90%;
 }
 
-/* 筛选 */
-.filter {
-  width: 95%;
-  font-size: 9pt;
-  z-index: 1;
-  background-color: #fffefe;
-  color: black;
-  margin-top: 120rpx;
-  letter-spacing: 2rpx;
+input {
+  width: 460rpx;
+  margin-left: 10rpx;
 }
 
-.filterItem {
-  margin: 0 20rpx;
-  margin-top: 30rpx;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.top_search {
+  width: 560rpx;
 }
 
-.filterName {
-  font-size: 11pt;
-  font-weight: 600;
-  width: 100%;
-  line-height: 60rpx;
+.top_search_btn {
+  color: #888;
+  margin-right: 10rpx;
 }
 
-.itemOptions {
-  background-color: #f3f3f3;
-  padding: 15rpx 30rpx;
-  border-radius: 10rpx;
-  margin-top: 22rpx;
-  width: 150rpx;
-  line-height: 50rpx;
-  text-align: center;
-}
-
-.filter_button {
-  height: 150rpx;
-  background-color: white;
-  z-index: 2;
-  border-top: #f3f3f3 solid 1rpx;
-  text-align: center;
-  justify-content: space-between;
-  font-size: 10pt;
-  margin-top: 60rpx;
-  line-height: 60rpx;
-}
-
-.choose {
-  color: white;
-  background-color: #F6B501;
-  font-weight: 600;
-}
-
-.button_reset {
-  background-color: #f3f3f3;
-  padding: 20rpx 50rpx;
-  border-radius: 10rpx;
-  width: 120rpx;
-  margin-left: 20rpx;
-}
-
-.button_determine {
-  background-color: #F6B501;
-  color: white;
-  padding: 20rpx 50rpx;
-  border-radius: 10rpx;
-  width: 330rpx;
-  margin-right: 20rpx;
+.placeholderClass{
+  text-align: left;
+  margin-left: 5rpx;
 }
 
 /* 内容 */
-scroll-view {
-  margin-top: 100rpx;
-}
-
-.container-content {
-  width: 95%;
-  margin: 0 20rpx;
+.content {
+  width: 90%;
+  margin: 0 15rpx;
   font-size: 9pt;
   color: #888;
   margin-top: 20rpx;
   letter-spacing: 2rpx;
   line-height: 70rpx;
+  padding-bottom: 30rpx;
+  border-bottom: rgba(246, 181, 1, 0.15) solid 3rpx;
 }
 
 .content-top {
@@ -172,34 +50,16 @@ scroll-view {
   padding-bottom: 10rpx;
 }
 
-.content-top .name {
+.name {
   font-size: 12pt;
   color: black;
   font-weight: 600;
 }
 
 
-.school {
-  font-size: 8pt;
-  padding: 0 13rpx;
-  border-radius: 20rpx;
-  margin-left: 13rpx;
-  color: white;
-  line-height: 1.7em;
-}
-
-.school-recruitment {
-  background-color: #A5D5C9;
-}
-
-.practice {
-  background-color: #99C85C;
-}
-
-.content-top .salary {
+.salary {
   font-size: 12pt;
   color: #F6B501;
-  margin-right: 40rpx;
   letter-spacing: 10rpx;
 }
 
@@ -233,38 +93,12 @@ scroll-view {
   padding-right: 15rpx;
 }
 
-.content-bottom .company {
-  margin-right: 40rpx;
+.company {
   color: #888;
 }
 
-.divider {
-  width: 94%;
-  background-color: rgba(246, 181, 1, 0.15);
-  height: 4rpx;
-  margin-top: 35rpx;
-  border-radius: 20rpx;
-}
 
-.top {
-  margin-left: 15rpx;
-  width: 85%;
-}
-
-input {
-  width: 440rpx;
-}
-
-.top_search {
-  width: 520rpx;
-}
-
-.top_search_btn {
-  color: #888;
-  margin-right: 10rpx;
-}
-
-
+/* ========================== */
 /* studentIndex */
 .studentIndex-search {
   background-color: #F6B501;
@@ -310,7 +144,7 @@ input {
   font-size: 8pt;
   color: #888;
   margin-top: 10rpx;
-  padding: 15rpx 28rpx;
+  padding: 15rpx 45rpx;
 }
 
 .plate-item image {

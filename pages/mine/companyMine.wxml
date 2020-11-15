@@ -2,7 +2,7 @@
 <view class="top">
 	<view class="top-back"></view>
 	<view class="top-front">
-		<view class="top-front-user row">
+		<view class="row">
 			<view class="userInfo">
 				<image src="{{company.src}}"></image>
 				<view class="userKind" bindtap="toUserKindPage">{{userKind}}</view>
@@ -55,7 +55,7 @@
 	</view>
 	<!-- 公司福利 -->
 	<view class="skill">公司福利</view>
-	<view class="skills row">
+	<view class="row skills">
 		<view class="skill-item" wx:for="{{company.treatment}}" wx:key="index" data-index="{{index}}">{{item}}</view>
 	</view>
 	<!-- 公司地址 -->
@@ -71,7 +71,7 @@
 	<!-- 在招职位 -->
 	<view class="skill">在招职位</view>
 	<view class="skills">
-		<view class="container-content" bindtap="toJobDetailsPage" wx:for="{{jobData}}" wx:key="index" data-index="{{index}}">
+		<view class="content" bindtap="toJobDetailsPage" wx:for="{{jobData}}" wx:key="index" data-index="{{index}}">
 			<view class="row content-top">
 				<view class="row">
 					<text class="name">{{item.name}}</text>

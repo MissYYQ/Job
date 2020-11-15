@@ -1,0 +1,27 @@
+<!-- 未登录 -->
+<view wx:if="{{!isWxLogin}}">
+  <include src="/pages/news/login.wxml"></include>
+</view>
+
+<!-- 已登录 -->
+<view wx:else>
+  <!-- 没消息 -->
+  <view wx:if="{{!sNews}}" class="noNews">
+    <image src="/images/news/noNews.png"></image>
+    <view>没有消息</view>
+  </view>
+  <!-- 有消息 -->
+  <view wx:else>
+    <view wx:for="{{sNews}}" wx:key="index" data-index="{{index}}" bindtap="toChatPage" class="news-item">
+      <view class="row ">
+        <image src="{{item.src}}"></image>
+        <view class="center-content">
+          <view class="name">{{item.companyName}}</view>
+          <view class="otherInfo">{{item.industry}} · {{item.intentionJob}}</view>
+          <view class="lastMsg">{{item.lastMsg}}</view>
+        </view>
+        <view class="lastChatTime">{{item.lastChatTime}}</view>
+      </view>
+    </view>
+  </view>
+</view>

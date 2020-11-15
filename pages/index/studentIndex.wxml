@@ -21,10 +21,6 @@
     <image src="/images/index/seminar.png"></image>
     <view>宣讲会</view>
   </view>
-  <view class="plate-item" bindtap="toDoubleElectionPage">
-    <image src="/images/index/doubleElection.png"></image>
-    <view>双选会</view>
-  </view>
   <view class="plate-item" bindtap="toJobStrategyPage">
     <image src="/images/index/jobStrategy.png"></image>
     <view>求职攻略</view>

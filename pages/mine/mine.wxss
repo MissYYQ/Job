@@ -1,4 +1,4 @@
-.row{
+.row {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -6,18 +6,18 @@
   box-sizing: border-box;
 }
 
-.top{
+.top {
   width: 100%;
 }
 
-.top-back{
+.top-back {
   width: 120%;
   padding: 10%;
   margin-left: -20%;
   margin-top: -6%;
   height: 120rpx;
   border-radius: 50%;
-  background: linear-gradient(rgba(246, 181, 1),rgba(246, 181, 1,0.5));
+  background: linear-gradient(rgba(246, 181, 1), rgba(246, 181, 1, 0.5));
   box-shadow: rgba(246, 181, 1, 0.3) 0rpx 10rpx 15rpx 2rpx;
   overflow: hidden;
   z-index: -1;
@@ -25,7 +25,7 @@
   top: 0;
 }
 
-.top-front{
+.top-front {
   width: 80%;
   margin: 5%;
   padding: 5%;
@@ -39,18 +39,18 @@
   margin-top: 0;
 }
 
-.userInfo{
+.userInfo {
   text-align: center;
 }
 
-.userInfo image{
+.userInfo image {
   width: 166rpx;
   height: 166rpx;
   border-radius: 50%;
   position: relative;
 }
 
-.userKind{
+.userKind {
   width: 82rpx;
   font-size: 8pt;
   position: relative;
@@ -61,12 +61,12 @@
   border-radius: 30rpx;
 }
 
-.userInfo-right{
+.userInfo-right {
   position: absolute;
   left: 235rpx;
 }
 
-.nickName{
+.nickName {
   color: black;
   font-weight: 600;
   letter-spacing: 2rpx;
@@ -74,56 +74,57 @@
   line-height: 2em;
 }
 
-.expect{
-  color: #999;
-  font-size: 10pt;
-  line-height: 2em;
-}
-
-.top-front-data{
+.top-front-data {
   margin-top: 40rpx;
 }
 
-.data-item{
+.data-item {
   text-align: center;
 }
 
-.data-num{
+.data-num {
   color: black;
   font-size: 12pt;
   font-weight: 550;
 }
 
-.data-name{
+.data-name {
   color: #999;
   font-size: 9pt;
 }
 
-/* 底部 */
-.bottom{
+/* =======studentMine.wxml========= */
+.expect {
+  color: #999;
+  font-size: 10pt;
+  line-height: 2em;
+}
+
+.bottom {
   margin-left: 7%;
   width: 85%;
   margin-top: 180rpx;
 }
 
-.bottom-item{
+.bottom-item {
   line-height: 2.8em;
   border-bottom: rgba(246, 181, 1, 0.2) solid 1rpx;
 }
-.mineItem image{
+
+.mineItem image {
   width: 50rpx;
   height: 50rpx;
   border-radius: 50%;
 }
 
-.mineItem view{
+.mineItem view {
   font-size: 10pt;
   color: black;
   margin-left: 35rpx;
   letter-spacing: 4rpx;
 }
 
-/* 公司 */
+/* ===========companyMine.wxml======= */
 
 .companyExpect {
   color: black;
@@ -137,15 +138,9 @@
 }
 
 /* 底部 */
-
 .companyMsg {
   margin-top: 190rpx;
   font-size: 10pt;
-}
-
-.skill {
-  font-size: 11pt;
-  margin-top: 10rpx;
 }
 
 .img image {
@@ -158,14 +153,12 @@
   padding-right: 22rpx;
 }
 
-.container-content {
-  /* ==================== */
+.content {
   font-size: 9pt;
   color: #888;
   margin-top: 10rpx;
   letter-spacing: 2rpx;
   line-height: 70rpx;
-  /* ======================== */
   padding-bottom: 33rpx;
   border-bottom: rgba(246, 181, 1, 0.2) solid 2rpx;
 }
@@ -182,12 +175,21 @@
   margin-top: 10rpx;
 }
 
+.skill-item{
+  color: #333;
+  border: 2rpx solid #F6B501;
+  font-size: 9pt;
+  padding: 0 25rpx;
+  margin-right: 20rpx;
+  border-radius: 30rpx;
+  line-height: 50rpx;
+}
+
 .skills {
   margin: 0 40rpx;
   justify-content: left;
 }
 
-/* ============== */
 .content-top {
   justify-content: space-between;
   line-height: 80rpx;
@@ -217,7 +219,7 @@
   line-height: 50rpx;
 }
 
-.school{
+.school {
   font-size: 8pt;
   padding: 0 13rpx;
   border-radius: 20rpx;
@@ -226,11 +228,10 @@
   line-height: 1.7em;
 }
 
-.school-recruitment{
+.school-recruitment {
   background-color: #A5D5C9;
 }
 
-.practice{
+.practice {
   background-color: #99C85C;
 }
-/* ============== */

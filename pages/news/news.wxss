@@ -1,12 +1,17 @@
-/* 未登录 */
-.not-login{
+page {
+  margin-left: 3%;
+  width: 97%;
+}
+
+/*===== 未登录============ */
+.not-login {
   width: 100%;
   text-align: center;
   font-size: 9pt;
   color: #999;
 }
 
-.not-login image{
+.not-login image {
   width: 80%;
   margin-top: 10%;
 }
@@ -27,44 +32,66 @@
   background-color: #F6B501;
   box-shadow: rgba(246, 181, 1, 0.8) 4rpx 7rpx;
 }
+
+/* ========已登录================== */
 /* 没消息 */
-.noNews{
+.noNews {
   width: 100%;
   text-align: center;
   font-size: 9pt;
   color: #999;
 }
-.noNews image{
+
+.noNews image {
   width: 77%;
   margin-top: 13%;
 }
 
 /* 有消息 */
-.row{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  box-sizing: border-box;
-  margin: 50rpx 40rpx;
+/* =========studentChat.wxml========= */
+.news-item {
+  margin-top: 30rpx;
+  padding-bottom: 30rpx;
 }
-.row image{
+
+.row image {
   width: 100rpx;
   height: 100rpx;
   border-radius: 50%;
   margin-right: 35rpx;
 }
-.personName{
-  font-size: 10pt;
+
+.center-content {
+  width: 450rpx;
+}
+
+.otherInfo {
+  color: #555;
+  font-size: 9pt;
+}
+
+.name {
+  font-size: 11pt;
   color: black;
 }
-.lastMsg{
+
+.lastMsg {
+  margin-top: 10rpx;
   font-size: 9pt;
   color: #999;
   overflow: hidden;
 }
-.lastChatTime{
+
+.lastChatTime {
   font-size: 9pt;
   color: #999;
   position: absolute;
   right: 45rpx;
+}
+
+/* ====companyChat.wxml======= */
+.intentionJob{
+  color: #999;
+  font-size: 8pt;
+  margin-left: 20rpx;
 }
