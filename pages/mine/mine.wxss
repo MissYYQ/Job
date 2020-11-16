@@ -141,6 +141,7 @@
 .companyMsg {
   margin-top: 190rpx;
   font-size: 10pt;
+  padding-bottom: 50rpx;
 }
 
 .img image {

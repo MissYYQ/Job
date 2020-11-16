@@ -4,34 +4,7 @@ page {
   width: 100%;
 }
 
-/* ===== companyIndex================ */
-
-/* 顶部搜索 */
-.top {
-  margin-left: 15rpx;
-  width: 90%;
-}
-
-input {
-  width: 460rpx;
-  margin-left: 10rpx;
-}
-
-.top_search {
-  width: 560rpx;
-}
-
-.top_search_btn {
-  color: #888;
-  margin-right: 10rpx;
-}
-
-.placeholderClass{
-  text-align: left;
-  margin-left: 5rpx;
-}
-
-/* 内容 */
+/* =========common=============== */
 .content {
   width: 90%;
   margin: 0 15rpx;
@@ -63,9 +36,6 @@ input {
   letter-spacing: 10rpx;
 }
 
-.request-content {
-  flex-wrap: wrap;
-}
 
 .content-request view {
   background-color: #f3f3f3;
@@ -97,9 +67,14 @@ input {
   color: #888;
 }
 
+.placeholderClass {
+  text-align: left;
+  margin-left: 5rpx;
+}
 
-/* ========================== */
-/* studentIndex */
+
+/* =========== studentIndex============= */
+
 .studentIndex-search {
   background-color: #F6B501;
   font-size: 10pt;
@@ -170,4 +145,29 @@ input {
   width: 50rpx;
   height: 50rpx;
   margin-right: 28rpx;
+}
+
+/* ===== companyIndex================ */
+
+.top {
+  margin-left: 15rpx;
+  width: 90%;
+}
+
+input {
+  width: 460rpx;
+  margin-left: 10rpx;
+}
+
+.top_search {
+  width: 560rpx;
+}
+
+.top_search_btn {
+  color: #888;
+  margin-right: 10rpx;
+}
+
+.request-content {
+  flex-wrap: wrap;
 }

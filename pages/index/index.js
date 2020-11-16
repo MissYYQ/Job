@@ -3,15 +3,6 @@ const app = getApp()
 
 Page({
   data: {
-    isWxLogin: null, //是否登录
-    showKindIndex: 1, //推荐-1，最新-2
-    showfilter: false, //是否显示下拉筛选
-    chooseEducation: '', //学历要求
-    chooseSalary: '', //薪资待遇
-    chooseExperience: '', //经验要求
-    educationIndex: -1, //学历要求index
-    salaryIndex: -1, //薪资待遇index
-    experienceIndex: -1, //经验要求index
     jobData: [{
         name: "前端开发",
         salary: "6-10K",
@@ -40,8 +31,7 @@ Page({
         kind: 1
       },
     ],
-    studentData: [
-      {
+    studentData: [{
         intentionJob: "前端开发",
         expectedSalary: "6-10K",
         school: "九江学院",
@@ -76,35 +66,6 @@ Page({
       },
 
     ],
-    education: [
-      "不限",
-      "初中及以下",
-      "中专/中技",
-      "高中",
-      "大专",
-      "本科",
-      "硕士",
-      "博士"
-    ],
-    salary: [
-      "不限",
-      "3K以下",
-      "3-5K",
-      "5-10K",
-      "10-20K",
-      "20-50K",
-      "50K以上"
-    ],
-    experience: [
-      "不限",
-      "在校生",
-      "应届生",
-      "1年以内",
-      "1-3年",
-      "3-5年",
-      "5-10年",
-      "10年以上"
-    ]
   },
 
   /**
@@ -118,15 +79,6 @@ Page({
     }
     if (userKind == "企业") {
       userKindTag = 2
-    }
-    if (wx.getStorageSync('intentionJob').city) {
-      this.setData({
-        city: wx.getStorageSync('intentionJob').city
-      })
-    } else if (wx.getStorageSync('userInfo').city) {
-      this.setData({
-        city: wx.getStorageSync('userInfo').city
-      })
     }
     this.setData({
       isWxLogin: wx.getStorageSync('isWxLogin'),
@@ -212,7 +164,7 @@ Page({
   },
 
   //跳转至预览简历页面
-  toPreviewResumePage:function(){
+  toPreviewResumePage: function () {
     wx.navigateTo({
       url: '/pages/mine/previewResume/previewResume',
     })
