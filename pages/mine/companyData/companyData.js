@@ -11,7 +11,24 @@ Page({
     region: '',
     detailedAddress: '',
     addWelfare: '',
-
+    size: [
+      "0-20人",
+      "20-99人",
+      "100-499人",
+      "500-999人",
+      "1000-9999人",
+      "10000人以上",
+    ],
+    financingStage: [
+      "未融资",
+      "天使轮",
+      "A轮",
+      "B轮",
+      "C轮",
+      "D轮及以上",
+      "已上市",
+      "不需要融资",
+    ],
   },
 
   /**
@@ -22,8 +39,33 @@ Page({
       company: wx.getStorageSync('company'),
       welfare: wx.getStorageSync('welfare'),
     })
+    // 公司简介字数加载
+    var introduction = this.data.company.introduction;
+    if (introduction) {
+      this.setData({
+        currentWordNumber: introduction.length
+      })
+    }
+
   },
 
+  //公司规模选择器发生改变
+  sizeChange: function (e) {
+    let size = "company.size";
+    this.setData({
+      [size]: this.data.size[e.detail.value]
+    })
+    wx.setStorageSync('company', this.data.company)
+  },
+
+  //融资阶段选择器发生改变
+  financingStageChange: function (e) {
+    let financingStage = "company.financingStage";
+    this.setData({
+      [financingStage]: this.data.financingStage[e.detail.value]
+    })
+    wx.setStorageSync('company', this.data.company)
+  },
 
   //编辑
   editCompany: function (e) {
@@ -114,13 +156,15 @@ Page({
   //取消
   cancelBtn: function () {
     wx.setStorageSync('userKind', "学生");
-    wx.switchTab({
+    app.globalData.userKind = "学生";
+    wx.reLaunch({
       url: '/pages/index/index',
-      success: function (e) {
-        var page = getCurrentPages().pop();
-        if (page == undefined || page == null) return;
-        page.onLoad();
-      }
+    })
+    wx.showToast({
+      title: '已取消身份切换！',
+      icon: 'none',
+      duration: 1500,
+      mask: true
     })
   },
 
@@ -179,13 +223,8 @@ Page({
       })
     } else {
       //跳转
-      wx.switchTab({
+      wx.reLaunch({
         url: '/pages/index/index',
-        success: function (e) {
-          var page = getCurrentPages().pop();
-          if (page == undefined || page == null) return;
-          page.onLoad();
-        }
       })
     }
   },

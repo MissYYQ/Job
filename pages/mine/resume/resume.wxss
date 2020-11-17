@@ -152,9 +152,6 @@ textarea{
 }
 
 .currentWordNumber {
-  position: absolute;
-  bottom: 10rpx;
-  right: 30rpx;
   font-size: 9pt;
   color: #888;
 }

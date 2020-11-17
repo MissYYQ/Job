@@ -126,13 +126,8 @@ Page({
       })
       wx.setStorageSync('history', this.data.history);
       //页面跳转
-      wx.switchTab({
-        url: '../../index/index?inputVal=' + inputVal,
-        success: function (e) {
-          var page = getCurrentPages().pop();
-          if (page == undefined || page == null) return;
-          page.onLoad();
-        }
+      wx.reLaunch({
+        url: '/pages/index/index?inputVal=' + inputVal,
       })
       console.log("===========搜索内容===========")
       console.log(inputVal)

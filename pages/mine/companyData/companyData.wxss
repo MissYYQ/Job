@@ -40,11 +40,11 @@ page{
 
 .button{
   position: fixed;
-  margin-top: 15rpx;
+  padding-top: 25rpx;
   bottom: 5rpx;
-  width: 90%;
+  width: 95%;
   background-color: white;
-  z-index: 1;
+  z-index: 999;
 }
 
 .btn{

@@ -293,11 +293,13 @@
 			</view>
 		</view>
 		<view>
-			<view class="item-name">工作描述</view>
+			<view class="row">
+				<view class="item-name">工作描述</view>
+				<text class="currentWordNumber">{{currentWordNumber|0}}/150</text>
+			</view>
 			<view>
-				<textarea data-key="description" bindtap="editE" bindinput="textareaInput"
+				<textarea data-key="description" bindtap="editE" bindinput="textareaInput" maxlength="150"
 					value="{{tempExperience.description}}" placeholder="请输入..." placeholder-class="placeholderStyle">
-				<text class="currentWordNumber">{{currentWordNumber|0}}/140</text>
 			</textarea>
 			</view>
 		</view>

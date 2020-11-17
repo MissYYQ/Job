@@ -1,7 +1,7 @@
 <view class="companyData">
   <!-- 公司logo -->
   <view class="logo">
-    <image wx:if="{{!company.logoUrl}}" src="/images/mine/resume/addImg.png" style="width:150rpx;height:150rpx;"
+    <image wx:if="{{!company.logoUrl}}" src="/images/mine/logo.png" style="width:160rpx;height:160rpx;"
       bindtap="addCompanyLogo">
     </image>
     <image wx:else src="{{company.logoUrl}}" style="border-radius: 50%;"></image>
@@ -21,14 +21,17 @@
   <!-- 公司规模 -->
   <view class="row msg-item">
     <view class="item-name">公司规模</view>
-    <input class="data" value="{{company.size}}" data-key="size" placeholder="请选择..."
-      placeholder-class="placeholderStyle" bindinput="editCompany"></input>
+    <picker bindchange="sizeChange"  range="{{size}}" class="data">
+      <input value="{{company.size}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
+    </picker>
   </view>
   <!-- 融资阶段 -->
   <view class="row msg-item">
     <view class="item-name">融资阶段</view>
-    <input class="data" value="{{company.financingStage}}" data-key="financingStage" placeholder="请选择..."
-      placeholder-class="placeholderStyle" bindinput="editCompany"></input>
+    <picker bindchange="financingStageChange"  range="{{financingStage}}" class="data">
+      <input  value="{{company.financingStage}}" placeholder="请选择..."
+        placeholder-class="placeholderStyle"></input>
+    </picker>
   </view>
   <!-- 公司地址 -->
   <view class="row msg-item">
@@ -67,11 +70,13 @@
   </view>
   <!-- 公司简介 -->
   <view class="textareaCss">
-    <view class="item-name">公司简介</view>
+    <view class="row">
+      <view class="item-name">公司简介</view>
+      <view class="currentWordNumber">{{currentWordNumber|0}}/300</view>
+    </view>
     <view>
-      <textarea data-key="introduction" bindinput="textareaInput" value="{{company.introduction}}" placeholder="请输入..."
-        placeholder-class="placeholderStyle">
-				<text class="currentWordNumber">{{currentWordNumber|0}}/140</text>
+      <textarea data-key="introduction" bindinput="textareaInput" maxlength="300" value="{{company.introduction}}"
+        placeholder="请输入..." placeholder-class="placeholderStyle">
 			</textarea>
     </view>
   </view>
