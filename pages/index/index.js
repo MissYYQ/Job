@@ -87,6 +87,20 @@ Page({
     })
   },
 
+  //公司搜索内容
+  inputVal: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    });
+  },
+
+  //清空搜索
+  clearInput: function () {
+    this.setData({
+      inputVal: null
+    });
+  },
+
   //跳转至热门公司页面
   toHotCompanyPage: function () {
     wx.navigateTo({
@@ -133,18 +147,9 @@ Page({
 
   //跳转至职位详情页面
   toJobDetailsPage: function () {
-    if (this.data.isWxLogin) {
-      wx.navigateTo({
-        url: '../index/jobDetails/jobDetails'
-      })
-    } else {
-      wx.showToast({
-        title: '未登录！',
-        icon: 'none',
-        duration: 1500,
-        mask: true
-      })
-    }
+    wx.navigateTo({
+      url: '../index/jobDetails/jobDetails'
+    })
   },
 
   //跳转至求职期望页面
@@ -168,78 +173,6 @@ Page({
     wx.navigateTo({
       url: '/pages/mine/previewResume/previewResume',
     })
-  },
-
-  // 学历筛选
-  chooseEducation: function (e) {
-    var index = e.currentTarget.dataset.index
-    var chooseEducation = this.data.education[index]
-    console.log(chooseEducation)
-    this.setData({
-      chooseEducation: chooseEducation,
-      educationIndex: index
-    })
-  },
-
-  // 薪资筛选
-  chooseSalary: function (e) {
-    var index = e.currentTarget.dataset.index
-    var chooseSalary = this.data.salary[index]
-    console.log(chooseSalary)
-    this.setData({
-      chooseSalary: chooseSalary,
-      salaryIndex: index
-    })
-  },
-
-  // 经验筛选
-  chooseExperience: function (e) {
-    var index = e.currentTarget.dataset.index
-    var chooseExperience = this.data.experience[index]
-    console.log(chooseExperience)
-    this.setData({
-      chooseExperience: chooseExperience,
-      experienceIndex: index
-    })
-  },
-
-  //重置
-  reset: function () {
-    this.setData({
-      educationIndex: -1,
-      salaryIndex: -1,
-      experienceIndex: -1,
-    })
-  },
-
-  //公司搜索内容
-  inputVal: function (e) {
-    this.setData({
-      inputVal: e.detail.value
-    });
-  },
-
-  //清空搜索
-  clearInput: function () {
-    this.setData({
-      inputVal: null
-    });
-  },
-
-  //跳转至添加招聘职位页面
-  toAddJobPage: function () {
-    if (this.data.isWxLogin) {
-      wx.navigateTo({
-        url: '/pages/index/addJob/addJob',
-      })
-    } else {
-      wx.showToast({
-        title: '未登录！',
-        icon: 'none',
-        duration: 1500,
-        mask: true
-      })
-    }
   },
 
 

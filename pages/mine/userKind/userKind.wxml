@@ -2,7 +2,7 @@
 <swiper indicator-color="#f3f3f3" indicator-active-color="#F6B501" indicator-dots circular autoplay class="slider">
 	<swiper-item>
 		<image src="/images/login/look.png"></image>
-		<view class="txt">找工作？上“职为你”</view>
+		<view class="txt">找工作？找人才？上“职为你”</view>
 	</swiper-item>
 	<swiper-item>
 		<image src="/images/login/interactive.png"></image>
@@ -15,6 +15,6 @@
 </swiper>
 
 <view class="row">
-	<view data-user="company" bindtap="toCompanyDataPage">招人</view>
-	<view data-user="student" bindtap="toIndexPage">应聘</view>
+	<view data-user="company" bindtap="toCompanyDataPage">企业</view>
+	<view data-user="student" bindtap="toIndexPage">学生</view>
 </view>

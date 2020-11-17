@@ -58,8 +58,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "mine",
-          "pathName": "pages/mine/mine",
+          "name": "companyData",
+          "pathName": "pages/mine/companyData/companyData",
           "query": "",
           "scene": null
         }

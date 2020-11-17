@@ -1,7 +1,8 @@
-<view>
+<view class="companyData">
   <!-- 公司logo -->
   <view class="logo">
-    <image wx:if="{{!company.logoUrl}}" src="/images/mine/resume/addImg.png" style="width:150rpx;height:150rpx;" bindtap="addCompanyLogo">
+    <image wx:if="{{!company.logoUrl}}" src="/images/mine/resume/addImg.png" style="width:150rpx;height:150rpx;"
+      bindtap="addCompanyLogo">
     </image>
     <image wx:else src="{{company.logoUrl}}" style="border-radius: 50%;"></image>
   </view>
@@ -11,16 +12,22 @@
     <input class="data" value="{{company.name}}" data-key="name" placeholder="请输入..."
       placeholder-class="placeholderStyle" bindinput="editCompany"></input>
   </view>
+  <!-- 公司行业 -->
+  <view class="row msg-item">
+    <view class="item-name">公司行业</view>
+    <input class="data" value="{{company.industry}}" data-key="industry" placeholder="请选择..."
+      placeholder-class="placeholderStyle" bindinput="editCompany"></input>
+  </view>
   <!-- 公司规模 -->
   <view class="row msg-item">
     <view class="item-name">公司规模</view>
-    <input class="data" value="{{company.size}}" data-key="size" placeholder="请输入..."
+    <input class="data" value="{{company.size}}" data-key="size" placeholder="请选择..."
       placeholder-class="placeholderStyle" bindinput="editCompany"></input>
   </view>
   <!-- 融资阶段 -->
   <view class="row msg-item">
     <view class="item-name">融资阶段</view>
-    <input class="data" value="{{company.financingStage}}" data-key="financingStage" placeholder="请输入..."
+    <input class="data" value="{{company.financingStage}}" data-key="financingStage" placeholder="请选择..."
       placeholder-class="placeholderStyle" bindinput="editCompany"></input>
   </view>
   <!-- 公司地址 -->
@@ -32,28 +39,18 @@
     </picker>
   </view>
   <!-- 详细地址 -->
-  <view class="row msg-item" wx:if="{{company.region}}">
+  <view class="row msg-item">
     <view class="item-name">详细地址</view>
     <input class="data" value="{{company.detailedAddress}}" data-key="detailedAddress" placeholder="请输入..."
       placeholder-class="placeholderStyle" bindinput="editCompany"></input>
   </view>
-  <!-- 公司简介 -->
-  <view class="textareaCss">
-			<view class="item-name">公司简介</view>
-			<view>
-				<textarea data-key="introduction" bindinput="textareaInput"
-					value="{{company.introduction}}" placeholder="请输入..." placeholder-class="placeholderStyle">
-				<text class="currentWordNumber">{{currentWordNumber|0}}/140</text>
-			</textarea>
-			</view>
-		</view>
   <!-- 福利待遇 -->
   <view>
     <!-- 添加福利 -->
     <view class="row msg-item">
       <view class="item-name">福利待遇</view>
-      <input class="data"  value="{{addWelfare}}" placeholder="请输入..."
-        placeholder-class="placeholderStyle" bindinput="editWelfare">{{addSkill}}</input>
+      <input class="data" value="{{addWelfare}}" placeholder="请输入..." placeholder-class="placeholderStyle"
+        bindinput="editWelfare">{{addSkill}}</input>
       <view class="okImg" wx:if="{{addWelfare}}">
         <image src="/images/mine/resume/ok.png" bindtap="addWelfare"></image>
       </view>
@@ -68,10 +65,20 @@
       </view>
     </view>
   </view>
+  <!-- 公司简介 -->
+  <view class="textareaCss">
+    <view class="item-name">公司简介</view>
+    <view>
+      <textarea data-key="introduction" bindinput="textareaInput" value="{{company.introduction}}" placeholder="请输入..."
+        placeholder-class="placeholderStyle">
+				<text class="currentWordNumber">{{currentWordNumber|0}}/140</text>
+			</textarea>
+    </view>
+  </view>
 </view>
 
 <!-- 底部按钮 -->
 <view class="row button">
-  <view class="btn resetBtn" bindtap="toIndexPage">取消</view>
-  <view class="btn determineBtn" bindtap="toIndexPage">确定</view>
+  <view class="btn resetBtn" bindtap="cancelBtn">取消</view>
+  <view class="btn determineBtn" bindtap="determineBtn">确定</view>
 </view>

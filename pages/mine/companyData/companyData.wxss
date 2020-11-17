@@ -5,6 +5,10 @@ page{
   width: 90%;
 }
 
+.companyData{
+  padding-bottom: 220rpx;
+}
+
 .msg-item {
   height: 3.1em;
 }
@@ -35,5 +39,15 @@ page{
 }
 
 .button{
-  padding-bottom: 30rpx;
+  position: fixed;
+  margin-top: 15rpx;
+  bottom: 5rpx;
+  width: 90%;
+  background-color: white;
+  z-index: 1;
+}
+
+.btn{
+  margin-left: 10rpx;
+  margin-right: 10rpx;
 }

@@ -4,21 +4,20 @@ page{
 }
 
 .slider{
-  height: 66%;
+  height: 60%;
   width: 70%;
   margin-left: 15%;
-  margin-top: 10%;
-  font-size: 10pt;
+  margin-top: 8%;
+  font-size: 9pt;
   text-align: center;
 }
 
 .slider image{
   width: 100%;
-  /* height: 100%; */
 }
 
 .txt {
-  margin-top: 50rpx;
+  margin-top: 15rpx;
   color: #999;
 }
 
@@ -29,7 +28,7 @@ page{
   justify-content: space-between;
   box-sizing: border-box;
   position: absolute;
-  bottom: 12%;
+  bottom: 20%;
   margin-left: 10%;
   width: 80%;
 

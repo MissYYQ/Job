@@ -45,6 +45,15 @@ Page({
 
   },
 
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function () {
+    this.setData({
+      isWxLogin: wx.getStorageSync('isWxLogin')
+    })
+  },
+
   //跳转至公司页面
   toCompanyPage: function () {
     wx.navigateTo({
@@ -52,33 +61,36 @@ Page({
     })
   },
 
-  // 收藏（取消收藏）
+  // 收藏/取消收藏
   favorites: function () {
-    this.setData({
-      favorites: !this.data.favorites
-    })
-    console.log("是否收藏：", this.data.favorites)
+    if (this.data.isWxLogin) {
+      this.setData({
+        favorites: !this.data.favorites
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
   },
 
   //跳转至聊天页面
   toChatPage: function () {
-    wx.navigateTo({
-      url: '/pages/news/chat/chat',
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+    if (this.data.isWxLogin) {
+      wx.navigateTo({
+        url: '/pages/news/chat/chat',
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
   },
 
 })

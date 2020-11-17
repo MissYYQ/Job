@@ -1,3 +1,5 @@
+const app = getApp();
+
 Page({
 
   /**
@@ -9,6 +11,7 @@ Page({
     region: '',
     detailedAddress: '',
     addWelfare: '',
+
   },
 
   /**
@@ -108,8 +111,9 @@ Page({
     wx.setStorageSync('company', this.data.company)
   },
 
-  //跳转至首页
-  toIndexPage: function () {
+  //取消
+  cancelBtn: function () {
+    wx.setStorageSync('userKind', "学生");
     wx.switchTab({
       url: '/pages/index/index',
       success: function (e) {
@@ -118,6 +122,72 @@ Page({
         page.onLoad();
       }
     })
+  },
+
+  //确定
+  determineBtn: function () {
+    //判空
+    let company = this.data.company;
+    if (company.name == null) {
+      wx.showToast({
+        title: '公司名称不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else if (company.logoUrl == null) {
+      wx.showToast({
+        title: '公司logo图片不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else if (company.industry == null) {
+      wx.showToast({
+        title: '公司所属行业不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else if (company.size == null) {
+      wx.showToast({
+        title: '公司规模不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else if (company.financingStage == null) {
+      wx.showToast({
+        title: '融资阶段不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else if (company.region == null) {
+      wx.showToast({
+        title: '公司地址不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else if (company.detailedAddress == null) {
+      wx.showToast({
+        title: '公司详细地址不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else {
+      //跳转
+      wx.switchTab({
+        url: '/pages/index/index',
+        success: function (e) {
+          var page = getCurrentPages().pop();
+          if (page == undefined || page == null) return;
+          page.onLoad();
+        }
+      })
+    }
   },
 
 
