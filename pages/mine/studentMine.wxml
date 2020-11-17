@@ -10,10 +10,10 @@
       </view>
       <view class="userInfo-right">
         <view wx:if="{{isWxLogin}}" class="nickName">{{userInfo.nickName}}</view>
-        <button wx:else open-type="getUserInfo" bindtap="wxLogin" class="nickName"
+        <button wx:else open-type="getUserInfo" bindgetuserinfo="wxLogin" class="nickName"
           style="padding: 0; margin: 0;width: 200rpx;display: flex;background: white;">登录</button>
         <view wx:if="{{!isWxLogin}}" class="expect">点击登录解锁更多</view>
-        <view wx:if="{{isWxLogin && !intentionJob.job}}" class="expect" bindtap="toResumePage">简历还未完善，快去完善简历吧</view>
+        <view wx:if="{{isWxLogin && !intentionJob.job}}" class="expect" bindtap="toResumePage">点击完善简历</view>
         <view wx:if="{{isWxLogin && intentionJob.job}}" class="expect">期望职位 / {{intentionJob.job}}</view>
       </view>
     </view>

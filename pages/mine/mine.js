@@ -14,20 +14,20 @@ Page({
     expect: null,
     myMsg: [{
         imgUrl: '/images/mine/jianli.png',
-        name: '我的简历'
+        name: '简历'
       },
       {
         imgUrl: '/images/mine/shoucang.png',
-        name: '我的收藏'
+        name: '收藏'
       },
       {
         imgUrl: '/images/mine/bishi.png',
-        name: '已投岗位'
+        name: '已投'
       },
-      // {
-      //   imgUrl: '/images/mine/mianshi.png',
-      //   name: '面试'
-      // },
+      {
+        imgUrl: '/images/mine/mianshi.png',
+        name: '面试'
+      },
       {
         imgUrl: '/images/mine/shezhi.png',
         name: '设置'
@@ -116,6 +116,7 @@ Page({
 
   //微信登录
   wxLogin: function () {
+    let that = this;
     wx.login({
       success: res => {
         console.log("登录成功")
@@ -137,6 +138,8 @@ Page({
                   console.log("login.js=== app.globalData.userInfo ===");
                   console.log(app.globalData.userInfo)
                   wx.setStorageSync('userInfo', res.userInfo);
+                  //直接获取到当前页面的onload()进行刷新
+                  that.onLoad();
                   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
                   // 所以此处加入 callback 以防止这种情况
                   if (this.userInfoReadyCallback) {

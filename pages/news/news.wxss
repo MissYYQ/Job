@@ -1,6 +1,6 @@
 page {
-  margin-left: 3%;
-  width: 97%;
+  margin-left: 4%;
+  width: 95%;
 }
 
 /*===== 未登录============ */
@@ -57,7 +57,7 @@ page {
 .row image {
   width: 100rpx;
   height: 100rpx;
-  border-radius: 50%;
+  border-radius: 10rpx;
   margin-right: 35rpx;
 }
 

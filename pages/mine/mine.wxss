@@ -198,15 +198,14 @@
 }
 
 .content-top .name {
-  font-size: 12pt;
+  font-size: 11pt;
   color: black;
   font-weight: 600;
 }
 
 .content-top .salary {
-  font-size: 12pt;
+  font-size: 11pt;
   color: #F6B501;
-  margin-right: 40rpx;
   letter-spacing: 10rpx;
 }
 
@@ -221,7 +220,7 @@
 }
 
 .school {
-  font-size: 8pt;
+  font-size: 7pt;
   padding: 0 13rpx;
   border-radius: 20rpx;
   margin-left: 13rpx;

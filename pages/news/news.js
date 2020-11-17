@@ -64,6 +64,7 @@ Page({
 
   //微信登录
   wxLogin: function () {
+    let that = this;
     wx.login({
       success: res => {
         console.log("登录成功")
@@ -82,9 +83,11 @@ Page({
                   console.log("获取用户信息成功")
                   // 可以将 res 发送给后台解码出 unionId
                   app.globalData.userInfo = res.userInfo;
-                  console.log("login.js=== app.globalData.userInfo ===");
+                  console.log("news.js=== app.globalData.userInfo ===");
                   console.log(app.globalData.userInfo)
                   wx.setStorageSync('userInfo', res.userInfo);
+                  //直接获取到当前页面的onload()进行刷新
+                  that.onLoad();
                   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
                   // 所以此处加入 callback 以防止这种情况
                   if (this.userInfoReadyCallback) {
@@ -105,14 +108,8 @@ Page({
         console.log(res);
       }
     })
-    wx.switchTab({
-      url: '/pages/news/news',
-      success: function (e) {
-        var page = getCurrentPages().pop();
-        if (page == undefined || page == null) return;
-        page.onLoad();
-      }
-    })
+    //直接获取到当前页面的onload()进行刷新
+
   },
 
   // 跳转至交流页面

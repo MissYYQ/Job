@@ -37,10 +37,14 @@ page {
   border-bottom: solid 3rpx #ebebec;
 }
 
+.basic-item{
+  line-height: 2em;
+}
+
 .basic-item image {
   width: 35rpx;
   height: 35rpx;
-  margin-right: 12rpx;
+  margin-right: 17rpx;
 }
 
 .basic-item view {
@@ -78,19 +82,21 @@ page {
 }
 
 .welfare {
-  text-indent: 2em;
+  /* text-indent: 2em; */
   flex-wrap: wrap;
   font-size: 9pt;
 }
 
+.welfare view{
+  margin-right: 30rpx;
+}
+
 .job{
-  margin-left: 5%;
-  width: 90%;
   padding-bottom: 50rpx;
 }
 
 .job-item{
-  padding-bottom: 20rpx;
+  padding-bottom: 30rpx;
   border-bottom: solid 3rpx #ebebec;
 }
 
@@ -101,11 +107,11 @@ page {
 .name{
   font-size: 11pt;
   font-weight: 600;
-  line-height: 2.2em;
+  line-height: 2.7em;
 }
 
 .salary{
-  font-size: 10pt;
+  font-size: 11pt;
   color: #F6B501;
 }
 
@@ -115,9 +121,9 @@ page {
 
 .content-request view{
   font-size: 8pt;
-  background-color: #ebebec;
-  color: #333;
-  padding: 0 12rpx;
+  background-color: #efeff0;
+  color: #888;
+  padding: 0 15rpx;
   border-radius: 8rpx;
-  margin-right: 15rpx;
+  margin-right: 20rpx;
 }

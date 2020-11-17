@@ -1,4 +1,4 @@
-page{
+page {
   font-size: 10pt;
 }
 
@@ -8,11 +8,11 @@ page{
   font-size: 10pt;
 }
 
-.spaceBetween{
+.spaceBetween {
   justify-content: space-between;
 }
 
-input{
+input {
   width: 470rpx;
 }
 
@@ -39,7 +39,7 @@ input{
   height: 2.1em;
 }
 
-.top_search_btn{
+.top_search_btn {
   color: var(--weui-FG-1);
   margin-left: 40rpx;
 }
@@ -58,65 +58,65 @@ input{
 }
 
 /* 内容 */
-.content{
+.content {
   margin-top: 120rpx;
   margin-left: 5%;
   width: 90%;
 }
 
-.content-item{
+.content-item {
   margin-top: 10rpx;
   padding-bottom: 20rpx;
   border-bottom: rgba(246, 181, 1, 0.15) solid 3rpx;
 }
-.content-top{
+
+.content-top {
   justify-content: space-between;
 }
 
-.name{
-  letter-spacing: 2rpx;
+.name {
+  letter-spacing: 3rpx;
   font-weight: 600;
-  font-size: 11pt;
+  font-size: 12pt;
   line-height: 2.8em;
 }
 
-.salary{
-  letter-spacing: 2rpx;
-  font-size: 10pt;
+.salary {
+  letter-spacing: 5rpx;
+  font-size: 11pt;
   color: #F6B501;
 }
 
-
-.content-request{
+.content-request {
   flex-wrap: wrap;
 }
 
-.content-request view{
-  font-size: 8pt;
-  background-color: #ebebec;
-  color: #333;
-  padding: 0 12rpx;
+.content-request view {
+  font-size: 9pt;
+  background-color: #f3f3f3;
+  color: #888;
+  padding: 0 15rpx;
   border-radius: 8rpx;
   margin-right: 15rpx;
 }
 
-.content-bottom{
+.content-bottom {
   justify-content: space-between;
   height: 2.8em;
 }
 
-.content-conpany image{
+.content-conpany image {
   width: 40rpx;
   height: 40rpx;
   margin-right: 13rpx;
 }
 
-.content-conpany view{
+.content-conpany view {
   color: #333;
   font-size: 9pt;
 }
 
-.company{
+.company {
   font-size: 9pt;
   color: #888;
 }

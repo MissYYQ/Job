@@ -33,14 +33,12 @@ Page({
       resumeFile: wx.getStorageSync('resumeFile'),
       honor: wx.getStorageSync('honor'),
     })
-    if(this.data.userInfo) {
+    if (this.data.userInfo) {
       var province = this.data.userInfo.province;
       var city = this.data.userInfo.city;
-      province = province.substring(0,province.length);
-      city = city.substring(0,city.length);
       let hometown = province + city;
       this.setData({
-        ['resume.hometown']:hometown
+        ['resume.hometown']: hometown
       })
     }
     var description = this.data.tempExperience.description;
@@ -93,7 +91,7 @@ Page({
 
   //编辑职业技能
   editPS: function (e) {
-    if(e.detail.value) {
+    if (e.detail.value) {
       this.setData({
         addSkill: e.detail.value
       })
@@ -101,7 +99,7 @@ Page({
   },
 
   //添加技能
-  addSkill: function(e) {
+  addSkill: function (e) {
     var addSkill = this.data.addSkill;
     var professionalSkills = this.data.professionalSkills;
     var length = professionalSkills.length;
@@ -118,10 +116,10 @@ Page({
   },
 
   //删除技能
-  deleteSkill: function(e) {
+  deleteSkill: function (e) {
     var index = e.currentTarget.dataset.index;
     var professionalSkills = this.data.professionalSkills;
-    professionalSkills.splice(index,1)
+    professionalSkills.splice(index, 1)
     this.setData({
       professionalSkills: professionalSkills
     })
@@ -129,7 +127,7 @@ Page({
   },
 
   //输入域文本
-  textareaInput: function(e) {
+  textareaInput: function (e) {
     var value = e.detail.value;
     var length = parseInt(value.length);
     this.setData({
@@ -140,16 +138,16 @@ Page({
   },
 
   //编辑工作/项目经历
-  editE: function(e) {
+  editE: function (e) {
     var key = e.currentTarget.dataset.key;
     let name = "tempExperience." + key;
     this.setData({
-    [name]: e.detail.value,
+      [name]: e.detail.value,
     });
   },
 
   //添加工作/项目经历
-  addExperience: function(e){
+  addExperience: function (e) {
     var tempExperience = this.data.tempExperience;
     var experience = JSON.parse(JSON.stringify(this.data.experience));
     var length = experience.length;
@@ -168,10 +166,10 @@ Page({
   },
 
   //删除工作/项目经历
-  deleteExperience: function(e) {
+  deleteExperience: function (e) {
     var index = e.currentTarget.dataset.index;
     var experience = this.data.experience;
-    experience.splice(index,1)
+    experience.splice(index, 1)
     this.setData({
       experience: experience
     })
@@ -180,7 +178,7 @@ Page({
 
   //编辑荣誉
   editH: function (e) {
-    if(e.detail.value) {
+    if (e.detail.value) {
       this.setData({
         addHonor: e.detail.value
       })
@@ -188,7 +186,7 @@ Page({
   },
 
   //添加荣誉
-  addHonor: function(e) {
+  addHonor: function (e) {
     var addHonor = this.data.addHonor;
     var honor = this.data.honor;
     var length = honor.length;
@@ -205,10 +203,10 @@ Page({
   },
 
   //删除荣誉
-  deleteHonor: function(e) {
+  deleteHonor: function (e) {
     var index = e.currentTarget.dataset.index;
     var honor = this.data.honor;
-    honor.splice(index,1)
+    honor.splice(index, 1)
     this.setData({
       honor: honor
     })
@@ -236,23 +234,23 @@ Page({
   },
 
   //添加简历附件
-  addResume: function() {
+  addResume: function () {
     var that = this;
     wx.chooseMessageFile({
       count: 1,
       type: 'file',
       success(res) {
-         var resumeFile = res.tempFiles[0]; //文件的本地临时文件路径列表 
-         that.setData({
-           resumeFile: resumeFile
-         });
-         wx.setStorageSync('resumeFile', that.data.resumeFile);
+        var resumeFile = res.tempFiles[0]; //文件的本地临时文件路径列表 
+        that.setData({
+          resumeFile: resumeFile
+        });
+        wx.setStorageSync('resumeFile', that.data.resumeFile);
       }
     })
   },
 
   //查看附件简历
-  openResumeFile: function() {
+  openResumeFile: function () {
     var that = this;
     wx.openDocument({
       filePath: that.data.resumeFile.path,
@@ -265,7 +263,7 @@ Page({
   //日期改变
   bindDateChange: function (e) {
     var key = e.currentTarget.dataset.key;
-    if(key == 'birthday') {
+    if (key == 'birthday') {
       this.setData({
         ['resume.birthday']: e.detail.value
       })
