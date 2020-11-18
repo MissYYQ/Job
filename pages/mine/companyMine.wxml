@@ -35,7 +35,7 @@
 	</view>
 </view>
 
-<!-- 底部 -->
+<!-- 内容 -->
 <view class="companyMsg">
 	<!-- 工作机制 -->
 	<view class="skill">工作时间</view>
@@ -63,6 +63,11 @@
 	<view class="skills row">
 		<view>{{company.address}}</view>
 	</view>
+	<!-- 投递邮箱 -->
+	<view class="skill">投递邮箱</view>
+	<view class="skills row">
+		<view>{{company.email}}</view>
+	</view>
 	<!-- 公司介绍 -->
 	<view class="skill">公司介绍</view>
 	<view class="skills row">
@@ -88,4 +93,10 @@
 		</view>
 	</view>
 
+</view>
+
+<!-- 底部 -->
+<view class="row button">
+	<view class="btn" bindtap="toAddJobPage">发布职位</view>
+	<view class="btn" bindtap="toAddSeminarPage">发布宣讲会</view>
 </view>

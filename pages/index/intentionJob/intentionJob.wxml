@@ -2,9 +2,8 @@
 <view class="intentionJob">
   <view class="row msg-item">
     <view class="item-name">期望岗位</view>
-    <picker class="data" mode="multiSelector" bindchange="bindJobChange" bindcolumnchange="bindcolumnchange"
-      value="{{industryIndex}}" range="{{jobIndustry}}">
-      <input type="text" value=" " data-key="job" bindinput="editIJ" placeholder="请选择..."
+    <picker class="data" mode="multiSelector" bindchange="bindJobChange" bindcolumnchange="bindcolumnchange"  range="{{industry}}">
+      <input type="text" value="{{intentionJob.job}}" data-key="job" bindinput="editIJ" placeholder="请选择..."
         placeholder-class="placeholderStyle"></input>
     </picker>
   </view>

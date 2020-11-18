@@ -1,4 +1,4 @@
-const formatTime = date => {
+const formatDateTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
@@ -14,6 +14,17 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+
+// 格式化日期
+const formatDate = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return [year, month, day].map(formatNumber).join('-')
+}
+
+
 module.exports = {
-  formatTime: formatTime
+  formatDateTime: formatDateTime,
+  formatDate: formatDate
 }

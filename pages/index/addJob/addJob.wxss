@@ -5,6 +5,10 @@ page{
   width: 90%;
 }
 
+.content{
+  padding-bottom: 200rpx;
+}
+
 .msg-item {
   height: 3.1em;
 }
@@ -32,4 +36,17 @@ page{
 
 .textareaCss {
   border-bottom: #f3f3f3 solid 1rpx;
+}
+
+.button {
+  position: fixed;
+  bottom: 0;
+  padding-top: 30rpx;
+  background-color: white;
+  z-index: 999;
+}
+
+.btn{
+  margin-left: 10rpx;
+  margin-right: 20rpx;
 }

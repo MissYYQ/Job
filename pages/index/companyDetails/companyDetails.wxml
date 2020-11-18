@@ -61,6 +61,11 @@
 	<view class="skills row">
 		<view>{{company.address}}</view>
 	</view>
+	<!-- 投递邮箱 -->
+	<view class="skill">投递邮箱</view>
+	<view class="skills row">
+		<view>{{company.email}}</view>
+	</view>
 	<!-- 公司介绍 -->
 	<view class="skill">公司介绍</view>
 	<view class="skills row">

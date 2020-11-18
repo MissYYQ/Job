@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    addJob: null,
+    addJob: {},
     experience: [
       "不限",
       "在校生",
@@ -33,10 +33,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.setData({
-    //   addJob: wx.getStorageSync('addJob'),
-    //   jobSkill: wx.getStorageSync('jobSkill'),
-    // })
+
   },
 
   //添加工作
@@ -120,14 +117,82 @@ Page({
     wx.setStorageSync('jobSkill', this.data.jobSkill)
   },
 
-  //跳转至首页
-  toIndexPage: function () {
+  //取消
+  cancelBtn: function () {
     wx.setStorageSync('addJob', {});
     wx.setStorageSync('jobSkill', []);
     wx.reLaunch({
       url: '/pages/index/index',
     })
   },
+
+  //确定
+  determineBtn: function () {
+    //判空
+    let addJob = this.data.addJob;
+    if (addJob.name == null) {
+      wx.showToast({
+        title: '职位名称不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else if (addJob.lowSalary == null) {
+      wx.showToast({
+        title: '最低薪资不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else if (addJob.highSalary == null) {
+      wx.showToast({
+        title: '最高薪资不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else if (addJob.city == null) {
+      wx.showToast({
+        title: '期望工作城市不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else if (addJob.experience == null) {
+      wx.showToast({
+        title: '经验要求不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else if (addJob.degree == null) {
+      wx.showToast({
+        title: '学历要求不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else if (addJob.claim == null) {
+      wx.showToast({
+        title: '岗位要求不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else if (addJob.duty == null) {
+      wx.showToast({
+        title: '岗位职责不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else {
+      //跳转
+      wx.reLaunch({
+        url: '/pages/mine/mine',
+      })
+    }
+  }
 
 
 

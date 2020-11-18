@@ -1,4 +1,4 @@
-<view>
+<view class="content">
   <!-- 职位名称 -->
   <view class="row msg-item">
     <view class="item-name">职位名称</view>
@@ -83,6 +83,6 @@
 
 <!-- 底部按钮 -->
 <view class="row button">
-  <view class="btn resetBtn" bindtap="toIndexPage">取消</view>
-  <view class="btn determineBtn" bindtap="toIndexPage">确定</view>
+  <view class="btn resetBtn" bindtap="cancelBtn">取消</view>
+  <view class="btn determineBtn" bindtap="determineBtn">确定</view>
 </view>

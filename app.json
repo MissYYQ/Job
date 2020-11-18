@@ -22,6 +22,7 @@
     "pages/mine/userKind/userKind",
     "pages/mine/studentCollect/studentCollect",
     "pages/mine/companyCollect/companyCollect",
+    "pages/mine/addSeminar/addSeminar",
     
     "pages/logs/logs"
   ],

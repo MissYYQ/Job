@@ -26,7 +26,7 @@ Page({
       },
       {
         imgUrl: '/images/mine/mianshi.png',
-        name: '面试'
+        name: '已面'
       },
       {
         imgUrl: '/images/mine/shezhi.png',
@@ -38,6 +38,7 @@ Page({
     company: {
       name: "云程科技", //公司名称
       src: '/images/jobDetails/company.png', //公司logo图片地址
+      email: "hr@company.com",
       size: "20-99人", //规模
       financingStage: "B轮", //融资阶段
       workTime: "上午9:00-下午6:00", //工作时间
@@ -210,6 +211,27 @@ Page({
     wx.navigateTo({
       url: '/pages/mine/resume/resume',
     })
+  },
+
+  //跳转至发布职位页面
+  toAddJobPage: function () {
+    wx.navigateTo({
+      url: '/pages/index/addJob/addJob',
+    })
+  },
+
+  //跳转至添加宣讲会页面
+  toAddSeminarPage: function () {
+    wx.navigateTo({
+      url: '/pages/mine/addSeminar/addSeminar',
+    })
+  },
+
+
+
+  // tabBar监听点击事件
+  onTabItemTap(item) {
+    this.onLoad();
   },
 
 

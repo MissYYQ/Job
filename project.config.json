@@ -56,7 +56,14 @@
       "list": []
     },
     "miniprogram": {
-      "list": []
+      "list": [
+        {
+          "name": "addSeminar",
+          "pathName": "pages/mine/addSeminar/addSeminar",
+          "query": "",
+          "scene": null
+        }
+      ]
     }
   }
 }

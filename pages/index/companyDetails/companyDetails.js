@@ -11,6 +11,7 @@ Page({
     company: {
       name: "云程科技", //公司名称
       src: '/images/jobDetails/company.png', //公司logo图片地址
+      email: "hr@company.com",
       size: "20-99人", //规模
       financingStage: "B轮", //融资阶段
       workTime: "上午9:00-下午6:00", //工作时间

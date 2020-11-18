@@ -12,6 +12,12 @@
     <input class="data" value="{{company.name}}" data-key="name" placeholder="请输入..."
       placeholder-class="placeholderStyle" bindinput="editCompany"></input>
   </view>
+  <!-- 投递邮箱 -->
+  <view class="row msg-item">
+    <view class="item-name">投递邮箱</view>
+    <input class="data" value="{{company.email}}" data-key="email" placeholder="请输入..."
+      placeholder-class="placeholderStyle" bindinput="editCompany"></input>
+  </view>
   <!-- 公司行业 -->
   <view class="row msg-item">
     <view class="item-name">公司行业</view>
@@ -21,16 +27,15 @@
   <!-- 公司规模 -->
   <view class="row msg-item">
     <view class="item-name">公司规模</view>
-    <picker bindchange="sizeChange"  range="{{size}}" class="data">
+    <picker bindchange="sizeChange" range="{{size}}" class="data">
       <input value="{{company.size}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
     </picker>
   </view>
   <!-- 融资阶段 -->
   <view class="row msg-item">
     <view class="item-name">融资阶段</view>
-    <picker bindchange="financingStageChange"  range="{{financingStage}}" class="data">
-      <input  value="{{company.financingStage}}" placeholder="请选择..."
-        placeholder-class="placeholderStyle"></input>
+    <picker bindchange="financingStageChange" range="{{financingStage}}" class="data">
+      <input value="{{company.financingStage}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
     </picker>
   </view>
   <!-- 公司地址 -->

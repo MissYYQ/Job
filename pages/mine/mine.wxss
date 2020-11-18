@@ -137,11 +137,11 @@
   font-size: 10pt;
 }
 
-/* 底部 */
+/* 内容 */
 .companyMsg {
   margin-top: 190rpx;
   font-size: 10pt;
-  padding-bottom: 50rpx;
+  padding-bottom: 150rpx;
 }
 
 .img image {
@@ -234,4 +234,28 @@
 
 .practice {
   background-color: #99C85C;
+}
+
+/* 底部 */
+.button{
+  width: 100%;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  margin-top: 20rpx;
+  justify-content: center;
+  z-index: 999;
+  text-align: center;
+}
+
+.btn{
+  font-size: 10pt;
+  background-color: #F6B501;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 5rpx;
+  padding: 10rpx 65rpx;
+  border-radius: 8rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
 }
