@@ -1,13 +1,27 @@
-<view wx:for="{{companyData}}" wx:key="index" data-index="{{index}}" class="data" bindtap="toCompanyPage">
-  <view class="row companyImg">
-    <image src="{{item.src}}"></image>
-    <view class="companyData">
-      <view class="name">{{item.name}}</view>
-      <view class="sizeAndFinancingStage">{{item.industry}} · {{item.size}} · {{item.financingStage}}</view>
-      <view>{{item.address}}</view>
-      <view class="row treatment">
-        <view wx:for="{{companyData[index].treatment}}" wx:key="index" class="content-request">
-          <view>{{item}}</view>
+<!-- 搜索 -->
+<view class="row top">
+  <view class="top_search">
+    <i class="weui-icon-search"></i>
+    <input type="text" focus value="{{inputVal}}" confirm-type="search" placeholder="请输入公司名称"
+      placeholder-class="placeholderClass" bindinput="inputVal" />
+    <span class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput"></span>
+  </view>
+  <view class="top_search_btn">搜索</view>
+</view>
+
+<!-- 内容 -->
+<view class="content">
+  <view wx:for="{{companyData}}" wx:key="index" data-index="{{index}}" class="data" bindtap="toCompanyPage">
+    <view class="row companyImg">
+      <image src="{{item.src}}"></image>
+      <view class="companyData">
+        <view class="name">{{item.name}}</view>
+        <view class="sizeAndFinancingStage">{{item.industry}} · {{item.size}} · {{item.financingStage}}</view>
+        <view class="address">{{item.address}}</view>
+        <view class="row treatment">
+          <view wx:for="{{companyData[index].treatment}}" wx:key="index">
+            <view class="treatment-item">{{item}}</view>
+          </view>
         </view>
       </view>
     </view>

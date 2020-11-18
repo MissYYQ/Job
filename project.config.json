@@ -56,14 +56,7 @@
       "list": []
     },
     "miniprogram": {
-      "list": [
-        {
-          "name": "resume",
-          "pathName": "pages/mine/resume/resume",
-          "query": "",
-          "scene": null
-        }
-      ]
+      "list": []
     }
   }
 }

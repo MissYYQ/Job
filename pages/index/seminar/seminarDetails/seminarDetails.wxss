@@ -59,7 +59,7 @@ page {
 
 .title {
   color: #333;
-  font-size: 16pt;
+  font-size: 15pt;
   font-weight: 600;
   text-align: center;
   margin-top: 30rpx;
@@ -82,7 +82,6 @@ page {
 }
 
 .welfare {
-  /* text-indent: 2em; */
   flex-wrap: wrap;
   font-size: 9pt;
 }
@@ -111,7 +110,7 @@ page {
 }
 
 .salary{
-  font-size: 11pt;
+  font-size: 10pt;
   color: #F6B501;
 }
 
