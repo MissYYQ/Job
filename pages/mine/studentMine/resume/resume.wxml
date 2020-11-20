@@ -1,0 +1,386 @@
+<!-- 基本信息 -->
+<view class="item">
+	<!-- 项名 -->
+	<view class="row" bindtap="edit" data-mark="basicInformation">
+		<view class="title">基本信息</view>
+		<image wx:if="{{mark === 'basicInformation' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img">
+		</image>
+		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
+	</view>
+	<!-- 编辑基本信息 -->
+	<view wx:if="{{mark === 'basicInformation' && isEdit}}">
+		<view class="row">
+			<!-- 左边 -->
+			<view class="top-left">
+				<view class="row msg-item">
+					<view class="item-name">生日</view>
+					<view class="data">
+						<picker mode="date" value="{{resume.birthday}}" data-key="birthday" bindchange="bindDateChange">
+							<input value="{{resume.birthday}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
+						</picker>
+					</view>
+				</view>
+				<view class="row msg-item">
+					<view class="item-name">籍贯</view>
+					<input class="data" type="text" value="{{resume.hometown}}" data-key="hometown" bindinput="editMsg"
+						placeholder="请输入..." placeholder-class="placeholderStyle"></input>
+				</view>
+				<view class="row msg-item">
+					<view class="item-name">政治面貌</view>
+					<input class="data" type="text" value="{{resume.political}}" data-key="political" bindinput="editMsg"
+						placeholder="请输入..." placeholder-class="placeholderStyle"></input>
+				</view>
+				<view class="row msg-item">
+					<view class="item-name">电话</view>
+					<input class="data" type="number" maxlength="11" value="{{resume.phone}}" data-key="phone" bindinput="editMsg"
+						placeholder="请输入..." placeholder-class="placeholderStyle"></input>
+				</view>
+				<view class="row msg-item">
+					<view class="item-name">邮箱</view>
+					<input class="data" value="{{resume.mailbox}}" data-key="mailbox" bindinput="editMsg" placeholder="请输入..."
+						placeholder-class="placeholderStyle"></input>
+				</view>
+			</view>
+			<!-- 右边 -->
+			<view class="top-right">
+				<view>
+					<image wx:if="{{!resume.avatar}}" src="/images/mine/resume/addImg.png" class="addAvatar" bindtap="addAvatar">
+					</image>
+					<image wx:else src="{{resume.avatar}}" class="avatar"></image>
+				</view>
+				<view>
+					<input placeholder="姓名..." placeholder-class="placeholderStyle" value="{{resume.name}}" class="name"
+						data-key="name" bindinput="editMsg"></input>
+				</view>
+			</view>
+		</view>
+		<!-- 按钮 -->
+		<view class="row button">
+			<view class="btn resetBtn" bindtap="resetBtn">重置</view>
+			<view class="btn determineBtn" bindtap="editOverBtn">确定</view>
+		</view>
+	</view>
+	<!-- 基本信息显示 -->
+	<view wx:if="{{!isEdit}}">
+		<view class="row">
+			<!-- 左边 -->
+			<view class="top-left">
+				<view wx:if="{{resume.birthday}}" class="row">
+					<view class="item-name">生日</view>
+					<view class="data">{{resume.birthday}}</view>
+				</view>
+				<view wx:if="{{resume.hometown}}" class="row">
+					<view class="item-name">籍贯</view>
+					<view class="data">{{resume.hometown}}</view>
+				</view>
+				<view wx:if="{{resume.political}}" class="row">
+					<view class="item-name">政治面貌</view>
+					<view class="data">{{resume.political}}</view>
+				</view>
+				<view wx:if="{{resume.phone}}" class="row">
+					<view class="item-name">电话</view>
+					<view class="data">{{resume.phone}}</view>
+				</view>
+				<view wx:if="{{resume.mailbox}}" class="row">
+					<view class="item-name">邮箱</view>
+					<view class="data">{{resume.mailbox}}</view>
+				</view>
+			</view>
+			<!-- 右边 -->
+			<view class="top-right">
+				<view>
+					<image wx:if="{{resume.avatar}}" src="{{resume.avatar}}" class="avatar"></image>
+				</view>
+				<view>
+					<view wx:if="{{resume.name}}" class="name">{{resume.name}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+
+<!-- 求职意向 -->
+<view class="item">
+	<!-- 项名 -->
+	<view class="row" bindtap="edit" data-mark="intentionJob">
+		<view class="title">求职意向</view>
+		<image wx:if="{{mark === 'intentionJob' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img"></image>
+		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
+	</view>
+	<!-- 编辑求职意向 -->
+	<view wx:if="{{mark === 'intentionJob' && isEdit}}">
+		<view class="row msg-item">
+			<view class="item-name">期望职业</view>
+			<input class="data" type="text" value="{{intentionJob.job}}" data-key="job" bindinput="editIJ"
+				placeholder="请输入..." placeholder-class="placeholderStyle"></input>
+		</view>
+		<view class="row msg-item">
+			<view class="item-name">期望薪资</view>
+			<input class="data" type="number" data-key="salary" value="{{intentionJob.salary}}" bindinput="editIJ" placeholder="请输入..." placeholder-class="placeholderStyle"></input>
+		</view>
+		<view class="row msg-item">
+			<view class="item-name">期望城市</view>
+			<input class="data" type="text" value="{{intentionJob.city}}" data-key="city" bindinput="editIJ"
+				placeholder="请输入..." placeholder-class="placeholderStyle"></input>
+		</view>
+		<!-- 按钮 -->
+		<view class="row button">
+			<view class="btn resetBtn" bindtap="resetBtn">重置</view>
+			<view class="btn determineBtn" bindtap="editOverBtn">确定</view>
+		</view>
+	</view>
+	<!-- 求职意向信息显示 -->
+	<view wx:if="{{!isEdit}}">
+		<view wx:if="{{intentionJob.job}}" class="row">
+			<view class="item-name">期望职业</view>
+			<view class="data">{{intentionJob.job}}</view>
+		</view>
+		<view wx:if="{{intentionJob.salary}}" class="row">
+			<view class="item-name">期望薪资</view>
+			<view class="data">{{intentionJob.salary}}</view>
+		</view>
+		<view wx:if="{{intentionJob.city}}" class="row">
+			<view class="item-name">期望城市</view>
+			<view class="data">{{intentionJob.city}}</view>
+		</view>
+	</view>
+</view>
+
+
+<!-- 教育背景 -->
+<view class="item">
+	<!-- 项名 -->
+	<view class="row" bindtap="edit" data-mark="educationBackground">
+		<view class="title">教育背景</view>
+		<image wx:if="{{mark === 'educationBackground' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img">
+		</image>
+		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
+	</view>
+	<!-- 编辑教育背景 -->
+	<view wx:if="{{mark === 'educationBackground' && isEdit}}">
+		<view>
+			<view class="row msg-item">
+				<view class="item-name">学校</view>
+				<input class="data" type="text" value="{{educationBackground.school}}" data-key="school" bindinput="editEB"
+					placeholder="请输入..." placeholder-class="placeholderStyle"></input>
+			</view>
+			<view class="row msg-item">
+				<view class="item-name">专业</view>
+				<input class="data" type="text" value="{{educationBackground.profession}}" data-key="profession"
+					bindinput="editEB" placeholder="请输入..." placeholder-class="placeholderStyle"></input>
+			</view>
+			<view class="row msg-item">
+				<view class="item-name">学历</view>
+				<input class="data" type="text" value="{{educationBackground.degree}}" data-key="degree" bindinput="editEB"
+					placeholder="请输入..." placeholder-class="placeholderStyle"></input>
+			</view>
+		</view>
+		<!-- 按钮 -->
+		<view class="row button">
+			<view class="btn resetBtn" bindtap="resetBtn">重置</view>
+			<view class="btn determineBtn" bindtap="editOverBtn">确定</view>
+		</view>
+	</view>
+	<!-- 教育背景信息显示 -->
+	<view wx:if="{{!isEdit}}">
+		<view class="row  eB">
+			<view wx:if="{{educationBackground.school}}">{{educationBackground.school}}</view>
+			<view wx:if="{{educationBackground.profession}}">{{educationBackground.profession}}</view>
+			<view wx:if="{{educationBackground.degree}}">{{educationBackground.degree}}</view>
+		</view>
+	</view>
+</view>
+
+
+<!-- 职业技能 -->
+<view class="item">
+	<!-- 项名 -->
+	<view class="row" bindtap="edit" data-mark="professionalSkills">
+		<view class="title">职业技能</view>
+		<image wx:if="{{mark === 'professionalSkills' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img">
+		</image>
+		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
+	</view>
+	<!-- 编辑职业技能 -->
+	<view wx:if="{{mark === 'professionalSkills' && isEdit}}">
+		<!-- 添加的技能显示 -->
+		<view wx:if="{{professionalSkills}}">
+			<view wx:for="{{professionalSkills}}" wx:key="index" data-index="{{index}}" bindtap="deleteSkill">
+				<view class="row skillShow">
+					<view>{{item}}</view>
+					<image src="/images/mine/resume/delete.png"></image>
+				</view>
+			</view>
+		</view>
+		<!-- 添加技能 -->
+		<view class="row msg-item">
+			<view class="item-name">添加技能</view>
+			<input class="data" maxlength="14" value="{{addSkill}}" placeholder="技能限长14个字符"
+				placeholder-class="placeholderStyle" data-key="professionalSkills" bindinput="editPS"></input>
+			<view class="okImg">
+				<image src="/images/mine/resume/ok.png" bindtap="addSkill"></image>
+			</view>
+		</view>
+	</view>
+	<!-- 职业技能信息显示 -->
+	<view wx:if="{{!isEdit}}">
+		<view wx:if="{{professionalSkills}}">
+			<view wx:for="{{professionalSkills}}" wx:key="index" data-index="{{index}}" class="row">
+				<view class="eB skill">
+					<view>{{item}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+
+<!-- 工作/项目经历 -->
+<view class="item">
+	<!-- 项名 -->
+	<view class="row" bindtap="edit" data-mark="experience">
+		<view class="title">工作/项目经历</view>
+		<image wx:if="{{mark === 'experience' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img"></image>
+		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
+	</view>
+	<!-- 添加的经历信息显示 -->
+	<view wx:if="{{mark === 'experience' && isEdit}}">
+		<view wx:for="{{experience}}" wx:key="index" data-index="{{index}}" bindtap="deleteExperience">
+			<view class="row eItem">
+				<view class="experienceItem">
+					<view wx:if="{{item.startTime && item.endTime}}">{{item.startTime}} 至 {{item.endTime}}</view>
+					<view class="row experienceTime">
+						<view class="experienceName">{{item.name}}</view>
+						<view>{{item.position}}</view>
+					</view>
+					<view wx:if="{{item.description}}" class="experienceDescription">{{item.description}}</view>
+				</view>
+				<view class="deleteImg">
+					<image src="/images/mine/resume/delete.png"></image>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 编辑工作/项目经历 -->
+	<view wx:if="{{mark === 'experience' && isEdit}}">
+		<view class="row msg-item">
+			<view class="item-name">公司/项目</view>
+			<input class="data" type="text" value="{{tempExperience.name}}" data-key="name" bindinput="editE"
+				placeholder="请输入..." placeholder-class="placeholderStyle"></input>
+		</view>
+		<view class="row msg-item">
+			<view class="item-name">职位/角色</view>
+			<input class="data" type="text" value="{{tempExperience.position}}" data-key="position" bindinput="editE"
+				placeholder="请输入..." placeholder-class="placeholderStyle"></input>
+		</view>
+		<view class="row msg-item">
+			<view class="item-name">开始时间</view>
+			<view class="data">
+				<picker mode="date" value="{{tempExperience.startTime}}" data-key="startTime" bindchange="bindDateChange"
+					bindtap="editE">
+					<input value="{{tempExperience.startTime}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
+				</picker>
+			</view>
+		</view>
+		<view class="row msg-item">
+			<view class="item-name">结束时间</view>
+			<view class="data">
+				<picker mode="date" value="{{tempExperience.endTime}}" data-key="endTime" bindchange="bindDateChange"
+					bindtap="editE">
+					<input value="{{tempExperience.endTime}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
+				</picker>
+			</view>
+		</view>
+		<view>
+			<view class="row">
+				<view class="item-name">工作描述</view>
+				<text class="currentWordNumber">{{currentWordNumber|0}}/150</text>
+			</view>
+			<view>
+				<textarea data-key="description" bindtap="editE" bindinput="textareaInput" maxlength="150"
+					value="{{tempExperience.description}}" placeholder="请输入..." placeholder-class="placeholderStyle">
+			</textarea>
+			</view>
+		</view>
+		<!-- 按钮 -->
+		<view class="row button">
+			<view class="btn resetBtn" bindtap="editOverBtn">取消</view>
+			<view class="btn determineBtn" bindtap="addExperience">确定</view>
+		</view>
+	</view>
+	<!-- 经历信息显示 -->
+	<view wx:if="{{!isEdit}}">
+		<view wx:for="{{experience}}" wx:key="index" data-index="{{index}}" class="experienceItem eItem">
+			<view wx:if="{{item.startTime && item.endTime}}">{{item.startTime}} 至 {{item.endTime}}</view>
+			<view class="row experienceTime">
+				<view class="experienceName">{{item.name}}</view>
+				<view>{{item.position}}</view>
+			</view>
+			<view wx:if="{{item.description}}" class="experienceDescription">{{item.description}}</view>
+		</view>
+	</view>
+</view>
+
+
+<!-- 荣誉证书 -->
+<view class="item">
+	<!-- 项名 -->
+	<view class="row" bindtap="edit" data-mark="honor">
+		<view class="title">荣誉证书</view>
+		<image wx:if="{{mark === 'honor' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img"></image>
+		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
+	</view>
+	<!-- 编辑荣誉 -->
+	<view wx:if="{{mark === 'honor' && isEdit}}">
+		<!-- 添加的荣誉显示 -->
+		<view wx:if="{{honor}}">
+			<view wx:for="{{honor}}" wx:key="index" data-index="{{index}}" bindtap="deleteHonor">
+				<view class="row skillShow">
+					<view>{{item}}</view>
+					<image src="/images/mine/resume/delete.png"></image>
+				</view>
+			</view>
+		</view>
+		<!-- 添加荣誉 -->
+		<view class="row msg-item">
+			<view class="item-name">添加荣誉</view>
+			<input class="data" maxlength="14" value="{{addHonor}}" placeholder="技能限长14个字符"
+				placeholder-class="placeholderStyle" data-key="honor" bindinput="editH"></input>
+			<view class="okImg">
+				<image src="/images/mine/resume/ok.png" bindtap="addHonor"></image>
+			</view>
+		</view>
+	</view>
+	<!-- 荣誉信息显示 -->
+	<view wx:if="{{!isEdit}}">
+		<view wx:if="{{honor}}">
+			<view wx:for="{{honor}}" wx:key="index" data-index="{{index}}" class="row">
+				<view class="eB skill">
+					<view>{{item}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+
+<!-- 上传简历附件 -->
+<view class="item">
+	<!-- 项名 -->
+	<view class="row" bindtap="addResume">
+		<view class="title">上传简历</view>
+		<image src="/images/mine/resume/add.png" class="add-img"></image>
+	</view>
+	<!-- 简历附件名显示 -->
+	<view wx:if="{{resumeFile}}">
+		<view class="resumeFile" bindtap="openResumeFile">{{resumeFile.name}}</view>
+	</view>
+</view>
+
+
+<!-- 底部按钮 -->
+<view class="row button bottomBtn">
+	<view class="btn resetBtn" bindtap="toIndexPage">取消</view>
+	<view class="btn determineBtn" bindtap="toIndexPage">确定</view>
+</view>

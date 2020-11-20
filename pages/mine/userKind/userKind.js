@@ -30,7 +30,7 @@ Page({
     wx.setStorageSync('userKind', "企业");
     app.globalData.userKind = "企业";
     wx.navigateTo({
-      url: '/pages/mine/companyData/companyData',
+      url: '/pages/mine/companyMine/companyData/companyData',
     })
   },
 

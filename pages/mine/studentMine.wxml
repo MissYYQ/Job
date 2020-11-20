@@ -9,7 +9,7 @@
         <view class="userKind" bindtap="toUserKindPage">{{userKind}}</view>
       </view>
       <view class="userInfo-right">
-        <view wx:if="{{isWxLogin}}" class="nickName">{{userInfo.nickName}}</view>
+        <view wx:if="{{isWxLogin}}" class="nickName" bindtap="toResumePage">{{userInfo.nickName}}</view>
         <button wx:else open-type="getUserInfo" bindgetuserinfo="wxLogin" class="nickName"
           style="padding: 0; margin: 0;width: 200rpx;display: flex;background: white;">登录</button>
         <view wx:if="{{!isWxLogin}}" class="expect">点击登录解锁更多</view>
@@ -18,19 +18,19 @@
       </view>
     </view>
     <view class="top-front-data row">
-      <view class="data-item">
+      <view class="data-item" bindtap="toNewsPage">
         <view class="data-num">{{communicationNum}}</view>
         <view class="data-name">沟通</view>
       </view>
-      <view class="data-item">
-        <view class="data-num">{{interviewNum}}</view>
-        <view class="data-name">面试</view>
-      </view>
-      <view class="data-item">
+      <view class="data-item" bindtap="toMyDeliveryPage">
         <view class="data-num">{{deliveryNum}}</view>
         <view class="data-name">已投</view>
       </view>
-      <view class="data-item">
+      <view class="data-item" bindtap="toMyInterviewPage">
+        <view class="data-num">{{interviewNum}}</view>
+        <view class="data-name">面试</view>
+      </view>
+      <view class="data-item" bindtap="toStudentCollectPage">
         <view class="data-num">{{favoritesNum}}</view>
         <view class="data-name">收藏</view>
       </view>
@@ -39,13 +39,41 @@
 </view>
 <!-- 底部 -->
 <view class="bottom">
-  <view wx:for="{{myMsg}}" wx:key="index" data-index="{{index}}" class="bottom-item" bindtap="studentChangePage">
+  <view class="bottom-item" bindtap="toPreviewResumePage">
     <view class="row">
       <view class="row mineItem">
-        <image src="{{item.imgUrl}}"></image>
-        <view>{{item.name}}</view>
+        <image src="/images/mine/jianli.png"></image>
+        <view>我的简历</view>
       </view>
       <image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
     </view>
   </view>
+  <view class="bottom-item" bindtap="toStudentCollectPage">
+    <view class="row">
+      <view class="row mineItem">
+        <image src="/images/mine/shoucang.png"></image>
+        <view>我的收藏</view>
+      </view>
+      <image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
+    </view>
+  </view>
+  <view class="bottom-item" bindtap="toMyDeliveryPage">
+    <view class="row">
+      <view class="row mineItem">
+        <image src="/images/mine/bishi.png"></image>
+        <view>我的投递</view>
+      </view>
+      <image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
+    </view>
+  </view>
+  <view class="bottom-item" bindtap="toMyInterviewPage">
+    <view class="row">
+      <view class="row mineItem">
+        <image src="/images/mine/mianshi.png"></image>
+        <view>我的面试</view>
+      </view>
+      <image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
+    </view>
+  </view>
+
 </view>

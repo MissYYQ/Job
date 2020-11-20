@@ -129,26 +129,10 @@ Page({
     })
   },
 
-  //跳转至搜索页面
-  toSearchPage: function () {
-    if (this.data.isWxLogin) {
-      wx.navigateTo({
-        url: '/pages/index/search/search'
-      })
-    } else {
-      wx.showToast({
-        title: '未登录！',
-        icon: 'none',
-        duration: 1500,
-        mask: true
-      })
-    }
-  },
-
   //跳转至职位详情页面
   toJobDetailsPage: function () {
     wx.navigateTo({
-      url: '../index/jobDetails/jobDetails'
+      url: '/pages/index/jobDetails/jobDetails'
     })
   },
 
@@ -156,7 +140,7 @@ Page({
   toIntentionJobPage: function () {
     if (this.data.isWxLogin) {
       wx.navigateTo({
-        url: '/pages/index/intentionJob/intentionJob',
+        url: '/pages/mine/studentMine/intentionJob/intentionJob',
       })
     } else {
       wx.showToast({
@@ -171,9 +155,11 @@ Page({
   //跳转至预览简历页面
   toPreviewResumePage: function () {
     wx.navigateTo({
-      url: '/pages/mine/previewResume/previewResume',
+      url: '/pages/mine/studentMine/resume/previewResume/previewResume',
     })
   },
+
+
 
 
 

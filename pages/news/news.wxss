@@ -1,6 +1,6 @@
 page {
-  margin-left: 4%;
-  width: 95%;
+  margin-left: 3%;
+  width: 96%;
 }
 
 /*===== 未登录============ */
@@ -55,19 +55,18 @@ page {
 }
 
 .row image {
-  width: 100rpx;
-  height: 100rpx;
+  margin-left: 10rpx;
+  width: 88rpx;
+  height: 88rpx;
   border-radius: 10rpx;
-  margin-right: 35rpx;
-}
-
-.center-content {
-  width: 450rpx;
+  margin-right: 33rpx;
 }
 
 .otherInfo {
-  color: #555;
-  font-size: 9pt;
+  color: #999;
+  font-size: 8pt;
+  margin-left: 12rpx;
+  overflow: hidden;
 }
 
 .name {
@@ -76,7 +75,7 @@ page {
 }
 
 .lastMsg {
-  margin-top: 10rpx;
+  margin-top: 6rpx;
   font-size: 9pt;
   color: #999;
   overflow: hidden;
@@ -86,7 +85,7 @@ page {
   font-size: 9pt;
   color: #999;
   position: absolute;
-  right: 45rpx;
+  right: 40rpx;
 }
 
 /* ====companyChat.wxml======= */

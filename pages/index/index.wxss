@@ -1,13 +1,18 @@
-@import "/pages/index/search/search.wxss";
-
 page {
   width: 100%;
 }
 
 /* =========common=============== */
+
+input {
+  width: 460rpx;
+  margin-left: 10rpx;
+  padding: 10rpx;
+}
+
 .content {
-  width: 90%;
-  margin: 0 15rpx;
+  margin-left: 4%;
+  width: 92%;
   font-size: 9pt;
   color: #888;
   margin-top: 20rpx;
@@ -40,12 +45,11 @@ page {
 .content-request view {
   background-color: #f3f3f3;
   color: #888;
-  font-size: 9pt;
+  font-size: 8pt;
   padding: 0 16rpx;
-  margin-right: 18rpx;
   border-radius: 10rpx;
-  line-height: 50rpx;
-  margin-right: 20rpx;
+  line-height: 48rpx;
+  margin-right: 18rpx;
   margin-top: 16rpx;
 }
 
@@ -78,7 +82,6 @@ page {
 .studentIndex-search {
   background-color: #F6B501;
   font-size: 10pt;
-  margin-left: -3%;
   width: 100%;
 }
 
@@ -91,7 +94,7 @@ page {
 
 .search-box {
   background-color: white;
-  border-radius: 12rpx;
+  border-radius: 10rpx;
 }
 
 .weui-icon-search {
@@ -107,7 +110,6 @@ page {
 /* 板块 */
 .studentPlate {
   justify-content: center;
-  margin-left: -3%;
   width: 100%;
   background-color: white;
   border-radius: 35rpx;
@@ -129,6 +131,7 @@ page {
 
 /* 推荐职位 */
 .recommendJob {
+  margin-left: 3%;
   width: 94%;
   justify-content: space-between;
   line-height: 3.3em;
@@ -149,24 +152,14 @@ page {
 
 /* ===== companyIndex================ */
 
-.top {
-  margin-left: 15rpx;
-  width: 90%;
+.companyContent {
+  width: 100%;
+  border-radius: 35rpx;
+  margin-top: -30rpx;
+  padding-top: 10rpx;
+  background-color: white;
 }
 
-input {
-  width: 460rpx;
-  margin-left: 10rpx;
-}
-
-.top_search {
-  width: 560rpx;
-}
-
-.top_search_btn {
-  color: #888;
-  margin-right: 10rpx;
-}
 
 .request-content {
   flex-wrap: wrap;

@@ -12,27 +12,6 @@ Page({
     // 学生
     deliveryNum: 0,
     expect: null,
-    myMsg: [{
-        imgUrl: '/images/mine/jianli.png',
-        name: '简历'
-      },
-      {
-        imgUrl: '/images/mine/shoucang.png',
-        name: '收藏'
-      },
-      {
-        imgUrl: '/images/mine/bishi.png',
-        name: '已投'
-      },
-      {
-        imgUrl: '/images/mine/mianshi.png',
-        name: '已面'
-      },
-      {
-        imgUrl: '/images/mine/shezhi.png',
-        name: '设置'
-      },
-    ],
     // 企业
     jobNum: 0,
     company: {
@@ -170,25 +149,22 @@ Page({
     })
   },
 
-  //列表选择
-  studentChangePage: function (e) {
+
+  // ==========student=====================
+
+  //跳转至简历页面
+  toResumePage: function () {
+    wx.navigateTo({
+      url: '/pages/mine/studentMine/resume/resume',
+    })
+  },
+
+  //沟通
+  toNewsPage: function () {
     if (this.data.isWxLogin) {
-      var index = e.currentTarget.dataset.index;
-      if (index === 0) {
-        wx.navigateTo({
-          url: '/pages/mine/resume/resume',
-        })
-      }
-      if (index === 1) {
-        wx.navigateTo({
-          url: '/pages/mine/studentCollect/studentCollect',
-        })
-      }
-      if (index === 2) {
-        wx.navigateTo({
-          url: '/pages/mine/studentCollect/studentCollect',
-        })
-      }
+      wx.switchTab({
+        url: '/pages/news/news',
+      })
     } else {
       wx.showToast({
         title: '未登录！',
@@ -199,32 +175,104 @@ Page({
     }
   },
 
-  //跳转至职位详情页面
-  toJobDetailsPage: function () {
-    wx.navigateTo({
-      url: '/pages/index/jobDetails/jobDetails'
-    })
+  //我的简历
+  toPreviewResumePage: function () {
+    if (this.data.isWxLogin) {
+      wx.navigateTo({
+        url: '/pages/mine/studentMine/resume/previewResume/previewResume',
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
   },
 
-  //跳转至简历页面
-  toResumePage: function () {
-    wx.navigateTo({
-      url: '/pages/mine/resume/resume',
-    })
+  //我的收藏
+  toStudentCollectPage: function () {
+    if (this.data.isWxLogin) {
+      wx.navigateTo({
+        url: '/pages/mine/studentMine/studentCollect/studentCollect',
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
   },
+
+  //我的投递
+  toMyDeliveryPage: function () {
+    if (this.data.isWxLogin) {
+      wx.navigateTo({
+        url: '/pages/mine/studentMine/myDelivery/myDelivery',
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
+  },
+
+  //我的面试
+  toMyInterviewPage: function () {
+    if (this.data.isWxLogin) {
+      wx.navigateTo({
+        url: '/pages/mine/studentMine/myInterview/myInterview',
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
+  },
+
+
+
+  // ======company=====================
 
   //跳转至发布职位页面
   toAddJobPage: function () {
-    wx.navigateTo({
-      url: '/pages/index/addJob/addJob',
-    })
+    if (this.data.isWxLogin) {
+      wx.navigateTo({
+        url: '/pages/mine/companyMine/addJob/addJob',
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
   },
 
   //跳转至添加宣讲会页面
   toAddSeminarPage: function () {
-    wx.navigateTo({
-      url: '/pages/mine/addSeminar/addSeminar',
-    })
+    if (this.data.isWxLogin) {
+      wx.navigateTo({
+        url: '/pages/mine/companyMine/addSeminar/addSeminar',
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
   },
 
 

@@ -3,27 +3,28 @@
     "pages/index/index",
     "pages/index/hotCompany/hotCompany",
     "pages/index/hotJob/hotJob",
+    "pages/index/jobDetails/jobDetails",
+    "pages/index/jobStrategy/jobStrategy",
     "pages/index/seminar/seminar",
     "pages/index/seminar/seminarDetails/seminarDetails",
-    "pages/index/jobStrategy/jobStrategy",
-    "pages/index/jobDetails/jobDetails",
-    "pages/index/search/search",    
-    "pages/index/intentionJob/intentionJob",    
-    "pages/index/addJob/addJob",    
-    "pages/index/companyDetails/companyDetails",    
     
     "pages/news/news",
     "pages/news/chat/chat",
-    
+
     "pages/mine/mine",
-    "pages/mine/resume/resume",
-    "pages/mine/previewResume/previewResume",
-    "pages/mine/companyData/companyData",
+    "pages/mine/companyMine/addJob/addJob",
+    "pages/mine/companyMine/addSeminar/addSeminar",
+    "pages/mine/companyMine/companyCollect/companyCollect",
+    "pages/mine/companyMine/companyData/companyData",
+    "pages/mine/companyMine/companyData/companyDetails/companyDetails",
+    "pages/mine/studentMine/intentionJob/intentionJob",
+    "pages/mine/studentMine/resume/resume",
+    "pages/mine/studentMine/resume/previewResume/previewResume",
+    "pages/mine/studentMine/studentCollect/studentCollect",
+    "pages/mine/studentMine/myDelivery/myDelivery",
+    "pages/mine/studentMine/myInterview/myInterview",
     "pages/mine/userKind/userKind",
-    "pages/mine/studentCollect/studentCollect",
-    "pages/mine/companyCollect/companyCollect",
-    "pages/mine/addSeminar/addSeminar",
-    
+
     "pages/logs/logs"
   ],
   "permission": {

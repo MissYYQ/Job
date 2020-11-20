@@ -15,9 +15,11 @@
     <view wx:for="{{sNews}}" wx:key="index" data-index="{{index}}" bindtap="toChatPage" class="news-item">
       <view class="row ">
         <image src="{{item.src}}"></image>
-        <view class="center-content">
-          <view class="name">{{item.companyName}}</view>
-          <view class="otherInfo">{{item.industry}} · {{item.intentionJob}}</view>
+        <view>
+          <view class="row">
+            <view class="name">{{item.companyName}}</view>
+            <view class="otherInfo">{{item.industry}}</view>
+          </view>
           <view class="lastMsg">{{item.lastMsg}}</view>
         </view>
         <view class="lastChatTime">{{item.lastChatTime}}</view>

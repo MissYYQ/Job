@@ -1,9 +1,9 @@
 @import "style/weui.wxss";      /*引入weui样式库*/
 
-.pageItem{
+/* .pageItem{
   margin-left: -1%;
   width: 100%;
-}
+} */
 
 .row{
   display: flex;

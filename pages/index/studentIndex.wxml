@@ -10,15 +10,6 @@
   </view>
 </view>
 
-<!-- <view class="studentIndex-search">
-  <view class="search-body">
-    <view class="row search-box" bindtap="toSearchPage">
-      <i class="weui-icon-search"></i>
-      <view class="search-placeholder">搜索职位、公司</view>
-    </view>
-  </view>
-</view> -->
-
 <!-- 板块 -->
 <view class="row studentPlate">
   <view class="plate-item" bindtap="toHotCompanyPage">

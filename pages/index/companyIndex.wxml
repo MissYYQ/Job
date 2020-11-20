@@ -1,5 +1,15 @@
-<!-- 顶部 -->
-<view class="top">
+<!--搜索-->
+<view class="studentIndex-search">
+  <view class="search-body">
+    <view class="row search-box">
+      <i class="weui-icon-search"></i>
+      <input type="text" focus value="{{inputVal}}" confirm-type="search" placeholder="搜索职位、公司"
+        placeholder-class="placeholderClass" bindinput="inputVal" />
+      <span class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput"></span>
+    </view>
+  </view>
+</view>
+<!-- <view class="top">
   <view class="top_search">
     <i class="weui-icon-search"></i>
     <input type="text" focus value="{{inputVal}}" confirm-type="search" placeholder="请输入职位名称"
@@ -7,28 +17,27 @@
     <span class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput"></span>
   </view>
   <view class="top_search_btn">搜索</view>
-</view>
+</view> -->
 <!-- 内容 -->
-<view class="content" bindtap="toPreviewResumePage" wx:for="{{studentData}}" wx:key="index"
-  data-index="{{index}}">
-  <view class="row content-top">
-    <view class="row">
-      <view class="name">{{item.intentionJob}}</view>
+<view class="companyContent">
+  <view class="content" bindtap="toPreviewResumePage" wx:for="{{studentData}}" wx:key="index" data-index="{{index}}">
+    <view class="row content-top">
+      <view class="row">
+        <view class="name">{{item.intentionJob}}</view>
+      </view>
+      <view class="salary">{{item.expectedSalary}}</view>
     </view>
-    <view class="salary">{{item.expectedSalary}}</view>
-  </view>
-  <view class="row request-content">
-    <view class="content-request" wx:for="{{studentData[index].skills}}" wx:key="index">
-      <view>{{item}}</view>
+    <view class="row request-content">
+      <view class="content-request" wx:for="{{studentData[index].skills}}" wx:key="index">
+        <view>{{item}}</view>
+      </view>
+    </view>
+    <view class="row content-bottom">
+      <view class="row content-ecruiter">
+        <image src="{{item.avatar}}"></image>
+        <view>{{item.name}}</view>
+      </view>
+      <view class="company">{{item.school}} | {{item.degree}} | {{item.profession}}</view>
     </view>
   </view>
-  <view class="row content-bottom">
-    <view class="row content-ecruiter">
-      <image src="{{item.avatar}}"></image>
-      <view>{{item.name}}</view>
-    </view>
-    <view class="company">{{item.school}} | {{item.degree}} | {{item.profession}}</view>
-  </view>
-  <!-- 分隔线 -->
-  <!-- <view class="divider"></view> -->
 </view>

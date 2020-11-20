@@ -10,7 +10,6 @@ Page({
         src: "/images/index/hotCompany.png",
         companyName: "云程科技",
         industry: "计算机软件",
-        intentionJob: "web前端工程师",
         lastMsg: "您好",
         lastChatTime: "20:04"
       },
@@ -18,7 +17,6 @@ Page({
         src: "/images/index/hotCompany.png",
         companyName: "江西哈哈科技有限公司",
         industry: "游戏开发",
-        intentionJob: "Java工程师",
         lastMsg: "请问此次招聘截止日期是？",
         lastChatTime: "16:16"
       }
@@ -28,7 +26,6 @@ Page({
         name: "哈哈哈",
         school: "九江职业大学",
         degree: "经济管理",
-        intentionJob: "销售",
         lastMsg: "可以聊聊吗",
         lastChatTime: "09:37"
       },
@@ -37,7 +34,6 @@ Page({
         name: "南笙Y",
         school: "九江学院",
         degree: "计算机科学与技术",
-        intentionJob: "web前端工程师",
         lastMsg: "您好",
         lastChatTime: "20:04"
       },

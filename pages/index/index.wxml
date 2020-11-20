@@ -1,9 +1,9 @@
 <!-- 学生 -->
-<view wx:if="{{userKindTag == 1}}" class="pageItem">
+<view wx:if="{{userKindTag == 1}}">
   <include src="/pages/index/studentIndex.wxml"></include>
 </view>
 
 <!-- 企业 -->
-<view wx:if="{{userKindTag == 2}}" class="pageItem">
+<view wx:if="{{userKindTag == 2}}">
   <include src="/pages/index/companyIndex.wxml"></include>
 </view>

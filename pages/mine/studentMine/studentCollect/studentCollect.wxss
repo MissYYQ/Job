@@ -1,0 +1,63 @@
+
+/* 内容 */
+.content{
+  margin-left: 5%;
+  width: 90%;
+}
+
+.content-item{
+  margin-top: 10rpx;
+  padding-bottom: 20rpx;
+  border-bottom: rgba(246, 181, 1, 0.15) solid 3rpx;
+}
+.content-top{
+  justify-content: space-between;
+}
+
+.name{
+  letter-spacing: 2rpx;
+  font-weight: 600;
+  font-size: 11pt;
+  line-height: 2.8em;
+}
+
+.salary{
+  letter-spacing: 2rpx;
+  font-size: 10pt;
+  color: #F6B501;
+}
+
+
+.content-request{
+  flex-wrap: wrap;
+}
+
+.content-request view{
+  font-size: 8pt;
+  background-color: #ebebec;
+  color: #333;
+  padding: 0 12rpx;
+  border-radius: 8rpx;
+  margin-right: 15rpx;
+}
+
+.content-bottom{
+  justify-content: space-between;
+  height: 2.8em;
+}
+
+.content-conpany image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 13rpx;
+}
+
+.content-conpany view{
+  color: #333;
+  font-size: 9pt;
+}
+
+.company{
+  font-size: 9pt;
+  color: #888;
+}

@@ -1,4 +1,4 @@
-@import "/pages/mine/resume/resume.wxss";
+@import "/pages/mine/studentMine/resume/resume.wxss";
 
 page{
   margin-left: 5%;
