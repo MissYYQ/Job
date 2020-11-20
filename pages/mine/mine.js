@@ -243,11 +243,18 @@ Page({
 
   // ======company=====================
 
-  //跳转至发布职位页面
-  toAddJobPage: function () {
+  //编辑公司
+  toCompanyDataPage: function () {
+    wx.navigateTo({
+      url: '/pages/mine/companyMine/companyData/companyData',
+    })
+  },
+
+  //公司详情
+  toCompanyDetailsPage: function () {
     if (this.data.isWxLogin) {
       wx.navigateTo({
-        url: '/pages/mine/companyMine/addJob/addJob',
+        url: '/pages/mine/companyMine/companyData/companyDetails/companyDetails',
       })
     } else {
       wx.showToast({
@@ -259,11 +266,11 @@ Page({
     }
   },
 
-  //跳转至添加宣讲会页面
-  toAddSeminarPage: function () {
+  //职位管理
+  toCompanyJobPage: function () {
     if (this.data.isWxLogin) {
       wx.navigateTo({
-        url: '/pages/mine/companyMine/addSeminar/addSeminar',
+        url: '/pages/mine/companyMine/companyJob/companyJob',
       })
     } else {
       wx.showToast({
@@ -274,6 +281,71 @@ Page({
       })
     }
   },
+
+  //宣讲会管理
+  toCompanySeminarPage: function () {
+    if (this.data.isWxLogin) {
+      wx.navigateTo({
+        url: '/pages/mine/companyMine/companySeminar/companySeminar',
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
+  },
+
+  //待处理简历
+  toDeliveryDealPage: function () {
+    if (this.data.isWxLogin) {
+      wx.navigateTo({
+        url: '/pages/mine/companyMine/deliveryDeal/deliveryDeal',
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
+  },
+
+  //面试
+  toCompanyInterviewPage: function () {
+    if (this.data.isWxLogin) {
+      wx.navigateTo({
+        url: '/pages/mine/companyMine/companyInterview/companyInterview',
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
+  },
+
+  //公司收藏
+  toCompanyCollectPage: function () {
+    if (this.data.isWxLogin) {
+      wx.navigateTo({
+        url: '/pages/mine/companyMine/companyCollect/companyCollect',
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
+  },
+
 
 
 

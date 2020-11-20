@@ -15,7 +15,7 @@
   padding: 10%;
   margin-left: -20%;
   margin-top: -6%;
-  height: 120rpx;
+  height: 90rpx;
   border-radius: 50%;
   background: linear-gradient(rgba(246, 181, 1), rgba(246, 181, 1, 0.5));
   box-shadow: rgba(246, 181, 1, 0.3) 0rpx 10rpx 15rpx 2rpx;
@@ -37,6 +37,10 @@
   position: absolute;
   top: 0;
   margin-top: 0;
+}
+
+.front-data{
+  margin-top: -15rpx;
 }
 
 .userInfo {
@@ -75,7 +79,7 @@
 }
 
 .top-front-data {
-  margin-top: 40rpx;
+  margin-top: 30rpx;
 }
 
 .data-item {
@@ -93,7 +97,7 @@
   font-size: 9pt;
 }
 
-/* =======studentMine.wxml========= */
+/* =======wxml========= */
 .expect {
   color: #999;
   font-size: 10pt;
@@ -103,11 +107,11 @@
 .bottom {
   margin-left: 7%;
   width: 85%;
-  margin-top: 180rpx;
+  margin-top: 200rpx;
 }
 
 .bottom-item {
-  line-height: 2.8em;
+  line-height: 2.9em;
   border-bottom: rgba(246, 181, 1, 0.2) solid 1rpx;
 }
 
@@ -122,140 +126,4 @@
   color: black;
   margin-left: 35rpx;
   letter-spacing: 4rpx;
-}
-
-/* ===========companyMine.wxml======= */
-
-.companyExpect {
-  color: black;
-}
-
-.companyFront {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  font-size: 10pt;
-}
-
-/* 内容 */
-.companyMsg {
-  margin-top: 190rpx;
-  font-size: 10pt;
-  padding-bottom: 150rpx;
-}
-
-.img image {
-  width: 38rpx;
-  height: 38rpx;
-  margin-right: 10rpx;
-}
-
-.img view {
-  padding-right: 22rpx;
-}
-
-.content {
-  font-size: 9pt;
-  color: #888;
-  margin-top: 10rpx;
-  letter-spacing: 2rpx;
-  line-height: 70rpx;
-  padding-bottom: 33rpx;
-  border-bottom: rgba(246, 181, 1, 0.2) solid 2rpx;
-}
-
-.content-request {
-  justify-content: left;
-}
-
-.skill {
-  font-size: 11pt;
-  font-weight: 600;
-  margin-left: 40rpx;
-  line-height: 3em;
-  margin-top: 10rpx;
-}
-
-.skill-item{
-  color: #333;
-  border: 2rpx solid #F6B501;
-  font-size: 9pt;
-  padding: 0 25rpx;
-  margin-right: 20rpx;
-  border-radius: 30rpx;
-  line-height: 50rpx;
-}
-
-.skills {
-  margin: 0 40rpx;
-  justify-content: left;
-}
-
-.content-top {
-  justify-content: space-between;
-  line-height: 80rpx;
-  padding-bottom: 10rpx;
-}
-
-.content-top .name {
-  font-size: 11pt;
-  color: black;
-  font-weight: 600;
-}
-
-.content-top .salary {
-  font-size: 11pt;
-  color: #F6B501;
-  letter-spacing: 10rpx;
-}
-
-.content-request view {
-  background-color: #f3f3f3;
-  color: #888;
-  font-size: 9pt;
-  padding: 0 16rpx;
-  margin-right: 18rpx;
-  border-radius: 10rpx;
-  line-height: 50rpx;
-}
-
-.school {
-  font-size: 7pt;
-  padding: 0 13rpx;
-  border-radius: 20rpx;
-  margin-left: 13rpx;
-  color: white;
-  line-height: 1.7em;
-}
-
-.school-recruitment {
-  background-color: #A5D5C9;
-}
-
-.practice {
-  background-color: #99C85C;
-}
-
-/* 底部 */
-.button{
-  width: 100%;
-  background-color: white;
-  position: fixed;
-  bottom: 0;
-  margin-top: 20rpx;
-  justify-content: center;
-  z-index: 999;
-  text-align: center;
-}
-
-.btn{
-  font-size: 10pt;
-  background-color: #F6B501;
-  color: white;
-  font-weight: 600;
-  letter-spacing: 5rpx;
-  padding: 10rpx 65rpx;
-  border-radius: 8rpx;
-  margin-left: 30rpx;
-  margin-right: 30rpx;
 }

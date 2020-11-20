@@ -9,14 +9,14 @@
 
 /* 顶部 */
 
-.top-back{
+.top-back {
   width: 120%;
   padding: 10%;
   margin-left: -20%;
   margin-top: -6%;
   height: 100rpx;
   border-radius: 50%;
-  background: linear-gradient(rgba(246, 181, 1),rgba(246, 181, 1,0.5));
+  background: linear-gradient(rgba(246, 181, 1), rgba(246, 181, 1, 0.5));
   box-shadow: rgba(246, 181, 1, 0.3) 0rpx 10rpx 15rpx 2rpx;
   overflow: hidden;
   z-index: -1;
@@ -74,12 +74,7 @@
 
 .company-info {
   line-height: 1.2em;
-}
-
-.company-info .row image {
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 15rpx;
+  font-size: 9pt;
 }
 
 .companyName {
@@ -94,7 +89,7 @@
 }
 
 /* 内容区域 */
-.bottom-job{
+.bottom-job {
   margin-top: 310rpx;
 }
 
@@ -137,21 +132,29 @@
   bottom: 0;
   width: 100%;
   background-color: white;
-  z-index: 2;
+  z-index: 999;
 }
 
-.bottom .row image {
+.favorites image {
   width: 100rpx;
   height: 100rpx;
   margin-left: 40rpx;
+}
+
+.btns {
+  justify-content: flex-end;
 }
 
 .btn {
   line-height: 3em;
   color: white;
   background-color: #f6b501;
-  padding: 0 200rpx;
-  font-size: 13pt;
+  padding: 0 60rpx;
+  font-size: 12pt;
   font-weight: 600;
   letter-spacing: 5rpx;
+}
+
+.deliveryBtn {
+  background-color: tomato;
 }

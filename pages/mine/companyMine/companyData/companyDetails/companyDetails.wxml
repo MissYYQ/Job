@@ -3,16 +3,15 @@
 	<view class="top-back"></view>
 	<view class="top-front">
 		<view class="row">
-			<view class="userInfo">
+			<view class="companyInfo">
 				<image src="{{company.src}}"></image>
-				<view class="userKind">{{userKind}}</view>
 			</view>
-			<view class="userInfo-right">
-				<view class="nickName">{{company.name}}</view>
-				<view class="expect companyExpect">{{company.size}} · {{company.financingStage}}</view>
+			<view class="companyInfo-right">
+				<view class="name">{{company.name}}</view>
+				<view class="other">{{company.size}} · {{company.financingStage}}</view>
 			</view>
 		</view>
-		<view class="top-front-data companyFront row">
+		<view class="companyFront row">
 			<view class="data-item">
 				<view class="data-num">{{communicationNum}}</view>
 				<view class="data-name">沟通</view>
@@ -36,7 +35,7 @@
 <!-- 底部 -->
 <view class="companyMsg">
 	<!-- 工作机制 -->
-	<view class="skill">工作时间</view>
+	<view class="title">工作时间</view>
 	<view class="row skills">
 		<view class="row img" wx:if="{{company.workTime}}">
 			<image src="/images/mine/company/workTime.png"></image>
@@ -52,27 +51,27 @@
 		</view>
 	</view>
 	<!-- 公司福利 -->
-	<view class="skill">公司福利</view>
+	<view class="title">公司福利</view>
 	<view class="row skills">
-		<view class="skill-item" wx:for="{{company.treatment}}" wx:key="index" data-index="{{index}}">{{item}}</view>
+		<view class="title-item" wx:for="{{company.treatment}}" wx:key="index" data-index="{{index}}">{{item}}</view>
 	</view>
 	<!-- 公司地址 -->
-	<view class="skill">公司地址</view>
+	<view class="title">公司地址</view>
 	<view class="skills row">
 		<view>{{company.address}}</view>
 	</view>
 	<!-- 投递邮箱 -->
-	<view class="skill">投递邮箱</view>
+	<view class="title">投递邮箱</view>
 	<view class="skills row">
 		<view>{{company.email}}</view>
 	</view>
 	<!-- 公司介绍 -->
-	<view class="skill">公司介绍</view>
+	<view class="title">公司介绍</view>
 	<view class="skills row">
 		<view>{{company.introduce}}</view>
 	</view>
 	<!-- 在招职位 -->
-	<view class="skill">在招职位</view>
+	<view class="title">在招职位</view>
 	<view class="skills">
 		<view class="content" bindtap="toJobDetailsPage" wx:for="{{jobData}}" wx:key="index" data-index="{{index}}">
 			<view class="row content-top">

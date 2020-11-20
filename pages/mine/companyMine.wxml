@@ -2,32 +2,33 @@
 <view class="top">
 	<view class="top-back"></view>
 	<view class="top-front">
-		<view class="row">
+		<view class="row front-data">
 			<view class="userInfo">
 				<image src="{{company.src}}"></image>
 				<view class="userKind" bindtap="toUserKindPage">{{userKind}}</view>
 			</view>
 			<view class="userInfo-right">
-        <view wx:if="{{isWxLogin}}" class="nickName">{{company.name}}</view>
-        <button wx:else open-type="getUserInfo"  bindtap="wxLogin"  class="nickName" 	style="padding: 0; margin: 0;width: 200rpx;display: flex;background: white;">登录</button>
-				<view wx:if="{{company.size}}" class="expect companyExpect">{{company.size}} · {{company.financingStage}}</view>
-				<view wx:else class="expect companyExpect">点击登录解锁更多</view>
+				<view wx:if="{{isWxLogin}}" class="nickName" bindtap="toCompanyDataPage">{{company.name}}</view>
+				<button wx:else open-type="getUserInfo" bindtap="wxLogin" class="nickName"
+					style="padding: 0; margin: 0;width: 200rpx;display: flex;background: white;">登录</button>
+				<view wx:if="{{!isWxLogin}}" class="expect">点击登录解锁更多</view>
+				<view wx:if="{{isWxLogin && company.size}}" class="expect companyExpect">{{company.size}} · {{company.financingStage}}</view>
 			</view>
 		</view>
 		<view class="top-front-data companyFront row">
-			<view class="data-item">
+			<view class="data-item" bindtap="toNewsPage">
 				<view class="data-num">{{communicationNum}}</view>
 				<view class="data-name">沟通</view>
 			</view>
-			<view class="data-item">
+			<view class="data-item" bindtap="toCompanyInterviewPage">
 				<view class="data-num">{{interviewNum}}</view>
 				<view class="data-name">面试</view>
 			</view>
-			<view class="data-item">
+			<view class="data-item" bindtap="toCompanyJobPage">
 				<view class="data-num">{{jobNum}}</view>
 				<view class="data-name">职位</view>
 			</view>
-			<view class="data-item">
+			<view class="data-item" bindtap="toCompanyCollectPage">
 				<view class="data-num">{{favoritesNum}}</view>
 				<view class="data-name">收藏</view>
 			</view>
@@ -35,68 +36,61 @@
 	</view>
 </view>
 
-<!-- 内容 -->
-<view class="companyMsg">
-	<!-- 工作机制 -->
-	<view class="skill">工作时间</view>
-	<view class="row skills">
-		<view class="row img" wx:if="{{company.workTime}}">
-			<image src="/images/mine/company/workTime.png"></image>
-			<view>{{company.workTime}}</view>
-		</view>
-		<view class="row img" wx:if="{{company.weekend}}">
-			<image src="/images/mine/company/weekend.png"></image>
-			<view>双休</view>
-		</view>
-		<view class="row img" wx:if="{{company.flexible}}">
-			<image src="/images/mine/company/flexible.png"></image>
-			<view>弹性工作</view>
-		</view>
-	</view>
-	<!-- 公司福利 -->
-	<view class="skill">公司福利</view>
-	<view class="row skills">
-		<view class="skill-item" wx:for="{{company.treatment}}" wx:key="index" data-index="{{index}}">{{item}}</view>
-	</view>
-	<!-- 公司地址 -->
-	<view class="skill">公司地址</view>
-	<view class="skills row">
-		<view>{{company.address}}</view>
-	</view>
-	<!-- 投递邮箱 -->
-	<view class="skill">投递邮箱</view>
-	<view class="skills row">
-		<view>{{company.email}}</view>
-	</view>
-	<!-- 公司介绍 -->
-	<view class="skill">公司介绍</view>
-	<view class="skills row">
-		<view>{{company.introduce}}</view>
-	</view>
-	<!-- 在招职位 -->
-	<view class="skill">在招职位</view>
-	<view class="skills">
-		<view class="content" bindtap="toJobDetailsPage" wx:for="{{jobData}}" wx:key="index" data-index="{{index}}">
-			<view class="row content-top">
-				<view class="row">
-					<text class="name">{{item.name}}</text>
-					<view wx:if="{{item.kind===1}}" class="school school-recruitment">校招</view>
-					<view wx:if="{{item.kind===2}}" class="school practice">实习</view>
-				</view>
-				<text class="salary">{{item.salary}}</text>
-			</view>
-			<view class="row content-request">
-				<view>{{item.education}}</view>
-				<view>{{item.experience}}</view>
-				<view>{{item.city}}</view>
-			</view>
-		</view>
-	</view>
-
-</view>
-
 <!-- 底部 -->
-<view class="row button">
-	<view class="btn" bindtap="toAddJobPage">发布职位</view>
-	<view class="btn" bindtap="toAddSeminarPage">发布宣讲会</view>
+<view class="bottom">
+	<view class="bottom-item" bindtap="toCompanyDetailsPage">
+		<view class="row">
+			<view class="row mineItem">
+				<image src="/images/mine/company.png"></image>
+				<view>公司详情</view>
+			</view>
+			<image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
+		</view>
+	</view>
+	<view class="bottom-item" bindtap="toCompanyJobPage">
+		<view class="row">
+			<view class="row mineItem">
+				<image src="/images/mine/bishi.png"></image>
+				<view>职位管理</view>
+			</view>
+			<image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
+		</view>
+	</view>
+	<view class="bottom-item" bindtap="toCompanySeminarPage">
+		<view class="row">
+			<view class="row mineItem">
+				<image src="/images/mine/mianshi.png"></image>
+				<view>宣讲会管理</view>
+			</view>
+			<image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
+		</view>
+	</view>
+	<view class="bottom-item" bindtap="toDeliveryDealPage">
+		<view class="row">
+			<view class="row mineItem">
+				<image src="/images/mine/pending.png"></image>
+				<view>待处理简历</view>
+			</view>
+			<image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
+		</view>
+	</view>
+	<view class="bottom-item" bindtap="toCompanyInterviewPage">
+		<view class="row">
+			<view class="row mineItem">
+				<image src="/images/mine/mianshi.png"></image>
+				<view>面试</view>
+			</view>
+			<image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
+		</view>
+	</view>
+	<view class="bottom-item" bindtap="toCompanyCollectPage">
+		<view class="row">
+			<view class="row mineItem">
+				<image src="/images/mine/shoucang.png"></image>
+				<view>收藏</view>
+			</view>
+			<image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
+		</view>
+	</view>
+
 </view>

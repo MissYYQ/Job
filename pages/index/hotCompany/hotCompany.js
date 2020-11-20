@@ -57,7 +57,7 @@ Page({
   //跳转至公司详情页面
   toCompanyPage: function () {
     wx.navigateTo({
-      url: '/pages/index/companyDetails/companyDetails',
+      url: '/pages/mine/companyMine/companyData/companyDetails',
     })
   },
 

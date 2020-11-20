@@ -18,9 +18,8 @@
         <view class="center-content">
           <view class="row">
             <view class="name">{{item.name}}</view>
-            <view class="intentionJob">{{item.intentionJob}}</view>
+            <view class="otherInfo">{{item.school}} · {{item.degree}}</view>
           </view>
-          <view class="otherInfo">{{item.school}} · {{item.degree}}</view>
           <view class="lastMsg">{{item.lastMsg}}</view>
         </view>
         <view class="lastChatTime">{{item.lastChatTime}}</view>

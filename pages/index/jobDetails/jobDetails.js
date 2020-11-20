@@ -10,11 +10,10 @@ Page({
     experience: "1-3年",
     city: "杭州",
     companyName: "云程科技",
-    companySize: "20-99人",
+    industry: "计算机软件",
+    size: "20-99人",
     financingStage: "B轮",
-    address: "××省××市××县（区）××",
-    ecruiterImgUrl: "/images/tabBar/mine02.png",
-    ecruiterName: "姜先生",
+    address: "江西省九江市濂溪区前进东路551号",
     skill: [
       "Node.js",
       "React",
@@ -57,7 +56,7 @@ Page({
   //跳转至公司页面
   toCompanyPage: function () {
     wx.navigateTo({
-      url: '/pages/index/companyDetails/companyDetails',
+      url: '/pages/mine/companyMine/companyData/companyDetails/companyDetails',
     })
   },
 

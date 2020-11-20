@@ -3,7 +3,7 @@
   <view class="search-body">
     <view class="row search-box">
       <i class="weui-icon-search"></i>
-      <input type="text" focus value="{{inputVal}}" confirm-type="search" placeholder="搜索职位、公司"
+      <input type="text" focus value="{{inputVal}}" confirm-type="search" placeholder="请输入职位名称"
         placeholder-class="placeholderClass" bindinput="inputVal" />
       <span class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput"></span>
     </view>

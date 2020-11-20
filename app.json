@@ -17,12 +17,18 @@
     "pages/mine/companyMine/companyCollect/companyCollect",
     "pages/mine/companyMine/companyData/companyData",
     "pages/mine/companyMine/companyData/companyDetails/companyDetails",
+    "pages/mine/companyMine/companyJob/companyJob",
+    "pages/mine/companyMine/companySeminar/companySeminar",
+    "pages/mine/companyMine/companyInterview/companyInterview",
+    "pages/mine/companyMine/deliveryDeal/deliveryDeal",
+
     "pages/mine/studentMine/intentionJob/intentionJob",
     "pages/mine/studentMine/resume/resume",
     "pages/mine/studentMine/resume/previewResume/previewResume",
     "pages/mine/studentMine/studentCollect/studentCollect",
     "pages/mine/studentMine/myDelivery/myDelivery",
     "pages/mine/studentMine/myInterview/myInterview",
+
     "pages/mine/userKind/userKind",
 
     "pages/logs/logs"
