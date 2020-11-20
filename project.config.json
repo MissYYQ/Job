@@ -68,6 +68,11 @@
           "pathName": "pages/index/jobDetails/jobDetails",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "myDelivery",
+          "pathName": "pages/mine/studentMine/myDelivery/myDelivery",
+          "scene": null
         }
       ]
     }

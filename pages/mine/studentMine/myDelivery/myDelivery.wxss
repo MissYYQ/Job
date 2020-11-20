@@ -1,1 +1,29 @@
-/* pages/mine/studentMine/myDelivery/myDelivery.wxss */
+page {
+  margin-left: 5%;
+  width: 90%;
+  font-size: 10pt;
+  color: #777;
+}
+
+.delivery-item {
+  margin-top: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: rgba(246, 181, 1, 0.2) solid 2rpx;
+}
+
+.name {
+  font-size: 11pt;
+  font-weight: 600;
+  line-height: 2.2em;
+}
+
+.item {
+  height: 2.2em;
+  text-align: center;
+}
+
+.item image {
+  width: 33rpx;
+  height: 33rpx;
+  padding-right: 20rpx;
+}

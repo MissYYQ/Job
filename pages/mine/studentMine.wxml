@@ -48,15 +48,6 @@
       <image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
     </view>
   </view>
-  <view class="bottom-item" bindtap="toStudentCollectPage">
-    <view class="row">
-      <view class="row mineItem">
-        <image src="/images/mine/shoucang.png"></image>
-        <view>我的收藏</view>
-      </view>
-      <image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
-    </view>
-  </view>
   <view class="bottom-item" bindtap="toMyDeliveryPage">
     <view class="row">
       <view class="row mineItem">
@@ -75,5 +66,13 @@
       <image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
     </view>
   </view>
-
+  <view class="bottom-item" bindtap="toStudentCollectPage">
+    <view class="row">
+      <view class="row mineItem">
+        <image src="/images/mine/shoucang.png"></image>
+        <view>我的收藏</view>
+      </view>
+      <image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
+    </view>
+  </view>
 </view>

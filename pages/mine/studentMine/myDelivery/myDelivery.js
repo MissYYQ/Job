@@ -1,11 +1,36 @@
-// pages/mine/studentMine/myDelivery/myDelivery.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    //1-投递、2-通过、3-面试、4-接受、5-拒绝、6-未通过
+    delivery: [
+      {
+        jobName: "前端开发工程师",
+        companyName: "云程科技",
+        salary: "8K-10K",
+        city: "杭州",
+        deliveryTime: "2020-11-20  20:02",
+        status: 1,
+      },
+      {
+        jobName: "前端开发工程师",
+        companyName: "云程科技",
+        salary: "8K-10K/月",
+        city: "杭州",
+        deliveryTime: "2020-11-20  20:02",
+        status: 5,
+      },
+      {
+        jobName: "前端开发工程师",
+        companyName: "云程科技",
+        salary: "8K-10K/月",
+        city: "杭州",
+        deliveryTime: "2020-11-20  20:02",
+        status: 6,
+      },
+    ]
   },
 
   /**
@@ -14,6 +39,17 @@ Page({
   onLoad: function (options) {
 
   },
+
+  //跳转至工作详情页面
+  toJobDetailsPage: function() {
+    wx.navigateTo({
+      url: '/pages/index/jobDetails/jobDetails',
+    })
+  },
+
+
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -57,10 +93,4 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
