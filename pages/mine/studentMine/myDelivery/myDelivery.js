@@ -11,7 +11,7 @@ Page({
         companyName: "云程科技",
         salary: "8K-10K",
         city: "杭州",
-        deliveryTime: "2020-11-20  20:02",
+        deliveryTime: "2020/11/20  20:02",
         status: 1,
       },
       {

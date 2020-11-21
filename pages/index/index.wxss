@@ -34,13 +34,11 @@ input {
   font-weight: 600;
 }
 
-
 .salary {
   font-size: 12pt;
   color: #F6B501;
   letter-spacing: 10rpx;
 }
-
 
 .content-request view {
   background-color: #f3f3f3;

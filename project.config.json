@@ -56,25 +56,7 @@
       "list": []
     },
     "miniprogram": {
-      "list": [
-        {
-          "name": "companyDetails",
-          "pathName": "pages/mine/companyMine/companyData/companyDetails/companyDetails",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "jobDetails",
-          "pathName": "pages/index/jobDetails/jobDetails",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "myDelivery",
-          "pathName": "pages/mine/studentMine/myDelivery/myDelivery",
-          "scene": null
-        }
-      ]
+      "list": []
     }
   }
 }
