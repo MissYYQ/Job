@@ -1,8 +1,8 @@
 page {
   margin-left: 5%;
   width: 90%;
-  font-size: 10pt;
-  color: #777;
+  font-size: 9pt;
+  color: #333;
 }
 
 .delivery-item {
@@ -12,13 +12,13 @@ page {
 }
 
 .name {
-  font-size: 11pt;
+  font-size: 10pt;
   font-weight: 600;
   line-height: 2.2em;
 }
 
 .item {
-  height: 2.2em;
+  height: 2em;
   text-align: center;
 }
 
@@ -26,4 +26,39 @@ page {
   width: 33rpx;
   height: 33rpx;
   padding-right: 20rpx;
+}
+
+.status{
+  margin-top: 20rpx;
+  padding-bottom: 20rpx;
+  justify-content: flex-start;
+}
+
+.status-item{
+  text-align: center;
+}
+
+.circle{
+  padding: 25rpx 22rpx;
+  border-radius: 50%;
+}
+
+.bar{
+  height: 12rpx;
+  width: 60rpx;
+}
+
+.active{
+  background-color: #f6b501;
+  color: white;
+}
+
+.inactivated{
+  background-color: rgb(238, 238, 238);
+  color: #888;
+}
+
+.failure{
+  background-color: tomato;
+  color: white;
 }

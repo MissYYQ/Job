@@ -13,4 +13,32 @@
     <view>投递时间：{{item.deliveryTime}}</view>
   </view>
   <!-- 状态 -->
+  <view class="row status">
+    <!-- 投递 -->
+    <view class="row status-item">
+      <view class="circle {{item.status >= 1 ? 'active' : 'inactivated'}}">投递</view>
+    </view>
+    <!-- 通过 -->
+    <view wx:if="{{item.status < 6}}" class="row status-item">
+      <view class="bar {{item.status >= 2 ? 'active' : 'inactivated'}}"></view>
+      <view class="circle {{item.status >= 2 ? 'active' : 'inactivated'}}">通过</view>
+    </view>
+    <!-- 面试 -->
+    <view wx:if="{{item.status < 6}}" class="row status-item">
+      <view class="bar {{item.status >= 3 ? 'active' : 'inactivated'}}"></view>
+      <view class="circle {{item.status >= 3 ? 'active' : 'inactivated'}}">面试</view>
+    </view>
+    <!-- 接受/拒绝 -->
+    <view wx:if="{{item.status < 6 }}" class="row status-item">
+      <view class="bar {{item.status >= 4 ? 'active' : 'inactivated'}}"></view>
+      <view wx:if="{{item.status == 5}}" class="circle {{item.status == 5 ? 'failure' : 'inactivated'}}">拒绝</view>
+      <view wx:else class="circle {{item.status == 4 ? 'active' : 'inactivated'}}">接受</view>
+    </view>
+    <!--未通过 -->
+    <view wx:if="{{item.status >= 6}}" class="row status-item">
+      <view class="bar {{item.status >= 6 ? 'active' : 'inactivated'}}"></view>
+      <view class="circle {{item.status >= 6 ? 'failure' : 'inactivated'}}">未通过</view>
+    </view>
+
+  </view>
 </view>
