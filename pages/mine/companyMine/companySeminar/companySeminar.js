@@ -1,11 +1,22 @@
-// pages/mine/companyMine/companySeminar/companySeminar.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    seminar: [{
+        school: "九江学院",
+        position: "望庐楼407",
+        date: "2020/11/11",
+        time: "10:30",
+      },
+      {
+        school: "华东交通大学理工学院",
+        position: "望庐楼407",
+        date: "2020/11/11",
+        time: "10:30",
+      },
+    ]
   },
 
   /**
@@ -15,52 +26,22 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
 
+  //查看
+  toSeminarDetailsPage: function () {
+    wx.navigateTo({
+      url: '/pages/index/seminar/seminarDetails/seminarDetails',
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  //编辑
+  toAddSeminarPage: function () {
+    wx.navigateTo({
+      url: '/pages/mine/companyMine/addSeminar/addSeminar',
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
 
-  },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
 
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

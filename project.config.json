@@ -62,6 +62,11 @@
           "pathName": "pages/mine/companyMine/companyJob/companyJob",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "companySeminar",
+          "pathName": "pages/mine/companyMine/companySeminar/companySeminar",
+          "scene": null
         }
       ]
     }

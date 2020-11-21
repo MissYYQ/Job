@@ -1,1 +1,57 @@
-/* pages/mine/companyMine/companySeminar/companySeminar.wxss */
+page {
+  margin-left: 5%;
+  width: 90%;
+  font-size: 10pt;
+  color: #666;
+}
+
+.item {
+  margin-top: 20rpx;
+  padding-bottom: 30rpx;
+  border-bottom: rgba(246, 181, 1, 0.15) solid 3rpx;
+  justify-content: space-between;
+}
+
+.position {
+  font-weight: 600;
+  font-size: 10pt;
+  margin-right: 20rpx;
+  line-height: 1.5em;
+}
+
+.operate view {
+  width: 1.2em;
+  text-align: center;
+  font-size: 9pt;
+  margin-left: 20rpx;
+  border-radius: 10rpx;
+  padding: 15rpx;
+}
+
+.look {
+  background-color: yellowgreen;
+  color: white;
+}
+
+.edit {
+  background-color: #F6B501;
+  color: white;
+}
+
+.delete {
+  background-color: tomato;
+  color: white;
+}
+
+.add {
+  position: fixed;
+  bottom: 10%;
+  right: 10%;
+  z-index: 99;
+}
+
+.add image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}

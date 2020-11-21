@@ -1,2 +1,18 @@
-<!--pages/mine/companyMine/companySeminar/companySeminar.wxml-->
-<text>pages/mine/companyMine/companySeminar/companySeminar.wxml</text>
+<view wx:for="{{seminar}}" wx:key="index" data-index="{{index}}" class="row item">
+  <view class="position">
+    <view>{{item.school}}</view>
+    <view>{{item.position}}</view>
+    <view>{{item.date}} {{item.time}}</view>
+  </view>
+  <!-- 操作 -->
+  <view class="row operate">
+    <view class="look" bindtap="toSeminarDetailsPage">查看</view>
+    <view class="edit" bindtap="toAddSeminarPage">编辑</view>
+    <view class="delete">删除</view>
+  </view>
+</view>
+
+<!-- 添加 -->
+<view class="add" bindtap="toAddSeminarPage">
+  <image src="/images/mine/add.png"></image>
+</view>
