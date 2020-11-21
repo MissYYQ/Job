@@ -1,2 +1,12 @@
-<!--pages/mine/companyMine/companyJob/companyJob.wxml-->
-<text>pages/mine/companyMine/companyJob/companyJob.wxml</text>
+<view wx:for="{{jobData}}" wx:key="index" data-index="{{index}}" class="row job-item">
+  <view class="row">
+    <text class="name">{{item.name}}</text>
+    <text class="salary">{{item.salary}}</text>
+  </view>
+  <!-- 操作 -->
+  <view class="row operate">
+    <view class="look">查看</view>
+    <view class="edit">编辑</view>
+    <view class="delete">删除</view>
+  </view>
+</view>

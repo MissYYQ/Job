@@ -1,1 +1,51 @@
-/* pages/mine/companyMine/companyJob/companyJob.wxss */
+page {
+  margin-left: 5%;
+  width: 90%;
+  font-size: 10pt;
+}
+
+.job-item {
+  margin-top: 10rpx;
+  padding-bottom: 20rpx;
+  border-bottom: rgba(246, 181, 1, 0.15) solid 3rpx;
+  justify-content: space-between;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 12pt;
+  line-height: 2.8em;
+}
+
+.salary {
+  margin-left: 20rpx;
+  letter-spacing: 5rpx;
+  font-size: 10pt;
+  color: #F6B501;
+}
+
+.operate{
+  font-size: 9pt;
+}
+
+.operate view{
+  font-size: 9pt;
+  margin-left: 20rpx;
+  border-radius: 10rpx;
+  padding: 0 15rpx;
+}
+
+.look{
+  background-color: #F6B501;
+  color: white;
+}
+
+.edit{
+  background-color: yellowgreen;
+  color: white;
+}
+
+.delete{
+  background-color: tomato;
+  color: white;
+}
