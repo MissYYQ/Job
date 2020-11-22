@@ -58,14 +58,9 @@
     "miniprogram": {
       "list": [
         {
-          "name": "companyJob",
-          "pathName": "pages/mine/companyMine/companyJob/companyJob",
+          "name": "deliveryDeal",
+          "pathName": "pages/mine/companyMine/deliveryDeal/deliveryDeal",
           "query": "",
-          "scene": null
-        },
-        {
-          "name": "companySeminar",
-          "pathName": "pages/mine/companyMine/companySeminar/companySeminar",
           "scene": null
         }
       ]

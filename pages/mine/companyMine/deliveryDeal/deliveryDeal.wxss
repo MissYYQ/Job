@@ -1,1 +1,49 @@
-/* pages/mine/companyMine/deliveryDeal/deliveryDeal.wxss */
+page {
+  margin-left: 5%;
+  width: 90%;
+  font-size: 10pt;
+  color: #666;
+}
+
+.item {
+  margin-top: 20rpx;
+  padding-bottom: 40rpx;
+  border-bottom: rgba(246, 181, 1, 0.2) solid 2rpx;
+}
+
+.name {
+  font-weight: 600;
+  line-height: 2em;
+}
+
+.botton{
+  margin-top: 20rpx;
+}
+
+.botton view {
+  font-size: 9pt;
+  padding: 5rpx 30rpx;
+  border-radius: 10rpx;
+  margin-right: 30rpx;
+  letter-spacing: 3rpx;
+}
+
+.passBtn {
+  background-color: turquoise;
+  color: white;
+}
+
+.failBtn {
+  background-color: tomato;
+  color: white;
+}
+
+.interview {
+  background-color: #f6b501;
+  color: white;
+}
+
+.fail {
+  background-color: #ccc;
+  color: #888;
+}

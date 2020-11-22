@@ -9,7 +9,3 @@
 .msg-item {
   height: 3.3em;
 }
-
-/* .item-name {
-  font-weight: 600;
-} */

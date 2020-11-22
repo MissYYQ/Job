@@ -1,2 +1,27 @@
-<!--pages/mine/companyMine/deliveryDeal/deliveryDeal.wxml-->
-<text>pages/mine/companyMine/deliveryDeal/deliveryDeal.wxml</text>
+<view wx:for="{{delivery}}" wx:key="index" data-index="{{index}}" class="item">
+  <view class="row" bindtap="toJobDetailsPage">
+    <view>应聘职位：</view>
+    <view class="name">{{item.jobName}}</view>
+  </view>
+  <view class="row" bindtap="toPreviewResumePage">
+    <view>应聘者：</view>
+    <view class="name">{{item.studentName}}</view>
+  </view>
+  <view class="row" bindtap="openResumeFile">
+    <view>简历：</view>
+    <view class="name">{{resumeFile.name}}</view>
+  </view>
+  <!-- 投递处理（是否通过） -->
+  <view wx:if="{{item.status == 1}}" class="row botton">
+    <view class="passBtn">通过</view>
+    <view class="failBtn">不通过</view>
+  </view>
+  <!-- 已通过（是否邀请面试） -->
+  <view wx:if="{{item.status == 2}}" class="botton">
+    <view class="interview">邀请面试</view>
+  </view>
+  <!-- 不通过 -->
+  <view wx:if="{{item.status == 6}}" class="row botton">
+    <view class="fail">不通过</view>
+  </view>
+</view>
