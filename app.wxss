@@ -1,21 +1,22 @@
-@import "style/weui.wxss";      /*引入weui样式库*/
+@import "style/weui.wxss";
+/*引入weui样式库*/
 
-/* .pageItem{
-  margin-left: -1%;
-  width: 100%;
-} */
 
-.row{
+.row {
   display: flex;
   flex-direction: row;
   align-items: center;
   box-sizing: border-box;
 }
 
+.placeholderStyle {
+  font-size: 9pt;
+  color: #888;
+  text-align: left;
+}
 
-
-
-::-webkit-scrollbar{  /*隐藏滚动条 */
+::-webkit-scrollbar {
+  /*隐藏滚动条 */
   width: 0;
   height: 0;
   color: transparent;

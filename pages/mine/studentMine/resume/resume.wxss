@@ -142,7 +142,6 @@ page{
   height: 35rpx;
 }
 
-
 input{
   color: #555555;
 }
@@ -192,11 +191,6 @@ textarea{
 
 .resumeFile{
   padding-bottom: 35rpx;
-}
-
-.placeholderStyle{
-  font-size: 9pt;
-  color: #888;
 }
 
 
