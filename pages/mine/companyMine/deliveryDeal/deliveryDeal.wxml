@@ -26,27 +26,40 @@
 <view wx:if="{{showTemplate}}" class="showTemplate">
   <view class="template-back"></view>
   <view class="template">
-    <view class="row template-item">
-      <view class="template-title">面试日期</view>
+    <view class="template-item">
+      <view class="row template-title">
+        <view>面试日期</view>
+        <view class="required">*</view>
+      </view>
       <picker mode="date" start="{{nowDate}}" end="2022-01-01" bindchange="dateChange">
         <input value="{{addInterview.date}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
       </picker>
     </view>
-    <view class="row template-item">
-      <view class="template-title">面试时间</view>
+    <view class="template-item">
+      <view class="row template-title">
+        <view>面试时间</view>
+        <view class="required">*</view>
+      </view>
       <picker mode="time" start="08:00" end="22:00" bindchange="timeChange">
         <input value="{{addInterview.time}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
       </picker>
     </view>
-    <view class="row template-item">
-      <view class="template-title">面试地点</view>
-      <input data-key="location" value="{{addInterview.location}}" placeholder="请输入..."
-        placeholder-class="placeholderStyle" bindinput="addInterview"></input>
+    <view class="template-item">
+      <view class="row template-title">
+        <view>面试地区</view>
+        <view class="required">*</view>
+      </view>
+      <picker mode="region" bindchange="regionChange">
+        <input value="{{addInterview.region}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
+      </picker>
     </view>
     <view class="template-item">
-      <view class="template-title">备注</view>
-      <textarea data-key="remark" value="{{addInterview.remark}}" placeholder="请输入..."
-        placeholder-class="placeholderStyle" bindinput="addInterview"></textarea>
+      <view class="row template-title">
+        <view>详细地点</view>
+        <view class="required">*</view>
+      </view>
+      <input data-key="detailedAddress" value="{{addInterview.detailedAddress}}" placeholder="请输入..."
+        placeholder-class="placeholderStyle" bindinput="addInterview"></input>
     </view>
     <!-- 底部按钮 -->
     <view class="row button">

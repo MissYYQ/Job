@@ -62,6 +62,29 @@
           "pathName": "pages/mine/companyMine/deliveryDeal/deliveryDeal",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "companyCollect",
+          "pathName": "pages/mine/companyMine/companyCollect/companyCollect",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "addJob",
+          "pathName": "pages/mine/companyMine/addJob/addJob",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "addSeminar",
+          "pathName": "pages/mine/companyMine/addSeminar/addSeminar",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "resume",
+          "pathName": "pages/mine/studentMine/resume/resume",
+          "scene": null
         }
       ]
     }

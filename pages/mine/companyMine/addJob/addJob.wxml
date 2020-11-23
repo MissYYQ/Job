@@ -1,31 +1,46 @@
 <view class="content">
   <!-- 职位名称 -->
   <view class="row msg-item">
-    <view class="item-name">职位名称</view>
+    <view class="row">
+      <view class="item-name">职位名称</view>
+      <view class="required">*</view>
+    </view>
     <input class="data" value="{{addJob.name}}" data-key="name" placeholder="请输入..."
       placeholder-class="placeholderStyle" bindinput="addJob"></input>
   </view>
   <!-- 最低薪资 -->
   <view class="row msg-item">
-    <view class="item-name">最低薪资</view>
+    <view class="row">
+      <view class="item-name">最低薪资</view>
+      <view class="required">*</view>
+    </view>
     <input class="data" value="{{addJob.lowSalary}}" data-key="lowSalary" placeholder="薪资/月..."
       placeholder-class="placeholderStyle" bindinput="addJob"></input>
   </view>
   <!-- 最高薪资 -->
   <view class="row msg-item">
-    <view class="item-name">最高薪资</view>
+    <view class="row">
+      <view class="item-name">最高薪资</view>
+      <view class="required">*</view>
+    </view>
     <input class="data" value="{{addJob.highSalary}}" data-key="highSalary" placeholder="薪资/月..."
       placeholder-class="placeholderStyle" bindinput="addJob"></input>
   </view>
   <!-- 工作城市 -->
   <view class="row msg-item">
-    <view class="item-name">工作城市</view>
+    <view class="row">
+      <view class="item-name">工作城市</view>
+      <view class="required">*</view>
+    </view>
     <input class="data" value="{{addJob.city}}" data-key="city" placeholder="请输入..."
       placeholder-class="placeholderStyle" bindinput="addJob"></input>
   </view>
   <!-- 经验要求 -->
   <view class="row msg-item">
-    <view class="item-name">经验要求</view>
+    <view class="row">
+      <view class="item-name">经验要求</view>
+      <view class="required">*</view>
+    </view>
     <picker bindchange="experiencePicker" value="{{experience[experienceIndex]}}" range="{{experience}}"
       data-key="experience" class="data">
       <input data-key="experience" value="{{experience[experienceIndex]}}" placeholder="请选择..."
@@ -34,7 +49,10 @@
   </view>
   <!-- 学历要求 -->
   <view class="row msg-item">
-    <view class="item-name">学历要求</view>
+    <view class="row">
+      <view class="item-name">学历要求</view>
+      <view class="required">*</view>
+    </view>
     <picker bindchange="degreePicker" value="{{degree[degreeIndex]}}" range="{{degree}}" data-key="degree" class="data">
       <input data-key="degree" value="{{degree[degreeIndex]}}" placeholder="请选择..."
         placeholder-class="placeholderStyle"></input>

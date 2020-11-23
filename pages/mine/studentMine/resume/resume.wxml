@@ -13,7 +13,10 @@
 			<!-- 左边 -->
 			<view class="top-left">
 				<view class="row msg-item">
-					<view class="item-name">生日</view>
+					<view class="row">
+						<view class="item-name">生日</view>
+						<view class="required">*</view>
+					</view>
 					<view class="data">
 						<picker mode="date" value="{{resume.birthday}}" data-key="birthday" bindchange="bindDateChange">
 							<input value="{{resume.birthday}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
@@ -21,7 +24,10 @@
 					</view>
 				</view>
 				<view class="row msg-item">
-					<view class="item-name">籍贯</view>
+					<view class="row">
+						<view class="item-name">籍贯</view>
+						<view class="required">*</view>
+					</view>
 					<input class="data" type="text" value="{{resume.hometown}}" data-key="hometown" bindinput="editMsg"
 						placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 				</view>
@@ -31,12 +37,18 @@
 						placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 				</view>
 				<view class="row msg-item">
-					<view class="item-name">电话</view>
+					<view class="row">
+						<view class="item-name">电话</view>
+						<view class="required">*</view>
+					</view>
 					<input class="data" type="number" maxlength="11" value="{{resume.phone}}" data-key="phone" bindinput="editMsg"
 						placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 				</view>
 				<view class="row msg-item">
-					<view class="item-name">邮箱</view>
+					<view class="row">
+						<view class="item-name">邮箱</view>
+						<view class="required">*</view>
+					</view>
 					<input class="data" value="{{resume.mailbox}}" data-key="mailbox" bindinput="editMsg" placeholder="请输入..."
 						placeholder-class="placeholderStyle"></input>
 				</view>
@@ -111,16 +123,26 @@
 	<!-- 编辑求职意向 -->
 	<view wx:if="{{mark === 'intentionJob' && isEdit}}">
 		<view class="row msg-item">
-			<view class="item-name">期望职业</view>
+			<view class="row">
+				<view class="item-name">期望职位</view>
+				<view class="required">*</view>
+			</view>
 			<input class="data" type="text" value="{{intentionJob.job}}" data-key="job" bindinput="editIJ"
 				placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 		</view>
 		<view class="row msg-item">
-			<view class="item-name">期望薪资</view>
-			<input class="data" type="number" data-key="salary" value="{{intentionJob.salary}}" bindinput="editIJ" placeholder="请输入..." placeholder-class="placeholderStyle"></input>
+			<view class="row">
+				<view class="item-name">期望薪资</view>
+				<view class="required">*</view>
+			</view>
+			<input class="data" type="number" data-key="salary" value="{{intentionJob.salary}}" bindinput="editIJ"
+				placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 		</view>
 		<view class="row msg-item">
-			<view class="item-name">期望城市</view>
+			<view class="row">
+				<view class="item-name">期望城市</view>
+				<view class="required">*</view>
+			</view>
 			<input class="data" type="text" value="{{intentionJob.city}}" data-key="city" bindinput="editIJ"
 				placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 		</view>
@@ -161,17 +183,26 @@
 	<view wx:if="{{mark === 'educationBackground' && isEdit}}">
 		<view>
 			<view class="row msg-item">
-				<view class="item-name">学校</view>
+				<view class="row">
+					<view class="item-name">学校</view>
+					<view class="required">*</view>
+				</view>
 				<input class="data" type="text" value="{{educationBackground.school}}" data-key="school" bindinput="editEB"
 					placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 			</view>
 			<view class="row msg-item">
-				<view class="item-name">专业</view>
+				<view class="row">
+					<view class="item-name">专业</view>
+					<view class="required">*</view>
+				</view>
 				<input class="data" type="text" value="{{educationBackground.profession}}" data-key="profession"
 					bindinput="editEB" placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 			</view>
 			<view class="row msg-item">
-				<view class="item-name">学历</view>
+				<view class="row">
+					<view class="item-name">学历</view>
+					<view class="required">*</view>
+				</view>
 				<input class="data" type="text" value="{{educationBackground.degree}}" data-key="degree" bindinput="editEB"
 					placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 			</view>
@@ -369,7 +400,10 @@
 <view class="item">
 	<!-- 项名 -->
 	<view class="row" bindtap="addResume">
-		<view class="title">上传简历</view>
+		<view class="row">
+			<view class="title">上传简历</view>
+			<view class="required">*</view>
+		</view>
 		<image src="/images/mine/resume/add.png" class="add-img"></image>
 	</view>
 	<!-- 简历附件名显示 -->

@@ -1,1 +1,43 @@
-/* pages/mine/companyCollect/companyCollect.wxss */
+page {
+  margin-left: 5%;
+  width: 90%;
+  font-size: 9pt;
+  color: #666;
+}
+
+.content {
+  margin-top: 22rpx;
+  padding-bottom: 33rpx;
+  border-bottom: rgba(246, 181, 1, 0.15) solid 3rpx;
+}
+
+.content-top {
+  justify-content: space-between;
+  line-height: 1.8em;
+  padding-bottom: 10rpx;
+}
+
+.name {
+  font-size: 10pt;
+  font-weight: 600;
+  letter-spacing: 3rpx;
+}
+
+.educationBackground {
+  font-size: 9pt;
+}
+
+.request-content {
+  flex-wrap: wrap;
+}
+
+.content-request view {
+  background-color: #f3f3f3;
+  color: #888;
+  font-size: 8pt;
+  padding: 0 16rpx;
+  border-radius: 10rpx;
+  line-height: 48rpx;
+  margin-right: 18rpx;
+  margin-top: 16rpx;
+}

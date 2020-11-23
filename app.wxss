@@ -15,6 +15,10 @@
   text-align: left;
 }
 
+.required{
+  color: red;
+}
+
 ::-webkit-scrollbar {
   /*隐藏滚动条 */
   width: 0;

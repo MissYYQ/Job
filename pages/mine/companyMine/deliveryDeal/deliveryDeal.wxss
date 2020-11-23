@@ -64,9 +64,9 @@ page {
 
 .template {
   position: absolute;
-  top: 10%;
+  top: 13%;
   width: 80%;
-  height: 60%;
+  height: 56%;
   background-color: white;
   border-radius: 20rpx;
   padding: 5%;
@@ -77,21 +77,30 @@ page {
 }
 
 .template-title {
-  width: 160rpx;
+  line-height: 2.5em;
+}
+
+.template-title view{
+  margin-right: 20rpx;
+}
+
+input{
+  font-weight: 600;
 }
 
 .button{
   justify-content: center;
-  margin-top: 20rpx;
+  margin-top: 70rpx;
 }
 
 .button view{
-  width: 40%;
+  width: 45%;
   margin-left: 25rpx;
   margin-right: 25rpx;
   line-height: 2.2em;
   text-align: center;
   border-radius: 10rpx;
+  letter-spacing: 3rpx;
 }
 
 .cancelBtn{

@@ -1,2 +1,11 @@
-<!--pages/mine/companyCollect/companyCollect.wxml-->
-<text>pages/mine/companyCollect/companyCollect.wxml</text>
+<view class="content" bindtap="toPreviewResumePage" wx:for="{{studentData}}" wx:key="index" data-index="{{index}}">
+  <view class="row content-top">
+    <view class="name">{{item.name}}</view>
+    <view class="educationBackground">{{item.school}} · {{item.degree}} · {{item.profession}}</view>
+  </view>
+  <view class="row request-content">
+    <view class="content-request" wx:for="{{studentData[index].skills}}" wx:key="index">
+      <view>{{item}}</view>
+    </view>
+  </view>
+</view>

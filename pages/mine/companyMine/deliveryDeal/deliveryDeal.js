@@ -7,6 +7,7 @@ Page({
    */
   data: {
     showTemplate: false,
+    addInterview: {},
     //1-投递、2-通过、3-面试、4-接受、5-拒绝、6-未通过
     delivery: [{
         jobName: "前端开发工程师",
@@ -87,6 +88,15 @@ Page({
     wx.setStorageSync('addInterview', this.data.addInterview)
   },
 
+  //地区picker改变
+  regionChange: function (e) {
+    let region = "addInterview.region"
+    this.setData({
+      [region]: e.detail.value
+    })
+    wx.setStorageSync('addInterview', this.data.addInterview)
+  },
+
   //添加面试信息
   addInterview: function (e) {
     var key = e.currentTarget.dataset.key;
@@ -98,19 +108,44 @@ Page({
   },
 
   //取消
-  cancelBtn:function(){
+  cancelBtn: function () {
     this.setData({
-      addInterview: null,
+      addInterview: {},
       showTemplate: false
     })
     wx.setStorageSync('addInterview', this.data.addInterview)
   },
 
   //确定
-  determineBtn: function(){
-    this.setData({
-      showTemplate: false
-    })
+  determineBtn: function () {
+    //判空
+    let addInterview = this.data.addInterview;
+    if (addInterview.date == null) {
+      wx.showToast({
+        title: '面试日期不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else if (addInterview.time == null) {
+      wx.showToast({
+        title: '面试时间不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else if (addInterview.location == null) {
+      wx.showToast({
+        title: '面试地点不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    } else {
+      this.setData({
+        showTemplate: false
+      })
+    }
   }
 
 })

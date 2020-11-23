@@ -119,8 +119,12 @@ Page({
 
   //取消
   cancelBtn: function () {
-    wx.setStorageSync('addJob', {});
-    wx.setStorageSync('jobSkill', []);
+    this.setData({
+      addJob: {},
+      jobSkill: null
+    })
+    wx.setStorageSync('addJob', this.data.addJob);
+    wx.setStorageSync('jobSkill', this.data.jobSkill);
     wx.reLaunch({
       url: '/pages/index/index',
     })
@@ -172,22 +176,14 @@ Page({
         duration: 1500,
         mask: true
       })
-    } else if (addJob.claim == null) {
-      wx.showToast({
-        title: '岗位要求不能为空！',
-        icon: 'none',
-        duration: 1500,
-        mask: true
-      })
-    } else if (addJob.duty == null) {
-      wx.showToast({
-        title: '岗位职责不能为空！',
-        icon: 'none',
-        duration: 1500,
-        mask: true
-      })
     } else {
       //跳转
+      this.setData({
+        addJob: {},
+        jobSkill: null
+      })
+      wx.setStorageSync('addJob', this.data.addJob);
+      wx.setStorageSync('jobSkill', this.data.jobSkill);
       wx.reLaunch({
         url: '/pages/mine/mine',
       })

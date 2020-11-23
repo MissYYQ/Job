@@ -63,30 +63,23 @@ Page({
   determineBtn: function () {
     //判空
     let seminar = this.data.seminar;
-    if (seminar.school == null) {
-      wx.showToast({
-        title: '学校不能为空！',
-        icon: 'none',
-        duration: 1500,
-        mask: true
-      })
-    } else if (seminar.location == null) {
+    if (seminar.location == null) {
       wx.showToast({
         title: '地点不能为空！',
         icon: 'none',
         duration: 1500,
         mask: true
       })
-    } else if (seminar.email == null) {
+    } else if (seminar.date == null) {
       wx.showToast({
-        title: '投递邮箱不能为空！',
+        title: '日期不能为空！',
         icon: 'none',
         duration: 1500,
         mask: true
       })
-    } else if (seminar.date == null) {
+    } else if (seminar.time == null) {
       wx.showToast({
-        title: '截止日期不能为空！',
+        title: '时间不能为空！',
         icon: 'none',
         duration: 1500,
         mask: true
