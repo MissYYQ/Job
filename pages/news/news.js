@@ -60,52 +60,9 @@ Page({
 
   //微信登录
   wxLogin: function () {
-    let that = this;
-    wx.login({
-      success: res => {
-        console.log("登录成功")
-        app.globalData.isWxLogin = true
-        wx.setStorageSync('isWxLogin', app.globalData.isWxLogin)
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-
-        // 获取用户信息
-        wx.getSetting({
-          success: res => {
-            if (res.authSetting['scope.userInfo']) {
-              // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-              wx.getUserInfo({
-                lang: "zh_CN",
-                success: res => {
-                  console.log("获取用户信息成功")
-                  // 可以将 res 发送给后台解码出 unionId
-                  app.globalData.userInfo = res.userInfo;
-                  console.log("news.js=== app.globalData.userInfo ===");
-                  console.log(app.globalData.userInfo)
-                  wx.setStorageSync('userInfo', res.userInfo);
-                  //直接获取到当前页面的onload()进行刷新
-                  that.onLoad();
-                  // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-                  // 所以此处加入 callback 以防止这种情况
-                  if (this.userInfoReadyCallback) {
-                    this.userInfoReadyCallback(res)
-                  }
-                }
-              })
-            }
-          },
-          fail: res => {
-            console.log("获取用户信息失败");
-            console.log(res);
-          }
-        })
-      },
-      fail: res => {
-        console.log("登录失败");
-        console.log(res);
-      }
-    })
+    app.wxLogin();
     //直接获取到当前页面的onload()进行刷新
-
+    this.onLoad();
   },
 
   // 跳转至交流页面

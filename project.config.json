@@ -37,7 +37,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.11.3",
-  "appid": "wx84d8233ef31b5304",
+  "appid": "wxcc92e6ab69b5576a",
   "projectname": "JobForYou",
   "debugOptions": {
     "hidedInDevtools": []
@@ -56,37 +56,7 @@
       "list": []
     },
     "miniprogram": {
-      "list": [
-        {
-          "name": "deliveryDeal",
-          "pathName": "pages/mine/companyMine/deliveryDeal/deliveryDeal",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "companyCollect",
-          "pathName": "pages/mine/companyMine/companyCollect/companyCollect",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "addJob",
-          "pathName": "pages/mine/companyMine/addJob/addJob",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "addSeminar",
-          "pathName": "pages/mine/companyMine/addSeminar/addSeminar",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "resume",
-          "pathName": "pages/mine/studentMine/resume/resume",
-          "scene": null
-        }
-      ]
+      "list": []
     }
   }
 }
