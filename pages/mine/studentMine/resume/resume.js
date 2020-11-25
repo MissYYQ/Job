@@ -24,8 +24,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      userInfo: wx.getStorageSync('userInfo'),
-      resume: wx.getStorageSync('resume'),
+      student: wx.getStorageSync('student'),
       educationBackground: wx.getStorageSync('educationBackground'),
       intentionJob: wx.getStorageSync('intentionJob'),
       professionalSkills: wx.getStorageSync('professionalSkills'),
@@ -33,14 +32,6 @@ Page({
       resumeFile: wx.getStorageSync('resumeFile'),
       honor: wx.getStorageSync('honor'),
     })
-    if (this.data.userInfo) {
-      var province = this.data.userInfo.province;
-      var city = this.data.userInfo.city;
-      let hometown = province + city;
-      this.setData({
-        ['resume.hometown']: hometown
-      })
-    }
     var description = this.data.tempExperience.description;
     if (description) {
       this.setData({

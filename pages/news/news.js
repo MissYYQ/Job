@@ -53,7 +53,7 @@ Page({
       userKindTag = 2
     }
     this.setData({
-      isWxLogin: wx.getStorageSync('isWxLogin'),
+      isWxLogin: app.globalData.isWxLogin,
       userKindTag: userKindTag,
     })
   },

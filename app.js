@@ -5,12 +5,12 @@ App({
   globalData: {
     userKind: "学生", //用户类型，默认学生
     isWxLogin: false, //是否微信登录
-    code: null, //登录凭证
     userInfo: null, //用户信息
   },
 
 
   onLaunch: function () {
+    console.log("globalData：",this.globalData)
     var _this = this;
     //判断用户类型
     var userKind = wx.getStorageSync('userKind');
@@ -25,6 +25,10 @@ App({
     } else {
       wx.setStorageSync('isWxLogin', _this.globalData.isWxLogin)
     }
+    //获取userInfo
+    if (wx.getStorageSync('userInfo')) {
+      _this.globalData.userInfo = wx.getStorageSync('userInfo')
+    }
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -38,13 +42,10 @@ App({
     wx.login({
       success: res => {
         console.log("登录成功");
-        console.log("===res===", res);
+        // console.log("===res===", res);
         //设置全局数据及缓存数据
-        that.globalData.isWxLogin = true
-        wx.setStorage({
-          data: true,
-          key: 'isWxLogin',
-        })
+        that.globalData.isWxLogin = true;
+        wx.setStorageSync('isWxLogin', true)
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if (res.code) {
           //获取用户信息
@@ -52,13 +53,7 @@ App({
             lang: "zh_CN",
             success: (userInfo) => {
               console.log("获取用户信息成功")
-              console.log("===userInfo===", userInfo.userInfo);
-              //设置全局数据及缓存数据
-              that.globalData.userInfo = userInfo.userInfo
-              wx.setStorage({
-                data: userInfo.userInfo,
-                key: 'userInfo',
-              })
+              // console.log("===userInfo===", userInfo.userInfo);
               //发起网络请求
               wx.request({
                 url: 'http://localhost:81/user/wxLogin',
@@ -77,6 +72,9 @@ App({
                 },
                 success: function (data) {
                   console.log("==data===", data)
+                  //设置全局数据及缓存数据
+                  that.globalData.userInfo = data.data.obj;
+                  wx.setStorageSync("userInfo", data.data.obj)
                 }
               })
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -86,17 +84,13 @@ App({
               }
             }
           })
-
         }
-
       },
       fail: res => {
         console.log("登录失败");
         console.log(res);
       }
     })
-
   },
-
 
 });

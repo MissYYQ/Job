@@ -2,7 +2,10 @@
 <view class="item">
 	<!-- 项名 -->
 	<view class="row" bindtap="edit" data-mark="basicInformation">
-		<view class="title">基本信息</view>
+		<view class="row">
+			<view class="title">基本信息</view>
+			<view class="required">*</view>
+		</view>
 		<image wx:if="{{mark === 'basicInformation' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img">
 		</image>
 		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
@@ -66,11 +69,6 @@
 				</view>
 			</view>
 		</view>
-		<!-- 按钮 -->
-		<view class="row button">
-			<view class="btn resetBtn" bindtap="resetBtn">重置</view>
-			<view class="btn determineBtn" bindtap="editOverBtn">确定</view>
-		</view>
 	</view>
 	<!-- 基本信息显示 -->
 	<view wx:if="{{!isEdit}}">
@@ -111,12 +109,14 @@
 	</view>
 </view>
 
-
 <!-- 求职意向 -->
 <view class="item">
 	<!-- 项名 -->
 	<view class="row" bindtap="edit" data-mark="intentionJob">
-		<view class="title">求职意向</view>
+		<view class="row">
+			<view class="title">求职意向</view>
+			<view class="required">*</view>
+		</view>
 		<image wx:if="{{mark === 'intentionJob' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img"></image>
 		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
 	</view>
@@ -146,11 +146,6 @@
 			<input class="data" type="text" value="{{intentionJob.city}}" data-key="city" bindinput="editIJ"
 				placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 		</view>
-		<!-- 按钮 -->
-		<view class="row button">
-			<view class="btn resetBtn" bindtap="resetBtn">重置</view>
-			<view class="btn determineBtn" bindtap="editOverBtn">确定</view>
-		</view>
 	</view>
 	<!-- 求职意向信息显示 -->
 	<view wx:if="{{!isEdit}}">
@@ -169,12 +164,14 @@
 	</view>
 </view>
 
-
 <!-- 教育背景 -->
 <view class="item">
 	<!-- 项名 -->
 	<view class="row" bindtap="edit" data-mark="educationBackground">
-		<view class="title">教育背景</view>
+		<view class="row">
+			<view class="title">教育背景</view>
+			<view class="required">*</view>
+		</view>
 		<image wx:if="{{mark === 'educationBackground' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img">
 		</image>
 		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
@@ -207,11 +204,6 @@
 					placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 			</view>
 		</view>
-		<!-- 按钮 -->
-		<view class="row button">
-			<view class="btn resetBtn" bindtap="resetBtn">重置</view>
-			<view class="btn determineBtn" bindtap="editOverBtn">确定</view>
-		</view>
 	</view>
 	<!-- 教育背景信息显示 -->
 	<view wx:if="{{!isEdit}}">
@@ -222,7 +214,6 @@
 		</view>
 	</view>
 </view>
-
 
 <!-- 职业技能 -->
 <view class="item">
@@ -265,7 +256,6 @@
 		</view>
 	</view>
 </view>
-
 
 <!-- 工作/项目经历 -->
 <view class="item">
@@ -352,7 +342,6 @@
 		</view>
 	</view>
 </view>
-
 
 <!-- 荣誉证书 -->
 <view class="item">

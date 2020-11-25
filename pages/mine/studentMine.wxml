@@ -4,12 +4,12 @@
   <view class="top-front">
     <view class="row">
       <view class="userInfo">
-        <image wx:if="{{isWxLogin}}" src="{{userInfo.avatarUrl}}"></image>
+        <image wx:if="{{isWxLogin}}" src="{{userInfo.avatarurl}}"></image>
         <image wx:else src="/images/mine/head.png"></image>
         <view class="userKind" bindtap="toUserKindPage">{{userKind}}</view>
       </view>
       <view class="userInfo-right">
-        <view wx:if="{{isWxLogin}}" class="nickName" bindtap="toResumePage">{{userInfo.nickName}}</view>
+        <view wx:if="{{isWxLogin}}" class="nickName" bindtap="toResumePage">{{userInfo.nickname}}</view>
         <button wx:else open-type="getUserInfo" bindgetuserinfo="wxLogin" class="nickName"
           style="padding: 0; margin: 0;width: 200rpx;display: flex;background: white;">登录</button>
         <view wx:if="{{!isWxLogin}}" class="expect">点击登录解锁更多</view>
