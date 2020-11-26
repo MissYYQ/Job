@@ -2,21 +2,21 @@
 <view class="top-back"></view>
 <view class="top-job">
 	<view class="row">
-		<view class="job-name">{{name}}</view>
-		<view class="job-salary">{{salary}}</view>
+		<view class="job-name">{{job.name}}</view>
+		<view class="job-salary">{{job.salary}}</view>
 	</view>
 	<view class="row">
 		<view class="job-information row">
 			<image src="/images/jobDetails/location.png"></image>
-			<view>{{city}}</view>
+			<view>{{job.city}}</view>
 		</view>
 		<view class="job-information row">
 			<image src="/images/jobDetails/experience.png"></image>
-			<view>{{experience}}</view>
+			<view>{{job.experience}}</view>
 		</view>
 		<view class="job-information row">
 			<image src="/images/jobDetails/education.png"></image>
-			<view>{{education}}</view>
+			<view>{{job.degree}}</view>
 		</view>
 	</view>
 	<view class="company row" bindtap="toCompanyPage">
@@ -32,24 +32,34 @@
 <!-- 底部内容 -->
 <view class="bottom-job">
 	<!-- 公司待遇 -->
-	<view class="skill">公司待遇</view>
-	<view class="skills row">
-		<view class="skill-item" wx:for="{{pay}}" wx:key="index" data-index="{{index}}">{{item}}</view>
+	<view wx:if="{{welfare}}">
+		<view class="skill">公司待遇</view>
+		<view class="skills row">
+			<view class="skill-item" wx:for="{{welfare}}" wx:key="index" data-index="{{index}}">{{item}}</view>
+		</view>
 	</view>
-	<!-- 技能标签 -->
-	<view class="skill">技能标签</view>
-	<view class="skills row">
-		<view class="skill-item" wx:for="{{skill}}" wx:key="index" data-index="{{index}}">{{item}}</view>
+	<!-- 关键字 -->
+	<view wx:if="{{keywords}}">
+		<view class="skill">关键字</view>
+		<view class="skills row">
+			<view class="skill-item" wx:for="{{keywords}}" wx:key="index">{{item}}</view>
+		</view>
 	</view>
 	<!-- 岗位要求 -->
-	<view class="skill">岗位要求</view>
-	<view class="skills row">
-		<view class="require-item" wx:for="{{require}}" wx:key="index" data-index="{{index}}">{{index+1}}、{{item}}</view>
+	<view wx:if="{{claim}}">
+		<view class="skill">岗位要求</view>
+		<view class="skills row">
+			<view class="require-item" wx:for="{{claim}}" wx:key="index" data-index="{{index}}">
+				<view wx:if="{{item}}">{{item}}；</view>
+			</view>
+		</view>
 	</view>
 	<!-- 岗位职责 -->
-	<view class="skill">岗位职责</view>
-	<view class="skills row">
-		<view class="require-item" wx:for="{{duty}}" wx:key="index" data-index="{{index}}">{{index+1}}、{{item}}</view>
+	<view wx:if="{{duty}}">
+		<view class="skill">岗位职责</view>
+		<view class="skills row">
+			<view class="require-item" wx:for="{{duty}}" wx:key="index" data-index="{{index}}">{{item}}</view>
+		</view>
 	</view>
 	<!-- 底部功能按钮 -->
 	<view class="null"></view>

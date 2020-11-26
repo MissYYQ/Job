@@ -10,7 +10,6 @@ App({
 
 
   onLaunch: function () {
-    console.log("globalData：",this.globalData)
     var _this = this;
     //判断用户类型
     var userKind = wx.getStorageSync('userKind');
@@ -29,11 +28,12 @@ App({
     if (wx.getStorageSync('userInfo')) {
       _this.globalData.userInfo = wx.getStorageSync('userInfo')
     }
+    // console.log("globalData：",this.globalData)
+    
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
   },
 
   //微信登录

@@ -29,15 +29,15 @@ input {
 }
 
 .name {
-  font-size: 12pt;
+  font-size: 11pt;
   color: black;
   font-weight: 600;
 }
 
 .salary {
-  font-size: 12pt;
+  font-size: 10pt;
   color: #F6B501;
-  letter-spacing: 10rpx;
+  letter-spacing: 3rpx;
 }
 
 .content-request view {

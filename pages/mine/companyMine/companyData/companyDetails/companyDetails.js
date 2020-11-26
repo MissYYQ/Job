@@ -8,23 +8,23 @@ Page({
     interviewNum: 0,
     favoritesNum: 0,
     jobNum: 0,
-    company: {
-      name: "云程科技", //公司名称
-      src: '/images/jobDetails/company.png', //公司logo图片地址
-      email: "hr@company.com",
-      size: "20-99人", //规模
-      financingStage: "B轮", //融资阶段
-      workTime: "上午9:00-下午6:00", //工作时间
-      weekend: 1, //"双休",
-      flexible: 1, // "弹性工作"
-      treatment: [ //待遇
-        "五险一金",
-        "年终奖",
-        "全勤奖",
-      ],
-      address: "××省××市××县（区）××", //公司地址
-      introduce: '本公司杀菌灯很耐看下的老司机先擦楼市成交回暖沙尘暴的来输出就拿'
-    },
+    // company: {
+    //   name: "云程科技", //公司名称
+    //   src: '/images/jobDetails/company.png', //公司logo图片地址
+    //   email: "hr@company.com",
+    //   size: "20-99人", //规模
+    //   financingStage: "B轮", //融资阶段
+    //   workTime: "上午9:00-下午6:00", //工作时间
+    //   weekend: 1, //"双休",
+    //   flexible: 1, // "弹性工作"
+    //   treatment: [ //待遇
+    //     "五险一金",
+    //     "年终奖",
+    //     "全勤奖",
+    //   ],
+    //   address: "××省××市××县（区）××", //公司地址
+    //   introduce: '本公司杀菌灯很耐看下的老司机先擦楼市成交回暖沙尘暴的来输出就拿'
+    // },
     jobData: [{
         name: "前端开发",
         salary: "6-10K",
@@ -67,6 +67,33 @@ Page({
     ],
   },
 
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    //后台获取公司详情
+    var id = options.id;
+    var that = this;
+    wx.request({
+      url: 'http://localhost:81/company/one',
+      method: 'get',
+      data: {
+        id: id,
+      },
+      success: function (res) {
+        console.log("获取公司详情成功");
+        console.log(res);
+        that.setData({
+          company: res.data,
+        })
+      },
+      fail: function (res) {
+        console.log("获取公司详情失败");
+      }
+    })
+
+  },
+
   //跳转至职位详情页面
   toJobDetailsPage: function () {
     wx.navigateTo({
@@ -74,12 +101,7 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
 
-  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -25,12 +25,11 @@
 }
 
 .top-job {
-  width: 80%;
-  margin: 5%;
-  padding: 5%;
+  width: 84%;
+  margin: 4%;
+  padding: 4%;
   border-radius: 30rpx;
   box-shadow: rgba(246, 181, 1, 0.2) 0rpx 5rpx 15rpx 3rpx;
-  letter-spacing: 3rpx;
   background-color: white;
   position: absolute;
   top: 0;
@@ -38,13 +37,13 @@
 }
 
 .job-name {
-  font-size: 15pt;
+  font-size: 13pt;
   font-weight: 600;
   color: black;
 }
 
 .job-salary {
-  font-size: 12pt;
+  font-size: 11pt;
   font-weight: 600;
   color: #f6b501;
 }

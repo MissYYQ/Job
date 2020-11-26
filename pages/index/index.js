@@ -3,34 +3,6 @@ const app = getApp()
 
 Page({
   data: {
-    jobData: [{
-        name: "前端开发",
-        salary: "6-10K",
-        education: "本科",
-        experience: "1-3年",
-        city: "杭州",
-        companyName: "云程科技",
-        industry: "计算机软件",
-        companySize: "20-99人",
-        financingStage: "B轮",
-        logoImgUrl: "/images/tabBar/mine02.png",
-        ecruiterName: "姜先生",
-        kind: 0
-      },
-      {
-        name: "前端开发工程师",
-        salary: "5-8K",
-        education: "大专",
-        experience: "经验不限",
-        city: "北京",
-        companyName: "蓝凌叮当云",
-        industry: "信息安全",
-        companySize: "100-499人",
-        financingStage: "未融资",
-        logoImgUrl: "/images/tabBar/mine02.png",
-        kind: 1
-      },
-    ],
     studentData: [{
         intentionJob: "前端开发",
         expectedSalary: "6-10K",
@@ -85,6 +57,23 @@ Page({
       intentionJob: wx.getStorageSync('intentionJob'),
       userKindTag: userKindTag,
     })
+    //后台获取数据
+    var that = this;
+    // 推荐
+    wx.request({
+      url: 'http://localhost:81/job/all',
+      method: 'get',
+      success: function (res) {
+        console.log("获取职位列表成功");
+        console.log(res);
+        that.setData({
+          job: res.data,
+        })
+      },
+      fail: function (res) {
+        console.log("获取职位失败");
+      }
+    })
   },
 
   //公司搜索内容
@@ -130,9 +119,10 @@ Page({
   },
 
   //跳转至职位详情页面
-  toJobDetailsPage: function () {
+  toJobDetailsPage: function (e) {
+    var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/index/jobDetails/jobDetails'
+      url: '/pages/index/jobDetails/jobDetails?id='+id
     })
   },
 

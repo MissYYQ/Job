@@ -9,7 +9,6 @@
     </view>
   </view>
 </view>
-
 <!-- 板块 -->
 <view class="row studentPlate">
   <view class="plate-item" bindtap="toHotCompanyPage">
@@ -36,21 +35,19 @@
   <image src="/images/index/edit.png" bindtap="toIntentionJobPage"></image>
 </view>
 <!--job 内容 -->
-<view class="content" bindtap="toJobDetailsPage" wx:for="{{jobData}}" wx:key="index" data-index="{{index}}">
+<view class="content" bindtap="toJobDetailsPage" wx:for="{{job}}" wx:key="index" data-id="{{item.id}}">
   <view class="row content-top">
-    <view class="row">
-      <text class="name">{{item.name}}</text>
-    </view>
-    <text class="salary">{{item.salary}}</text>
+    <view class="name">{{item.name}}</view>
+    <view class="salary">{{item.salary}}</view>
   </view>
   <view class="row content-request">
-    <view>{{item.education}}</view>
+    <view>{{item.degree}}</view>
     <view>{{item.experience}}</view>
     <view>{{item.city}}</view>
   </view>
   <view class="row content-bottom">
     <view class="row content-ecruiter">
-      <image src="{{item.logoImgUrl}}"></image>
+      <image src="{{item.logoUrl}}"></image>
       <view>{{item.companyName}}</view>
     </view>
     <view class="company">{{item.industry}} | {{item.companySize}} | {{item.financingStage}}</view>
