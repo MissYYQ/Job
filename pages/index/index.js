@@ -59,7 +59,6 @@ Page({
     })
     //后台获取数据
     var that = this;
-    // 推荐
     wx.request({
       url: 'http://localhost:81/job/all',
       method: 'get',
@@ -70,9 +69,6 @@ Page({
           job: res.data,
         })
       },
-      fail: function (res) {
-        console.log("获取职位失败");
-      }
     })
   },
 

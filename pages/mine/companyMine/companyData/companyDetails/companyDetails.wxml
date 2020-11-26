@@ -4,11 +4,11 @@
 	<view class="top-front">
 		<view class="row">
 			<view class="companyInfo">
-				<image src="{{company.src}}"></image>
+				<image src="{{company.logourl}}"></image>
 			</view>
 			<view class="companyInfo-right">
 				<view class="name">{{company.name}}</view>
-				<view class="other">{{company.size}} · {{company.financingStage}}</view>
+				<view class="other">{{company.size}} · {{company.financingstage}}</view>
 			</view>
 		</view>
 		<view class="companyFront row">
@@ -35,55 +35,51 @@
 <!-- 底部 -->
 <view class="companyMsg">
 	<!-- 工作机制 -->
-	<view class="title">工作时间</view>
-	<view class="row skills">
-		<view class="row img" wx:if="{{company.workTime}}">
-			<image src="/images/mine/company/workTime.png"></image>
-			<view>{{company.workTime}}</view>
-		</view>
-		<view class="row img" wx:if="{{company.weekend}}">
-			<image src="/images/mine/company/weekend.png"></image>
-			<view>双休</view>
-		</view>
-		<view class="row img" wx:if="{{company.flexible}}">
-			<image src="/images/mine/company/flexible.png"></image>
-			<view>弹性工作</view>
+	<view wx:if="{{company.worktime}}">
+		<view class="title">工作时间</view>
+		<view class="row skills">
+			<view class="row img">
+				<image src="/images/mine/company/workTime.png"></image>
+				<view>{{company.worktime}}</view>
+			</view>
 		</view>
 	</view>
 	<!-- 公司福利 -->
 	<view class="title">公司福利</view>
 	<view class="row skills">
-		<view class="title-item" wx:for="{{company.treatment}}" wx:key="index" data-index="{{index}}">{{item}}</view>
+		<view class="title-item" wx:for="{{welfare}}" wx:key="index">{{item}}</view>
 	</view>
 	<!-- 公司地址 -->
 	<view class="title">公司地址</view>
 	<view class="skills row">
-		<view>{{company.address}}</view>
+		<view>{{company.region}} {{company.detailedaddress}}</view>
 	</view>
 	<!-- 投递邮箱 -->
-	<view class="title">投递邮箱</view>
-	<view class="skills row">
-		<view>{{company.email}}</view>
+	<view wx:if="{{company.email}}">
+		<view class="title">投递邮箱</view>
+		<view class="skills row">
+			<view>{{company.email}}</view>
+		</view>
 	</view>
 	<!-- 公司介绍 -->
 	<view class="title">公司介绍</view>
 	<view class="skills row">
-		<view>{{company.introduce}}</view>
+		<view>{{company.introduction}}</view>
 	</view>
 	<!-- 在招职位 -->
 	<view class="title">在招职位</view>
 	<view class="skills">
-		<view class="content" bindtap="toJobDetailsPage" wx:for="{{jobData}}" wx:key="index" data-index="{{index}}">
+		<view class="content" bindtap="toJobDetailsPage" wx:for="{{job}}" wx:key="index" data-id="{{item.id}}">
 			<view class="row content-top">
 				<view class="row">
 					<text class="name">{{item.name}}</text>
-					<view wx:if="{{item.kind===1}}" class="school school-recruitment">校招</view>
-					<view wx:if="{{item.kind===2}}" class="school practice">实习</view>
+					<view wx:if="{{item.kind===0}}" class="school school-recruitment">实习</view>
+					<!-- <view wx:if="{{item.kind===0}}" class="school practice">实习</view> -->
 				</view>
 				<text class="salary">{{item.salary}}</text>
 			</view>
 			<view class="row content-request">
-				<view>{{item.education}}</view>
+				<view>{{item.degree}}</view>
 				<view>{{item.experience}}</view>
 				<view>{{item.city}}</view>
 			</view>
