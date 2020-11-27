@@ -21,9 +21,9 @@
 	</view>
 	<view class="company row" bindtap="toCompanyPage">
 		<view class="company-info">
-			<view class="companyName">{{companyName}}</view>
-			<view>{{industry}} · {{size}} · {{financingStage}}</view>
-			<view class="address">{{address}}</view>
+			<view class="companyName">{{job.company.name}}</view>
+			<view>{{job.company.industry}} · {{job.company.size}} · {{job.company.financingstage}}</view>
+			<view class="address">{{job.company.region}} {{job.company.detailedaddress}}</view>
 		</view>
 		<image src="/images/jobDetails/right.png"></image>
 	</view>
@@ -32,33 +32,33 @@
 <!-- 底部内容 -->
 <view class="bottom-job">
 	<!-- 公司待遇 -->
-	<view wx:if="{{welfare}}">
+	<view wx:if="{{job.company.welfare}}">
 		<view class="skill">公司待遇</view>
 		<view class="skills row">
-			<view class="skill-item" wx:for="{{welfare}}" wx:key="index" data-index="{{index}}">{{item}}</view>
+			<view class="skill-item" wx:for="{{job.company.welfare}}" wx:key="index">{{item}}</view>
 		</view>
 	</view>
 	<!-- 关键字 -->
-	<view wx:if="{{keywords}}">
+	<view wx:if="{{job.keywords}}">
 		<view class="skill">关键字</view>
 		<view class="skills row">
-			<view class="skill-item" wx:for="{{keywords}}" wx:key="index">{{item}}</view>
+			<view class="skill-item" wx:for="{{job.keywords}}" wx:key="index">{{item}}</view>
 		</view>
 	</view>
 	<!-- 岗位要求 -->
-	<view wx:if="{{claim}}">
+	<view wx:if="{{job.claim}}">
 		<view class="skill">岗位要求</view>
 		<view class="skills row">
-			<view class="require-item" wx:for="{{claim}}" wx:key="index" data-index="{{index}}">
+			<view class="require-item" wx:for="{{job.claim}}" wx:key="index">
 				<view wx:if="{{item}}">{{item}}；</view>
 			</view>
 		</view>
 	</view>
 	<!-- 岗位职责 -->
-	<view wx:if="{{duty}}">
+	<view wx:if="{{job.duty}}">
 		<view class="skill">岗位职责</view>
 		<view class="skills row">
-			<view class="require-item" wx:for="{{duty}}" wx:key="index" data-index="{{index}}">{{item}}</view>
+			<view class="require-item" wx:for="{{job.duty}}" wx:key="index" data-index="{{index}}">{{item}}</view>
 		</view>
 	</view>
 	<!-- 底部功能按钮 -->

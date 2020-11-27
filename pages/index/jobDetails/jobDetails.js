@@ -22,25 +22,37 @@ Page({
       },
       success: function (res) {
         console.log("获取职位详情成功");
-        console.log(res);
+        console.log(res.data);
         that.setData({
           job: res.data,
-          claim: res.data.claim,
-          duty: res.data.duty
         })
         //字符串转数组
-        if (that.data.claim) {
-          var claim = that.data.claim;
-          var claimArr = claim.split("；")
+        if (that.data.job.claim) {
+          var claimArr = that.data.job.claim.split("；")
+          let claim = "job.claim"
           that.setData({
-            claim: claimArr,
+            [claim]: claimArr,
           })
         }
-        if (that.data.duty) {
-          var duty = that.data.duty;
-          var dutyArr = duty.split("；")
+        if (that.data.job.duty) {
+          var dutyArr = that.data.job.duty.split("；")
+          let duty = "job.duty"
           that.setData({
-            duty: dutyArr,
+            [duty]: dutyArr,
+          })
+        }
+        if (that.data.job.company.welfare) {
+          var welfareArr = that.data.job.company.welfare.split("、");
+          let welfare = "job.company.welfare"
+          that.setData({
+            [welfare]: welfareArr,
+          })
+        }
+        if (that.data.job.keywords) {
+          var keywordsArr = that.data.job.keywords.split("、");
+          let keywords = "job.keywords"
+          that.setData({
+            [keywords]: keywordsArr,
           })
         }
       },

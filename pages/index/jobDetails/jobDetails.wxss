@@ -107,13 +107,12 @@
 
 .skill-item {
   font-size: 9pt;
-  padding: 0 30rpx;
+  padding: 0 28rpx;
   border: rgba(246, 181, 1, 0.8) 2rpx solid;
-  border-radius: 50rpx;
-  line-height: 2.2em;
+  border-radius: 40rpx;
+  line-height: 1.8em;
   margin-right: 19rpx;
-  margin-bottom: 22rpx;
-  width: 145rpx;
+  margin-bottom: 18rpx;
   text-align: center;
 }
 

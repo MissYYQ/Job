@@ -16,7 +16,6 @@ input {
   font-size: 9pt;
   color: #888;
   margin-top: 20rpx;
-  letter-spacing: 2rpx;
   line-height: 70rpx;
   padding-bottom: 30rpx;
   border-bottom: rgba(246, 181, 1, 0.15) solid 3rpx;
@@ -58,11 +57,14 @@ input {
 }
 
 .content-ecruiter image {
-  width: 50rpx;
-  height: 50rpx;
-  border-radius: 50%;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 8rpx;
   display: block;
-  padding-right: 15rpx;
+}
+
+.content-ecruiter view{
+  margin-left: 15rpx;
 }
 
 .company {

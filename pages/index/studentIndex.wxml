@@ -47,9 +47,9 @@
   </view>
   <view class="row content-bottom">
     <view class="row content-ecruiter">
-      <image src="{{item.logoUrl}}"></image>
-      <view>{{item.companyName}}</view>
+      <image src="{{item.company.logourl}}"></image>
+      <view>{{item.company.name}}</view>
     </view>
-    <view class="company">{{item.industry}} | {{item.companySize}} | {{item.financingStage}}</view>
+    <view class="company">{{item.company.industry}} | {{item.company.size}} | {{item.company.financingstage}}</view>
   </view>
 </view>
