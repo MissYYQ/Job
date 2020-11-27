@@ -72,11 +72,42 @@ Page({
     })
   },
 
-  //公司搜索内容
+  //搜索内容
   inputVal: function (e) {
     this.setData({
       inputVal: e.detail.value
     });
+  },
+
+  //公司-搜索
+  search: function () {
+    var key = this.data.inputVal
+    if (key != "") {
+      //后台获取数据
+      var that = this;
+      wx.request({
+        url: 'http://localhost:81/job/search',
+        method: 'get',
+        data: {
+          key: key
+        },
+        success: function (res) {
+          console.log("搜索成功");
+          console.log(res.data);
+          that.setData({
+            job: res.data,
+          })
+        },
+      })
+    } else {
+      wx.showToast({
+        title: '搜索内容不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
+
   },
 
   //清空搜索
@@ -148,6 +179,9 @@ Page({
       })
     }
   },
+
+
+  // ===============studentIndex================
 
   //跳转至预览简历页面
   toPreviewResumePage: function () {

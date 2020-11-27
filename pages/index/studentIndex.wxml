@@ -5,7 +5,8 @@
       <i class="weui-icon-search"></i>
       <input type="text" focus value="{{inputVal}}" confirm-type="search" placeholder="搜索职位、公司"
         placeholder-class="placeholderClass" bindinput="inputVal" />
-      <span class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput"></span>
+      <!-- <span class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput"></span> -->
+      <view wx:if="{{inputVal.length > 0}}" class="searchBtn" bindtap="search">搜索</view>
     </view>
   </view>
 </view>

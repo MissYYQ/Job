@@ -107,6 +107,10 @@ input {
   color: #888;
 }
 
+.searchBtn{
+  color: #F6B501;
+}
+
 /* 板块 */
 .studentPlate {
   justify-content: center;
