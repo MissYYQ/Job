@@ -4,40 +4,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-    companyData: [{
-        name: "云程科技",
-        src: '/images/index/hotCompany.png',
-        industry: "计算机软件",
-        size: "20-99人",
-        financingStage: "B轮",
-        address: "江西省九江市濂溪区前进东路551号",
-        treatment: [
-          "五险一金",
-          "年终奖",
-          "全勤奖",
-        ],
-      },
-      {
-        name: "云程科技",
-        src: '/images/index/hotCompany.png',
-        industry: "计算机软件",
-        size: "20-99人",
-        financingStage: "B轮",
-        address: "江西省九江市濂溪区前进东路551号",
-        treatment: [
-          "五险一金",
-          "年终奖",
-          "全勤奖",
-        ],
-      },
-    ]
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //后台获取数据
+    var that = this;
+    wx.request({
+      url: 'http://localhost:81/company/hotCompany',
+      method: 'get',
+      success: function (res) {
+        console.log("获取热门公司成功");
+        console.log(res.data);
+        that.setData({
+          company: res.data,
+        })
+        //字符串转数组
+        let length = res.data.length;
+        for (var i = 0; i < length; i++) {
+          if (that.data.company[i].welfare) {
+            var welfareArr = that.data.company[i].welfare.split("、");
+            let welfare = "company[" + i + "].welfare"
+            that.setData({
+              [welfare]: welfareArr,
+            })
+          }
+        }
+      },
+    })
   },
 
   //搜索内容
@@ -55,9 +52,21 @@ Page({
   },
 
   //跳转至公司详情页面
-  toCompanyPage: function () {
+  toCompanyDetailsPage: function (e) {
+    var id = e.currentTarget.dataset.id;
+    //预览量加一
+    wx.request({
+      url: 'http://localhost:81/company/addPageviews',
+      method: 'post',
+      data: {
+        id: id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+    })
     wx.navigateTo({
-      url: '/pages/mine/companyMine/companyData/companyDetails',
+      url: '/pages/mine/companyMine/companyData/companyDetails/companyDetails?id=' + id,
     })
   },
 

@@ -75,15 +75,15 @@ input {
 }
 
 .name {
-  letter-spacing: 3rpx;
+  letter-spacing: 2rpx;
   font-weight: 600;
   font-size: 12pt;
   line-height: 2.8em;
 }
 
 .salary {
-  letter-spacing: 5rpx;
-  font-size: 11pt;
+  letter-spacing: 2rpx;
+  font-size: 10pt;
   color: #F6B501;
 }
 

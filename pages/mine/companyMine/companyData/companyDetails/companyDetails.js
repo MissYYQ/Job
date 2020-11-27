@@ -61,6 +61,17 @@ Page({
   //跳转至职位详情页面
   toJobDetailsPage: function (e) {
     var id = e.currentTarget.dataset.id;
+    //预览量加一
+    wx.request({
+      url: 'http://localhost:81/job/addPageviews',
+      method: 'post',
+      data: {
+        id: id
+      },
+      success: function (res) {
+        console.log("job预览量加一")
+      },
+    })
     wx.navigateTo({
       url: '/pages/index/jobDetails/jobDetails?id=' + id
     })

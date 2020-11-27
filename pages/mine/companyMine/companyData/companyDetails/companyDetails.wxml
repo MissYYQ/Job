@@ -73,7 +73,7 @@
 			<view class="row content-top">
 				<view class="row">
 					<text class="name">{{item.name}}</text>
-					<view wx:if="{{item.kind===0}}" class="school school-recruitment">实习</view>
+					<view wx:if="{{item.kind==0}}" class="school school-recruitment">实习</view>
 					<!-- <view wx:if="{{item.kind===0}}" class="school practice">实习</view> -->
 				</view>
 				<text class="salary">{{item.salary}}</text>

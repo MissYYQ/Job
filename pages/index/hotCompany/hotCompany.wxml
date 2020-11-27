@@ -11,15 +11,15 @@
 
 <!-- 内容 -->
 <view class="content">
-  <view wx:for="{{companyData}}" wx:key="index" data-index="{{index}}" class="data" bindtap="toCompanyPage">
+  <view wx:for="{{company}}" wx:key="index" data-id="{{item.id}}" class="data" bindtap="toCompanyDetailsPage">
     <view class="row companyImg">
-      <image src="{{item.src}}"></image>
+      <image src="{{item.logourl}}"></image>
       <view class="companyData">
         <view class="name">{{item.name}}</view>
-        <view class="sizeAndFinancingStage">{{item.industry}} · {{item.size}} · {{item.financingStage}}</view>
-        <view class="address">{{item.address}}</view>
+        <view class="sizeAndFinancingStage">{{item.industry}} · {{item.size}} · {{item.financingstage}}</view>
+        <view class="address">{{item.region}} {{item.detailedaddress}}</view>
         <view class="row treatment">
-          <view wx:for="{{companyData[index].treatment}}" wx:key="index">
+          <view wx:for="{{company[index].welfare}}" wx:key="index">
             <view class="treatment-item">{{item}}</view>
           </view>
         </view>

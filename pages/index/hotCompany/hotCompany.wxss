@@ -108,8 +108,8 @@ input {
   font-size: 8pt;
   background-color: #f3f3f3;
   color: #888;
-  padding: 0 15rpx;
+  padding: 0 12rpx;
   border-radius: 10rpx;
   margin-right: 15rpx;
-  margin-top: 8rpx;
+  margin-top: 12rpx;
 }

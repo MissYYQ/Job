@@ -4,32 +4,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-    jobData: [
-      {
-        name: "前端开发",
-        salary: "6-10K",
-        degree: "本科",
-        experience: "1-3年",
-        companyName: "云程科技",
-        industry: "计算机软件",
-        companySize: "20-99人",
-        financingStage: "B轮",
-        logoImgUrl: "/images/index/hotCompany.png",
-        kind: 0
+
+  },
+
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    //后台获取数据
+    var that = this;
+    wx.request({
+      url: 'http://localhost:81/job/hotJob',
+      method: 'get',
+      success: function (res) {
+        console.log("获取热门公司成功");
+        console.log(res.data);
+        that.setData({
+          job: res.data,
+        })
       },
-      {
-        name: "前端开发",
-        salary: "6-10K",
-        degree: "本科",
-        experience: "1-3年",
-        companyName: "云程科技",
-        industry: "计算机软件",
-        companySize: "20-99人",
-        financingStage: "B轮",
-        logoImgUrl: "/images/index/hotCompany.png",
-        kind: 0
-      },
-    ],
+    })
   },
 
   //搜索内容
@@ -47,17 +42,23 @@ Page({
   },
 
   //跳转至职位详情页面
-  toJobDetailsPage: function () {
+  toJobDetailsPage: function (e) {
+    var id = e.currentTarget.dataset.id;
+    //预览量加一
+    wx.request({
+      url: 'http://localhost:81/job/addPageviews',
+      method: 'post',
+      data: {
+        id: id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+    })
     wx.navigateTo({
-      url: '/pages/index/jobDetails/jobDetails',
+      url: '/pages/index/jobDetails/jobDetails?id=' + id
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
 
 })

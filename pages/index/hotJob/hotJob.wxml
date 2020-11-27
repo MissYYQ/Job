@@ -11,7 +11,7 @@
 
 <!-- 内容 -->
 <view class="content">
-  <view bindtap="toJobDetailsPage" wx:for="{{jobData}}" wx:key="index" data-index="{{index}}" class="content-item">
+  <view wx:for="{{job}}" wx:key="index" data-id="{{item.id}}" class="content-item" bindtap="toJobDetailsPage">
     <view class="row content-top">
       <text class="name">{{item.name}}</text>
       <text class="salary">{{item.salary}}</text>
@@ -23,7 +23,7 @@
     </view>
     <view class="row content-bottom">
       <view class="row content-conpany">
-        <image src="{{item.logoImgUrl}}"></image>
+        <image src="{{item.logourl}}"></image>
         <view>{{item.companyName}}</view>
       </view>
       <view class="company">{{item.industry}} | {{item.companySize}} | {{item.financingStage}}</view>

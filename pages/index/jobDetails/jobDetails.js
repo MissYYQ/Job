@@ -57,8 +57,19 @@ Page({
   //跳转至公司页面
   toCompanyPage: function () {
     var id = this.data.job.companyId;
+    //预览量加一
+    wx.request({
+      url: 'http://localhost:81/company/addPageviews',
+      method: 'post',
+      data: {
+        id: id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+    })
     wx.navigateTo({
-      url: '/pages/mine/companyMine/companyData/companyDetails/companyDetails?id='+id,
+      url: '/pages/mine/companyMine/companyData/companyDetails/companyDetails?id=' + id,
     })
   },
 
