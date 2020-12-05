@@ -6,7 +6,7 @@
       placeholder-class="placeholderClass" bindinput="inputVal" />
     <span class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput"></span>
   </view>
-  <view class="top_search_btn">搜索</view>
+  <view class="top_search_btn" bindtap="search">搜索</view>
 </view>
 
 <!-- 内容 -->
@@ -23,10 +23,10 @@
     </view>
     <view class="row content-bottom">
       <view class="row content-conpany">
-        <image src="{{item.logourl}}"></image>
-        <view>{{item.companyName}}</view>
+        <image src="{{item.company.logourl}}"></image>
+        <view>{{item.company.name}}</view>
       </view>
-      <view class="company">{{item.industry}} | {{item.companySize}} | {{item.financingStage}}</view>
+      <view class="company">{{item.company.industry}} | {{item.company.size}} | {{item.company.financingstage}}</view>
     </view>
   </view>
 </view>

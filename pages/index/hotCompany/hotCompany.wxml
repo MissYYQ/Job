@@ -6,7 +6,7 @@
       placeholder-class="placeholderClass" bindinput="inputVal" />
     <span class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput"></span>
   </view>
-  <view class="top_search_btn">搜索</view>
+  <view class="top_search_btn" bindtap="search">搜索</view>
 </view>
 
 <!-- 内容 -->

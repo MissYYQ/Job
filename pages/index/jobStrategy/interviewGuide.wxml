@@ -1,7 +1,7 @@
 <view class="strategy">
-  <view wx:for="{{interviewGuide}}" wx:key="index" data-index="{{index}}" class="strategy-item">
+  <view wx:for="{{jobstrategy}}" wx:if="{{item.kind == 3}}" wx:key="index" data-index="{{index}}" class="strategy-item">
     <view class="title">{{item.title}}</view>
-    <view wx:for="{{interviewGuide[index].content}}" wx:key="index">
+    <view wx:for="{{item.content}}" wx:key="index">
       <view class="content-item">{{item}}</view>
     </view>
   </view>
