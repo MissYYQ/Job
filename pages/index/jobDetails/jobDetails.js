@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    favorites: false //是否收藏
+    collection: false //是否收藏
   },
 
   /**
@@ -85,11 +85,30 @@ Page({
     })
   },
 
-  // 收藏/取消收藏
-  favorites: function () {
+  // 收藏
+  collection: function () {
     if (this.data.isWxLogin) {
+      var id = this.data.job.id;
+      wx.request({
+        url: 'http://localhost:81/collection/collectJob',
+        method: 'POST',
+        data: {
+          id: id
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+        success: function () {
+          wx.showToast({
+            title: '收藏成功',
+            icon: 'none',
+            duration: 1200,
+            mask: true
+          })
+        }
+      })
       this.setData({
-        favorites: !this.data.favorites
+        collection: true
       })
     } else {
       wx.showToast({
@@ -99,6 +118,32 @@ Page({
         mask: true
       })
     }
+  },
+
+  // 取消收藏
+  uncollection: function () {
+    var id = this.data.job.id;
+    wx.request({
+      url: 'http://localhost:81/collection/uncollectJob',
+      method: 'POST',
+      data: {
+        id: id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function () {
+        wx.showToast({
+          title: '已取消收藏',
+          icon: 'none',
+          duration: 1200,
+          mask: true
+        })
+      }
+    })
+    this.setData({
+      collection: false
+    })
   },
 
   //跳转至聊天页面
