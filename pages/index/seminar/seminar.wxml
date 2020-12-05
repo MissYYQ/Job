@@ -2,19 +2,19 @@
 <view class="row top">
   <view class="top_search">
     <i class="weui-icon-search"></i>
-    <input type="text" focus value="{{inputVal}}" confirm-type="search" placeholder="请输入公司名称"
+    <input type="text" focus value="{{inputVal}}" confirm-type="search" placeholder="搜索公司/学校"
       placeholder-class="placeholderClass" bindinput="inputVal" />
     <span class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput"></span>
   </view>
-  <view class="top_search_btn">搜索</view>
+  <view class="top_search_btn" bindtap="search">搜索</view>
 </view>
 
 <!-- 内容 -->
 <view class="seminar">
-  <view wx:for="{{seminarList}}" wx:key="index" class="seminar-item" bindtap="toSeminarDetailsPage">
+  <view wx:for="{{seminar}}" wx:key="index" class="seminar-item" data-id="{{item.id}}" bindtap="toSeminarDetailsPage">
     <view class="row">
       <view class="logoImg">
-        <image src="{{item.logoImgUrl}}"></image>
+        <image src="{{item.company}}"></image>
       </view>
       <view class="data-item">
         <view class="row spaceBetween">
@@ -30,7 +30,7 @@
         </view>
         <view class="row school">
           <image src="/images/index/seminarPosition.png"></image>
-          <view>{{item.position}}</view>
+          <view>{{item.location}}</view>
         </view>
       </view>
     </view>

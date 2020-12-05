@@ -1,9 +1,9 @@
 <!-- 公司 -->
 <view class="row seminar-top">
-  <image src="{{seminar.logoImgUrl}}"></image>
+  <image src="{{seminar.company.logourl}}"></image>
   <view>
-    <view class="companyName">{{seminar.companyName}}</view>
-    <view class="industry">{{seminar.industry}}</view>
+    <view class="companyName">{{seminar.company.name}}</view>
+    <view class="industry">{{seminar.company.industry}}</view>
   </view>
 </view>
 <!-- 基本信息 -->
@@ -14,11 +14,11 @@
   </view>
   <view class="row basic-item">
     <image src="/images/index/seminarPosition.png"></image>
-    <view>地点： {{seminar.position}}</view>
+    <view>地点： {{seminar.location}}</view>
   </view>
-  <view class="row basic-item">
+  <view class="row basic-item" wx:if="{{seminar.company.email}}">
     <image src="/images/index/email.png"></image>
-    <view>投递邮箱： {{email}}</view>
+    <view>投递邮箱： {{seminar.company.email}}</view>
   </view>
   <view class="row basic-item">
     <image src="/images/index/deadline.png"></image>
@@ -26,21 +26,21 @@
   </view>
 </view>
 <!-- 招聘简章 -->
-<view class="title">{{seminar.companyName}}招聘简章</view>
+<view class="title">{{seminar.company.name}}招聘简章</view>
 <view class="hiring-item">
   <view class="hiring-title">公司简介</view>
-  <view class="introduction">{{introduction}}</view>
+  <view class="introduction">{{seminar.company.introduction}}</view>
 </view>
 <view class="hiring-item">
   <view class="hiring-title">福利待遇</view>
   <view class="row welfare">
-    <view wx:for="{{welfare}}" wx:key="index">{{item}}</view>
+    <view wx:for="{{seminar.company.welfare}}" wx:key="index">{{item}}</view>
   </view>
 </view>
 <view class="hiring-item">
   <view class="hiring-title">招聘岗位</view>
   <view class="job">
-    <view wx:for="{{jobData}}" wx:key="index" data-index="{{index}}" bindtap="toJobDetailsPage" class="job-item">
+    <view wx:for="{{job}}" wx:key="index" data-id="{{item.id}}" bindtap="toJobDetailsPage" class="job-item">
       <view class="row job-top">
         <view class="name">{{item.name}}</view>
         <view class="salary">{{item.salary}}</view>
