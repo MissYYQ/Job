@@ -4,14 +4,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    collection: false //是否收藏
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //后台获取数据
+    //职位详情数据
     var id = options.id;
     var that = this;
     wx.request({
@@ -21,8 +21,6 @@ Page({
         id: id,
       },
       success: function (res) {
-        console.log("获取职位详情成功");
-        console.log(res.data);
         that.setData({
           job: res.data,
         })
@@ -55,14 +53,28 @@ Page({
             [keywords]: keywordsArr,
           })
         }
+        //是否收藏
+        var userId = wx.getStorageSync("userInfo").id;
+        var jobId = that.data.job.id;
+        wx.request({
+          url: 'http://localhost:81/collection/jobIsCollection',
+          method: 'GET',
+          data: {
+            userId: userId,
+            jobId: jobId
+          },
+          success: function (res) {
+            that.setData({
+              collection: res.data
+            })
+          }
+        })
       },
-      fail: function (res) {
-        console.log("获取职位详情失败");
-      }
     })
-
+    //是否登录&&获取用户id
     this.setData({
       isWxLogin: wx.getStorageSync('isWxLogin'),
+      userId: wx.getStorageSync("userInfo").id
     })
   },
 
@@ -88,12 +100,14 @@ Page({
   // 收藏
   collection: function () {
     if (this.data.isWxLogin) {
-      var id = this.data.job.id;
+      var userId = this.data.userId;
+      var jobId = this.data.job.id;
       wx.request({
         url: 'http://localhost:81/collection/collectJob',
         method: 'POST',
         data: {
-          id: id
+          userId: userId,
+          jobId: jobId
         },
         header: {
           'content-type': 'application/x-www-form-urlencoded',
@@ -122,12 +136,14 @@ Page({
 
   // 取消收藏
   uncollection: function () {
-    var id = this.data.job.id;
+    var userId = this.data.userId;
+    var jobId = this.data.job.id;
     wx.request({
       url: 'http://localhost:81/collection/uncollectJob',
       method: 'POST',
       data: {
-        id: id
+        userId: userId,
+        jobId: jobId
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded',

@@ -63,8 +63,6 @@ Page({
       url: 'http://localhost:81/job/all',
       method: 'get',
       success: function (res) {
-        console.log("获取职位列表成功");
-        console.log(res.data);
         that.setData({
           job: res.data,
         })
@@ -92,8 +90,6 @@ Page({
           key: key
         },
         success: function (res) {
-          console.log("搜索成功");
-          console.log(res.data);
           that.setData({
             job: res.data,
           })
