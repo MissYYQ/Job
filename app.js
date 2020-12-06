@@ -52,8 +52,6 @@ App({
           wx.getUserInfo({
             lang: "zh_CN",
             success: (userInfo) => {
-              console.log("获取用户信息成功")
-              // console.log("===userInfo===", userInfo.userInfo);
               //发起网络请求
               wx.request({
                 url: 'http://localhost:81/user/wxLogin',

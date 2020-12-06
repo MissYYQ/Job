@@ -31,7 +31,7 @@
         <view class="data-name">面试</view>
       </view>
       <view class="data-item" bindtap="toStudentCollectPage">
-        <view class="data-num">{{favoritesNum}}</view>
+        <view class="data-num">{{collectionJobNum}}</view>
         <view class="data-name">收藏</view>
       </view>
     </view>

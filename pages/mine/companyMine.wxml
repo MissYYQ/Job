@@ -29,7 +29,7 @@
 				<view class="data-name">职位</view>
 			</view>
 			<view class="data-item" bindtap="toCompanyCollectPage">
-				<view class="data-num">{{favoritesNum}}</view>
+				<view class="data-num">{{collectionUserNum}}</view>
 				<view class="data-name">收藏</view>
 			</view>
 		</view>

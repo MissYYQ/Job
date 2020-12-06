@@ -31,13 +31,15 @@
     "useIsolateContext": true,
     "useCompilerModule": false,
     "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true
+    "minifyWXSS": true,
+    "bundle": false
   },
   "compileType": "miniprogram",
   "libVersion": "2.11.3",
-  "appid": "wx84d8233ef31b5304",
+  "appid": "wxcc92e6ab69b5576a",
   "projectname": "JobForYou",
   "debugOptions": {
     "hidedInDevtools": []
