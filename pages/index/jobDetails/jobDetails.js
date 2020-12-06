@@ -1,3 +1,5 @@
+var util = require('../../../utils/util');
+
 Page({
 
   /**
@@ -53,9 +55,9 @@ Page({
             [keywords]: keywordsArr,
           })
         }
-        //是否收藏
         var userId = wx.getStorageSync("userInfo").id;
         var jobId = that.data.job.id;
+        //是否收藏
         wx.request({
           url: 'http://localhost:81/collection/jobIsCollection',
           method: 'GET',
@@ -66,6 +68,20 @@ Page({
           success: function (res) {
             that.setData({
               collection: res.data
+            })
+          }
+        })
+        //是否投递
+        wx.request({
+          url: 'http://localhost:81/delivery/isDelivery',
+          method: 'GET',
+          data: {
+            userId: userId,
+            jobId: jobId
+          },
+          success: function (res) {
+            that.setData({
+              delivery:res.data
             })
           }
         })
@@ -112,17 +128,19 @@ Page({
         header: {
           'content-type': 'application/x-www-form-urlencoded',
         },
-        success: function () {
-          wx.showToast({
-            title: '收藏成功',
-            icon: 'none',
-            duration: 1200,
-            mask: true
-          })
+        success: function (res) {
+          if (res.data) {
+            wx.showToast({
+              title: '收藏成功',
+              icon: 'none',
+              duration: 1200,
+              mask: true
+            })
+            that.setData({
+              collection: true
+            })
+          }
         }
-      })
-      this.setData({
-        collection: true
       })
     } else {
       wx.showToast({
@@ -148,18 +166,62 @@ Page({
       header: {
         'content-type': 'application/x-www-form-urlencoded',
       },
-      success: function () {
-        wx.showToast({
-          title: '已取消收藏',
-          icon: 'none',
-          duration: 1200,
-          mask: true
-        })
+      success: function (res) {
+        if (!res.data) {
+          wx.showToast({
+            title: '已取消收藏',
+            icon: 'none',
+            duration: 1200,
+            mask: true
+          })
+          that.setData({
+            collection: false
+          })
+        }
       }
     })
-    this.setData({
-      collection: false
-    })
+  },
+
+  //投递
+  delivery: function () {
+    var that = this;
+    if (this.data.isWxLogin) {
+      var userId = this.data.userId;
+      var jobId = this.data.job.id;
+      var deliveryTime = util.formatDateTime(new Date());
+      wx.request({
+        url: 'http://localhost:81/delivery/deliveryJob',
+        method: 'POST',
+        data: {
+          userId: userId,
+          jobId: jobId,
+          deliveryTime: deliveryTime
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+        success: function (res) {
+          if (res.data) {
+            wx.showToast({
+              title: '投递成功',
+              icon: 'none',
+              duration: 1200,
+              mask: true
+            })
+            that.setData({
+              delivery: true
+            })
+          }
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
   },
 
   //跳转至聊天页面

@@ -71,7 +71,8 @@
 			</view>
 			<view class="row btns">
 				<view class="btn" bindtap="toChatPage">立即沟通</view>
-				<view class="btn deliveryBtn">立即投递</view>
+				<view wx:if="{{!delivery}}" class="btn deliveryBtn" bindtap="delivery">立即投递</view>
+				<view wx:else class="btn deliveryBtn">已投递</view>
 			</view>
 		</view>
 	</view>

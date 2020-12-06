@@ -37,9 +37,10 @@ Page({
       userKindTag: userKindTag,
       intentionJob: wx.getStorageSync('intentionJob'),
     })
-    //收藏量
+    
     var userId = wx.getStorageSync("userInfo").id;
     if (that.data.userKindTag == 1 && that.data.isWxLogin) {
+      //收藏量
       wx.request({
         url: 'http://localhost:81/collection/jobCount',
         method: 'GET',
@@ -49,6 +50,19 @@ Page({
         success: function (res) {
           that.setData({
             collectionJobNum: res.data
+          })
+        }
+      })
+      //投递量
+      wx.request({
+        url: 'http://localhost:81/delivery/deliveryCount',
+        method: 'GET',
+        data: {
+          userId: userId
+        },
+        success: function (res) {
+          that.setData({
+            deliveryNum: res.data
           })
         }
       })
@@ -131,9 +145,10 @@ Page({
 
   //我的投递
   toMyDeliveryPage: function () {
+    var deliveryNum = this.data.deliveryNum;
     if (this.data.isWxLogin) {
       wx.navigateTo({
-        url: '/pages/mine/studentMine/myDelivery/myDelivery',
+        url: '/pages/mine/studentMine/myDelivery/myDelivery?deliveryNum='+deliveryNum,
       })
     } else {
       wx.showToast({

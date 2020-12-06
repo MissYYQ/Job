@@ -5,67 +5,34 @@ Page({
    */
   data: {
     //1-投递、2-通过、3-面试、4-接受、5-拒绝、6-未通过
-    delivery: [
-      {
-        jobName: "前端开发工程师",
-        companyName: "云程科技",
-        salary: "8K-10K",
-        city: "杭州",
-        deliveryTime: "2020/11/20  20:02",
-        status: 1,
-      },
-      {
-        jobName: "前端开发工程师",
-        companyName: "云程科技",
-        salary: "8K-10K",
-        city: "杭州",
-        deliveryTime: "2020-11-20  20:02",
-        status: 2,
-      },
-      {
-        jobName: "前端开发工程师",
-        companyName: "云程科技",
-        salary: "8K-10K",
-        city: "杭州",
-        deliveryTime: "2020-11-20  20:02",
-        status: 3,
-      },
-      {
-        jobName: "前端开发工程师",
-        companyName: "云程科技",
-        salary: "8K-10K/月",
-        city: "杭州",
-        deliveryTime: "2020-11-20  20:02",
-        status: 4,
-      },
-      {
-        jobName: "前端开发工程师",
-        companyName: "云程科技",
-        salary: "8K-10K/月",
-        city: "杭州",
-        deliveryTime: "2020-11-20  20:02",
-        status: 5,
-      },
-      {
-        jobName: "前端开发工程师",
-        companyName: "云程科技",
-        salary: "8K-10K/月",
-        city: "杭州",
-        deliveryTime: "2020-11-20  20:02",
-        status: 6,
-      },
-    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    var deliveryNum = options.deliveryNum;
+    var userId = wx.getStorageSync('userInfo').id;
+    if (deliveryNum > 0) {
+      wx.request({
+        url: 'http://localhost:81/job/deliveryJob',
+        method: 'GET',
+        data: {
+          userId: userId
+        },
+        success: function (res) {
+          console.log(res.data)
+          that.setData({
+            deliveryJob: res.data
+          })
+        },
+      })
+    }
   },
 
   //跳转至工作详情页面
-  toJobDetailsPage: function() {
+  toJobDetailsPage: function () {
     wx.navigateTo({
       url: '/pages/index/jobDetails/jobDetails',
     })

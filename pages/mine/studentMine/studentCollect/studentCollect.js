@@ -22,15 +22,10 @@ Page({
           userId: userId
         },
         success: function (res) {
-          console.log("收藏的职位")
-          console.log(res.data)
           that.setData({
             job: res.data
           })
         },
-        fail: function (error) {
-          console.log(error)
-        }
       })
     }
   },
