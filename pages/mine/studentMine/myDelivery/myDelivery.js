@@ -31,10 +31,22 @@ Page({
     }
   },
 
-  //跳转至工作详情页面
-  toJobDetailsPage: function () {
+  //跳转至职位详情页面
+  toJobDetailsPage: function (e) {
+    var id = e.currentTarget.dataset.id;
+    //预览量加一
+    wx.request({
+      url: 'http://localhost:81/job/addPageviews',
+      method: 'post',
+      data: {
+        id: id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+    })
     wx.navigateTo({
-      url: '/pages/index/jobDetails/jobDetails',
+      url: '/pages/index/jobDetails/jobDetails?id=' + id
     })
   },
 

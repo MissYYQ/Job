@@ -1,5 +1,5 @@
-<view class="delivery-item" wx:for="{{deliveryJob}}" wx:key="index" data-index="{{index}}" bindtap="toJobDetailsPage">
-  <view class="name">{{item.company.name}} · {{item.name}}</view>
+<view class="delivery-item" wx:for="{{deliveryJob}}" wx:key="index" data-id="{{item.id}}" bindtap="toJobDetailsPage">
+  <view class="name">{{item.name}} · {{item.company.name}}</view>
   <view class="row item">
     <image src="/images/mine/salary.png"></image>
     <view>薪资：{{item.salary}} / 月</view>
