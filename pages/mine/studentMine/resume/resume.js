@@ -6,6 +6,15 @@ Page({
   data: {
     mark: '',
     isEdit: false,
+    salary: [
+      "不限",
+      "3K以下/月",
+      "3-5K/月",
+      "5-10K/月",
+      "10-20K/月",
+      "20-50K/月",
+      "50K以上/月",
+    ],
     resume: {},
     educationBackground: {},
     intentionJob: {},
@@ -24,7 +33,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      student: wx.getStorageSync('student'),
+      resume: wx.getStorageSync('resume'),
       educationBackground: wx.getStorageSync('educationBackground'),
       intentionJob: wx.getStorageSync('intentionJob'),
       professionalSkills: wx.getStorageSync('professionalSkills'),
@@ -68,6 +77,12 @@ Page({
       [name]: e.detail.value
     })
     wx.setStorageSync('educationBackground', this.data.educationBackground)
+    var education = this.data.educationBackground.school + "、" + this.data.educationBackground.profession + "、" + this.data.educationBackground.degree;
+    let resume = "resume.education";
+    this.setData({
+      [resume]: education
+    })
+    wx.setStorageSync('resume', this.data.resume)
   },
 
   //编辑求职意向
@@ -104,6 +119,12 @@ Page({
       addSkill: ''
     });
     wx.setStorageSync('professionalSkills', this.data.professionalSkills);
+    var skills = this.data.professionalSkills.join("、");
+    let resume = "resume.skills";
+    this.setData({
+      [resume]: skills
+    })
+    wx.setStorageSync('resume', this.data.resume)
   },
 
   //删除技能
@@ -115,6 +136,12 @@ Page({
       professionalSkills: professionalSkills
     })
     wx.setStorageSync('professionalSkills', this.data.professionalSkills)
+    var skills = this.data.professionalSkills.join("、");
+    let resume = "resume.skills";
+    this.setData({
+      [resume]: skills
+    })
+    wx.setStorageSync('resume', this.data.resume)
   },
 
   //输入域文本
@@ -191,6 +218,12 @@ Page({
       addHonor: ''
     });
     wx.setStorageSync('honor', this.data.honor);
+    var honors = this.data.honor.join("、");
+    let resume = "resume.honor";
+    this.setData({
+      [resume]: honors
+    })
+    wx.setStorageSync('resume', this.data.resume)
   },
 
   //删除荣誉
@@ -202,6 +235,12 @@ Page({
       honor: honor
     })
     wx.setStorageSync('honor', this.data.honor)
+    var honors = this.data.honor.join("、");
+    let resume = "resume.honor";
+    this.setData({
+      [resume]: honors
+    })
+    wx.setStorageSync('resume', this.data.resume)
   },
 
   //添加头像
@@ -268,31 +307,47 @@ Page({
     }
   },
 
-  //重置
-  resetBtn: function () {
-    var mark = this.data.mark
-    console.log("重置", mark)
+  //薪资改变
+  bindSalaryChange: function (e) {
     this.setData({
-      [mark]: ''
+      ['intentionJob.salary']: this.data.salary[e.detail.value]
     })
-    if (mark == basicInformation) {
-      wx.setStorageSync("basicInformation", this.data.basicInformation)
-    }
-    if (mark == educationBackground) {
-      wx.setStorageSync("educationBackground", this.data.educationBackground)
-    }
-    if (mark == intentionJob) {
-      wx.setStorageSync("intentionJob", this.data.intentionJob)
-    }
-    if (mark == professionalSkills) {
-      wx.setStorageSync("professionalSkills", this.data.intentionJob)
-    }
+    wx.setStorageSync('intentionJob', this.data.intentionJob)
   },
 
   //编辑确定按钮
   editOverBtn: function () {
     this.setData({
       isEdit: false
+    })
+  },
+
+  //简历编辑完成
+  onlineResume: function () {
+    var that = this;
+    var userId = wx.getStorageSync("userInfo").id;
+    var resume = this.data.resume;
+    wx.request({
+      url: 'http://localhost:81/student/edit',
+      method: 'POST',
+      data: {
+        userId: userId,
+        resume: JSON.stringify(resume)
+      },
+      dataType: 'json',
+      contentType: 'application/json;charset=utf-8',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        if (res.data) {
+          console.log("在线简历已成功保存");
+          console.log(res.data);
+          // that.setData({
+          //   resume: res.data
+          // })
+        }
+      }
     })
   },
 

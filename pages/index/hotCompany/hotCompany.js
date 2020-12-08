@@ -17,8 +17,6 @@ Page({
       url: 'http://localhost:81/company/hotCompany',
       method: 'get',
       success: function (res) {
-        console.log("获取热门公司成功");
-        console.log(res.data);
         that.setData({
           company: res.data,
         })
@@ -63,8 +61,6 @@ Page({
           key: key
         },
         success: function (res) {
-          console.log("搜索成功");
-          console.log(res.data);
           that.setData({
             company: res.data,
           })

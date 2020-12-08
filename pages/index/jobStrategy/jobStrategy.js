@@ -16,8 +16,6 @@ Page({
       url: 'http://localhost:81/jobstrategy/all',
       method: 'GET',
       success: function (res) {
-        console.log("获取求职攻略成功")
-        console.log(res.data);
         that.setData({
           jobstrategy: res.data
         })

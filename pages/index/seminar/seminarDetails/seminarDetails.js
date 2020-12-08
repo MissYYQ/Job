@@ -21,8 +21,6 @@ Page({
         id: id,
       },
       success: function (res) {
-        console.log("获取宣讲会详情成功");
-        console.log(res.data);
         that.setData({
           seminar: res.data,
         })
@@ -43,17 +41,12 @@ Page({
             id: companyId
           },
           success: function (res) {
-            console.log("获取宣讲职位成功");
-            console.log(res.data);
             that.setData({
               job: res.data,
             })
           },
         })
       },
-      fail: function (res) {
-        console.log("获取宣讲会详情失败");
-      }
     })
   },
 

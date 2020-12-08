@@ -58,7 +58,13 @@
       "list": []
     },
     "miniprogram": {
-      "list": []
+      "list": [
+        {
+          "name": "resume",
+          "pathName": "pages/mine/studentMine/resume/resume",
+          "scene": null
+        }
+      ]
     }
   }
 }

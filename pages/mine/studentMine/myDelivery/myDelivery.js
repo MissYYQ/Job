@@ -22,7 +22,6 @@ Page({
           userId: userId
         },
         success: function (res) {
-          console.log(res.data)
           that.setData({
             deliveryJob: res.data
           })
