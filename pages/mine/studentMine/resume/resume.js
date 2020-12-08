@@ -6,6 +6,9 @@ Page({
   data: {
     mark: '',
     isEdit: false,
+    addSkill: '',
+    addHonor: '',
+    textareaValue: '',
     salary: [
       "不限",
       "3K以下/月",
@@ -15,16 +18,9 @@ Page({
       "20-50K/月",
       "50K以上/月",
     ],
-    resume: {},
-    educationBackground: {},
     intentionJob: {},
-    professionalSkills: [],
-    addSkill: '',
     experience: [],
     tempExperience: {},
-    textareaValue: '',
-    honor: [],
-    addHonor: '',
     resumeFile: {},
   },
 
@@ -32,14 +28,48 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      resume: wx.getStorageSync('resume'),
-      educationBackground: wx.getStorageSync('educationBackground'),
-      intentionJob: wx.getStorageSync('intentionJob'),
-      professionalSkills: wx.getStorageSync('professionalSkills'),
-      experience: wx.getStorageSync('experience'),
-      resumeFile: wx.getStorageSync('resumeFile'),
-      honor: wx.getStorageSync('honor'),
+    var that = this;
+    var userId = wx.getStorageSync("userInfo").id;
+    wx.request({
+      url: 'http://localhost:81/student/one',
+      method: 'GET',
+      data: {
+        userId: userId
+      },
+      success: function (res) {
+        that.setData({
+          resume: res.data
+        })
+        //数据处理
+        if (that.data.resume.skills) {
+          if (that.data.resume.skills) {
+            var skillsArr = that.data.resume.skills.split("、")
+            let skills = "resume.skills"
+            that.setData({
+              [skills]: skillsArr,
+            })
+          }
+          if (that.data.resume.honor) {
+            var honorArr = that.data.resume.honor.split("、")
+            let honor = "resume.honor"
+            that.setData({
+              [honor]: honorArr
+            })
+          }
+          var educationArr = that.data.resume.education.split("、")
+          var school = educationArr[0]
+          var profession = educationArr[1]
+          var degree = educationArr[2]
+          let rschool = "resume.education.school"
+          let rprofession = "resume.education.profession"
+          let rdegree = "resume.education.degree"
+          that.setData({
+            [rschool]: school,
+            [rprofession]: profession,
+            [rdegree]: degree
+          })
+        }
+      }
     })
     var description = this.data.tempExperience.description;
     if (description) {
@@ -66,23 +96,15 @@ Page({
     this.setData({
       [name]: e.detail.value
     })
-    wx.setStorageSync('resume', this.data.resume)
   },
 
   //编辑教育背景
   editEB: function (e) {
     var key = e.currentTarget.dataset.key;
-    let name = "educationBackground." + key;
+    let name = "resume.education." + key;
     this.setData({
       [name]: e.detail.value
     })
-    wx.setStorageSync('educationBackground', this.data.educationBackground)
-    var education = this.data.educationBackground.school + "、" + this.data.educationBackground.profession + "、" + this.data.educationBackground.degree;
-    let resume = "resume.education";
-    this.setData({
-      [resume]: education
-    })
-    wx.setStorageSync('resume', this.data.resume)
   },
 
   //编辑求职意向
@@ -92,7 +114,6 @@ Page({
     this.setData({
       [name]: e.detail.value
     })
-    wx.setStorageSync('intentionJob', this.data.intentionJob)
   },
 
   //编辑职业技能
@@ -107,41 +128,30 @@ Page({
   //添加技能
   addSkill: function (e) {
     var addSkill = this.data.addSkill;
-    var professionalSkills = this.data.professionalSkills;
-    var length = professionalSkills.length;
-    var tag = [];
-    for (var i = 0; i < length; i++) {
-      tag[i] = professionalSkills[i]
-    };
-    tag[length] = addSkill;
-    this.setData({
-      professionalSkills: tag,
-      addSkill: ''
-    });
-    wx.setStorageSync('professionalSkills', this.data.professionalSkills);
-    var skills = this.data.professionalSkills.join("、");
+    if (this.data.resume.skills) {
+      var skillsArr = this.data.resume.skills;
+    } else {
+      var skillsArr = new Array();
+    }
+    if (skillsArr) {
+      skillsArr.push(addSkill)
+    }
     let resume = "resume.skills";
     this.setData({
-      [resume]: skills
-    })
-    wx.setStorageSync('resume', this.data.resume)
+      [resume]: skillsArr,
+      addSkill: ''
+    });
   },
 
   //删除技能
   deleteSkill: function (e) {
     var index = e.currentTarget.dataset.index;
-    var professionalSkills = this.data.professionalSkills;
-    professionalSkills.splice(index, 1)
-    this.setData({
-      professionalSkills: professionalSkills
-    })
-    wx.setStorageSync('professionalSkills', this.data.professionalSkills)
-    var skills = this.data.professionalSkills.join("、");
+    var skills = this.data.resume.skills;
+    skills.splice(index, 1)
     let resume = "resume.skills";
     this.setData({
       [resume]: skills
     })
-    wx.setStorageSync('resume', this.data.resume)
   },
 
   //输入域文本
@@ -206,41 +216,30 @@ Page({
   //添加荣誉
   addHonor: function (e) {
     var addHonor = this.data.addHonor;
-    var honor = this.data.honor;
-    var length = honor.length;
-    var tag = [];
-    for (var i = 0; i < length; i++) {
-      tag[i] = honor[i]
-    };
-    tag[length] = addHonor;
-    this.setData({
-      honor: tag,
-      addHonor: ''
-    });
-    wx.setStorageSync('honor', this.data.honor);
-    var honors = this.data.honor.join("、");
+    if (this.data.resume.honor) {
+      var honor = this.data.resume.honor;
+    } else {
+      var honor = new Array();
+    }
+    if (honor) {
+      honor.push(addHonor)
+    }
     let resume = "resume.honor";
     this.setData({
-      [resume]: honors
-    })
-    wx.setStorageSync('resume', this.data.resume)
+      [resume]: honor,
+      addHonor: ''
+    });
   },
 
   //删除荣誉
   deleteHonor: function (e) {
     var index = e.currentTarget.dataset.index;
-    var honor = this.data.honor;
+    var honor = this.data.resume.honor;
     honor.splice(index, 1)
-    this.setData({
-      honor: honor
-    })
-    wx.setStorageSync('honor', this.data.honor)
-    var honors = this.data.honor.join("、");
     let resume = "resume.honor";
     this.setData({
-      [resume]: honors
+      [resume]: honor
     })
-    wx.setStorageSync('resume', this.data.resume)
   },
 
   //添加头像
@@ -258,7 +257,6 @@ Page({
         that.setData({
           ['resume.avatar']: filePath
         })
-        wx.setStorageSync('resume', that.data.resume)
       }
     })
   },
@@ -274,7 +272,6 @@ Page({
         that.setData({
           resumeFile: resumeFile
         });
-        wx.setStorageSync('resumeFile', that.data.resumeFile);
       }
     })
   },
@@ -297,13 +294,11 @@ Page({
       this.setData({
         ['resume.birthday']: e.detail.value
       })
-      wx.setStorageSync('resume', this.data.resume)
     } else {
       let name = "tempExperience." + key;
       this.setData({
         [name]: e.detail.value
       })
-      wx.setStorageSync('tempExperience', this.data.tempExperience)
     }
   },
 
@@ -312,7 +307,6 @@ Page({
     this.setData({
       ['intentionJob.salary']: this.data.salary[e.detail.value]
     })
-    wx.setStorageSync('intentionJob', this.data.intentionJob)
   },
 
   //编辑确定按钮
@@ -325,6 +319,19 @@ Page({
   //简历编辑完成
   onlineResume: function () {
     var that = this;
+    //数据处理
+    var skills = this.data.resume.skills.join("、");
+    let rskills = "resume.skills";
+    var honor = this.data.resume.honor.join("、");
+    let rhonor = "resume.honor";
+    var education = this.data.resume.education.school + "、" + this.data.resume.education.profession + "、" + this.data.resume.education.degree;
+    let reducation = "resume.education";
+    this.setData({
+      [rskills]: skills,
+      [rhonor]: honor,
+      [reducation]: education,
+    })
+    //后台处理
     var userId = wx.getStorageSync("userInfo").id;
     var resume = this.data.resume;
     wx.request({
@@ -343,9 +350,9 @@ Page({
         if (res.data) {
           console.log("在线简历已成功保存");
           console.log(res.data);
-          // that.setData({
-          //   resume: res.data
-          // })
+          that.setData({
+            resume: res.data
+          })
         }
       }
     })

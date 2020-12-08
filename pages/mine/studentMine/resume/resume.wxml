@@ -52,7 +52,7 @@
 						<view class="item-name">邮箱</view>
 						<view class="required">*</view>
 					</view>
-					<input class="data" style="width:60%;" value="{{resume.mailbox}}" data-key="mailbox" bindinput="editMsg"
+					<input class="data" style="width:60%;" value="{{resume.email}}" data-key="email" bindinput="editMsg"
 						placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 				</view>
 			</view>
@@ -91,9 +91,9 @@
 					<view class="item-name">电话</view>
 					<view class="data">{{resume.phone}}</view>
 				</view>
-				<view wx:if="{{resume.mailbox}}" class="row">
+				<view wx:if="{{resume.email}}" class="row">
 					<view class="item-name">邮箱</view>
-					<view class="data">{{resume.mailbox}}</view>
+					<view class="data">{{resume.email}}</view>
 				</view>
 			</view>
 			<!-- 右边 -->
@@ -138,7 +138,8 @@
 			<input class="data" type="number" data-key="salary" value="{{intentionJob.salary}}" bindinput="editIJ"
 				placeholder="请选择..." placeholder-class="placeholderStyle"></input>
 			<view class="data">
-				<picker mode="selector" range="{{salary}}" value="{{intentionJob.salary}}" data-key="salary" bindchange="bindSalaryChange">
+				<picker mode="selector" range="{{salary}}" value="{{intentionJob.salary}}" data-key="salary"
+					bindchange="bindSalaryChange">
 					<input value="{{intentionJob.salary}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
 				</picker>
 			</view>
@@ -172,24 +173,24 @@
 <!-- 教育背景 -->
 <view class="item">
 	<!-- 项名 -->
-	<view class="row" bindtap="edit" data-mark="educationBackground">
+	<view class="row" bindtap="edit" data-mark="education">
 		<view class="row">
 			<view class="title">教育背景</view>
 			<view class="required">*</view>
 		</view>
-		<image wx:if="{{mark === 'educationBackground' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img">
+		<image wx:if="{{mark === 'education' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img">
 		</image>
 		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
 	</view>
 	<!-- 编辑教育背景 -->
-	<view wx:if="{{mark === 'educationBackground' && isEdit}}">
+	<view wx:if="{{mark === 'education' && isEdit}}">
 		<view>
 			<view class="row msg-item">
 				<view class="row">
 					<view class="item-name">学校</view>
 					<view class="required">*</view>
 				</view>
-				<input class="data" type="text" value="{{educationBackground.school}}" data-key="school" bindinput="editEB"
+				<input class="data" type="text" value="{{resume.education.school}}" data-key="school" bindinput="editEB"
 					placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 			</view>
 			<view class="row msg-item">
@@ -197,15 +198,15 @@
 					<view class="item-name">专业</view>
 					<view class="required">*</view>
 				</view>
-				<input class="data" type="text" value="{{educationBackground.profession}}" data-key="profession"
-					bindinput="editEB" placeholder="请输入..." placeholder-class="placeholderStyle"></input>
+				<input class="data" type="text" value="{{resume.education.profession}}" data-key="profession" bindinput="editEB"
+					placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 			</view>
 			<view class="row msg-item">
 				<view class="row">
 					<view class="item-name">学历</view>
 					<view class="required">*</view>
 				</view>
-				<input class="data" type="text" value="{{educationBackground.degree}}" data-key="degree" bindinput="editEB"
+				<input class="data" type="text" value="{{resume.education.degree}}" data-key="degree" bindinput="editEB"
 					placeholder="请输入..." placeholder-class="placeholderStyle"></input>
 			</view>
 		</view>
@@ -213,9 +214,9 @@
 	<!-- 教育背景信息显示 -->
 	<view wx:if="{{!isEdit}}">
 		<view class="row  eB">
-			<view wx:if="{{educationBackground.school}}">{{educationBackground.school}}</view>
-			<view wx:if="{{educationBackground.profession}}">{{educationBackground.profession}}</view>
-			<view wx:if="{{educationBackground.degree}}">{{educationBackground.degree}}</view>
+			<view wx:if="{{resume.education.school}}">{{resume.education.school}}</view>
+			<view wx:if="{{resume.education.profession}}">{{resume.education.profession}}</view>
+			<view wx:if="{{resume.education.degree}}">{{resume.education.degree}}</view>
 		</view>
 	</view>
 </view>
@@ -223,17 +224,17 @@
 <!-- 职业技能 -->
 <view class="item">
 	<!-- 项名 -->
-	<view class="row" bindtap="edit" data-mark="professionalSkills">
+	<view class="row" bindtap="edit" data-mark="skills">
 		<view class="title">职业技能</view>
-		<image wx:if="{{mark === 'professionalSkills' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img">
+		<image wx:if="{{mark === 'skills' && isEdit}}" src="/images/mine/resume/edit02.png" class="edit-img">
 		</image>
 		<image wx:else src="/images/mine/resume/edit01.png" class="edit-img"></image>
 	</view>
 	<!-- 编辑职业技能 -->
-	<view wx:if="{{mark === 'professionalSkills' && isEdit}}">
+	<view wx:if="{{mark === 'skills' && isEdit}}">
 		<!-- 添加的技能显示 -->
-		<view wx:if="{{professionalSkills}}">
-			<view wx:for="{{professionalSkills}}" wx:key="index" data-index="{{index}}" bindtap="deleteSkill">
+		<view wx:if="{{resume.skills}}">
+			<view wx:for="{{resume.skills}}" wx:key="index" data-index="{{index}}" bindtap="deleteSkill">
 				<view class="row skillShow">
 					<view>{{item}}</view>
 					<image src="/images/mine/resume/delete.png"></image>
@@ -244,7 +245,7 @@
 		<view class="row msg-item">
 			<view class="item-name">添加技能</view>
 			<input class="data" maxlength="14" value="{{addSkill}}" placeholder="技能限长14个字符"
-				placeholder-class="placeholderStyle" data-key="professionalSkills" bindinput="editPS"></input>
+				placeholder-class="placeholderStyle" data-key="skills" bindinput="editPS"></input>
 			<view class="okImg">
 				<image src="/images/mine/resume/ok.png" bindtap="addSkill"></image>
 			</view>
@@ -252,8 +253,8 @@
 	</view>
 	<!-- 职业技能信息显示 -->
 	<view wx:if="{{!isEdit}}">
-		<view wx:if="{{professionalSkills}}">
-			<view wx:for="{{professionalSkills}}" wx:key="index" data-index="{{index}}" class="row">
+		<view wx:if="{{resume.skills}}">
+			<view wx:for="{{resume.skills}}" wx:key="index" data-index="{{index}}" class="row">
 				<view class="eB skill">
 					<view>{{item}}</view>
 				</view>
@@ -359,8 +360,8 @@
 	<!-- 编辑荣誉 -->
 	<view wx:if="{{mark === 'honor' && isEdit}}">
 		<!-- 添加的荣誉显示 -->
-		<view wx:if="{{honor}}">
-			<view wx:for="{{honor}}" wx:key="index" data-index="{{index}}" bindtap="deleteHonor">
+		<view wx:if="{{resume.honor}}">
+			<view wx:for="{{resume.honor}}" wx:key="index" data-index="{{index}}" bindtap="deleteHonor">
 				<view class="row skillShow">
 					<view>{{item}}</view>
 					<image src="/images/mine/resume/delete.png"></image>
@@ -371,7 +372,7 @@
 		<view class="row msg-item">
 			<view class="item-name">添加荣誉</view>
 			<input class="data" maxlength="14" value="{{addHonor}}" placeholder="技能限长14个字符"
-				placeholder-class="placeholderStyle" data-key="honor" bindinput="editH"></input>
+				placeholder-class="placeholderStyle" bindinput="editH"></input>
 			<view class="okImg">
 				<image src="/images/mine/resume/ok.png" bindtap="addHonor"></image>
 			</view>
@@ -379,8 +380,8 @@
 	</view>
 	<!-- 荣誉信息显示 -->
 	<view wx:if="{{!isEdit}}">
-		<view wx:if="{{honor}}">
-			<view wx:for="{{honor}}" wx:key="index" data-index="{{index}}" class="row">
+		<view wx:if="{{resume.honor}}">
+			<view wx:for="{{resume.honor}}" wx:key="index" data-index="{{index}}" class="row">
 				<view class="eB skill">
 					<view>{{item}}</view>
 				</view>
@@ -406,6 +407,7 @@
 	</view>
 </view>
 
+<view class="div"></view>
 
 <!-- 底部按钮 -->
 <view class="row button bottomBtn">

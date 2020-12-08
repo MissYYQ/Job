@@ -1,9 +1,9 @@
-page{
+page {
   font-size: 10pt;
   width: 100%;
 }
 
-.row{
+.row {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -11,7 +11,7 @@ page{
   box-sizing: border-box;
 }
 
-.item{
+.item {
   border-bottom: rgba(246, 181, 1, 0.15) solid 3rpx;
   margin-left: 6%;
   width: 88%;
@@ -25,77 +25,77 @@ page{
   letter-spacing: 3rpx;
 }
 
-.edit-img{
+.edit-img {
   width: 46rpx;
   height: 46rpx;
 }
 
-.add-img{
+.add-img {
   width: 65rpx;
   height: 65rpx;
 }
 
-.top-left{
+.top-left {
   width: 60%;
 }
 
-.top-right{
+.top-right {
   margin-left: 5%;
   width: 35%;
   text-align: center;
   margin-top: -30rpx;
 }
 
-.msg-item{
+.msg-item {
   border-bottom: #f3f3f3 solid 1rpx;
 }
 
-.item-name{
+.item-name {
   line-height: 2.5em;
   font-size: 10pt;
 }
 
-.data{
+.data {
   position: absolute;
   left: 220rpx;
 }
 
-.addAvatar{
+.addAvatar {
   height: 170rpx;
   width: 170rpx;
 }
 
-.avatar{
-  height: 185rpx;
-  width: 185rpx;
+.avatar {
+  height: 190rpx;
+  width: 180rpx;
   border-radius: 50%;
 }
 
-.name{
+.name {
   font-size: 11pt;
 }
 
-.showImg{
+.showImg {
   justify-content: left;
 }
 
-.showImg > image{
+.showImg>image {
   width: 50rpx;
   height: 50rpx;
 }
 
-.showImg > view {
+.showImg>view {
   line-height: 2.8em;
   font-size: 10pt;
   margin-left: 30rpx;
 }
 
-.eB{
+.eB {
   justify-content: left;
   flex-wrap: wrap;
 }
 
-.eB view{
+.eB view {
   color: white;
   background-color: #F6B501;
   border-radius: 30rpx;
@@ -106,26 +106,26 @@ page{
   margin-bottom: 20rpx;
 }
 
-.okImg image{
+.okImg image {
   width: 60rpx;
   height: 60rpx;
 }
 
-.skill{
+.skill {
   justify-content: left;
   flex-wrap: wrap;
 }
 
-.skill view{
+.skill view {
   padding: 0 35rpx;
 }
 
-.skill image{
+.skill image {
   width: 50rpx;
   height: 50rpx;
 }
 
-.skillShow{
+.skillShow {
   border: solid 2rpx #F6B501;
   color: #F6B501;
   border-radius: 30rpx;
@@ -137,16 +137,16 @@ page{
   width: 520rpx;
 }
 
-.skillShow image{
+.skillShow image {
   width: 35rpx;
   height: 35rpx;
 }
 
-input{
+input {
   color: #555555;
 }
 
-textarea{
+textarea {
   color: #555555;
 }
 
@@ -155,14 +155,14 @@ textarea{
   color: #888;
 }
 
-.experienceName{
+.experienceName {
   font-size: 11pt;
   font-weight: 600;
   padding-right: 35rpx;
   line-height: 2.2em;
 }
 
-.experienceTime{
+.experienceTime {
   justify-content: left;
 }
 
@@ -170,9 +170,9 @@ textarea{
   padding-bottom: 40rpx;
 }
 
-.eItem{
-  border: rgba(246,181,1,0.5) 2rpx solid;
-  box-shadow: rgba(246,181,1,0.4) 4rpx 7rpx;
+.eItem {
+  border: rgba(246, 181, 1, 0.5) 2rpx solid;
+  box-shadow: rgba(246, 181, 1, 0.4) 4rpx 7rpx;
   border-radius: 20rpx;
   padding: 30rpx;
   padding-bottom: 0;
@@ -180,26 +180,34 @@ textarea{
   align-items: normal;
 }
 
-.experienceItem{
+.experienceItem {
   padding-bottom: 20rpx;
 }
 
-.deleteImg image{
+.deleteImg image {
   width: 55rpx;
   height: 55rpx;
 }
 
-.resumeFile{
+.resumeFile {
   padding-bottom: 35rpx;
 }
 
-
-.button{
-  margin-top: 50rpx;
-  padding-bottom: 50rpx;
+.div {
+  height: 180rpx;
 }
 
-.btn{
+
+.button {
+  position: fixed;
+  z-index: 99;
+  background-color: white;
+  bottom: 0;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+
+.btn {
   font-size: 11pt;
   letter-spacing: 3rpx;
   padding: 0 120rpx;
@@ -207,17 +215,17 @@ textarea{
   border-radius: 50rpx;
 }
 
-.resetBtn{
+.resetBtn {
   background-color: #f3f3f3;
   color: black;
 }
 
-.determineBtn{
+.determineBtn {
   background-color: #F6B501;
   color: white;
 }
 
-.bottomBtn{
+.bottomBtn {
   margin-left: 5%;
   width: 90%;
 }
