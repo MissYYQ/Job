@@ -18,7 +18,6 @@ Page({
       "20-50K/月",
       "50K以上/月",
     ],
-    intentionJob: {},
     experience: [],
     tempExperience: {},
     resumeFile: {},
@@ -30,6 +29,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     var userId = wx.getStorageSync("userInfo").id;
+    //student
     wx.request({
       url: 'http://localhost:81/student/one',
       method: 'GET',
@@ -69,6 +69,19 @@ Page({
             [rdegree]: degree
           })
         }
+      }
+    })
+    //intentionJob
+    wx.request({
+      url: 'http://localhost:81/intention/one',
+      method:'GET',
+      data:{
+        userId: userId
+      },
+      success:function(res){
+        that.setData({
+          intentionJob: res.data
+        })
       }
     })
     var description = this.data.tempExperience.description;
@@ -333,6 +346,7 @@ Page({
     })
     //后台处理
     var userId = wx.getStorageSync("userInfo").id;
+    //学生
     var resume = this.data.resume;
     wx.request({
       url: 'http://localhost:81/student/edit',
@@ -348,11 +362,29 @@ Page({
       },
       success: function (res) {
         if (res.data) {
-          console.log("在线简历已成功保存");
-          console.log(res.data);
-          that.setData({
-            resume: res.data
-          })
+          console.log(res.data,"student保存成功")
+          that.onLoad();
+        }
+      }
+    })
+    //求职意向
+    var intentionJob = this.data.intentionJob;
+    wx.request({
+      url: 'http://localhost:81/intention/edit',
+      method: 'POST',
+      data: {
+        userId: userId,
+        intentionJob: JSON.stringify(intentionJob)
+      },
+      dataType: 'json',
+      contentType: 'application/json;charset=utf-8',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        if (res.data) {
+          console.log(res.data,"intentionJob保存成功")
+          that.onLoad();
         }
       }
     })
