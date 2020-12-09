@@ -89,8 +89,9 @@ Page({
 
   //跳转至简历页面
   toResumePage: function () {
+    var userId = this.data.userInfo.id;
     wx.navigateTo({
-      url: '/pages/mine/studentMine/resume/resume',
+      url: '/pages/mine/studentMine/resume/resume?userId='+userId,
     })
   },
 
@@ -113,8 +114,9 @@ Page({
   //我的简历
   toPreviewResumePage: function () {
     if (this.data.isWxLogin) {
+      var userId = this.data.userInfo.id;
       wx.navigateTo({
-        url: '/pages/mine/studentMine/resume/previewResume/previewResume',
+        url: '/pages/mine/studentMine/resume/previewResume/previewResume?userId='+userId,
       })
     } else {
       wx.showToast({

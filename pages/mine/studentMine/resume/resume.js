@@ -1,3 +1,5 @@
+var util = require("../../../../utils/util");
+
 Page({
 
   /**
@@ -18,7 +20,6 @@ Page({
       "20-50K/月",
       "50K以上/月",
     ],
-    // experience: [],
     tempExperience: {},
   },
 
@@ -27,7 +28,10 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    var userId = wx.getStorageSync("userInfo").id;
+    var userId = options.userId;
+    that.setData({
+      userId: userId
+    })
     //student
     wx.request({
       url: 'http://localhost:81/student/one',
@@ -37,7 +41,8 @@ Page({
       },
       success: function (res) {
         that.setData({
-          resume: res.data
+          resume: res.data,
+          rawResume: res.data
         })
         //数据处理
         if (that.data.resume.skills) {
@@ -79,8 +84,10 @@ Page({
       },
       success: function (res) {
         that.setData({
-          intentionJob: res.data
+          intentionJob: res.data,
+          rawIntentionJob: res.data
         })
+        wx.setStorageSync('intentionJob', that.data.intentionJob)
       }
     })
     //resumefile
@@ -92,7 +99,8 @@ Page({
       },
       success: function (res) {
         that.setData({
-          resumeFile: res.data
+          resumeFile: res.data,
+          rawResumeFile: res.data
         })
       }
     })
@@ -105,7 +113,8 @@ Page({
       },
       success: function (res) {
         that.setData({
-          resumeFile: res.data
+          experience: res.data,
+          rawExperience: res.data
         })
       }
     })
@@ -216,9 +225,9 @@ Page({
   //添加工作/项目经历
   addExperience: function (e) {
     var tempExperience = this.data.tempExperience;
-    if(this.data.experience){
+    if (this.data.experience) {
       var experience = this.data.experience;
-    } else{
+    } else {
       var experience = new Array();
     }
     experience.push(tempExperience);
@@ -367,92 +376,99 @@ Page({
       [reducation]: education,
     })
     //后台处理
-    var userId = wx.getStorageSync("userInfo").id;
-    //学生
+    var userId = that.data.userId;
+    //student
     var resume = this.data.resume;
-    wx.request({
-      url: 'http://localhost:81/student/edit',
-      method: 'POST',
-      data: {
-        userId: userId,
-        resume: JSON.stringify(resume)
-      },
-      dataType: 'json',
-      contentType: 'application/json;charset=utf-8',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-      },
-      success: function (res) {
-        if (res.data) {
-          console.log(res.data, "student保存成功")
-          that.onLoad();
+    if (!util.isObjectValueEqual(this.data.rawResume, resume)) {
+      wx.request({
+        url: 'http://localhost:81/student/edit',
+        method: 'POST',
+        data: {
+          userId: userId,
+          resume: JSON.stringify(resume)
+        },
+        dataType: 'json',
+        contentType: 'application/json;charset=utf-8',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+        success: function (res) {
+          if (res.data) {
+            console.log(res.data, "student保存成功")
+            that.onLoad();
+          }
         }
-      }
-    })
+      })
+    }
     //求职意向
     var intentionJob = this.data.intentionJob;
-    wx.request({
-      url: 'http://localhost:81/intention/edit',
-      method: 'POST',
-      data: {
-        userId: userId,
-        intentionJob: JSON.stringify(intentionJob)
-      },
-      dataType: 'json',
-      contentType: 'application/json;charset=utf-8',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-      },
-      success: function (res) {
-        if (res.data) {
-          console.log(res.data, "intentionJob保存成功")
-          that.onLoad();
+    if (!util.isObjectValueEqual(this.data.rawIntentionJob, intentionJob)) {
+      wx.request({
+        url: 'http://localhost:81/intention/edit',
+        method: 'POST',
+        data: {
+          userId: userId,
+          intentionJob: JSON.stringify(intentionJob)
+        },
+        dataType: 'json',
+        contentType: 'application/json;charset=utf-8',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+        success: function (res) {
+          if (res.data) {
+            console.log(res.data, "intentionJob保存成功");
+            wx.setStorageSync('intentionJob', this.data.intentionJob);
+            that.onLoad();
+          }
         }
-      }
-    })
+      })
+    }
     //附件简历
     var resumeFile = this.data.resumeFile;
-    wx.request({
-      url: 'http://localhost:81/resumefile/edit',
-      method: 'POST',
-      data: {
-        userId: userId,
-        resumeFile: JSON.stringify(resumeFile)
-      },
-      dataType: 'json',
-      contentType: 'application/json;charset=utf-8',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-      },
-      success: function (res) {
-        if (res.data) {
-          console.log(res.data, "resumeFile保存成功")
-          that.onLoad();
+    if (!util.isObjectValueEqual(this.data.rawResumeFile, resumeFile)) {
+      wx.request({
+        url: 'http://localhost:81/resumefile/edit',
+        method: 'POST',
+        data: {
+          userId: userId,
+          resumeFile: JSON.stringify(resumeFile)
+        },
+        dataType: 'json',
+        contentType: 'application/json;charset=utf-8',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+        success: function (res) {
+          if (res.data) {
+            console.log(res.data, "resumeFile保存成功")
+          }
         }
-      }
-    })
+      })
+    }
     //工作/项目经历
     var experience = this.data.experience;
-    console.log(experience)
-    wx.request({
-      url: 'http://localhost:81/experience/edit',
-      method: 'POST',
-      data: {
-        userId: userId,
-        experience: JSON.stringify(experience)
-      },
-      dataType: 'json',
-      contentType: 'application/json;charset=utf-8',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-      },
-      success: function (res) {
-        if (res.data) {
-          console.log(res.data, "experience保存成功")
-          that.onLoad();
+    if (!util.isArrayObjectValueEqual(rawExperience, experience)) {
+      wx.request({
+        url: 'http://localhost:81/experience/edit',
+        method: 'POST',
+        data: {
+          userId: userId,
+          experience: JSON.stringify(experience)
+        },
+        dataType: 'json',
+        contentType: 'application/json;charset=utf-8',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+        success: function (res) {
+          if (res.data) {
+            console.log(res.data, "experience保存成功")
+            that.onLoad();
+          }
         }
-      }
-    })
+      })
+    }
   },
 
   //跳转至首页

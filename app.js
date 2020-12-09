@@ -28,8 +28,7 @@ App({
     if (wx.getStorageSync('userInfo')) {
       _this.globalData.userInfo = wx.getStorageSync('userInfo')
     }
-    // console.log("globalData：",this.globalData)
-    
+
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -42,7 +41,6 @@ App({
     wx.login({
       success: res => {
         console.log("登录成功");
-        // console.log("===res===", res);
         //设置全局数据及缓存数据
         that.globalData.isWxLogin = true;
         wx.setStorageSync('isWxLogin', true)

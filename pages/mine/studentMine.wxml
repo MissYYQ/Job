@@ -39,6 +39,15 @@
 </view>
 <!-- 底部 -->
 <view class="bottom">
+  <view class="bottom-item" bindtap="toResumePage">
+    <view class="row">
+      <view class="row mineItem">
+        <image src="/images/mine/edit.png"></image>
+        <view>编辑在线简历</view>
+      </view>
+      <image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
+    </view>
+  </view>
   <view class="bottom-item" bindtap="toPreviewResumePage">
     <view class="row">
       <view class="row mineItem">
@@ -51,8 +60,8 @@
   <view class="bottom-item" bindtap="toMyDeliveryPage">
     <view class="row">
       <view class="row mineItem">
-        <image src="/images/mine/bishi.png"></image>
-        <view>我的投递</view>
+        <image src="/images/mine/delivery.png"></image>
+        <view>投递记录</view>
       </view>
       <image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
     </view>
