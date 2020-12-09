@@ -66,6 +66,19 @@ Page({
           })
         }
       })
+      //面试量
+      wx.request({
+        url: 'http://localhost:81/interview/interviewCount',
+        method: 'GET',
+        data: {
+          userId: userId
+        },
+        success: function (res) {
+          that.setData({
+            interviewNum: res.data
+          })
+        }
+      })
     }
 
   },
@@ -147,8 +160,8 @@ Page({
 
   //我的投递
   toMyDeliveryPage: function () {
-    var deliveryNum = this.data.deliveryNum;
     if (this.data.isWxLogin) {
+      var deliveryNum = this.data.deliveryNum;
       wx.navigateTo({
         url: '/pages/mine/studentMine/myDelivery/myDelivery?deliveryNum='+deliveryNum,
       })
@@ -165,8 +178,9 @@ Page({
   //我的面试
   toMyInterviewPage: function () {
     if (this.data.isWxLogin) {
+      var interviewNum = this.data.interviewNum;
       wx.navigateTo({
-        url: '/pages/mine/studentMine/myInterview/myInterview',
+        url: '/pages/mine/studentMine/myInterview/myInterview?interviewNum='+interviewNum,
       })
     } else {
       wx.showToast({

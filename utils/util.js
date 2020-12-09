@@ -11,11 +11,6 @@ const formatDateTime = date => {
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute].map(formatNumber).join(':')
 }
 
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
-}
-
 
 // 格式化日期
 const formatDate = date => {
@@ -23,6 +18,21 @@ const formatDate = date => {
   const month = date.getMonth() + 1
   const day = date.getDate()
   return [year, month, day].map(formatNumber).join('-')
+}
+
+//格式化时间
+const formatTime = date => {
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+
+  return [hour, minute].map(formatNumber).join(':')
+}
+
+
+//格式化数字
+const formatNumber = n => {
+  n = n.toString()
+  return n[1] ? n : '0' + n
 }
 
 //判断两个对象是否相等
@@ -67,6 +77,7 @@ function isArrayObjectValueEqual(a, b) {
 module.exports = {
   formatDateTime: formatDateTime,
   formatDate: formatDate,
+  formatTime: formatTime,
   isObjectValueEqual: isObjectValueEqual,
   isArrayObjectValueEqual: isArrayObjectValueEqual
 }

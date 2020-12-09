@@ -6,19 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    interview: [{
-        jobName: "前端开发工程师",
-        companyName: "云程科技",
-        datetime: "2020/11/29  9:30",
-        location: "江西省九江市濂溪区前进东路551号九江学院文友楼608",
-      },
-      {
-        jobName: "前端开发工程师",
-        companyName: "云程科技",
-        datetime: "2020/11/21  9:30",
-        location: "江西省九江市濂溪区前进东路551号九江学院文友楼608",
-      },
-    ]
+
   },
 
   /**
@@ -26,16 +14,47 @@ Page({
    */
   onLoad: function (options) {
     //获取当前日期
-    var nowDateTime = util.formatDateTime(new Date());
+    var nowDate = util.formatDate(new Date());
+    var nowTime = util.formatTime(new Date());
     this.setData({
-      nowDateTime: nowDateTime,
+      nowDate: nowDate,
+      nowTime: nowTime,
     })
-    console.log(this.data.nowDateTime)
+    var that = this;
+    var userId = wx.getStorageSync('userInfo').id;
+    var interviewNum = options.interviewNum;
+    if (interviewNum > 0) {
+      wx.request({
+        url: 'http://localhost:81/interview/allByUserId',
+        method: 'GET',
+        data: {
+          userId: userId
+        },
+        success: function (res) {
+          that.setData({
+            interview: res.data
+          })
+        },
+      })
+    }
   },
 
-  toJobDetailsPage: function () {
+  //跳转至职位详情页面
+  toJobDetailsPage: function (e) {
+    var id = e.currentTarget.dataset.id;
+    //预览量加一
+    wx.request({
+      url: 'http://localhost:81/job/addPageviews',
+      method: 'post',
+      data: {
+        id: id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+    })
     wx.navigateTo({
-      url: '/pages/index/jobDetails/jobDetails',
+      url: '/pages/index/jobDetails/jobDetails?id=' + id
     })
   },
 

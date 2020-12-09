@@ -27,8 +27,7 @@ page {
 }
 
 .title-data{
-  width: 74%;
-  color: #f6b501;
+  width: 75%;
 }
 
 .outdate{
