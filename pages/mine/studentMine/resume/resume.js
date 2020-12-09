@@ -20,7 +20,7 @@ Page({
     ],
     experience: [],
     tempExperience: {},
-    resumeFile: {},
+    // resumeFile: {},
   },
 
   /**
@@ -74,16 +74,30 @@ Page({
     //intentionJob
     wx.request({
       url: 'http://localhost:81/intention/one',
-      method:'GET',
-      data:{
+      method: 'GET',
+      data: {
         userId: userId
       },
-      success:function(res){
+      success: function (res) {
         that.setData({
           intentionJob: res.data
         })
       }
     })
+    //resumefile
+    wx.request({
+      url: 'http://localhost:81/resumefile/one',
+      method: 'GET',
+      data: {
+        userId: userId
+      },
+      success: function (res) {
+        that.setData({
+          resumeFile: res.data
+        })
+      }
+    })
+    //字数
     var description = this.data.tempExperience.description;
     if (description) {
       this.setData({
@@ -362,7 +376,7 @@ Page({
       },
       success: function (res) {
         if (res.data) {
-          console.log(res.data,"student保存成功")
+          console.log(res.data, "student保存成功")
           that.onLoad();
         }
       }
@@ -383,7 +397,28 @@ Page({
       },
       success: function (res) {
         if (res.data) {
-          console.log(res.data,"intentionJob保存成功")
+          console.log(res.data, "intentionJob保存成功")
+          that.onLoad();
+        }
+      }
+    })
+    //附件简历
+    var resumeFile = this.data.resumeFile;
+    wx.request({
+      url: 'http://localhost:81/resumefile/edit',
+      method: 'POST',
+      data: {
+        userId: userId,
+        resumeFile: JSON.stringify(resumeFile)
+      },
+      dataType: 'json',
+      contentType: 'application/json;charset=utf-8',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        if (res.data) {
+          console.log(res.data, "resumeFile保存成功")
           that.onLoad();
         }
       }
