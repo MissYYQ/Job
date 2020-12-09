@@ -197,16 +197,6 @@ textarea {
   height: 180rpx;
 }
 
-
-.button {
-  position: fixed;
-  z-index: 99;
-  background-color: white;
-  bottom: 0;
-  padding-top: 30rpx;
-  padding-bottom: 30rpx;
-}
-
 .btn {
   font-size: 11pt;
   letter-spacing: 3rpx;
@@ -228,4 +218,10 @@ textarea {
 .bottomBtn {
   margin-left: 5%;
   width: 90%;
+  position: fixed;
+  z-index: 99;
+  background-color: white;
+  bottom: 0;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
 }

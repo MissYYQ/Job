@@ -18,9 +18,8 @@ Page({
       "20-50K/月",
       "50K以上/月",
     ],
-    experience: [],
+    // experience: [],
     tempExperience: {},
-    // resumeFile: {},
   },
 
   /**
@@ -87,6 +86,19 @@ Page({
     //resumefile
     wx.request({
       url: 'http://localhost:81/resumefile/one',
+      method: 'GET',
+      data: {
+        userId: userId
+      },
+      success: function (res) {
+        that.setData({
+          resumeFile: res.data
+        })
+      }
+    })
+    //experience
+    wx.request({
+      url: 'http://localhost:81/experience/allByUser',
       method: 'GET',
       data: {
         userId: userId
@@ -204,20 +216,17 @@ Page({
   //添加工作/项目经历
   addExperience: function (e) {
     var tempExperience = this.data.tempExperience;
-    var experience = JSON.parse(JSON.stringify(this.data.experience));
-    var length = experience.length;
-    var tag = [];
-    for (var i = 0; i < length; i++) {
-      tag[i] = experience[i]
+    if(this.data.experience){
+      var experience = this.data.experience;
+    } else{
+      var experience = new Array();
     }
-    tag[length] = tempExperience;
+    experience.push(tempExperience);
     this.setData({
-      experience: tag,
+      experience: experience,
       tempExperience: {},
       textareaValue: ''
     });
-    wx.setStorageSync('experience', this.data.experience);
-    wx.setStorageSync('tempExperience', this.data.tempExperience);
   },
 
   //删除工作/项目经历
@@ -228,7 +237,6 @@ Page({
     this.setData({
       experience: experience
     })
-    wx.setStorageSync('experience', this.data.experience)
   },
 
   //编辑荣誉
@@ -419,6 +427,28 @@ Page({
       success: function (res) {
         if (res.data) {
           console.log(res.data, "resumeFile保存成功")
+          that.onLoad();
+        }
+      }
+    })
+    //工作/项目经历
+    var experience = this.data.experience;
+    console.log(experience)
+    wx.request({
+      url: 'http://localhost:81/experience/edit',
+      method: 'POST',
+      data: {
+        userId: userId,
+        experience: JSON.stringify(experience)
+      },
+      dataType: 'json',
+      contentType: 'application/json;charset=utf-8',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        if (res.data) {
+          console.log(res.data, "experience保存成功")
           that.onLoad();
         }
       }

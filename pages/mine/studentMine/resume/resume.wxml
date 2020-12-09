@@ -276,7 +276,7 @@
 		<view wx:for="{{experience}}" wx:key="index" data-index="{{index}}" bindtap="deleteExperience">
 			<view class="row eItem">
 				<view class="experienceItem">
-					<view wx:if="{{item.startTime && item.endTime}}">{{item.startTime}} 至 {{item.endTime}}</view>
+					<view wx:if="{{item.startdate && item.enddate}}">{{item.startdate}} 至 {{item.enddate}}</view>
 					<view class="row experienceTime">
 						<view class="experienceName">{{item.name}}</view>
 						<view>{{item.position}}</view>
@@ -304,18 +304,18 @@
 		<view class="row msg-item">
 			<view class="item-name">开始时间</view>
 			<view class="data">
-				<picker mode="date" value="{{tempExperience.startTime}}" data-key="startTime" bindchange="bindDateChange"
+				<picker mode="date" value="{{tempExperience.startdate}}" data-key="startdate" bindchange="bindDateChange"
 					bindtap="editE">
-					<input value="{{tempExperience.startTime}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
+					<input value="{{tempExperience.startdate}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
 				</picker>
 			</view>
 		</view>
 		<view class="row msg-item">
 			<view class="item-name">结束时间</view>
 			<view class="data">
-				<picker mode="date" value="{{tempExperience.endTime}}" data-key="endTime" bindchange="bindDateChange"
+				<picker mode="date" value="{{tempExperience.enddate}}" data-key="enddate" bindchange="bindDateChange"
 					bindtap="editE">
-					<input value="{{tempExperience.endTime}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
+					<input value="{{tempExperience.enddate}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
 				</picker>
 			</view>
 		</view>
@@ -339,7 +339,7 @@
 	<!-- 经历信息显示 -->
 	<view wx:if="{{!isEdit}}">
 		<view wx:for="{{experience}}" wx:key="index" data-index="{{index}}" class="experienceItem eItem">
-			<view wx:if="{{item.startTime && item.endTime}}">{{item.startTime}} 至 {{item.endTime}}</view>
+			<view wx:if="{{item.startdate && item.enddate}}">{{item.startdate}} 至 {{item.enddate}}</view>
 			<view class="row experienceTime">
 				<view class="experienceName">{{item.name}}</view>
 				<view>{{item.position}}</view>
