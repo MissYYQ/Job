@@ -58,13 +58,7 @@
       "list": []
     },
     "miniprogram": {
-      "list": [
-        {
-          "name": "companyData",
-          "pathName": "pages/mine/companyMine/companyData/companyData",
-          "scene": null
-        }
-      ]
+      "list": []
     }
   }
 }

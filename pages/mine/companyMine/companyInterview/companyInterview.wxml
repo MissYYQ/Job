@@ -1,5 +1,5 @@
 <view wx:for="{{interview}}" wx:key="index" data-index="{{index}}" class="interview-item" bindtap="toJobDetailsPage">
-  <view class="name {{item.datetime < nowDateTime ? 'outdate' : ''}}">{{item.jobName}} · {{item.companyName}}</view>
+  <view class="name {{item.datetime < nowDateTime ? 'outdate' : ''}}">{{item.jobName}}</view>
   <view class="row item">
     <view class="title {{item.datetime < nowDateTime ? 'outdate' : ''}}">面试时间：</view>
     <view class="title-data {{item.datetime < nowDateTime ? 'outdate' : ''}}">{{item.datetime}}</view>

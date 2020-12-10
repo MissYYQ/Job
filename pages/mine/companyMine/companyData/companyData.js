@@ -40,8 +40,6 @@ Page({
         userId: userId
       },
       success: function (res) {
-        console.log("加载成功");
-        console.log(res.data);
         that.setData({
           company: res.data,
         })

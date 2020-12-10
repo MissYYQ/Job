@@ -7,14 +7,7 @@ Page({
    */
   data: {
     communicationNum: 0, //沟通量
-    interviewNum: 0, //面试量
-    collectionJobNum: 0, //职位收藏量
-    // 学生
-    deliveryNum: 0, //已投量
-    expect: null, //期望职位
-    // 企业
-    jobNum: 0, //职位量
-    collectionUserNum: 0, //用户收藏量
+    expect: null, //学生-期望职位
   },
 
   /**
@@ -37,7 +30,7 @@ Page({
       userKindTag: userKindTag,
       intentionJob: wx.getStorageSync('intentionJob'),
     })
-    
+
     var userId = wx.getStorageSync("userInfo").id;
     if (that.data.userKindTag == 1 && that.data.isWxLogin) {
       //收藏量
@@ -49,7 +42,7 @@ Page({
         },
         success: function (res) {
           that.setData({
-            collectionJobNum: res.data
+            collectionNum: res.data
           })
         }
       })
@@ -80,6 +73,64 @@ Page({
         }
       })
     }
+    if (that.data.userKindTag == 2 && that.data.isWxLogin) {
+      //company
+      var userId = wx.getStorageSync('userInfo').id;
+      wx.request({
+        url: 'http://localhost:81/company/oneByUserId',
+        method: 'GET',
+        data: {
+          userId: userId
+        },
+        success: function (res) {
+          console.log(res.data)
+          that.setData({
+            company: res.data
+          })
+          var companyId = that.data.company.id;
+          //面试量
+          wx.request({
+            url: 'http://localhost:81/interview/countByCompanyId',
+            method: 'GET',
+            data: {
+              companyId: companyId
+            },
+            success: function (res) {
+              that.setData({
+                interviewNum: res.data
+              })
+            }
+          })
+          //职位量
+          wx.request({
+            url: 'http://localhost:81/job/countByCompanyId',
+            method: 'GET',
+            data: {
+              companyId: companyId
+            },
+            success: function (res) {
+              that.setData({
+                jobNum: res.data
+              })
+            }
+          })
+          //收藏量
+          wx.request({
+            url: 'http://localhost:81/collection/userCount',
+            method: 'GET',
+            data: {
+              companyId: companyId
+            },
+            success: function (res) {
+              that.setData({
+                collectionNum: res.data
+              })
+            }
+          })
+        }
+      })
+
+    }
 
   },
 
@@ -104,7 +155,7 @@ Page({
   toResumePage: function () {
     var userId = this.data.userInfo.id;
     wx.navigateTo({
-      url: '/pages/mine/studentMine/resume/resume?userId='+userId,
+      url: '/pages/mine/studentMine/resume/resume?userId=' + userId,
     })
   },
 
@@ -129,7 +180,7 @@ Page({
     if (this.data.isWxLogin) {
       var userId = this.data.userInfo.id;
       wx.navigateTo({
-        url: '/pages/mine/studentMine/resume/previewResume/previewResume?userId='+userId,
+        url: '/pages/mine/studentMine/resume/previewResume/previewResume?userId=' + userId,
       })
     } else {
       wx.showToast({
@@ -146,7 +197,7 @@ Page({
     var collectionJobNum = this.data.collectionJobNum;
     if (this.data.isWxLogin) {
       wx.navigateTo({
-        url: '/pages/mine/studentMine/studentCollect/studentCollect?collectionJobNum='+collectionJobNum,
+        url: '/pages/mine/studentMine/studentCollect/studentCollect?collectionJobNum=' + collectionJobNum,
       })
     } else {
       wx.showToast({
@@ -163,7 +214,7 @@ Page({
     if (this.data.isWxLogin) {
       var deliveryNum = this.data.deliveryNum;
       wx.navigateTo({
-        url: '/pages/mine/studentMine/myDelivery/myDelivery?deliveryNum='+deliveryNum,
+        url: '/pages/mine/studentMine/myDelivery/myDelivery?deliveryNum=' + deliveryNum,
       })
     } else {
       wx.showToast({
@@ -180,7 +231,7 @@ Page({
     if (this.data.isWxLogin) {
       var interviewNum = this.data.interviewNum;
       wx.navigateTo({
-        url: '/pages/mine/studentMine/myInterview/myInterview?interviewNum='+interviewNum,
+        url: '/pages/mine/studentMine/myInterview/myInterview?interviewNum=' + interviewNum,
       })
     } else {
       wx.showToast({
@@ -205,9 +256,10 @@ Page({
 
   //公司详情
   toCompanyDetailsPage: function () {
+    var id = this.data.company.id;
     if (this.data.isWxLogin) {
       wx.navigateTo({
-        url: '/pages/mine/companyMine/companyData/companyDetails/companyDetails',
+        url: '/pages/mine/companyMine/companyData/companyDetails/companyDetails?id=' + id,
       })
     } else {
       wx.showToast({
@@ -270,9 +322,18 @@ Page({
   //面试
   toCompanyInterviewPage: function () {
     if (this.data.isWxLogin) {
-      wx.navigateTo({
-        url: '/pages/mine/companyMine/companyInterview/companyInterview',
-      })
+      if (this.data.interviewNum) {
+        wx.navigateTo({
+          url: '/pages/mine/companyMine/companyInterview/companyInterview',
+        })
+      } else {
+        wx.showToast({
+          title: '暂无面试信息！',
+          icon: 'none',
+          duration: 1500,
+          mask: true
+        })
+      }
     } else {
       wx.showToast({
         title: '未登录！',
@@ -286,9 +347,18 @@ Page({
   //公司收藏
   toCompanyCollectPage: function () {
     if (this.data.isWxLogin) {
-      wx.navigateTo({
-        url: '/pages/mine/companyMine/companyCollect/companyCollect',
-      })
+      if (this.data.collectionNum) {
+        wx.navigateTo({
+          url: '/pages/mine/companyMine/companyCollect/companyCollect',
+        })
+      } else {
+        wx.showToast({
+          title: '暂无收藏！',
+          icon: 'none',
+          duration: 1500,
+          mask: true
+        })
+      }
     } else {
       wx.showToast({
         title: '未登录！',

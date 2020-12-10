@@ -4,7 +4,7 @@
 	<view class="top-front">
 		<view class="row front-data">
 			<view class="userInfo">
-				<image src="{{company.src}}"></image>
+				<image src="{{company.logourl}}"></image>
 				<view class="userKind" bindtap="toUserKindPage">{{userKind}}</view>
 			</view>
 			<view class="userInfo-right">
@@ -12,7 +12,7 @@
 				<button wx:else open-type="getUserInfo" bindtap="wxLogin" class="nickName"
 					style="padding: 0; margin: 0;width: 200rpx;display: flex;background: white;">登录</button>
 				<view wx:if="{{!isWxLogin}}" class="expect">点击登录解锁更多</view>
-				<view wx:if="{{isWxLogin && company.size}}" class="expect companyExpect">{{company.size}} · {{company.financingStage}}</view>
+				<view wx:if="{{isWxLogin && company.size}}" class="expect companyExpect">{{company.size}} · {{company.financingstage}}</view>
 			</view>
 		</view>
 		<view class="top-front-data companyFront row">
@@ -29,7 +29,7 @@
 				<view class="data-name">职位</view>
 			</view>
 			<view class="data-item" bindtap="toCompanyCollectPage">
-				<view class="data-num">{{collectionUserNum}}</view>
+				<view class="data-num">{{collectionNum}}</view>
 				<view class="data-name">收藏</view>
 			</view>
 		</view>
@@ -50,7 +50,7 @@
 	<view class="bottom-item" bindtap="toCompanyJobPage">
 		<view class="row">
 			<view class="row mineItem">
-				<image src="/images/mine/bishi.png"></image>
+				<image src="/images/mine/job.png"></image>
 				<view>职位管理</view>
 			</view>
 			<image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>
@@ -59,7 +59,7 @@
 	<view class="bottom-item" bindtap="toCompanySeminarPage">
 		<view class="row">
 			<view class="row mineItem">
-				<image src="/images/mine/mianshi.png"></image>
+				<image src="/images/mine/seminar.png"></image>
 				<view>宣讲会管理</view>
 			</view>
 			<image src="/images/mine/right.png" style="width: 37rpx; height: 37rpx;"></image>

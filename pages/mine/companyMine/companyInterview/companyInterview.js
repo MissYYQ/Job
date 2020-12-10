@@ -6,19 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    interview: [{
-        jobName: "前端开发工程师",
-        companyName: "云程科技",
-        datetime: "2020/11/23  9:30",
-        location: "江西省九江市濂溪区前进东路551号九江学院文友楼608",
-      },
-      {
-        jobName: "前端开发工程师",
-        companyName: "云程科技",
-        datetime: "2020/11/21  9:30",
-        location: "江西省九江市濂溪区前进东路551号九江学院文友楼608",
-      },
-    ]
+
   },
 
   /**
