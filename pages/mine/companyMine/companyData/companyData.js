@@ -287,9 +287,9 @@ Page({
           if (res.data) {
             console.log(res.data, "company保存成功")
             // 跳转
-            // wx.reLaunch({
-            //   url: '/pages/index/index',
-            // })
+            wx.reLaunch({
+              url: '/pages/index/index',
+            })
           }
         }
       })
