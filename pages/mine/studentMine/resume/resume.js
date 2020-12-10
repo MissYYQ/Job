@@ -184,9 +184,8 @@ Page({
     if (skillsArr) {
       skillsArr.push(addSkill)
     }
-    let resume = "resume.skills";
     this.setData({
-      [resume]: skillsArr,
+      ['resume.skills']: skillsArr,
       addSkill: ''
     });
   },
@@ -196,9 +195,8 @@ Page({
     var index = e.currentTarget.dataset.index;
     var skills = this.data.resume.skills;
     skills.splice(index, 1)
-    let resume = "resume.skills";
     this.setData({
-      [resume]: skills
+      ['resume.skills']: skills
     })
   },
 
@@ -268,9 +266,8 @@ Page({
     if (honor) {
       honor.push(addHonor)
     }
-    let resume = "resume.honor";
     this.setData({
-      [resume]: honor,
+      ['resume.honor']: honor,
       addHonor: ''
     });
   },
@@ -365,15 +362,12 @@ Page({
     var that = this;
     //数据处理
     var skills = this.data.resume.skills.join("、");
-    let rskills = "resume.skills";
     var honor = this.data.resume.honor.join("、");
-    let rhonor = "resume.honor";
     var education = this.data.resume.education.school + "、" + this.data.resume.education.profession + "、" + this.data.resume.education.degree;
-    let reducation = "resume.education";
     this.setData({
-      [rskills]: skills,
-      [rhonor]: honor,
-      [reducation]: education,
+      ['resume.skills']: skills,
+      ['resume.honor']: honor,
+      ['resume.education']: education,
     })
     //后台处理
     var userId = that.data.userId;

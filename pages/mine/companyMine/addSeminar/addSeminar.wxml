@@ -1,11 +1,11 @@
 <view class="content">
-  <!-- 职位名称 -->
+  <!-- 学校 -->
   <view class="row msg-item">
     <view class="item-name">学校</view>
     <input class="data" value="{{seminar.school}}" data-key="school" placeholder="请输入..."
       placeholder-class="placeholderStyle" bindinput="addSeminar"></input>
   </view>
-  <!-- 最低薪资 -->
+  <!-- 地点 -->
   <view class="row msg-item">
     <view class="row">
       <view class="item-name">地点</view>
@@ -14,13 +14,13 @@
     <input class="data" value="{{seminar.location}}" data-key="location" placeholder="请输入..."
       placeholder-class="placeholderStyle" bindinput="addSeminar"></input>
   </view>
-  <!-- 最高薪资 -->
+  <!-- 投递邮箱 -->
   <view class="row msg-item">
     <view class="item-name">投递邮箱</view>
     <input class="data" value="{{seminar.email}}" data-key="email" placeholder="请输入..."
       placeholder-class="placeholderStyle" bindinput="addSeminar"></input>
   </view>
-  <!-- 截止日期 -->
+  <!-- 日期 -->
   <view class="row msg-item">
     <view class="row">
       <view class="item-name">日期</view>
@@ -30,7 +30,7 @@
       <input value="{{seminar.date}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
     </picker>
   </view>
-  <!-- 截止时间 -->
+  <!-- 时间 -->
   <view class="row msg-item">
     <view class="row">
       <view class="item-name">时间</view>

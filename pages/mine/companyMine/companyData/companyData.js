@@ -6,10 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    company: {},
-    welfare: [],
-    region: '',
-    detailedAddress: '',
     addWelfare: '',
     size: [
       "0-20人",
@@ -19,7 +15,7 @@ Page({
       "1000-9999人",
       "10000人以上",
     ],
-    financingStage: [
+    financingstage: [
       "未融资",
       "天使轮",
       "A轮",
@@ -35,46 +31,51 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      company: wx.getStorageSync('company'),
-      welfare: wx.getStorageSync('welfare'),
+    var that = this;
+    var userId = wx.getStorageSync('userInfo').id;
+    wx.request({
+      url: 'http://localhost:81/company/oneByUserId',
+      method: 'GET',
+      data: {
+        userId: userId
+      },
+      success: function (res) {
+        console.log("加载成功");
+        console.log(res.data);
+        that.setData({
+          company: res.data,
+        })
+        //数据处理
+        if (that.data.company) {
+          if (that.data.company.worktime) {
+            var worktime = that.data.company.worktime.split("-")
+            var starttime = worktime[0];
+            var endtime = worktime[1];
+            that.setData({
+              ['company.worktime.starttime']: starttime,
+              ['company.worktime.endtime']: endtime,
+            })
+          }
+          if (that.data.company.region) {
+            var region = that.data.company.region.split(" ");
+            that.setData({
+              ['company.region']: region,
+            })
+          }
+          if (that.data.company.welfare) {
+            var welfare = that.data.company.welfare.split("、");
+            that.setData({
+              ['company.welfare']: welfare,
+            })
+          }
+          if (that.data.company.introduction) {
+            that.setData({
+              currentWordNumber: that.data.company.introduction.length
+            })
+          }
+        }
+      }
     })
-    // 公司简介字数加载
-    var introduction = this.data.company.introduction;
-    if (introduction) {
-      this.setData({
-        currentWordNumber: introduction.length
-      })
-    }
-
-  },
-
-  //公司规模选择器发生改变
-  sizeChange: function (e) {
-    let size = "company.size";
-    this.setData({
-      [size]: this.data.size[e.detail.value]
-    })
-    wx.setStorageSync('company', this.data.company)
-  },
-
-  //融资阶段选择器发生改变
-  financingStageChange: function (e) {
-    let financingStage = "company.financingStage";
-    this.setData({
-      [financingStage]: this.data.financingStage[e.detail.value]
-    })
-    wx.setStorageSync('company', this.data.company)
-  },
-
-  //编辑
-  editCompany: function (e) {
-    var key = e.currentTarget.dataset.key;
-    let name = "company." + key;
-    this.setData({
-      [name]: e.detail.value
-    })
-    wx.setStorageSync('company', this.data.company)
   },
 
   //添加logo
@@ -90,22 +91,57 @@ Page({
         var filePath = tempFilePaths[0]; //图片本地临时路径
         //前台显示
         that.setData({
-          ['company.logoUrl']: filePath
+          ['company.logourl']: filePath
         })
-        wx.setStorageSync('company', that.data.company)
       }
     })
   },
 
-  //删除福利
-  deleteWelfare: function (e) {
-    var index = e.currentTarget.dataset.index;
-    var welfare = this.data.welfare;
-    welfare.splice(index, 1)
+  //公司规模选择器发生改变
+  sizeChange: function (e) {
+    let size = "company.size";
     this.setData({
-      welfare: welfare
+      [size]: this.data.size[e.detail.value]
     })
-    wx.setStorageSync('welfare', this.data.welfare)
+  },
+
+  //融资阶段选择器发生改变
+  financingStageChange: function (e) {
+    this.setData({
+      ['company.financingstage']: this.data.financingstage[e.detail.value]
+    })
+  },
+
+  //时间picker改变
+  startTimeChange: function (e) {
+    let worktime = "company.worktime.starttime"
+    this.setData({
+      [worktime]: e.detail.value
+    })
+  },
+
+  //时间picker改变
+  endTimeChange: function (e) {
+    let worktime = "company.worktime.endtime"
+    this.setData({
+      [worktime]: e.detail.value
+    })
+  },
+
+  //region选择器发生改变
+  bindRegionChange: function (e) {
+    this.setData({
+      ['company.region']: e.detail.value
+    })
+  },
+
+  //编辑
+  editCompany: function (e) {
+    var key = e.currentTarget.dataset.key;
+    let name = "company." + key;
+    this.setData({
+      [name]: e.detail.value
+    })
   },
 
   //编辑福利
@@ -120,26 +156,28 @@ Page({
   //添加福利
   addWelfare: function (e) {
     var addWelfare = this.data.addWelfare;
-    var welfare = this.data.welfare;
-    var length = welfare.length;
-    var tag = [];
-    for (var i = 0; i < length; i++) {
-      tag[i] = welfare[i]
-    };
-    tag[length] = addWelfare;
+    if (this.data.company.welfare) {
+      var welfare = this.data.company.welfare;
+    } else {
+      var welfare = new Array();
+    }
+    if (welfare) {
+      welfare.push(addWelfare)
+    }
     this.setData({
-      welfare: tag,
+      ['company.welfare']: welfare,
       addWelfare: ''
     });
-    wx.setStorageSync('welfare', this.data.welfare);
   },
 
-  //region选择器发生改变
-  bindRegionChange: function (e) {
+  //删除福利
+  deleteWelfare: function (e) {
+    var index = e.currentTarget.dataset.index;
+    var welfare = this.data.company.welfare;
+    welfare.splice(index, 1)
     this.setData({
-      ['company.region']: e.detail.value
+      ['company.welfare']: welfare
     })
-    wx.setStorageSync('company', this.data.company)
   },
 
   //输入域文本
@@ -150,7 +188,6 @@ Page({
       currentWordNumber: length,
       ['company.introduction']: e.detail.value
     });
-    wx.setStorageSync('company', this.data.company)
   },
 
   //取消
@@ -170,8 +207,18 @@ Page({
 
   //确定
   determineBtn: function () {
+    var that = this;
+    //数据处理
+    var worktime = this.data.company.worktime.starttime + "-" + this.data.company.worktime.endtime;
+    var region = this.data.company.region.join(" ");
+    var welfare = this.data.company.welfare.join("、");
+    this.setData({
+      ['company.worktime']: worktime,
+      ['company.region']: region,
+      ['company.welfare']: welfare,
+    })
     //判空
-    let company = this.data.company;
+    let company = that.data.company;
     if (company.name == null) {
       wx.showToast({
         title: '公司名称不能为空！',
@@ -179,7 +226,7 @@ Page({
         duration: 1500,
         mask: true
       })
-    } else if (company.logoUrl == null) {
+    } else if (company.logourl == null) {
       wx.showToast({
         title: '公司logo图片不能为空！',
         icon: 'none',
@@ -200,7 +247,7 @@ Page({
         duration: 1500,
         mask: true
       })
-    } else if (company.financingStage == null) {
+    } else if (company.financingstage == null) {
       wx.showToast({
         title: '融资阶段不能为空！',
         icon: 'none',
@@ -214,7 +261,7 @@ Page({
         duration: 1500,
         mask: true
       })
-    } else if (company.detailedAddress == null) {
+    } else if (company.detailedaddress == null) {
       wx.showToast({
         title: '公司详细地址不能为空！',
         icon: 'none',
@@ -222,9 +269,29 @@ Page({
         mask: true
       })
     } else {
-      //跳转
-      wx.reLaunch({
-        url: '/pages/index/index',
+      //后台处理
+      var userId = wx.getStorageSync('userInfo').id;
+      wx.request({
+        url: 'http://localhost:81/company/edit',
+        method: 'POST',
+        data: {
+          userId: userId,
+          company: JSON.stringify(company)
+        },
+        dataType: 'json',
+        contentType: 'application/json;charset=utf-8',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+        success: function (res) {
+          if (res.data) {
+            console.log(res.data, "company保存成功")
+            // 跳转
+            // wx.reLaunch({
+            //   url: '/pages/index/index',
+            // })
+          }
+        }
       })
     }
   },
