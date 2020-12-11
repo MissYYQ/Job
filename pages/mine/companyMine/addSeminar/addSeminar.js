@@ -6,13 +6,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    seminar: {}
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    //编辑
+    if (options.id) {
+      var id = options.id;
+      that.setData({
+        operation: "edit",
+        id: id
+      })
+      wx.request({
+        url: 'http://localhost:81/seminar/one',
+        method: 'get',
+        data: {
+          id: id,
+        },
+        success: function (res) {
+          that.setData({
+            seminar: res.data
+          })
+        },
+      })
+    } else {
+      //添加
+      that.setData({
+        operation: "add",
+        seminar: {}
+      })
+    }
     //获取当前日期
     var nowDate = util.formatDate(new Date());
     this.setData({
@@ -21,41 +48,32 @@ Page({
   },
 
   //添加宣讲会
-  addSeminar: function () {
+  addSeminar: function (e) {
     var key = e.currentTarget.dataset.key;
     let name = "seminar." + key;
     this.setData({
       [name]: e.detail.value
     });
-    wx.setStorageSync('seminar', this.data.seminar);
   },
 
   //日期picker改变
   dateChange: function (e) {
-    let date = "seminar.date"
     this.setData({
-      [date]: e.detail.value,
+      ['seminar.date']: e.detail.value,
     })
-    wx.setStorageSync('seminar', this.data.seminar)
   },
 
   //时间picker改变
   timeChange: function (e) {
-    let time = "seminar.time"
     this.setData({
-      [time]: e.detail.value
+      ['seminar.time']: e.detail.value
     })
-    wx.setStorageSync('seminar', this.data.seminar)
   },
 
-  //取消
+  //取消,返回上一页
   cancelBtn: function () {
-    this.setData({
-      seminar: {},
-    })
-    wx.setStorageSync('seminar', this.data.seminar)
-    wx.switchTab({
-      url: '/pages/mine/mine',
+    wx.navigateBack({
+      delta: 1,
     })
   },
 
@@ -85,68 +103,79 @@ Page({
         mask: true
       })
     } else {
-      //清空数据
-      this.setData({
-        seminar: {},
-      })
-      wx.setStorageSync('seminar', this.data.seminar)
-      //跳转
-      wx.redirectTo({
-        url: '/pages/mine/mine',
-      })
+      //提交
+      var operation = this.data.operation;
+      if (operation == "edit") {
+        //更新
+        var id = this.data.id;
+        var companyId = wx.getStorageSync('companyId');
+        wx.request({
+          url: 'http://localhost:81/seminar/update',
+          method: 'POST',
+          data: {
+            id: id,
+            companyId: companyId,
+            seminar: JSON.stringify(seminar)
+          },
+          dataType: 'json',
+          contentType: 'application/json;charset=utf-8',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+          },
+          success: function (res) {
+            if (res.data) {
+              wx.showToast({
+                title: '编辑成功',
+                icon: 'none',
+                duration: 1500,
+                mask: true
+              })
+              // 刷新并返回上一页
+              var pages = getCurrentPages();
+              var beforePage = pages[pages.length - 2];
+              beforePage.onLoad();
+              wx.navigateBack({
+                delta: 1,
+              })
+            }
+          }
+        })
+      } else {
+        //添加
+        var companyId = wx.getStorageSync('companyId');
+        wx.request({
+          url: 'http://localhost:81/seminar/add',
+          method: 'POST',
+          data: {
+            companyId: companyId,
+            seminar: JSON.stringify(seminar)
+          },
+          dataType: 'json',
+          contentType: 'application/json;charset=utf-8',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+          },
+          success: function (res) {
+            if (res.data) {
+              wx.showToast({
+                title: '添加成功',
+                icon: 'none',
+                duration: 1500,
+                mask: true
+              })
+              // 刷新并返回上一页
+              var pages = getCurrentPages();
+              var beforePage = pages[pages.length - 2];
+              beforePage.onLoad();
+              wx.navigateBack({
+                delta: 1,
+              })
+            }
+          }
+        })
+      }
     }
   },
 
 
-
-
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

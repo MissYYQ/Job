@@ -4,37 +4,68 @@ Page({
    * 页面的初始数据
    */
   data: {
-    seminar: [{
-        school: "九江学院",
-        position: "望庐楼407",
-        date: "2020/11/11",
-        time: "10:30",
-      },
-      {
-        school: "华东交通大学理工学院",
-        position: "望庐楼407",
-        date: "2020/11/11",
-        time: "10:30",
-      },
-    ]
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    //获取公司宣讲会信息
+    var companyId = wx.getStorageSync('companyId');
+    wx.request({
+      url: 'http://localhost:81/seminar/allForCompany',
+      method: 'get',
+      data: {
+        companyId: companyId,
+      },
+      success: function (res) {
+        that.setData({
+          seminar: res.data,
+        })
+      },
+    })
   },
 
 
   //查看
-  toSeminarDetailsPage: function () {
+  look: function (e) {
+    var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/index/seminar/seminarDetails/seminarDetails',
+      url: '/pages/index/seminar/seminarDetails/seminarDetails?id=' + id,
     })
   },
 
   //编辑
+  edit: function (e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/mine/companyMine/addSeminar/addSeminar?id=' + id,
+    })
+  },
+
+  //删除
+  delete: function (e) {
+    var id = e.currentTarget.dataset.id;
+    wx.request({
+      url: 'http://localhost:81/seminar/delete',
+      method: 'get',
+      data: {
+        id: id,
+      },
+      success: function (res) {
+        if (res.data) {
+          //刷新当前页
+          var pages = getCurrentPages();
+          var currentPage = pages[pages.length - 1];
+          currentPage.onLoad();
+        }
+      },
+    })
+  },
+
+  //添加
   toAddSeminarPage: function () {
     wx.navigateTo({
       url: '/pages/mine/companyMine/addSeminar/addSeminar',

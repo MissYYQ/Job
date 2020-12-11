@@ -14,12 +14,6 @@
     <input class="data" value="{{seminar.location}}" data-key="location" placeholder="请输入..."
       placeholder-class="placeholderStyle" bindinput="addSeminar"></input>
   </view>
-  <!-- 投递邮箱 -->
-  <view class="row msg-item">
-    <view class="item-name">投递邮箱</view>
-    <input class="data" value="{{seminar.email}}" data-key="email" placeholder="请输入..."
-      placeholder-class="placeholderStyle" bindinput="addSeminar"></input>
-  </view>
   <!-- 日期 -->
   <view class="row msg-item">
     <view class="row">

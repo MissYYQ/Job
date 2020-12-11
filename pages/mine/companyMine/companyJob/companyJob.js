@@ -56,7 +56,9 @@ Page({
       success: function (res) {
         if (res.data) {
           //刷新当前页
-          this.onLoad();
+          var pages = getCurrentPages();
+          var currentPage = pages[pages.length - 1];
+          currentPage.onLoad();
         }
       },
     })

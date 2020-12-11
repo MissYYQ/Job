@@ -27,17 +27,17 @@
 </view>
 <!-- 招聘简章 -->
 <view class="title">{{seminar.company.name}}招聘简章</view>
-<view class="hiring-item">
+<view wx:if="{{seminar.company.introduction}}" class="hiring-item">
   <view class="hiring-title">公司简介</view>
   <view class="introduction">{{seminar.company.introduction}}</view>
 </view>
-<view class="hiring-item">
+<view wx:if="{{seminar.company.welfare}}" class="hiring-item">
   <view class="hiring-title">福利待遇</view>
   <view class="row welfare">
     <view wx:for="{{seminar.company.welfare}}" wx:key="index">{{item}}</view>
   </view>
 </view>
-<view class="hiring-item">
+<view wx:if="{{job}}" class="hiring-item">
   <view class="hiring-title">招聘岗位</view>
   <view class="job">
     <view wx:for="{{job}}" wx:key="index" data-id="{{item.id}}" bindtap="toJobDetailsPage" class="job-item">
