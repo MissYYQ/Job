@@ -4,7 +4,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    addJob: {},
+    kind: [
+      "校招",
+      "社招"
+    ],
     experience: [
       "不限",
       "在校生",
@@ -25,106 +28,150 @@ Page({
       "硕士",
       "博士"
     ],
-    addSkill: '',
-    jobSkill: [],
+    addKeywords: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    //编辑
+    if (options.id) {
+      var id = options.id;
+      that.setData({
+        operation: "edit",
+        id: id
+      })
+      wx.request({
+        url: 'http://localhost:81/job/one',
+        method: 'get',
+        data: {
+          id: id,
+        },
+        success: function (res) {
+          console.log(res.data)
+          that.setData({
+            job: res.data,
+          })
+          //数据处理
+          if (that.data.job.salary) {
+            var salary = that.data.job.salary.split("-")
+            var lowSalary = salary[0];
+            var highSalary = salary[1];
+            that.setData({
+              ['job.salary.lowSalary']: lowSalary,
+              ['job.salary.highSalary']: highSalary,
+            })
+          }
+          if (that.data.job.keywords) {
+            var keywords = that.data.job.keywords.split("、");
+            that.setData({
+              ['job.keywords']: keywords,
+            })
+          }
+        },
+      })
+    } else {
+      //添加
+      that.setData({
+        operation: "add",
+        job: {}
+      })
+    }
   },
 
   //添加工作
   addJob: function (e) {
     var key = e.currentTarget.dataset.key;
-    let name = "addJob." + key;
+    let name = "job." + key;
     this.setData({
       [name]: e.detail.value
     });
-    wx.setStorageSync('addJob', this.data.addJob);
+
+  },
+
+  //招聘类型picker改变
+  kindPicker: function (e) {
+    this.setData({
+      ['job.kind']: e.detail.value
+    })
+  },
+
+  //截止日期picker改变
+  datePicker: function (e) {
+    this.setData({
+      ['job.deadline']: e.detail.value
+    })
   },
 
   //经验要求picker改变
   experiencePicker: function (e) {
     this.setData({
-      experienceIndex: e.detail.value,
-      ['addJob.experience']: this.data.experience[e.detail.value]
+      ['job.experience']: this.data.experience[e.detail.value]
     })
-    wx.setStorageSync('addJob', this.data.addJob);
   },
 
   //学历要求picker改变
   degreePicker: function (e) {
     this.setData({
-      degreeIndex: e.detail.value,
-      ['addJob.degree']: this.data.degree[e.detail.value]
+      ['job.degree']: this.data.degree[e.detail.value]
     })
-    wx.setStorageSync('addJob', this.data.addJob);
+
   },
 
   //岗位要求
   claimTextarea: function (e) {
     this.setData({
-      ['addJob.claim']: e.detail.value,
+      ['job.claim']: e.detail.value,
     });
-    wx.setStorageSync('addJob', this.data.addJob);
+
   },
 
   //岗位职责
   dutyTextarea: function (e) {
     this.setData({
-      ['addJob.duty']: e.detail.value,
+      ['job.duty']: e.detail.value,
     });
-    wx.setStorageSync('addJob', this.data.addJob);
+
   },
 
   //编辑职位技能标签
-  editSkill: function (e) {
+  editKeywords: function (e) {
     if (e.detail.value) {
       this.setData({
-        addSkill: e.detail.value
+        addKeywords: e.detail.value
       })
     }
   },
 
   //添加职位技能标签
-  addSkill: function (e) {
-    var addSkill = this.data.addSkill;
-    var jobSkill = this.data.jobSkill;
-    var length = jobSkill.length;
-    var tag = [];
-    for (var i = 0; i < length; i++) {
-      tag[i] = jobSkill[i]
-    };
-    tag[length] = addSkill;
+  addKeywords: function (e) {
+    var addKeywords = this.data.addKeywords;
+    if (this.data.job.keywords) {
+      var keywords = this.data.job.keywords;
+    } else {
+      var keywords = new Array();
+    }
+    keywords.push(addKeywords);
     this.setData({
-      jobSkill: tag,
-      addSkill: null
+      ['job.keywords']: keywords,
+      addKeywords: null
     });
-    wx.setStorageSync('jobSkill', this.data.jobSkill);
   },
 
   //删除职位技能标签
   deleteSkill: function (e) {
     var index = e.currentTarget.dataset.index;
-    var jobSkill = this.data.jobSkill;
-    jobSkill.splice(index, 1)
+    var keywords = this.data.job.keywords;
+    keywords.splice(index, 1)
     this.setData({
-      jobSkill: jobSkill
+      ['job.keywords']: keywords
     })
-    wx.setStorageSync('jobSkill', this.data.jobSkill)
   },
 
   //取消
   cancelBtn: function () {
-    this.setData({
-      addJob: {},
-      jobSkill: null
-    })
-    wx.setStorageSync('addJob', this.data.addJob);
-    wx.setStorageSync('jobSkill', this.data.jobSkill);
     wx.reLaunch({
       url: '/pages/index/index',
     })
@@ -132,44 +179,48 @@ Page({
 
   //确定
   determineBtn: function () {
+    console.log("处理前")
+    console.log(this.data.job)
+    //数据处理
+    var salary = this.data.job.salary.lowSalary + "-" + this.data.job.salary.highSalary;
+    var keywords = this.data.job.keywords.join("、");
+    this.setData({
+      ['job.salary']: salary,
+      ['job.keywords']: keywords,
+    })
+    console.log("处理后")
+    console.log(this.data.job)
     //判空
-    let addJob = this.data.addJob;
-    if (addJob.name == null) {
+    let job = this.data.job;
+    if (job.name == null) {
       wx.showToast({
         title: '职位名称不能为空！',
         icon: 'none',
         duration: 1500,
         mask: true
       })
-    } else if (addJob.lowSalary == null) {
+    } else if (job.salary == null) {
       wx.showToast({
-        title: '最低薪资不能为空！',
+        title: '薪资不能为空！',
         icon: 'none',
         duration: 1500,
         mask: true
       })
-    } else if (addJob.highSalary == null) {
+    } else if (job.city == null) {
       wx.showToast({
-        title: '最高薪资不能为空！',
+        title: '工作城市不能为空！',
         icon: 'none',
         duration: 1500,
         mask: true
       })
-    } else if (addJob.city == null) {
-      wx.showToast({
-        title: '期望工作城市不能为空！',
-        icon: 'none',
-        duration: 1500,
-        mask: true
-      })
-    } else if (addJob.experience == null) {
+    } else if (job.experience == null) {
       wx.showToast({
         title: '经验要求不能为空！',
         icon: 'none',
         duration: 1500,
         mask: true
       })
-    } else if (addJob.degree == null) {
+    } else if (job.degree == null) {
       wx.showToast({
         title: '学历要求不能为空！',
         icon: 'none',
@@ -177,16 +228,55 @@ Page({
         mask: true
       })
     } else {
-      //跳转
-      this.setData({
-        addJob: {},
-        jobSkill: null
-      })
-      wx.setStorageSync('addJob', this.data.addJob);
-      wx.setStorageSync('jobSkill', this.data.jobSkill);
-      wx.reLaunch({
-        url: '/pages/mine/mine',
-      })
+      //提交
+      var operation = this.data.operation;
+      if (operation == "edit") {
+        //更新
+        var id = this.data.id;
+        var companyId = wx.getStorageSync('companyId');
+        wx.request({
+          url: 'http://localhost:81/job/update',
+          method: 'POST',
+          data: {
+            id: id,
+            companyId: companyId,
+            job: JSON.stringify(job)
+          },
+          dataType: 'json',
+          contentType: 'application/json;charset=utf-8',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+          },
+          success: function (res) {
+            if (res.data) {
+              console.log(res.data, "job更新成功")
+              // 刷新并返回上一页
+            }
+          }
+        })
+      } else {
+        //添加
+        var companyId = wx.getStorageSync('companyId');
+        wx.request({
+          url: 'http://localhost:81/job/add',
+          method: 'POST',
+          data: {
+            companyId: companyId,
+            job: JSON.stringify(job)
+          },
+          dataType: 'json',
+          contentType: 'application/json;charset=utf-8',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+          },
+          success: function (res) {
+            if (res.data) {
+              console.log(res.data, "job添加成功")
+              // 刷新并返回上一页
+            }
+          }
+        })
+      }
     }
   }
 

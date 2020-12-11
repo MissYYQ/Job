@@ -42,6 +42,7 @@ page{
   position: fixed;
   bottom: 0;
   padding-top: 30rpx;
+  padding-bottom: 30rpx;
   background-color: white;
   z-index: 999;
 }

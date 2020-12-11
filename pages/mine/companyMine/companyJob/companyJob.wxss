@@ -6,6 +6,7 @@ page {
 }
 
 .job-item {
+  height: 150rpx;
   margin-top: 10rpx;
   padding-bottom: 20rpx;
   border-bottom: rgba(246, 181, 1, 0.15) solid 3rpx;
@@ -15,21 +16,19 @@ page {
 .name {
   font-weight: 600;
   font-size: 11pt;
-  line-height: 2.8em;
 }
 
 .salary {
-  margin-left: 20rpx;
-  letter-spacing: 5rpx;
+  font-weight: 600;
   font-size: 10pt;
 }
 
 .operate view {
+  width: 1em;
   font-size: 9pt;
-  margin-left: 12rpx;
+  margin-left: 18rpx;
   border-radius: 10rpx;
-  padding: 0 15rpx;
-  letter-spacing: 2rpx;
+  padding: 5rpx 18rpx;
   text-align: center;
 }
 

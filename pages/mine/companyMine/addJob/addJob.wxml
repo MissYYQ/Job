@@ -5,26 +5,32 @@
       <view class="item-name">职位名称</view>
       <view class="required">*</view>
     </view>
-    <input class="data" value="{{addJob.name}}" data-key="name" placeholder="请输入..."
-      placeholder-class="placeholderStyle" bindinput="addJob"></input>
+    <input class="data" value="{{job.name}}" data-key="name" placeholder="请输入..." placeholder-class="placeholderStyle"
+      bindinput="addJob"></input>
   </view>
-  <!-- 最低薪资 -->
+  <!-- 所属行业 -->
+  <view class="row msg-item">
+    <view class="item-name">所属行业</view>
+    <input class="data" value="{{job.industry}}" data-key="industry" placeholder="请输入..." placeholder-class="placeholderStyle"
+      bindinput="addJob"></input>
+  </view>
+  <!-- 薪资 -->
   <view class="row msg-item">
     <view class="row">
-      <view class="item-name">最低薪资</view>
+      <view class="item-name">薪资范围</view>
       <view class="required">*</view>
     </view>
-    <input class="data" value="{{addJob.lowSalary}}" data-key="lowSalary" placeholder="薪资/月..."
-      placeholder-class="placeholderStyle" bindinput="addJob"></input>
-  </view>
-  <!-- 最高薪资 -->
-  <view class="row msg-item">
-    <view class="row">
-      <view class="item-name">最高薪资</view>
-      <view class="required">*</view>
+    <view class="row data">
+      <view>
+        <input value="{{job.salary.lowSalary}}" placeholder="K/月..." placeholder-class="placeholderStyle"
+          style="width:100rpx" data-key="salary.lowSalary" bindinput="addJob"></input>
+      </view>
+      <view style="margin-right:60rpx">-</view>
+      <view>
+        <input value="{{job.salary.highSalary}}" placeholder="K/月..." placeholder-class="placeholderStyle"
+          data-key="salary.highSalary" bindinput="addJob"></input>
+      </view>
     </view>
-    <input class="data" value="{{addJob.highSalary}}" data-key="highSalary" placeholder="薪资/月..."
-      placeholder-class="placeholderStyle" bindinput="addJob"></input>
   </view>
   <!-- 工作城市 -->
   <view class="row msg-item">
@@ -32,8 +38,8 @@
       <view class="item-name">工作城市</view>
       <view class="required">*</view>
     </view>
-    <input class="data" value="{{addJob.city}}" data-key="city" placeholder="请输入..."
-      placeholder-class="placeholderStyle" bindinput="addJob"></input>
+    <input class="data" value="{{job.city}}" data-key="city" placeholder="请输入..." placeholder-class="placeholderStyle"
+      bindinput="addJob"></input>
   </view>
   <!-- 经验要求 -->
   <view class="row msg-item">
@@ -41,10 +47,8 @@
       <view class="item-name">经验要求</view>
       <view class="required">*</view>
     </view>
-    <picker bindchange="experiencePicker" value="{{experience[experienceIndex]}}" range="{{experience}}"
-      data-key="experience" class="data">
-      <input data-key="experience" value="{{experience[experienceIndex]}}" placeholder="请选择..."
-        placeholder-class="placeholderStyle"></input>
+    <picker bindchange="experiencePicker" range="{{experience}}" class="data">
+      <input value="{{job.experience}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
     </picker>
   </view>
   <!-- 学历要求 -->
@@ -53,16 +57,15 @@
       <view class="item-name">学历要求</view>
       <view class="required">*</view>
     </view>
-    <picker bindchange="degreePicker" value="{{degree[degreeIndex]}}" range="{{degree}}" data-key="degree" class="data">
-      <input data-key="degree" value="{{degree[degreeIndex]}}" placeholder="请选择..."
-        placeholder-class="placeholderStyle"></input>
+    <picker bindchange="degreePicker" range="{{degree}}" class="data">
+      <input value="{{job.degree}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
     </picker>
   </view>
-  <!-- 公司简介 -->
+  <!-- 岗位要求 -->
   <view class="textareaCss">
     <view class="item-name">岗位要求</view>
     <view>
-      <textarea bindinput="claimTextarea" value="{{addJob.claim}}" placeholder="请输入..."
+      <textarea bindinput="claimTextarea" value="{{job.claim}}" placeholder="请输入（多条英文分号';'隔开）..."
         placeholder-class="placeholderStyle">
 			</textarea>
     </view>
@@ -71,8 +74,7 @@
   <view class="textareaCss">
     <view class="item-name">岗位职责</view>
     <view>
-      <textarea bindinput="dutyTextarea" value="{{addJob.duty}}" placeholder="请输入..."
-        placeholder-class="placeholderStyle">
+      <textarea bindinput="dutyTextarea" value="{{job.duty}}" placeholder="请输入（多条英文分号';'隔开）..." placeholder-class="placeholderStyle">
 			</textarea>
     </view>
   </view>
@@ -80,22 +82,36 @@
   <view>
     <!-- 添加福利 -->
     <view class="row msg-item">
-      <view class="item-name">技能标签</view>
-      <input class="data" value="{{addSkill}}" placeholder="请输入..." placeholder-class="placeholderStyle"
-        bindinput="editSkill"></input>
-      <view class="okImg" wx:if="{{addSkill}}">
-        <image src="/images/mine/resume/ok.png" bindtap="addSkill"></image>
+      <view class="item-name">关键字词</view>
+      <input class="data" value="{{addKeywords}}" placeholder="请输入..." placeholder-class="placeholderStyle"
+        bindinput="editKeywords"></input>
+      <view class="okImg" wx:if="{{addKeywords}}">
+        <image src="/images/mine/resume/ok.png" bindtap="addKeywords"></image>
       </view>
     </view>
     <!--添加的福利信息显示 -->
-    <view wx:if="{{jobSkill}}">
-      <view wx:for="{{jobSkill}}" wx:key="index" data-index="{{index}}" bindtap="deleteSkill">
+    <view wx:if="{{job.keywords}}">
+      <view wx:for="{{job.keywords}}" wx:key="index" data-index="{{index}}" bindtap="deleteSkill">
         <view class="row skillShow">
           <view>{{item}}</view>
           <image src="/images/mine/resume/delete.png"></image>
         </view>
       </view>
     </view>
+  </view>
+  <!-- 招聘类型 -->
+  <view class="row msg-item">
+    <view class="item-name">招聘类型</view>
+    <picker bindchange="kindPicker" range="{{kind}}" class="data">
+      <input value="{{kind[job.kind]}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
+    </picker>
+  </view>
+  <!-- 截止日期 -->
+  <view class="row msg-item">
+    <view class="item-name">截止日期</view>
+    <picker mode="date" bindchange="datePicker" class="data">
+      <input value="{{job.deadline}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
+    </picker>
   </view>
 </view>
 

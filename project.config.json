@@ -58,7 +58,13 @@
       "list": []
     },
     "miniprogram": {
-      "list": []
+      "list": [
+        {
+          "name": "addJob",
+          "pathName": "pages/mine/companyMine/addJob/addJob",
+          "scene": null
+        }
+      ]
     }
   }
 }

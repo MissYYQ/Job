@@ -4,48 +4,51 @@ Page({
    * 页面的初始数据
    */
   data: {
-    jobData: [{
-        name: "前端开发",
-        salary: "6-10K",
-        degree: "本科",
-        experience: "1-3年",
-        companyName: "云程科技",
-        industry: "计算机软件",
-        companySize: "20-99人",
-        financingStage: "B轮",
-        logoImgUrl: "/images/index/hotCompany.png",
-        kind: 0
-      },
-      {
-        name: "前端开发",
-        salary: "6-10K",
-        degree: "本科",
-        experience: "1-3年",
-        companyName: "云程科技",
-        industry: "计算机软件",
-        companySize: "20-99人",
-        financingStage: "B轮",
-        logoImgUrl: "/images/index/hotCompany.png",
-        kind: 0
-      },
-    ],
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    //获取公司在招职位
+    var id = options.id;
+    wx.request({
+      url: 'http://localhost:81/job/jobForCompany',
+      method: 'get',
+      data: {
+        id: id,
+      },
+      success: function (res) {
+        that.setData({
+          job: res.data,
+        })
+      },
+    })
   },
 
   //查看
-  toJobDetailsPage: function () {
+  look: function (e) {
+    var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/index/jobDetails/jobDetails',
+      url: '/pages/index/jobDetails/jobDetails?id='+id,
     })
   },
 
   //编辑
+  edit: function (e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/mine/companyMine/addJob/addJob?id='+id,
+    })
+  },
+
+  delete:function(e){
+    var id = e.currentTarget.dataset.id;
+  },
+
+  //添加
   toAddJobPage: function () {
     wx.navigateTo({
       url: '/pages/mine/companyMine/addJob/addJob',

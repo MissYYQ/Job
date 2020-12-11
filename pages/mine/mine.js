@@ -83,11 +83,11 @@ Page({
           userId: userId
         },
         success: function (res) {
-          console.log(res.data)
           that.setData({
             company: res.data
           })
           var companyId = that.data.company.id;
+          wx.setStorageSync('companyId', companyId)
           //面试量
           wx.request({
             url: 'http://localhost:81/interview/countByCompanyId',
@@ -274,8 +274,9 @@ Page({
   //职位管理
   toCompanyJobPage: function () {
     if (this.data.isWxLogin) {
+      var id = this.data.company.id
       wx.navigateTo({
-        url: '/pages/mine/companyMine/companyJob/companyJob',
+        url: '/pages/mine/companyMine/companyJob/companyJob?id='+id,
       })
     } else {
       wx.showToast({

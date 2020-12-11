@@ -1,10 +1,13 @@
-<view wx:for="{{jobData}}" wx:key="index" data-index="{{index}}" class="row job-item">
-  <view class="name">{{item.name}} · {{item.salary}}</view>
+<view wx:for="{{job}}" wx:key="index" data-id="{{item.id}}" class="row job-item">
+  <view>
+    <view class="name">{{item.name}}</view>
+    <view class="salary">{{item.salary}}</view>
+  </view>
   <!-- 操作 -->
   <view class="row operate">
-    <view class="look" bindtap="toJobDetailsPage">查看</view>
-    <view class="edit" bindtap="toAddJobPage">编辑</view>
-    <view class="delete">删除</view>
+    <view class="look" data-id="{{item.id}}" bindtap="look">查看</view>
+    <view class="edit" data-id="{{item.id}}" bindtap="edit">编辑</view>
+    <view class="delete" data-id="{{item.id}}" bindtap="delete">删除</view>
   </view>
 </view>
 

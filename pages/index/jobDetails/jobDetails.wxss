@@ -89,7 +89,8 @@
 
 /* 内容区域 */
 .bottom-job {
-  margin-top: 310rpx;
+  margin-top: 270rpx;
+  padding-bottom: 80rpx;
 }
 
 .skill {
@@ -122,7 +123,7 @@
 
 /* 底部 */
 .null {
-  height: 220rpx;
+  height: 150rpx;
 }
 
 .bottom {

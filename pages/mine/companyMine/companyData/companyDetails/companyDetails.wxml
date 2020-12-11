@@ -11,24 +11,6 @@
 				<view class="other">{{company.size}} · {{company.financingstage}}</view>
 			</view>
 		</view>
-		<view class="companyFront row">
-			<view class="data-item">
-				<view class="data-num">{{communicationNum}}</view>
-				<view class="data-name">沟通</view>
-			</view>
-			<view class="data-item">
-				<view class="data-num">{{interviewNum}}</view>
-				<view class="data-name">面试</view>
-			</view>
-			<view class="data-item">
-				<view class="data-num">{{jobNum}}</view>
-				<view class="data-name">职位</view>
-			</view>
-			<view class="data-item">
-				<view class="data-num">{{favoritesNum}}</view>
-				<view class="data-name">收藏</view>
-			</view>
-		</view>
 	</view>
 </view>
 
@@ -62,9 +44,11 @@
 		</view>
 	</view>
 	<!-- 公司介绍 -->
-	<view class="title">公司介绍</view>
-	<view class="skills row">
-		<view>{{company.introduction}}</view>
+	<view wx:if="{{company.introduction}}">
+		<view class="title">公司介绍</view>
+		<view class="skills row">
+			<view>{{company.introduction}}</view>
+		</view>
 	</view>
 	<!-- 在招职位 -->
 	<view class="title">在招职位</view>
@@ -74,7 +58,6 @@
 				<view class="row">
 					<text class="name">{{item.name}}</text>
 					<view wx:if="{{item.kind==0}}" class="school school-recruitment">实习</view>
-					<!-- <view wx:if="{{item.kind===0}}" class="school practice">实习</view> -->
 				</view>
 				<text class="salary">{{item.salary}}</text>
 			</view>

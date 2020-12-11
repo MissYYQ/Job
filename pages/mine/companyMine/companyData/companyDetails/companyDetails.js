@@ -24,8 +24,6 @@ Page({
         id: id,
       },
       success: function (res) {
-        console.log("获取公司详情成功");
-        console.log(res);
         that.setData({
           company: res.data,
           welfare: res.data.welfare
@@ -67,29 +65,12 @@ Page({
       method: 'post',
       data: {
         id: id
-      },
-      success: function (res) {
-        console.log("job预览量加一")
-      },
+      }
     })
     wx.navigateTo({
       url: '/pages/index/jobDetails/jobDetails?id=' + id
     })
   },
 
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
 
 })

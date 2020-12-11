@@ -13,9 +13,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    //获取用户类型
+    var userKind = wx.getStorageSync('userKind')
+    var userKindTag;
+    if (userKind == "学生") {
+      userKindTag = 1
+    }
+    if (userKind == "企业") {
+      userKindTag = 2
+    }
+    that.setData({
+      userKindTag: userKindTag
+    })
     //职位详情数据
     var id = options.id;
-    var that = this;
     wx.request({
       url: 'http://localhost:81/job/one',
       method: 'get',
