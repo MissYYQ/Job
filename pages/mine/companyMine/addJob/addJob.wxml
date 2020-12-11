@@ -65,7 +65,7 @@
   <view class="textareaCss">
     <view class="item-name">岗位要求</view>
     <view>
-      <textarea bindinput="claimTextarea" value="{{job.claim}}" placeholder="请输入（多条英文分号';'隔开）..."
+      <textarea bindinput="claimTextarea" value="{{job.claim}}" placeholder="请输入（多条请用中文分号'；'隔开）..."
         placeholder-class="placeholderStyle">
 			</textarea>
     </view>
@@ -74,7 +74,7 @@
   <view class="textareaCss">
     <view class="item-name">岗位职责</view>
     <view>
-      <textarea bindinput="dutyTextarea" value="{{job.duty}}" placeholder="请输入（多条英文分号';'隔开）..." placeholder-class="placeholderStyle">
+      <textarea bindinput="dutyTextarea" value="{{job.duty}}" placeholder="请输入（多条请用中文分号'；'隔开）..." placeholder-class="placeholderStyle">
 			</textarea>
     </view>
   </view>

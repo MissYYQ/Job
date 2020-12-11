@@ -50,7 +50,6 @@ Page({
           id: id,
         },
         success: function (res) {
-          console.log(res.data)
           that.setData({
             job: res.data,
           })
@@ -179,8 +178,6 @@ Page({
 
   //确定
   determineBtn: function () {
-    console.log("处理前")
-    console.log(this.data.job)
     //数据处理
     var salary = this.data.job.salary.lowSalary + "-" + this.data.job.salary.highSalary;
     var keywords = this.data.job.keywords.join("、");
@@ -188,8 +185,6 @@ Page({
       ['job.salary']: salary,
       ['job.keywords']: keywords,
     })
-    console.log("处理后")
-    console.log(this.data.job)
     //判空
     let job = this.data.job;
     if (job.name == null) {
@@ -249,8 +244,19 @@ Page({
           },
           success: function (res) {
             if (res.data) {
-              console.log(res.data, "job更新成功")
+              wx.showToast({
+                title: '编辑成功',
+                icon: 'none',
+                duration: 1500,
+                mask: true
+              })
               // 刷新并返回上一页
+              var pages = getCurrentPages();
+              var beforePage = pages[pages.length - 2];
+              beforePage.onLoad();
+              wx.navigateBack({
+                delta: 1,
+              })
             }
           }
         })
@@ -271,8 +277,19 @@ Page({
           },
           success: function (res) {
             if (res.data) {
-              console.log(res.data, "job添加成功")
+              wx.showToast({
+                title: '添加成功',
+                icon: 'none',
+                duration: 1500,
+                mask: true
+              })
               // 刷新并返回上一页
+              var pages = getCurrentPages();
+              var beforePage = pages[pages.length - 2];
+              beforePage.onLoad();
+              wx.navigateBack({
+                delta: 1,
+              })
             }
           }
         })

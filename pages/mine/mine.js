@@ -138,7 +138,9 @@ Page({
   wxLogin: function () {
     app.wxLogin();
     //直接获取到当前页面的onload()进行刷新
-    this.onLoad();
+    var pages = getCurrentPages();
+    var currentPage = pages[pages.length - 1];
+    currentPage.onLoad();
   },
 
   //跳转至用户类型选择页面
@@ -274,9 +276,8 @@ Page({
   //职位管理
   toCompanyJobPage: function () {
     if (this.data.isWxLogin) {
-      var id = this.data.company.id
       wx.navigateTo({
-        url: '/pages/mine/companyMine/companyJob/companyJob?id='+id,
+        url: '/pages/mine/companyMine/companyJob/companyJob',
       })
     } else {
       wx.showToast({
@@ -369,7 +370,6 @@ Page({
       })
     }
   },
-
 
 
 

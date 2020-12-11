@@ -13,7 +13,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     //获取公司在招职位
-    var id = options.id;
+    var id = wx.getStorageSync('companyId');
     wx.request({
       url: 'http://localhost:81/job/jobForCompany',
       method: 'get',
@@ -32,7 +32,7 @@ Page({
   look: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/index/jobDetails/jobDetails?id='+id,
+      url: '/pages/index/jobDetails/jobDetails?id=' + id,
     })
   },
 
@@ -40,12 +40,26 @@ Page({
   edit: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/mine/companyMine/addJob/addJob?id='+id,
+      url: '/pages/mine/companyMine/addJob/addJob?id=' + id,
     })
   },
 
-  delete:function(e){
+  //删除
+  delete: function (e) {
     var id = e.currentTarget.dataset.id;
+    wx.request({
+      url: 'http://localhost:81/job/delete',
+      method: 'get',
+      data: {
+        id: id,
+      },
+      success: function (res) {
+        if (res.data) {
+          //刷新当前页
+          this.onLoad();
+        }
+      },
+    })
   },
 
   //添加

@@ -62,7 +62,9 @@ Page({
   wxLogin: function () {
     app.wxLogin();
     //直接获取到当前页面的onload()进行刷新
-    this.onLoad();
+    var pages = getCurrentPages();
+    var currentPage = pages[pages.length - 1];
+    currentPage.onLoad();
   },
 
   // 跳转至交流页面
