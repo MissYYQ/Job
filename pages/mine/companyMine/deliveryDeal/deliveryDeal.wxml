@@ -1,24 +1,24 @@
-<view wx:for="{{delivery}}" wx:key="index" data-index="{{index}}" class="item">
-  <view class="row" bindtap="toJobDetailsPage">
+<view wx:for="{{delivery}}" wx:if="{{item.status < 3}}" wx:key="index" class="item">
+  <view class="row" data-id="{{item.jobId}}" bindtap="toJobDetailsPage">
     <view>应聘职位：</view>
-    <view class="name">{{item.jobName}}</view>
+    <view class="name">{{item.job.name}}</view>
   </view>
-  <view class="row" bindtap="toPreviewResumePage">
-    <view>应聘者：</view>
-    <view class="name">{{item.studentName}}</view>
+  <view class="row">
+    <view>投递时间：</view>
+    <view class="name">{{item.deliverytime}}</view>
   </view>
-  <view class="row" bindtap="openResumeFile">
+  <view class="row" data-path="{{item.resumefile.path}}" bindtap="openResumeFile">
     <view>简历：</view>
-    <view class="name">{{resumeFile.name}}</view>
+    <view class="name">{{item.resumefile.name}}</view>
   </view>
   <!-- 投递处理（是否通过） -->
   <view wx:if="{{item.status == 1}}" class="row botton">
-    <view class="passBtn">通过</view>
-    <view class="failBtn">不通过</view>
+    <view class="passBtn" data-id="{{item.id}}" bindtap="pass">通过</view>
+    <view class="failBtn" data-id="{{item.id}}"  bindtap="fail">不通过</view>
   </view>
   <!-- 已通过（是否邀请面试） -->
   <view wx:if="{{item.status == 2}}" class="botton">
-    <view class="interview" bindtap="showTemplate">已通过，邀请面试</view>
+    <view class="interview" data-id="{{item.id}}" data-userId="{{item.userId}}" data-jobId="{{item.jobId}}" bindtap="showTemplate">已通过，邀请面试</view>
   </view>
 </view>
 
@@ -31,7 +31,7 @@
         <view>面试日期</view>
         <view class="required">*</view>
       </view>
-      <picker mode="date" start="{{nowDate}}" end="2022-01-01" bindchange="dateChange">
+      <picker mode="date" start="{{nowDate}}"  bindchange="dateChange">
         <input value="{{addInterview.date}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
       </picker>
     </view>
@@ -58,13 +58,13 @@
         <view>详细地点</view>
         <view class="required">*</view>
       </view>
-      <input data-key="detailedAddress" value="{{addInterview.detailedAddress}}" placeholder="请输入..."
+      <input data-key="detailedaddress" value="{{addInterview.detailedaddress}}" placeholder="请输入..."
         placeholder-class="placeholderStyle" bindinput="addInterview"></input>
     </view>
     <!-- 底部按钮 -->
     <view class="row button">
       <view class="cancelBtn" bindtap="cancelBtn">取消</view>
-      <view class="determineBtn" bindtap="determineBtn">确定</view>
+      <view class="determineBtn"  bindtap="determineBtn">确定</view>
     </view>
   </view>
 </view>
