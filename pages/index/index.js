@@ -3,70 +3,67 @@ const app = getApp()
 
 Page({
   data: {
-    studentData: [{
-        intentionJob: "前端开发",
-        expectedSalary: "6-10K",
-        school: "九江学院",
-        degree: "本科",
-        profession: "计算机科学与技术",
-        avatar: "/images/tabBar/mine02.png",
-        name: "姜先生",
-        skills: [
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "微信小程序",
-          "SpringMVC",
-          "BootStrap"
-        ]
-      },
-      {
-        intentionJob: "Java开发工程师",
-        expectedSalary: "8-12K",
-        school: "南昌大学",
-        degree: "本科",
-        profession: "软件工程",
-        avatar: "/images/tabBar/mine02.png",
-        name: "南笙Y",
-        skills: [
-          "Java",
-          "JavaScript",
-          "SSM",
-          "SpringMVC",
-          "BootStrap"
-        ]
-      },
 
-    ],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
+    var that = this;
     var userKind = wx.getStorageSync('userKind');
     var userKindTag;
     if (userKind == "学生") {
-      userKindTag = 1
+      userKindTag = 1;
+      //后台获取数据
+      wx.request({
+        url: 'http://localhost:81/job/all',
+        method: 'get',
+        success: function (res) {
+          that.setData({
+            job: res.data,
+          })
+        },
+      })
     }
     if (userKind == "企业") {
-      userKindTag = 2
+      userKindTag = 2;
+      //后台获取数据
+      wx.request({
+        url: 'http://localhost:81/student/all',
+        method: 'get',
+        success: function (res) {
+          that.setData({
+            student: res.data
+          })
+          //数据处理
+          for (var i = 0; i < that.data.student.length; i++) {
+            if (that.data.student[i].skills) {
+              var skills = that.data.student[i].skills.split("、");
+              let student = "student[" + i + "].skills";
+              that.setData({
+                [student]: skills
+              })
+            }
+            if (that.data.student[i].education) {
+              var education = that.data.student[i].education.split("、");
+              let school = "student[" + i + "].education.school";
+              let profession = "student[" + i + "].education.profession";
+              let degree = "student[" + i + "].education.degree";
+              that.setData({
+                [school]: education[0],
+                [profession]: education[1],
+                [degree]: education[2]
+              })
+            }
+          }
+        },
+      })
     }
     this.setData({
       isWxLogin: wx.getStorageSync('isWxLogin'),
       intentionJob: wx.getStorageSync('intentionJob'),
       userKindTag: userKindTag,
-    })
-    //后台获取数据
-    var that = this;
-    wx.request({
-      url: 'http://localhost:81/job/all',
-      method: 'get',
-      success: function (res) {
-        that.setData({
-          job: res.data,
-        })
-      },
     })
   },
 
@@ -77,7 +74,9 @@ Page({
     });
   },
 
-  //公司-搜索
+  // ================学生端==============
+
+  //搜索-学生端
   search: function () {
     var key = this.data.inputVal
     if (key != "") {
@@ -104,13 +103,6 @@ Page({
       })
     }
 
-  },
-
-  //清空搜索
-  clearInput: function () {
-    this.setData({
-      inputVal: null
-    });
   },
 
   //跳转至热门公司页面
@@ -177,12 +169,66 @@ Page({
   },
 
 
-  // ===============studentIndex================
+  // ===============企业端================
+
+
+  //搜索-企业端
+  searchBtn: function () {
+    var key = this.data.inputVal
+    if (key != "") {
+      //后台获取数据
+      var that = this;
+      wx.request({
+        url: 'http://localhost:81/student/search',
+        method: 'get',
+        data: {
+          key: key
+        },
+        success: function (res) {
+          console.log("搜索结果")
+          console.log(res.data)
+          that.setData({
+            student: res.data
+          })
+          //数据处理
+          for (var i = 0; i < that.data.student.length; i++) {
+            if (that.data.student[i].skills) {
+              var skills = that.data.student[i].skills.split("、");
+              let student = "student[" + i + "].skills";
+              that.setData({
+                [student]: skills
+              })
+            }
+            if (that.data.student[i].education) {
+              var education = that.data.student[i].education.split("、");
+              let school = "student[" + i + "].education.school";
+              let profession = "student[" + i + "].education.profession";
+              let degree = "student[" + i + "].education.degree";
+              that.setData({
+                [school]: education[0],
+                [profession]: education[1],
+                [degree]: education[2]
+              })
+            }
+          }
+        },
+      })
+    } else {
+      wx.showToast({
+        title: '搜索内容不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
+
+  },
 
   //跳转至预览简历页面
-  toPreviewResumePage: function () {
+  toPreviewResumePage: function (e) {
+    var userId = e.currentTarget.dataset.userid;
     wx.navigateTo({
-      url: '/pages/mine/studentMine/resume/previewResume/previewResume',
+      url: '/pages/mine/studentMine/resume/previewResume/previewResume?userId=' + userId,
     })
   },
 

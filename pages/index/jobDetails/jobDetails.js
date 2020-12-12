@@ -38,33 +38,29 @@ Page({
         that.setData({
           job: res.data,
         })
-        //字符串转数组
+        //数据处理
         if (that.data.job.claim) {
           var claimArr = that.data.job.claim.split("；")
-          let claim = "job.claim"
           that.setData({
-            [claim]: claimArr,
+            ['job.claim']: claimArr,
           })
         }
         if (that.data.job.duty) {
           var dutyArr = that.data.job.duty.split("；")
-          let duty = "job.duty"
           that.setData({
-            [duty]: dutyArr,
+            ['job.duty']: dutyArr,
           })
         }
         if (that.data.job.company.welfare) {
           var welfareArr = that.data.job.company.welfare.split("、");
-          let welfare = "job.company.welfare"
           that.setData({
-            [welfare]: welfareArr,
+            ['job.company.welfare']: welfareArr,
           })
         }
         if (that.data.job.keywords) {
           var keywordsArr = that.data.job.keywords.split("、");
-          let keywords = "job.keywords"
           that.setData({
-            [keywords]: keywordsArr,
+            ['job.keywords']: keywordsArr,
           })
         }
         var userId = wx.getStorageSync("userInfo").id;

@@ -136,3 +136,17 @@
 		<view class="resumeFile" bindtap="openResumeFile">{{resumeFile.name}}</view>
 	</view>
 </view>
+
+<!-- 底部功能按钮 -->
+<view wx:if="{{userKindTag == 2}}">
+	<view class="null"></view>
+	<view class="bottom">
+		<view class="row">
+			<view class="favorites">
+				<image wx:if="{{collection}}" src="/images/jobDetails/favorites-fill.png" bindtap="uncollection"></image>
+				<image wx:else src="/images/jobDetails/favorites.png" bindtap="collection"></image>
+			</view>
+			<view class="btn" bindtap="toChatPage">立即沟通</view>
+		</view>
+	</view>
+</view>

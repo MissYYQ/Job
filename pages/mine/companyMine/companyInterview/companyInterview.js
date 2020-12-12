@@ -18,10 +18,9 @@ Page({
     this.setData({
       nowDateTime: nowDateTime,
     })
-    console.log(this.data.nowDateTime)
   },
 
-  toJobDetailsPage: function () {
+  toJobDetailsPage: function (e) {
     wx.navigateTo({
       url: '/pages/index/jobDetails/jobDetails',
     })

@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    collection: false
   },
 
   /**
@@ -12,6 +12,19 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    //获取用户类型
+    var userKind = wx.getStorageSync('userKind')
+    var userKindTag;
+    if (userKind == "学生") {
+      userKindTag = 1
+    }
+    if (userKind == "企业") {
+      userKindTag = 2
+    }
+    that.setData({
+      userKindTag: userKindTag
+    })
+    //后台获取数据
     var userId = options.userId;
     //student
     wx.request({
@@ -28,29 +41,24 @@ Page({
         if (that.data.resume.skills) {
           if (that.data.resume.skills) {
             var skillsArr = that.data.resume.skills.split("、")
-            let skills = "resume.skills"
             that.setData({
-              [skills]: skillsArr,
+              ['resume.skills']: skillsArr,
             })
           }
           if (that.data.resume.honor) {
             var honorArr = that.data.resume.honor.split("、")
-            let honor = "resume.honor"
             that.setData({
-              [honor]: honorArr
+              ['resume.honor']: honorArr
             })
           }
-          var educationArr = that.data.resume.education.split("、")
-          var school = educationArr[0]
-          var profession = educationArr[1]
-          var degree = educationArr[2]
-          let rschool = "resume.education.school"
-          let rprofession = "resume.education.profession"
-          let rdegree = "resume.education.degree"
+          var educationArr = that.data.resume.education.split("、");
+          var school = educationArr[0];
+          var profession = educationArr[1];
+          var degree = educationArr[2];
           that.setData({
-            [rschool]: school,
-            [rprofession]: profession,
-            [rdegree]: degree
+            ['resume.education.school']: school,
+            ['resume.education.profession']: profession,
+            ['resume.education.degree']: degree
           })
         }
       }
@@ -94,13 +102,109 @@ Page({
         })
       }
     })
-    //字数
-    var description = this.data.tempExperience.description;
-    if (description) {
-      this.setData({
-        currentWordNumber: description.length
+    //是否收藏
+    // wx.request({
+    //   url: 'http://localhost:81/collection/jobIsCollection',
+    //   method: 'GET',
+    //   data: {
+    //     userId: userId,
+    //     jobId: jobId
+    //   },
+    //   success: function (res) {
+    //     that.setData({
+    //       collection: res.data
+    //     })
+    //   }
+    // })
+
+  },
+
+  //跳转至聊天页面
+  toChatPage: function () {
+    if (wx.getStorageSync('isWxLogin')) {
+      wx.navigateTo({
+        url: '/pages/news/chat/chat',
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
       })
     }
   },
+
+
+  // // 收藏
+  // collection: function () {
+  //   if (this.data.isWxLogin) {
+  //     var userId = this.data.userId;
+  //     var jobId = this.data.job.id;
+  //     wx.request({
+  //       url: 'http://localhost:81/collection/collectJob',
+  //       method: 'POST',
+  //       data: {
+  //         userId: userId,
+  //         jobId: jobId
+  //       },
+  //       header: {
+  //         'content-type': 'application/x-www-form-urlencoded',
+  //       },
+  //       success: function (res) {
+  //         if (res.data) {
+  //           wx.showToast({
+  //             title: '收藏成功',
+  //             icon: 'none',
+  //             duration: 1200,
+  //             mask: true
+  //           })
+  //           that.setData({
+  //             collection: true
+  //           })
+  //         }
+  //       }
+  //     })
+  //   } else {
+  //     wx.showToast({
+  //       title: '未登录！',
+  //       icon: 'none',
+  //       duration: 1500,
+  //       mask: true
+  //     })
+  //   }
+  // },
+
+  // // 取消收藏
+  // uncollection: function () {
+  //   var userId = this.data.userId;
+  //   var jobId = this.data.job.id;
+  //   wx.request({
+  //     url: 'http://localhost:81/collection/uncollectJob',
+  //     method: 'POST',
+  //     data: {
+  //       userId: userId,
+  //       jobId: jobId
+  //     },
+  //     header: {
+  //       'content-type': 'application/x-www-form-urlencoded',
+  //     },
+  //     success: function (res) {
+  //       if (!res.data) {
+  //         wx.showToast({
+  //           title: '已取消收藏',
+  //           icon: 'none',
+  //           duration: 1200,
+  //           mask: true
+  //         })
+  //         that.setData({
+  //           collection: false
+  //         })
+  //       }
+  //     }
+  //   })
+  // },
+
+
 
 })

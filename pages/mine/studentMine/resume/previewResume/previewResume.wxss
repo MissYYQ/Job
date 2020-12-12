@@ -1,1 +1,32 @@
 @import "/pages/mine/studentMine/resume/resume.wxss";
+
+.null{
+  height: 120rpx;
+}
+.bottom{
+  position: fixed;
+  bottom: 0;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  z-index: 99;
+  background-color: white;
+  width: 100%;
+}
+
+.favorites image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-left: 40rpx;
+}
+
+.btn {
+  line-height: 2.2em;
+  color: white;
+  background-color: #f6b501;
+  font-size: 12pt;
+  font-weight: 600;
+  letter-spacing: 5rpx;
+  border-radius: 8rpx;
+  padding: 0 180rpx;
+  margin-right: 40rpx;
+}

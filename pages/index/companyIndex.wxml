@@ -3,23 +3,23 @@
   <view class="search-body">
     <view class="row search-box">
       <i class="weui-icon-search"></i>
-      <input type="text" focus value="{{inputVal}}" confirm-type="search" placeholder="请输入职位名称"
+      <input type="text" focus value="{{inputVal}}" confirm-type="search" placeholder="搜索职位、学校、专业"
         placeholder-class="placeholderClass" bindinput="inputVal" />
-      <span class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput"></span>
+      <view wx:if="{{inputVal.length > 0}}" class="searchBtn" bindtap="searchBtn">搜索</view>
     </view>
   </view>
 </view>
 <!-- 内容 -->
 <view class="companyContent">
-  <view class="content" bindtap="toPreviewResumePage" wx:for="{{studentData}}" wx:key="index" data-index="{{index}}">
+  <view class="content" bindtap="toPreviewResumePage" wx:for="{{student}}" wx:key="index" data-userId="{{item.userId}}">
     <view class="row content-top">
       <view class="row">
-        <view class="name">{{item.intentionJob}}</view>
+        <view class="name">{{item.intentionjob.job}}</view>
       </view>
-      <view class="salary">{{item.expectedSalary}}</view>
+      <view class="salary">{{item.intentionjob.salary}}</view>
     </view>
     <view class="row request-content">
-      <view class="content-request" wx:for="{{studentData[index].skills}}" wx:key="index">
+      <view class="content-request" wx:for="{{item.skills}}" wx:key="index">
         <view>{{item}}</view>
       </view>
     </view>
@@ -28,7 +28,7 @@
         <image src="{{item.avatar}}"></image>
         <view>{{item.name}}</view>
       </view>
-      <view class="company">{{item.school}} | {{item.degree}} | {{item.profession}}</view>
+      <view class="company">{{item.education.school}} | {{item.education.profession}} | {{item.education.degree}}</view>
     </view>
   </view>
 </view>
