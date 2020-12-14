@@ -40,6 +40,9 @@ Page({
         that.setData({
           resume: res.data
         })
+        wx.setNavigationBarTitle({
+          title: that.data.resume.name
+        })
         //数据处理
         if (that.data.resume.skills) {
           var skillsArr = that.data.resume.skills.split("、")

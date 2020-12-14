@@ -78,10 +78,10 @@ Page({
 
   //搜索-学生端
   search: function () {
-    var key = this.data.inputVal
+    var that = this;
+    var key = that.data.inputVal
     if (key != "") {
       //后台获取数据
-      var that = this;
       wx.request({
         url: 'http://localhost:81/job/search',
         method: 'get',

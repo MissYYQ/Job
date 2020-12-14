@@ -196,10 +196,9 @@ Page({
 
   //我的收藏
   toStudentCollectPage: function () {
-    var collectionJobNum = this.data.collectionJobNum;
     if (this.data.isWxLogin) {
       wx.navigateTo({
-        url: '/pages/mine/studentMine/studentCollect/studentCollect?collectionJobNum=' + collectionJobNum,
+        url: '/pages/mine/studentMine/studentCollect/studentCollect',
       })
     } else {
       wx.showToast({
@@ -214,9 +213,8 @@ Page({
   //我的投递
   toMyDeliveryPage: function () {
     if (this.data.isWxLogin) {
-      var deliveryNum = this.data.deliveryNum;
       wx.navigateTo({
-        url: '/pages/mine/studentMine/myDelivery/myDelivery?deliveryNum=' + deliveryNum,
+        url: '/pages/mine/studentMine/myDelivery/myDelivery',
       })
     } else {
       wx.showToast({
@@ -231,9 +229,8 @@ Page({
   //我的面试
   toMyInterviewPage: function () {
     if (this.data.isWxLogin) {
-      var interviewNum = this.data.interviewNum;
       wx.navigateTo({
-        url: '/pages/mine/studentMine/myInterview/myInterview?interviewNum=' + interviewNum,
+        url: '/pages/mine/studentMine/myInterview/myInterview',
       })
     } else {
       wx.showToast({
@@ -324,18 +321,9 @@ Page({
   //面试
   toCompanyInterviewPage: function () {
     if (this.data.isWxLogin) {
-      if (this.data.interviewNum) {
-        wx.navigateTo({
-          url: '/pages/mine/companyMine/companyInterview/companyInterview',
-        })
-      } else {
-        wx.showToast({
-          title: '暂无面试信息！',
-          icon: 'none',
-          duration: 1500,
-          mask: true
-        })
-      }
+      wx.navigateTo({
+        url: '/pages/mine/companyMine/companyInterview/companyInterview',
+      })
     } else {
       wx.showToast({
         title: '未登录！',
@@ -349,18 +337,9 @@ Page({
   //公司收藏
   toCompanyCollectPage: function () {
     if (this.data.isWxLogin) {
-      if (this.data.collectionNum) {
-        wx.navigateTo({
-          url: '/pages/mine/companyMine/companyCollect/companyCollect',
-        })
-      } else {
-        wx.showToast({
-          title: '暂无收藏！',
-          icon: 'none',
-          duration: 1500,
-          mask: true
-        })
-      }
+      wx.navigateTo({
+        url: '/pages/mine/companyMine/companyCollect/companyCollect',
+      })
     } else {
       wx.showToast({
         title: '未登录！',

@@ -17,19 +17,43 @@ page {
   line-height: 2.2em;
 }
 
-.item{
+.item {
   margin-top: 10rpx;
   align-items: flex-start;
 }
 
-.title{
+.title {
   width: 25%;
 }
 
-.title-data{
+.title-data {
   width: 75%;
 }
 
-.outdate{
+.outdate {
   color: #ccc;
+}
+
+.status {
+  margin-left: 10rpx;
+  color: white;
+  font-size: 8pt;
+  font-weight: 600;
+  line-height: 1em;
+  text-align: center;
+  border-radius: 40rpx;
+  width: 85rpx;
+  padding: 5rpx 10rpx;
+}
+
+.three {
+  background-color: #f6b501;
+}
+
+.four {
+  background-color: turquoise;
+}
+
+.five {
+  background-color: tomato;
 }

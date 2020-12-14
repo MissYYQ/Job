@@ -12,22 +12,19 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    var deliveryNum = options.deliveryNum;
     var userId = wx.getStorageSync('userInfo').id;
-    if (deliveryNum > 0) {
-      wx.request({
-        url: 'http://localhost:81/job/deliveryJob',
-        method: 'GET',
-        data: {
-          userId: userId
-        },
-        success: function (res) {
-          that.setData({
-            deliveryJob: res.data
-          })
-        },
-      })
-    }
+    wx.request({
+      url: 'http://localhost:81/job/deliveryJob',
+      method: 'GET',
+      data: {
+        userId: userId
+      },
+      success: function (res) {
+        that.setData({
+          deliveryJob: res.data
+        })
+      },
+    })
   },
 
   //跳转至职位详情页面

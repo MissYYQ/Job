@@ -1,25 +1,39 @@
 <!-- 编辑求职意向 -->
 <view class="intentionJob">
   <view class="row msg-item">
-    <view class="item-name">期望岗位</view>
-    <picker class="data" mode="multiSelector" bindchange="bindJobChange" bindcolumnchange="bindcolumnchange"  range="{{industry}}">
-      <input type="text" value="{{intentionJob.job}}" data-key="job" bindinput="editIJ" placeholder="请选择..."
-        placeholder-class="placeholderStyle"></input>
-    </picker>
-  </view>
-  <view class="row msg-item">
-    <view class="item-name">期望薪资</view>
-    <input class="data" type="number" data-key="salary" bindinput="editIJ" placeholder="薪资/月..."
-      placeholder-class="placeholderStyle" value="{{intentionJob.salary}}"></input>
-  </view>
-  <view class="row msg-item">
-    <view class="item-name">期望城市</view>
-    <input class="data" type="text" value="{{intentionJob.city}}" data-key="city" bindinput="editIJ" placeholder="请输入"
+    <view class="row">
+      <view class="item-name">期望职位</view>
+      <view class="required">*</view>
+    </view>
+    <input class="data" type="text" value="{{intentionJob.job}}" data-key="job" bindinput="editIJ" placeholder="请输入..."
       placeholder-class="placeholderStyle"></input>
   </view>
-  <!-- 按钮 -->
-  <view class="row button">
-    <view class="btn resetBtn" bindtap="resetBtn">重置</view>
-    <view class="btn determineBtn" bindtap="editOverBtn">确定</view>
+  <view class="row msg-item">
+    <view class="row">
+      <view class="item-name">期望薪资</view>
+      <view class="required">*</view>
+    </view>
+    <input class="data" type="number" data-key="salary" value="{{intentionJob.salary}}" bindinput="editIJ"
+      placeholder="请选择..." placeholder-class="placeholderStyle"></input>
+    <view class="data">
+      <picker mode="selector" range="{{salary}}" value="{{intentionJob.salary}}" data-key="salary"
+        bindchange="bindSalaryChange">
+        <input value="{{intentionJob.salary}}" placeholder="请选择..." placeholder-class="placeholderStyle"></input>
+      </picker>
+    </view>
   </view>
+  <view class="row msg-item">
+    <view class="row">
+      <view class="item-name">期望城市</view>
+      <view class="required">*</view>
+    </view>
+    <input class="data" type="text" value="{{intentionJob.city}}" data-key="city" bindinput="editIJ"
+      placeholder="请输入..." placeholder-class="placeholderStyle"></input>
+  </view>
+</view>
+
+<!-- 底部按钮 -->
+<view class="row button bottomBtn">
+	<view class="btn resetBtn" bindtap="cancel">取消</view>
+	<view class="btn determineBtn" bindtap="determine">确定</view>
 </view>

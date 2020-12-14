@@ -36,7 +36,10 @@ Page({
       },
       success: function (res) {
         that.setData({
-          job: res.data,
+          job: res.data
+        })
+        wx.setNavigationBarTitle({
+          title:  that.data.job.name
         })
         //数据处理
         if (that.data.job.claim) {

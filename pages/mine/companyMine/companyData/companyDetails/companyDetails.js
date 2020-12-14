@@ -28,6 +28,9 @@ Page({
           company: res.data,
           welfare: res.data.welfare
         })
+        wx.setNavigationBarTitle({
+          title: that.data.company.name
+        })
         //字符串转数组
         if (that.data.welfare) {
           var welfare = that.data.welfare;

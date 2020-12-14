@@ -4,16 +4,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    salary: [
+      "不限",
+      "3K以下/月",
+      "3-5K/月",
+      "5-10K/月",
+      "10-20K/月",
+      "20-50K/月",
+      "50K以上/月",
+    ],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.setData({
-    //   intentionJob: wx.getStorageSync('intentionJob'),
-    // })
+    this.setData({
+      intentionJob: wx.getStorageSync('intentionJob'),
+    })
   },
 
 
@@ -24,21 +32,51 @@ Page({
     this.setData({
       [name]: e.detail.value
     })
-    wx.setStorageSync('intentionJob', this.data.intentionJob)
   },
 
-  //重置
-  resetBtn: function () {
+  //薪资改变
+  bindSalaryChange: function (e) {
     this.setData({
-      intentionJob: null
+      ['intentionJob.salary']: this.data.salary[e.detail.value]
     })
-    wx.setStorageSync('intentionJob', null)
   },
 
-  //确定，跳转至首页
-  editOverBtn: function () {
-    wx.reLaunch({
-      url: '/pages/index/index',
+  //取消
+  cancel: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+
+  //确定
+  determine: function () {
+    var that = this;
+    var intentionJob = this.data.intentionJob;
+    wx.request({
+      url: 'http://localhost:81/intention/edit',
+      method: 'POST',
+      data: {
+        userId: wx.getStorageSync('userInfo').id,
+        intentionJob: JSON.stringify(intentionJob)
+      },
+      dataType: 'json',
+      contentType: 'application/json;charset=utf-8',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        if (res.data) {
+          console.log(res.data, "intentionJob保存成功");
+          wx.setStorageSync('intentionJob', that.data.intentionJob);
+          // 返回上一页（首页）
+          var pages = getCurrentPages();
+          var beforePage = pages[pages.length - 2];
+          beforePage.onLoad();
+          wx.navigateBack({
+            delta: 1
+          })
+        }
+      }
     })
   },
 

@@ -24,6 +24,9 @@ Page({
         that.setData({
           seminar: res.data,
         })
+        wx.setNavigationBarTitle({
+          title: that.data.seminar.company.name+"宣讲会"
+        })
         //数据加工
         if (that.data.seminar.company.welfare) {
           var welfareArr = that.data.seminar.company.welfare.split("、");

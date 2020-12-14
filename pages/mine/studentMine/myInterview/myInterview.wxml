@@ -1,5 +1,5 @@
-<view wx:for="{{interview}}" wx:key="index" data-id="{{item.jobId}}" class="interview-item" bindtap="toJobDetailsPage">
-  <view class="name {{item.date < nowDate ? 'outdate' : ''}}">{{item.job.name}} · {{item.company.name}}</view>
+<view wx:for="{{interview}}" wx:key="index" class="interview-item">
+  <view class="name {{item.date < nowDate ? 'outdate' : ''}}"  data-id="{{item.jobId}}" bindtap="toJobDetailsPage">{{item.job.name}} · {{item.company.name}}</view>
   <view class="row item">
     <view class="title {{item.date < nowDate ? 'outdate' : ''}}">面试时间：</view>
     <view class="title-data {{item.date < nowDate ? 'outdate' : ''}}">{{item.date}} {{item.time}}</view>
@@ -7,5 +7,10 @@
   <view class="row item">
     <view class="title {{item.date < nowDate ? 'outdate' : ''}}">面试地点：</view>
     <view class="title-data {{item.date < nowDate ? 'outdate' : ''}}"> {{item.region}}{{item.detailedaddress}}</view>
+  </view>
+  <!-- 按钮 -->
+  <view wx:if="{{item.delivery.status == 3}}" class="row bottom">
+  <view class="accept" data-id="{{item.delivery.id}}"  bindtap="accept">接受</view>
+  <view class="refuse" data-id="{{item.delivery.id}}"  bindtap="refuse">拒绝</view>
   </view>
 </view>

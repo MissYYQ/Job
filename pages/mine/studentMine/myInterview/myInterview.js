@@ -22,21 +22,18 @@ Page({
     })
     var that = this;
     var userId = wx.getStorageSync('userInfo').id;
-    var interviewNum = options.interviewNum;
-    if (interviewNum > 0) {
-      wx.request({
-        url: 'http://localhost:81/interview/allByUserId',
-        method: 'GET',
-        data: {
-          userId: userId
-        },
-        success: function (res) {
-          that.setData({
-            interview: res.data
-          })
-        },
-      })
-    }
+    wx.request({
+      url: 'http://localhost:81/interview/allByUserId',
+      method: 'GET',
+      data: {
+        userId: userId
+      },
+      success: function (res) {
+        that.setData({
+          interview: res.data
+        })
+      },
+    })
   },
 
   //跳转至职位详情页面
@@ -55,6 +52,58 @@ Page({
     })
     wx.navigateTo({
       url: '/pages/index/jobDetails/jobDetails?id=' + id
+    })
+  },
+
+  //接受
+  accept: function (e) {
+    var id = e.currentTarget.dataset.id;
+    wx.request({
+      url: 'http://localhost:81/delivery/accept',
+      method: 'GET',
+      data: {
+        id: id
+      },
+      success: function (res) {
+        if (res.data) {
+          wx.showToast({
+            title: '您已接受面试邀请，请及时赴约',
+            icon: 'none',
+            duration: 2000,
+            mask: true
+          })
+          //刷新当前页
+          var pages = getCurrentPages();
+          var beforePage = pages[pages.length - 1];
+          beforePage.onLoad();
+        }
+      }
+    })
+  },
+
+  //拒绝
+  refuse: function (e) {
+    var id = e.currentTarget.dataset.id;
+    wx.request({
+      url: 'http://localhost:81/delivery/refuse',
+      method: 'GET',
+      data: {
+        id: id
+      },
+      success: function (res) {
+        if (res.data) {
+          wx.showToast({
+            title: '您已拒绝面试邀请！',
+            icon: 'none',
+            duration: 2000,
+            mask: true
+          })
+          //刷新当前页
+          var pages = getCurrentPages();
+          var beforePage = pages[pages.length - 1];
+          beforePage.onLoad();
+        }
+      }
     })
   },
 

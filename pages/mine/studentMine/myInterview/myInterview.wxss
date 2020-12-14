@@ -33,3 +33,25 @@ page {
 .outdate{
   color: #ccc;
 }
+
+.bottom{
+  justify-content: space-around;
+  margin-top: 30rpx;
+}
+
+.bottom view{
+  color: white;
+  padding: 10rpx 100rpx;
+  letter-spacing: 10rpx;
+  font-weight: 600;
+  border-radius: 8rpx;
+  text-align: center;
+}
+
+.accept{
+  background-color: yellowgreen;
+}
+
+.refuse{
+  background-color: tomato;
+}
