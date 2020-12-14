@@ -1,11 +1,11 @@
-<view wx:for="{{interview}}" wx:key="index" data-index="{{index}}" class="interview-item" bindtap="toJobDetailsPage">
-  <view class="name {{item.datetime < nowDateTime ? 'outdate' : ''}}">{{item.jobName}}</view>
+<view wx:for="{{interview}}" wx:key="index" data-jobid="{{item.jobId}}" class="interview-item" bindtap="toJobDetailsPage">
+  <view class="name {{item.date < nowDateTime ? 'outdate' : ''}}">{{item.job.name}}</view>
   <view class="row item">
-    <view class="title {{item.datetime < nowDateTime ? 'outdate' : ''}}">面试时间：</view>
-    <view class="title-data {{item.datetime < nowDateTime ? 'outdate' : ''}}">{{item.datetime}}</view>
+    <view class="title {{item.date < nowDate ? 'outdate' : ''}}">面试时间：</view>
+    <view class="title-data {{item.date < nowDateTime ? 'outdate' : ''}}">{{item.date}} {{item.time}}</view>
   </view>
   <view class="row item">
-    <view class="title {{item.datetime < nowDateTime ? 'outdate' : ''}}">面试地点：</view>
-    <view class="title-data {{item.datetime < nowDateTime ? 'outdate' : ''}}"> {{item.location}}</view>
+    <view class="title {{item.date < nowDateTime ? 'outdate' : ''}}">面试地点：</view>
+    <view class="title-data {{item.date < nowDateTime ? 'outdate' : ''}}"> {{item.region}}{{item.detailedaddress}}</view>
   </view>
 </view>
