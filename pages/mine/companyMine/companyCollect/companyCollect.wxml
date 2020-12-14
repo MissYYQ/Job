@@ -1,10 +1,10 @@
-<view class="content" bindtap="toPreviewResumePage" wx:for="{{studentData}}" wx:key="index" data-index="{{index}}">
+<view class="content" bindtap="toPreviewResumePage" wx:for="{{student}}" wx:key="index" data-userId="{{item.userId}}">
   <view class="row content-top">
     <view class="name">{{item.name}}</view>
-    <view class="educationBackground">{{item.school}} · {{item.degree}} · {{item.profession}}</view>
+    <view class="educationBackground">{{item.education.school}} · {{item.education.degree}} · {{item.education.profession}}</view>
   </view>
   <view class="row request-content">
-    <view class="content-request" wx:for="{{studentData[index].skills}}" wx:key="index">
+    <view class="content-request" wx:for="{{item.skills}}" wx:key="index">
       <view>{{item}}</view>
     </view>
   </view>

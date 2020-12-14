@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    collection: false
+
   },
 
   /**
@@ -26,6 +26,9 @@ Page({
     })
     //后台获取数据
     var userId = options.userId;
+    that.setData({
+      userId: userId
+    })
     //student
     wx.request({
       url: 'http://localhost:81/student/one',
@@ -39,28 +42,26 @@ Page({
         })
         //数据处理
         if (that.data.resume.skills) {
-          if (that.data.resume.skills) {
-            var skillsArr = that.data.resume.skills.split("、")
-            that.setData({
-              ['resume.skills']: skillsArr,
-            })
-          }
-          if (that.data.resume.honor) {
-            var honorArr = that.data.resume.honor.split("、")
-            that.setData({
-              ['resume.honor']: honorArr
-            })
-          }
-          var educationArr = that.data.resume.education.split("、");
-          var school = educationArr[0];
-          var profession = educationArr[1];
-          var degree = educationArr[2];
+          var skillsArr = that.data.resume.skills.split("、")
           that.setData({
-            ['resume.education.school']: school,
-            ['resume.education.profession']: profession,
-            ['resume.education.degree']: degree
+            ['resume.skills']: skillsArr,
           })
         }
+        if (that.data.resume.honor) {
+          var honorArr = that.data.resume.honor.split("、")
+          that.setData({
+            ['resume.honor']: honorArr
+          })
+        }
+        var educationArr = that.data.resume.education.split("、");
+        var school = educationArr[0];
+        var profession = educationArr[1];
+        var degree = educationArr[2];
+        that.setData({
+          ['resume.education.school']: school,
+          ['resume.education.profession']: profession,
+          ['resume.education.degree']: degree
+        })
       }
     })
     //intentionJob
@@ -103,19 +104,19 @@ Page({
       }
     })
     //是否收藏
-    // wx.request({
-    //   url: 'http://localhost:81/collection/jobIsCollection',
-    //   method: 'GET',
-    //   data: {
-    //     userId: userId,
-    //     jobId: jobId
-    //   },
-    //   success: function (res) {
-    //     that.setData({
-    //       collection: res.data
-    //     })
-    //   }
-    // })
+    wx.request({
+      url: 'http://localhost:81/collection/userIsCollection',
+      method: 'GET',
+      data: {
+        userId: userId,
+        companyId: wx.getStorageSync('companyId')
+      },
+      success: function (res) {
+        that.setData({
+          collection: res.data
+        })
+      }
+    })
 
   },
 
@@ -136,74 +137,74 @@ Page({
   },
 
 
-  // // 收藏
-  // collection: function () {
-  //   if (this.data.isWxLogin) {
-  //     var userId = this.data.userId;
-  //     var jobId = this.data.job.id;
-  //     wx.request({
-  //       url: 'http://localhost:81/collection/collectJob',
-  //       method: 'POST',
-  //       data: {
-  //         userId: userId,
-  //         jobId: jobId
-  //       },
-  //       header: {
-  //         'content-type': 'application/x-www-form-urlencoded',
-  //       },
-  //       success: function (res) {
-  //         if (res.data) {
-  //           wx.showToast({
-  //             title: '收藏成功',
-  //             icon: 'none',
-  //             duration: 1200,
-  //             mask: true
-  //           })
-  //           that.setData({
-  //             collection: true
-  //           })
-  //         }
-  //       }
-  //     })
-  //   } else {
-  //     wx.showToast({
-  //       title: '未登录！',
-  //       icon: 'none',
-  //       duration: 1500,
-  //       mask: true
-  //     })
-  //   }
-  // },
+  // 收藏
+  collection: function () {
+    var that = this;
+    if (wx.getStorageSync('isWxLogin')) {
+      var userId = this.data.userId;
+      wx.request({
+        url: 'http://localhost:81/collection/collectUser',
+        method: 'POST',
+        data: {
+          userId: userId,
+          companyId: wx.getStorageSync('companyId')
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+        success: function (res) {
+          if (res.data) {
+            wx.showToast({
+              title: '收藏成功',
+              icon: 'none',
+              duration: 1200,
+              mask: true
+            })
+            that.setData({
+              collection: true
+            })
+          }
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
+  },
 
-  // // 取消收藏
-  // uncollection: function () {
-  //   var userId = this.data.userId;
-  //   var jobId = this.data.job.id;
-  //   wx.request({
-  //     url: 'http://localhost:81/collection/uncollectJob',
-  //     method: 'POST',
-  //     data: {
-  //       userId: userId,
-  //       jobId: jobId
-  //     },
-  //     header: {
-  //       'content-type': 'application/x-www-form-urlencoded',
-  //     },
-  //     success: function (res) {
-  //       if (!res.data) {
-  //         wx.showToast({
-  //           title: '已取消收藏',
-  //           icon: 'none',
-  //           duration: 1200,
-  //           mask: true
-  //         })
-  //         that.setData({
-  //           collection: false
-  //         })
-  //       }
-  //     }
-  //   })
-  // },
+  // 取消收藏
+  uncollection: function () {
+    var that = this;
+    var userId = this.data.userId;
+    wx.request({
+      url: 'http://localhost:81/collection/uncollectUser',
+      method: 'POST',
+      data: {
+        userId: userId,
+        companyId: wx.getStorageSync('companyId')
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        if (!res.data) {
+          wx.showToast({
+            title: '已取消收藏',
+            icon: 'none',
+            duration: 1200,
+            mask: true
+          })
+          that.setData({
+            collection: false
+          })
+        }
+      }
+    })
+  },
 
 
 

@@ -4,34 +4,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    studentData: [{
-        school: "九江学院",
-        degree: "本科",
-        profession: "计算机科学与技术",
-        name: "姜先生",
-        skills: [
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "微信小程序",
-          "SpringMVC",
-          "BootStrap"
-        ]
-      },
-      {
-        school: "南昌大学",
-        degree: "本科",
-        profession: "软件工程",
-        name: "南笙Y",
-        skills: [
-          "Java",
-          "JavaScript",
-          "SSM",
-          "SpringMVC",
-          "BootStrap"
-        ]
-      },
-    ],
 
   },
 
@@ -39,13 +11,51 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    wx.request({
+      url: 'http://localhost:81/student/collectUser',
+      method: 'get',
+      data: {
+        companyId: wx.getStorageSync('companyId')
+      },
+      success: function (res) {
+        if (res.data) {
+          that.setData({
+            student: res.data
+          })
+          //数据处理
+          for (var i = 0; i < that.data.student.length; i++) {
+            if (that.data.student[i].skills) {
+              var skillsArr = that.data.student[i].skills.split("、");
+              let student = "student["+i+"].skills";
+              that.setData({
+                [student]: skillsArr,
+              })
+            }
+            var educationArr = that.data.student[i].education.split("、");
+            var school = educationArr[0];
+            var profession = educationArr[1];
+            var degree = educationArr[2];
+            let s = "student["+i+"].education.school";
+            let p = "student["+i+"].education.profession";
+            let d = "student["+i+"].education.degree";
+            that.setData({
+              [s]: school,
+              [p]: profession,
+              [d]: degree
+            })
+          }
+          console.log("处理后数据")
+          console.log(that.data.student)
+        }
+      }
+    })
   },
 
   //跳转至预览简历页面
   toPreviewResumePage: function () {
     wx.navigateTo({
-      url: '/pages/mine/studentMine/resume/previewResume/previewResume',
+      url: '/pages/mine/studentMine/student/previewResume/previewResume',
     })
   },
 

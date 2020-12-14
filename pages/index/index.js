@@ -185,8 +185,6 @@ Page({
           key: key
         },
         success: function (res) {
-          console.log("搜索结果")
-          console.log(res.data)
           that.setData({
             student: res.data
           })
