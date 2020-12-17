@@ -1,14 +1,48 @@
 page {
-  margin-left: 5%;
-  width: 90%;
   font-size: 10pt;
   color: #666;
+  background-color: #f3f3f3;
+}
+
+
+/* 顶部tab */
+.tab {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  justify-content: center;
+  background-color: white;
+}
+
+.tab-item {
+  flex: 1;
+  font-size: 10pt;
+  text-align: center;
+  line-height: 80rpx;
+  border-bottom: 6rpx solid #f3f3f3;
+  letter-spacing: 3rpx;
+}
+
+.tab-item.active {
+  color: #f6b501;
+  border-bottom: #f6b501 6rpx solid;
+  font-weight: 600;
+}
+
+/* 内容 */
+
+.content {
+  margin-top: 110rpx;
+  margin-left: 3%;
+  width: 94%;
 }
 
 .item {
-  margin-top: 20rpx;
+  margin-top: 30rpx;
+  padding-top: 20rpx;
   padding-bottom: 40rpx;
-  border-bottom: rgba(246, 181, 1, 0.15) solid 3rpx;
+  background-color: white;
+  border-radius: 30rpx;
 }
 
 .name {
@@ -21,7 +55,7 @@ page {
 }
 
 .botton view {
-  width: 250rpx;
+  width: 200rpx;
   line-height: 2.2em;
   text-align: center;
   font-size: 9pt;
@@ -47,9 +81,85 @@ page {
   color: white;
 }
 
+/* 更多 */
+.checkbox {
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
+/* 未选中样式 */
+checkbox .wx-checkbox-input {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #f6b501;
+}
+
+/* 选中后的样式 */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  width: 45rpx;
+  height: 45rpx;
+  border: none;
+  background: #f6b501;
+}
+
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  border-radius: 50%;
+  /* 圆角 */
+  width: 45rpx;
+  /* 选中后对勾大小，不要超过背景的尺寸 */
+  height: 45rpx;
+  /* 选中后对勾大小，不要超过背景的尺寸 */
+  line-height: 45rpx;
+  text-align: center;
+  font-size: 30rpx;
+  /* 对勾大小*/
+  font-weight: bold;
+  /* 对勾加粗*/
+  color: #fff;
+  /* 对勾颜色 白色 */
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+.bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  background-color: white;
+  z-index: 99;
+  justify-content: space-between;
+}
+
+.left {
+  margin-left: 3%;
+}
+
+.moreBtn {
+  margin-right: 3%;
+}
+
+.moreBtn view {
+  width: 200rpx;
+  line-height: 2.2em;
+  text-align: center;
+  font-size: 10pt;
+  padding: 0 22rpx;
+  border-radius: 10rpx;
+  margin-left: 30rpx;
+  letter-spacing: 3rpx;
+  font-weight: 600;
+}
+
 /* 模板 */
 .showTemplate {
   z-index: 999;
+  margin-left: 5%;
 }
 
 .template-back {
@@ -80,20 +190,20 @@ page {
   line-height: 2.5em;
 }
 
-.template-title view{
+.template-title view {
   margin-right: 20rpx;
 }
 
-input{
+input {
   font-weight: 600;
 }
 
-.button{
+.button {
   justify-content: center;
   margin-top: 70rpx;
 }
 
-.button view{
+.button view {
   width: 45%;
   margin-left: 25rpx;
   margin-right: 25rpx;
@@ -103,12 +213,12 @@ input{
   letter-spacing: 3rpx;
 }
 
-.cancelBtn{
+.cancelBtn {
   background-color: #f3f3f3;
   color: #888;
 }
 
-.determineBtn{
+.determineBtn {
   background-color: #f6b501;
   color: white;
 }

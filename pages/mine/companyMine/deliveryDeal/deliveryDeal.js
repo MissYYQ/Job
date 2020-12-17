@@ -1,11 +1,11 @@
-var util = require('../../../../utils/util');
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    tab: 0,
+    all: false,
     showTemplate: false,
     addInterview: {},
     //1-投递、2-通过、3-面试、4-接受、5-拒绝、6-未通过
@@ -27,13 +27,79 @@ Page({
         that.setData({
           delivery: res.data,
         })
+        // 数据处理
+        for (var i = 0; i < res.data.length; i++) {
+          var checked = "delivery[" + i + "].checked"
+          that.setData({
+            [checked]: false
+          })
+        }
       }
     })
-    //获取当前日期
-    var nowDate = util.formatDate(new Date());
+  },
+
+  //标签栏点击切换页面时的监听函数
+  changeTab: function (e) {
     this.setData({
-      nowDate: nowDate,
+      tab: e.currentTarget.dataset.tab
     })
+  },
+
+  //选择
+  check: function (e) {
+    var checked = e.currentTarget.dataset.checked;
+    if (checked) {
+      this.setData({
+        all: false
+      })
+    }
+    var index = e.currentTarget.dataset.index;
+    var delivery = "delivery[" + index + "].checked"
+    this.setData({
+      [delivery]: !checked
+    })
+  },
+
+  //全选
+  checkAll: function (e) {
+    this.setData({
+      all: !this.data.all
+    })
+    var tab = this.data.tab;
+    if (tab == 0) {
+      var delivery = this.data.delivery;
+      for (var i = 0; i < delivery.length; i++) {
+        if (delivery[i].status == 1) {
+          var checked = "delivery[" + i + "].checked"
+          if (this.data.all) {
+            this.setData({
+              [checked]: true
+            })
+          } else {
+            this.setData({
+              [checked]: false
+            })
+          }
+        }
+      }
+    }
+    if (tab == 1) {
+      var delivery = this.data.delivery;
+      for (var i = 0; i < delivery.length; i++) {
+        if (delivery[i].status == 2) {
+          var checked = "delivery[" + i + "].checked"
+          if (this.data.all) {
+            this.setData({
+              [checked]: true
+            })
+          } else {
+            this.setData({
+              [checked]: false
+            })
+          }
+        }
+      }
+    }
   },
 
   //查看职位
@@ -57,52 +123,98 @@ Page({
 
   //通过
   pass: function (e) {
-    var id = e.currentTarget.dataset.id;
-    wx.request({
-      url: 'http://localhost:81/delivery/pass',
-      method: 'GET',
-      data: {
-        id: id
-      },
-      success: function (res) {
-        if (res.data) {
-          //刷新当前页
-          var pages = getCurrentPages();
-          var beforePage = pages[pages.length - 1];
-          beforePage.onLoad();
-        }
+    var idArr = new Array;
+    var delivery = this.data.delivery;
+    for (var i = 0; i < delivery.length; i++) {
+      if (delivery[i].checked) {
+        var id = delivery[i].id;
+        idArr.push(id);
       }
-    })
+    }
+    if (idArr.length >= 1) {
+      wx.request({
+        url: 'http://localhost:81/delivery/pass',
+        method: 'GET',
+        data: {
+          idArr: JSON.stringify(idArr)
+        },
+        success: function (res) {
+          if (res.data) {
+            //刷新当前页
+            var pages = getCurrentPages();
+            var beforePage = pages[pages.length - 1];
+            beforePage.onLoad();
+          }
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '请先选择操作项！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
   },
 
   //不通过
   fail: function (e) {
-    var id = e.currentTarget.dataset.id;
-    wx.request({
-      url: 'http://localhost:81/delivery/fail',
-      method: 'GET',
-      data: {
-        id: id
-      },
-      success: function (res) {
-        if (res.data) {
-          //刷新当前页
-          var pages = getCurrentPages();
-          var beforePage = pages[pages.length - 1];
-          beforePage.onLoad();
-        }
+    var idArr = new Array;
+    var delivery = this.data.delivery;
+    for (var i = 0; i < delivery.length; i++) {
+      if (delivery[i].checked) {
+        var id = delivery[i].id;
+        idArr.push(id);
       }
-    })
+    }
+    if (idArr.length >= 1) {
+      wx.request({
+        url: 'http://localhost:81/delivery/fail',
+        method: 'GET',
+        data: {
+          idArr: JSON.stringify(idArr)
+        },
+        success: function (res) {
+          if (res.data) {
+            //刷新当前页
+            var pages = getCurrentPages();
+            var beforePage = pages[pages.length - 1];
+            beforePage.onLoad();
+          }
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '请先选择操作项！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
   },
 
   //邀请面试模板弹出
   showTemplate: function (e) {
-    this.setData({
-      showTemplate: true,
-      id: e.currentTarget.dataset.id,
-      userId: e.currentTarget.dataset.userid,
-      jobId: e.currentTarget.dataset.jobid,
-    })
+    var idArr = new Array;
+    var delivery = this.data.delivery;
+    for (var i = 0; i < delivery.length; i++) {
+      if (delivery[i].checked) {
+        var id = delivery[i].id;
+        idArr.push(id);
+      }
+    }
+    if (idArr.length >= 1) {
+      this.setData({
+        showTemplate: true
+      })
+    } else {
+      wx.showToast({
+        title: '请先选择操作项！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
   },
 
   //日期picker改变
@@ -178,26 +290,42 @@ Page({
         mask: true
       })
     } else {
-      var userId = that.data.userId;
-      var jobId = that.data.jobId;
+      var userIdArr = new Array;
+      var jobIdArr = new Array;
+      var delivery = this.data.delivery;
+      for (var i = 0; i < delivery.length; i++) {
+        if (delivery[i].checked) {
+          var userId = delivery[i].userId;
+          var jobId = delivery[i].jobId;
+          userIdArr.push(userId);
+          jobIdArr.push(jobId);
+        }
+      }
       wx.request({
         url: 'http://localhost:81/interview/add',
         method: 'GET',
         data: {
           companyId: wx.getStorageSync('companyId'),
-          userId: userId,
-          jobId: jobId,
+          userIdArr:JSON.stringify(userIdArr),
+          jobIdArr:JSON.stringify(jobIdArr),
           addInterview: addInterview
         },
         success: function (res) {
           if (res.data) {
             //修改投递状态为面试
-            var id = that.data.id;
+            var idArr = new Array;
+            var delivery = that.data.delivery;
+            for (var i = 0; i < delivery.length; i++) {
+              if (delivery[i].checked) {
+                var id = delivery[i].id;
+                idArr.push(id);
+              }
+            }
             wx.request({
               url: 'http://localhost:81/delivery/interview',
               method: 'GET',
               data: {
-                id: id
+                idArr: JSON.stringify(idArr)
               },
               success: function (res) {
                 if (res.data) {
