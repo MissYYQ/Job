@@ -411,8 +411,6 @@ Page({
         },
         success: function (res) {
           if (res.data) {
-            console.log(res.data, "intentionJob保存成功");
-            wx.setStorageSync('intentionJob', this.data.intentionJob);
             that.onLoad();
           }
         }
@@ -442,7 +440,7 @@ Page({
     }
     //工作/项目经历
     var experience = this.data.experience;
-    if (!util.isArrayObjectValueEqual(rawExperience, experience)) {
+    if (!util.isArrayObjectValueEqual(this.data.rawExperience, experience)) {
       wx.request({
         url: 'http://localhost:81/experience/edit',
         method: 'POST',

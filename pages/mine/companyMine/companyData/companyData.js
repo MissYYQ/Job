@@ -283,12 +283,9 @@ Page({
         },
         success: function (res) {
           if (res.data) {
-            // 刷新并返回上一页
-            var pages = getCurrentPages();
-            var beforePage = pages[pages.length - 2];
-            beforePage.onLoad();
-            wx.navigateBack({
-              delta: 1,
+            //返回首页
+            wx.switchTab({
+              url: '/pages/index/index',
             })
           }
         }

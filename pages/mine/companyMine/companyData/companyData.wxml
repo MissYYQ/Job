@@ -114,10 +114,10 @@
   <view class="textareaCss">
     <view class="row">
       <view class="item-name">公司简介</view>
-      <view class="currentWordNumber">{{currentWordNumber|0}}/300</view>
+      <view class="currentWordNumber">{{currentWordNumber|0}}/250</view>
     </view>
     <view>
-      <textarea data-key="introduction" bindinput="textareaInput" maxlength="300" value="{{company.introduction}}"
+      <textarea data-key="introduction" bindinput="textareaInput" maxlength="250" value="{{company.introduction}}"
         placeholder="请输入..." placeholder-class="placeholderStyle">
 			</textarea>
     </view>

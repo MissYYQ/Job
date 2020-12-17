@@ -51,13 +51,13 @@
 		</view>
 	</view>
 	<!-- 在招职位 -->
-	<view class="title">在招职位</view>
-	<view class="skills">
+	<view class="title" wx:if="{{job}}">在招职位</view>
+	<view class="skills" wx:if="{{job}}">
 		<view class="content" bindtap="toJobDetailsPage" wx:for="{{job}}" wx:key="index" data-id="{{item.id}}">
 			<view class="row content-top">
 				<view class="row">
 					<text class="name">{{item.name}}</text>
-					<view wx:if="{{item.kind==0}}" class="school school-recruitment">实习</view>
+					<view wx:if="{{item.kind==0}}" class="school school-recruitment">校招</view>
 				</view>
 				<text class="salary">{{item.salary}}</text>
 			</view>

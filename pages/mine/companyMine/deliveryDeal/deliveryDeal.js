@@ -122,7 +122,7 @@ Page({
   //地区picker改变
   regionChange: function (e) {
     var value = e.detail.value;
-    let region = value[0]+value[1]+value[2];
+    let region = value[0] + value[1] + value[2];
     this.setData({
       ['addInterview.region']: region
     })
@@ -184,9 +184,10 @@ Page({
         url: 'http://localhost:81/interview/add',
         method: 'GET',
         data: {
+          companyId: wx.getStorageSync('companyId'),
           userId: userId,
           jobId: jobId,
-          addInterview: addInterview,
+          addInterview: addInterview
         },
         success: function (res) {
           if (res.data) {
