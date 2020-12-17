@@ -206,15 +206,6 @@ Page({
   //确定
   determineBtn: function () {
     var that = this;
-    //数据处理
-    var worktime = this.data.company.worktime.starttime + "-" + this.data.company.worktime.endtime;
-    var region = this.data.company.region.join(" ");
-    var welfare = this.data.company.welfare.join("、");
-    this.setData({
-      ['company.worktime']: worktime,
-      ['company.region']: region,
-      ['company.welfare']: welfare,
-    })
     //判空
     let company = that.data.company;
     if (company.name == null) {
@@ -267,6 +258,15 @@ Page({
         mask: true
       })
     } else {
+      //数据处理
+      var worktime = this.data.company.worktime.starttime + "-" + this.data.company.worktime.endtime;
+      var region = this.data.company.region.join(" ");
+      var welfare = this.data.company.welfare.join("、");
+      this.setData({
+        ['company.worktime']: worktime,
+        ['company.region']: region,
+        ['company.welfare']: welfare,
+      })
       //后台处理
       var userId = wx.getStorageSync('userInfo').id;
       wx.request({
@@ -283,10 +283,12 @@ Page({
         },
         success: function (res) {
           if (res.data) {
-            console.log(res.data, "company保存成功")
-            // 跳转
-            wx.reLaunch({
-              url: '/pages/index/index',
+            // 刷新并返回上一页
+            var pages = getCurrentPages();
+            var beforePage = pages[pages.length - 2];
+            beforePage.onLoad();
+            wx.navigateBack({
+              delta: 1,
             })
           }
         }

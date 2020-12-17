@@ -45,17 +45,16 @@ Page({
               [d]: degree
             })
           }
-          console.log("处理后数据")
-          console.log(that.data.student)
         }
       }
     })
   },
 
   //跳转至预览简历页面
-  toPreviewResumePage: function () {
+  toPreviewResumePage: function (e) {
+    var userId = e.currentTarget.dataset.userid;
     wx.navigateTo({
-      url: '/pages/mine/studentMine/student/previewResume/previewResume',
+      url: '/pages/mine/studentMine/resume/previewResume/previewResume?userId=' + userId,
     })
   },
 

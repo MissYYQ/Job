@@ -29,7 +29,6 @@ Page({
         companyId: wx.getStorageSync('companyId')
       },
       success: function (res) {
-        console.log(res.data)
         that.setData({
           interview: res.data
         })

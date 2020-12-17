@@ -178,13 +178,6 @@ Page({
 
   //确定
   determineBtn: function () {
-    //数据处理
-    var salary = this.data.job.salary.lowSalary + "-" + this.data.job.salary.highSalary;
-    var keywords = this.data.job.keywords.join("、");
-    this.setData({
-      ['job.salary']: salary,
-      ['job.keywords']: keywords,
-    })
     //判空
     let job = this.data.job;
     if (job.name == null) {
@@ -223,6 +216,13 @@ Page({
         mask: true
       })
     } else {
+      //数据处理
+      var salary = this.data.job.salary.lowSalary + "-" + this.data.job.salary.highSalary;
+      var keywords = this.data.job.keywords.join("、");
+      this.setData({
+        ['job.salary']: salary,
+        ['job.keywords']: keywords,
+      })
       //提交
       var operation = this.data.operation;
       if (operation == "edit") {
@@ -283,8 +283,11 @@ Page({
                 duration: 1500,
                 mask: true
               })
-              // 刷新并返回上一页
+              //刷新mine页面
               var pages = getCurrentPages();
+              var minePage = pages[pages.length - 3];
+              minePage.onLoad();
+              // 刷新并返回上一页
               var beforePage = pages[pages.length - 2];
               beforePage.onLoad();
               wx.navigateBack({

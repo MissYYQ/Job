@@ -126,6 +126,7 @@ Page({
 
   // 收藏
   collection: function () {
+    var that = this;
     if (this.data.isWxLogin) {
       var userId = this.data.userId;
       var jobId = this.data.job.id;
@@ -165,6 +166,7 @@ Page({
 
   // 取消收藏
   uncollection: function () {
+    var that = this;
     var userId = this.data.userId;
     var jobId = this.data.job.id;
     wx.request({

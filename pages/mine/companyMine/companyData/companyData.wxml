@@ -4,7 +4,7 @@
     <image wx:if="{{!company.logourl}}" src="/images/mine/logo.png" style="width:160rpx;height:160rpx;"
       bindtap="addCompanyLogo">
     </image>
-    <image wx:else src="{{company.logourl}}"></image>
+    <image wx:else src="{{company.logourl}}" bindtap="addCompanyLogo"></image>
   </view>
   <!-- 公司名称 -->
   <view class="row msg-item">

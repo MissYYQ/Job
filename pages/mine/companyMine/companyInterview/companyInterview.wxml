@@ -2,7 +2,7 @@
   bindtap="toJobDetailsPage">
   <view class="row">
     <view class="name {{item.date < nowDateTime ? 'outdate' : ''}}">{{item.job.name}}</view>
-    <view wx:if="{{item.delivery.status == 3}}" class="status three">待接受</view>
+    <view wx:if="{{item.delivery.status == 3}}" class="status three">待确定</view>
     <view wx:if="{{item.delivery.status == 4}}" class="status four">已接受</view>
     <view wx:if="{{item.delivery.status == 5}}" class="status five">已拒绝</view>
   </view>

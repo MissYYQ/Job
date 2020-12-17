@@ -49,8 +49,6 @@ Page({
         id: id,
       },
       success: function (res) {
-        console.log("获取公司在招职位成功");
-        console.log(res);
         that.setData({
           job: res.data,
         })
