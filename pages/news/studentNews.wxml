@@ -6,18 +6,18 @@
 <!-- 已登录 -->
 <view wx:else>
   <!-- 没消息 -->
-  <view wx:if="{{!cNews}}" class="empty">
+  <view wx:if="{{empty}}" class="empty">
     <image src="/images/empty.png"></image>
   </view>
   <!-- 有消息 -->
-  <view wx:else>
-    <view wx:for="{{sNews}}" wx:key="index" data-index="{{index}}" bindtap="toChatPage" class="news-item">
+  <view wx:if="{{!empty}}">
+    <view wx:for="{{news}}" wx:key="index" bindtap="toChatPage" class="news-item">
       <view class="row ">
-        <image src="{{item.src}}"></image>
+        <image src="{{item.company.logourl}}"></image>
         <view>
           <view class="row">
-            <view class="name">{{item.companyName}}</view>
-            <view class="otherInfo">{{item.industry}}</view>
+            <view class="name">{{item.company.name}}</view>
+            <!-- <view class="otherInfo">{{item.industry}}</view> -->
           </view>
           <view class="lastMsg">{{item.lastMsg}}</view>
         </view>

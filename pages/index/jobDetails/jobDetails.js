@@ -39,7 +39,7 @@ Page({
           job: res.data
         })
         wx.setNavigationBarTitle({
-          title:  that.data.job.name
+          title: that.data.job.name
         })
         //数据处理
         if (that.data.job.claim) {
@@ -92,7 +92,7 @@ Page({
           },
           success: function (res) {
             that.setData({
-              delivery:res.data
+              delivery: res.data
             })
           }
         })
@@ -240,8 +240,10 @@ Page({
   //跳转至聊天页面
   toChatPage: function () {
     if (this.data.isWxLogin) {
+      var jobId = this.data.job.id;
+      var companyId = this.data.job.companyId;
       wx.navigateTo({
-        url: '/pages/news/chat/chat',
+        url: '/pages/news/chat/chat?companyId=' +companyId+'&jobId='+jobId,
       })
     } else {
       wx.showToast({

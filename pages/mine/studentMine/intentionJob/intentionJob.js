@@ -66,9 +66,8 @@ Page({
       },
       success: function (res) {
         if (res.data) {
-          console.log(res.data, "intentionJob保存成功");
           wx.setStorageSync('intentionJob', that.data.intentionJob);
-          // 返回上一页（首页）
+          // 返回上一页
           var pages = getCurrentPages();
           var beforePage = pages[pages.length - 2];
           beforePage.onLoad();

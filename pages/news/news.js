@@ -13,13 +13,62 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     var userKind = wx.getStorageSync('userKind')
     var userKindTag;
     if (userKind == "学生") {
-      userKindTag = 1
+      userKindTag = 1;
+      wx.request({
+        url: 'http://localhost:81/chat/allStudentId',
+        method: 'get',
+        data: {
+          studentId: wx.getStorageSync('studentId')
+        },
+        success: function (res) {
+          if (res.data) {
+            that.setData({
+              news: res.data
+            })
+            console.log(res.data);
+            if (that.data.news.length >= 1) {
+              that.setData({
+                empty: false
+              })
+            } else {
+              that.setData({
+                empty: true
+              })
+            }
+          }
+        }
+      })
     }
     if (userKind == "企业") {
-      userKindTag = 2
+      userKindTag = 2;
+      wx.request({
+        url: 'http://localhost:81/chat/allCompanyId',
+        method: 'get',
+        data: {
+          companyId: wx.getStorageSync('companyId')
+        },
+        success: function (res) {
+          if (res.data) {
+            that.setData({
+              news: res.data
+            })
+            console.log(res.data);
+            if (that.data.news.length >= 1) {
+              that.setData({
+                empty: false
+              })
+            } else {
+              that.setData({
+                empty: true
+              })
+            }
+          }
+        }
+      })
     }
     this.setData({
       isWxLogin: app.globalData.isWxLogin,
@@ -37,7 +86,7 @@ Page({
   },
 
   // 跳转至交流页面
-  toChatPage: function () {
+  toChatPageS: function () {
     wx.navigateTo({
       url: '/pages/news/chat/chat',
     })

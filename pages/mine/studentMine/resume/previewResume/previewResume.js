@@ -126,8 +126,9 @@ Page({
   //跳转至聊天页面
   toChatPage: function () {
     if (wx.getStorageSync('isWxLogin')) {
+      var studentId = this.data.resume.id;
       wx.navigateTo({
-        url: '/pages/news/chat/chat',
+        url: '/pages/news/chat/chat?studentId='+studentId,
       })
     } else {
       wx.showToast({

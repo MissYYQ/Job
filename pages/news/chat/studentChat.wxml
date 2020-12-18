@@ -4,139 +4,30 @@
 
     <!-- ===========左边消息========== -->
     <!-- 企业文字消息 -->
-    <view wx:if="{{item.userKind == 1 && item.msg != null}}" class="row msgItem leftMsg">
+    <view wx:if="{{item.sender == 1}}" class="row msgItem leftMsg">
       <view class="avatar">
-        <image src="{{companyAvatar}}" mode="widthFix"></image>
+        <image src="{{item.company.logourl}}" mode="widthFix"></image>
       </view>
-      <view class="itemMsgLeft">{{item.msg}}</view>
+      <view class="itemMsgLeft">{{item.message}}</view>
     </view>
-
-    <!-- 企业请求简历 -->
-    <view wx:if="{{item.userKind == 1 && item.msg == null && item.requestResume}}" class="row msgItem leftMsg">
-      <view class="avatar">
-        <image src="{{companyAvatar}}" mode="widthFix"></image>
-      </view>
-      <view wx:if="{{item.requestResume}}" class="itemMsgLeft">
-        <view class="requestResume">
-          <view class="row requestTxtLeft">
-            <image src="/images/news/chat/resume.png"></image>
-            <view wx:if="{{!item.requestDeal}}">我想要一份您的附件简历</view>
-            <view wx:if="{{item.requestDeal && item.requestAgree}}">已同意征求附件简历请求</view>
-            <view wx:if="{{item.requestDeal && !item.requestAgree}}">已拒绝征求附件简历请求</view>
-          </view>
-          <!-- 未处理请求时显示 -->
-          <view class="row requestBtn" wx:if="{{!item.requestDeal}}">
-            <view class="refuseBtnLeft" data-requestagree="false" data-index="{{index}}" bindtap="isAgree">拒绝</view>
-            <view class="agreeBtnLeft" data-requestagree="true" data-index="{{index}}" bindtap="isAgree">同意</view>
-          </view>
-        </view>
-      </view>
-    </view>
-
-    <!-- 照片 -->
-    <view wx:if="{{item.userKind == 1 && item.msg == null && !item.sendResume && item.imgSrc != null}}"
-      class="row msgItem leftMsg">
-      <view class="avatar">
-        <image src="{{companyAvatar}}" mode="widthFix"></image>
-      </view>
-      <view class="imgSrc">
-        <image src="{{item.imgSrc}}" mode="aspectFit"></image>
-      </view>
-    </view>
-
-    <!-- 拍摄 -->
-    <view wx:if="{{item.userKind == 0 && item.videoSrc != null}}" class="row msgItem leftMsg">
-      <view class="avatar">
-        <image src="{{companyAvatar}}" mode="widthFix"></image>
-      </view>
-      <video src="{{item.videoSrc}}" enable-progress-gesture="true"></video>
-    </view>
-
 
     <!-- ===========右边消息========== -->
     <!-- 学生文字消息 -->
-    <view wx:if="{{item.userKind == 0 && item.msg != null}}" class="row msgItem rightMsg">
-      <view class="itemMsgRight">{{item.msg}}</view>
+    <view wx:if="{{item.sender == 0}}" class="row msgItem rightMsg">
+      <view class="itemMsgRight">{{item.message}}</view>
       <view class="avatar">
-        <image src="{{studentAvatar}}" mode="widthFix"></image>
-      </view>
-    </view>
-
-    <!-- 学生请求发送简历 -->
-    <view wx:if="{{item.userKind == 0 && item.msg == null && item.requestResume}}" class="row msgItem rightMsg">
-      <view wx:if="{{item.requestResume}}" class="itemMsgRight">
-        <view class="requestResume">
-          <view class="row requestTxt">
-            <image src="/images/news/chat/resume.png"></image>
-            <view wx:if="{{!item.requestDeal}}">请求发送一份附件简历</view>
-            <view wx:if="{{item.requestDeal && item.requestAgree}}">已同意您的发送附件简历请求</view>
-            <view wx:if="{{item.requestDeal && !item.requestAgree}}">您的发送附件简历请求被拒绝</view>
-          </view>
-          <!-- 未处理请求时显示 -->
-          <view class="row requestBtn" wx:if="{{!item.requestDeal}}">
-            <view class="refuseBtn" data-sendagree="false" data-index="{{index}}" bindtap="isAgree">拒绝</view>
-            <view class="agreeBtn" data-sendagree="true" data-index="{{index}}" bindtap="isAgree">同意</view>
-          </view>
-        </view>
-      </view>
-      <view class="avatar">
-        <image src="{{studentAvatar}}" mode="widthFix"></image>
-      </view>
-    </view>
-
-    <!-- 照片 -->
-    <view wx:if="{{item.userKind == 0 && item.msg == null && !item.sendResume && item.imgSrc != null}}"
-      class="row msgItem rightMsg">
-      <view class="imgSrc">
-        <image src="{{item.imgSrc}}" mode="aspectFit"></image>
-      </view>
-      <view class="avatar">
-        <image src="{{studentAvatar}}" mode="widthFix"></image>
-      </view>
-    </view>
-
-    <!-- 拍摄 -->
-    <view wx:if="{{item.userKind == 0 && item.videoSrc != null}}" class="row msgItem rightMsg">
-      <video src="{{item.videoSrc}}" enable-progress-gesture="true"></video>
-      <view class="avatar">
-        <image src="{{studentAvatar}}" mode="widthFix"></image>
+        <image src="{{item.student.avatar}}" mode="widthFix"></image>
       </view>
     </view>
 
   </view>
 </scroll-view>
 
+
 <!-- 底部发送消息区域 -->
 <view class="bottom">
-  <!-- input -->
   <view class="row bottomInput">
-    <view class="row inputImg">
-      <image src="/images/news/chat/audio.png"></image>
-    </view>
     <input value="{{inputMsg}}" bindinput="inputMsg" placeholder="请输入..." />
-    <view class="row inputImg">
-      <image src="/images/news/chat/smile.png"></image>
-      <view wx:if="{{inputMsg}}" class="sendBtn" bindtap="sendBtn">发送</view>
-      <image wx:else src="/images/news/chat/more.png" bindtap="more"></image>
-    </view>
-  </view>
-  <!-- 更多 -->
-  <view wx:if="{{isMore}}" class="row more">
-    <view class="moreItem" bindtap="sendResume">
-      <image src="/images/news/chat/resume.png"></image>
-      <view>征求简历</view>
-    </view>
-    <view class="moreItem" bindtap="sendImg">
-      <image src="/images/news/chat/picture.png"></image>
-      <view>相册</view>
-    </view>
-    <view class="moreItem" bindtap="shoot">
-      <image src="/images/news/chat/take-pic.png"></image>
-      <view>拍摄</view>
-    </view>
-    <view class="moreItem">
-      <image src="/images/news/chat/video.png"></image>
-      <view>视频通话</view>
-    </view>
+    <view class="sendBtn" bindtap="sendBtn">发送</view>
   </view>
 </view>

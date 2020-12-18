@@ -6,8 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    communicationNum: 0, //沟通量
-    expect: null, //学生-期望职位
+    expect: null //学生-期望职位
   },
 
   /**
@@ -30,9 +29,34 @@ Page({
       userKindTag: userKindTag,
       intentionJob: wx.getStorageSync('intentionJob'),
     })
-
     var userId = wx.getStorageSync("userInfo").id;
     if (that.data.userKindTag == 1 && that.data.isWxLogin) {
+      //沟通量
+      wx.request({
+        url: 'http://localhost:81/student/one',
+        method: 'GET',
+        data: {
+          userId: userId
+        },
+        success: function (res) {
+          that.setData({
+            studentId: res.data.id
+          })
+          wx.setStorageSync('studentId', that.data.studentId)
+          wx.request({
+            url: 'http://localhost:81/chat/countStudentId',
+            method: 'GET',
+            data: {
+              studentId: that.data.studentId
+            },
+            success: function (res) {
+              that.setData({
+                communicationNum: res.data
+              })
+            }
+          })
+        }
+      })
       //收藏量
       wx.request({
         url: 'http://localhost:81/collection/jobCount',
@@ -88,6 +112,19 @@ Page({
           })
           var companyId = that.data.company.id;
           wx.setStorageSync('companyId', companyId)
+          //沟通量
+          wx.request({
+            url: 'http://localhost:81/caht/countCompanyId',
+            method: 'GET',
+            data: {
+              companyId: companyId
+            },
+            success: function (res) {
+              that.setData({
+                communicationNum: res.data
+              })
+            }
+          })
           //面试量
           wx.request({
             url: 'http://localhost:81/interview/countByCompanyId',
