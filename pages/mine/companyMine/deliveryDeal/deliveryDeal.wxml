@@ -10,7 +10,8 @@
   <view wx:if="{{tab == 0}}">
     <view wx:for="{{delivery}}" wx:if="{{item.status == 1}}" wx:key="index" class="row item">
       <label class="checkbox">
-        <checkbox checked="{{item.checked}}" data-index="{{index}}" data-checked="{{item.checked}}" value="{{item.id}}" bindtap="check" />
+        <checkbox checked="{{item.checked}}" data-index="{{index}}" data-checked="{{item.checked}}" value="{{item.id}}"
+          bindtap="check" />
       </label>
       <view>
         <view class="row" data-id="{{item.jobId}}" bindtap="toJobDetailsPage">
@@ -26,13 +27,18 @@
           <view class="name">{{item.resumefile.name}}</view>
         </view>
       </view>
+    </view>
+    <!-- 空 -->
+    <view wx:if="{{passEmpty}}" class="empty">
+      <image src="/images/empty.png"></image>
     </view>
   </view>
   <!-- 邀请面试 -->
   <view wx:if="{{tab == 1}}">
     <view wx:for="{{delivery}}" wx:if="{{item.status == 2}}" wx:key="index" class="row item">
       <label class="checkbox">
-        <checkbox checked="{{item.checked}}" data-index="{{index}}" data-checked="{{item.checked}}" value="{{item.id}}" bindtap="check" />
+        <checkbox checked="{{item.checked}}" data-index="{{index}}" data-checked="{{item.checked}}" value="{{item.id}}"
+          bindtap="check" />
       </label>
       <view>
         <view class="row" data-id="{{item.jobId}}" bindtap="toJobDetailsPage">
@@ -49,14 +55,18 @@
         </view>
       </view>
     </view>
+    <!-- 空 -->
+    <view wx:if="{{interviewEmpty}}" class="empty">
+      <image src="/images/empty.png"></image>
+    </view>
   </view>
 </view>
 
 <!-- 批量操作 -->
 <!-- 空 -->
-<view style="height:150rpx;"></view>
+<view wx:if="{{!interviewEmpty || !passEmpty}}"  style="height:150rpx;"></view>
 <!-- 操作选项 -->
-<view class="row bottom">
+<view wx:if="{{!interviewEmpty || !passEmpty}}"  class="row bottom">
   <view class="left">
     <checkbox wx:if="{{all}}" checked bindtap="checkAll" />
     <checkbox wx:else bindtap="checkAll" />全选

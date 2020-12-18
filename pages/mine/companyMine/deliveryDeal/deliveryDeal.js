@@ -9,6 +9,8 @@ Page({
     showTemplate: false,
     addInterview: {},
     //1-投递、2-通过、3-面试、4-接受、5-拒绝、6-未通过
+    passEmpty: true,
+    interviewEmpty: true
   },
 
   /**
@@ -28,7 +30,17 @@ Page({
           delivery: res.data,
         })
         // 数据处理
-        for (var i = 0; i < res.data.length; i++) {
+        for (var i = 0; i < that.data.delivery.length; i++) {
+          if (that.data.delivery[i].status == 1) {
+            that.setData({
+              passEmpty: false
+            })
+          }
+          if (that.data.delivery[i].status == 2) {
+            that.setData({
+              interviewEmpty: false
+            })
+          }
           var checked = "delivery[" + i + "].checked"
           that.setData({
             [checked]: false
@@ -306,8 +318,8 @@ Page({
         method: 'GET',
         data: {
           companyId: wx.getStorageSync('companyId'),
-          userIdArr:JSON.stringify(userIdArr),
-          jobIdArr:JSON.stringify(jobIdArr),
+          userIdArr: JSON.stringify(userIdArr),
+          jobIdArr: JSON.stringify(jobIdArr),
           addInterview: addInterview
         },
         success: function (res) {
