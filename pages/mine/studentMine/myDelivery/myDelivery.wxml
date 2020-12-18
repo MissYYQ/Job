@@ -1,4 +1,4 @@
-<view class="delivery-item" wx:for="{{deliveryJob}}" wx:key="index" data-id="{{item.id}}" bindtap="toJobDetailsPage">
+<view wx:if="{{!empty}}" class="delivery-item" wx:for="{{deliveryJob}}" wx:key="index" data-id="{{item.id}}" bindtap="toJobDetailsPage">
   <view class="name">{{item.name}} · {{item.company.name}}</view>
   <view class="row item">
     <image src="/images/mine/salary.png"></image>
@@ -41,4 +41,8 @@
       <view class="circle {{item.delivery.status >= 6 ? 'failure' : 'inactivated'}}">未通过</view>
     </view>
   </view>
+</view>
+<!-- 空 -->
+<view wx:if="{{empty}}" class="empty">
+  <image src="/images/empty.png"></image>
 </view>

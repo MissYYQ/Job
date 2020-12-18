@@ -23,11 +23,20 @@ Page({
           that.setData({
             student: res.data
           })
+          if (that.data.student.length >= 1) {
+            that.setData({
+              empty: false
+            })
+          } else {
+            that.setData({
+              empty: true
+            })
+          }
           //数据处理
           for (var i = 0; i < that.data.student.length; i++) {
             if (that.data.student[i].skills) {
               var skillsArr = that.data.student[i].skills.split("、");
-              let student = "student["+i+"].skills";
+              let student = "student[" + i + "].skills";
               that.setData({
                 [student]: skillsArr,
               })
@@ -36,9 +45,9 @@ Page({
             var school = educationArr[0];
             var profession = educationArr[1];
             var degree = educationArr[2];
-            let s = "student["+i+"].education.school";
-            let p = "student["+i+"].education.profession";
-            let d = "student["+i+"].education.degree";
+            let s = "student[" + i + "].education.school";
+            let p = "student[" + i + "].education.profession";
+            let d = "student[" + i + "].education.degree";
             that.setData({
               [s]: school,
               [p]: profession,

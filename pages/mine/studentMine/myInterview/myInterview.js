@@ -32,6 +32,15 @@ Page({
         that.setData({
           interview: res.data
         })
+        if (that.data.interview.length >= 1) {
+          that.setData({
+            empty: false
+          })
+        } else {
+          that.setData({
+            empty: true
+          })
+        }
       },
     })
   },

@@ -118,6 +118,8 @@ input {
   background-color: white;
   border-radius: 35rpx;
   margin-top: -30rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 3rpx solid rgba(246, 181, 1, 0.15);
 }
 
 .plate-item {

@@ -28,14 +28,8 @@
     <view>求职攻略</view>
   </view>
 </view>
-<!-- 推荐职位 -->
-<view class="row recommendJob">
-  <view wx:if="{{intentionJob.job}}">{{intentionJob.job}}</view>
-  <view wx:else>推荐职位</view>
-  <image src="/images/index/edit.png" bindtap="toIntentionJobPage"></image>
-</view>
 <!--job 内容 -->
-<view class="content" bindtap="toJobDetailsPage" wx:for="{{job}}" wx:key="index" data-id="{{item.id}}">
+<view wx:if="{{!empty}}" class="content" bindtap="toJobDetailsPage" wx:for="{{job}}" wx:key="index" data-id="{{item.id}}">
   <view class="row content-top">
     <view class="name">{{item.name}}</view>
     <view class="salary">{{item.salary}}</view>
@@ -52,4 +46,8 @@
     </view>
     <view class="company">{{item.company.industry}} | {{item.company.size}} | {{item.company.financingstage}}</view>
   </view>
+</view>
+<!-- 空 -->
+<view wx:if="{{empty}}" class="empty">
+  <image src="/images/empty.png"></image>
 </view>

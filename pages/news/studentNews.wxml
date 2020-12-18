@@ -6,9 +6,8 @@
 <!-- 已登录 -->
 <view wx:else>
   <!-- 没消息 -->
-  <view wx:if="{{!sNews}}" class="noNews">
-    <image src="/images/news/noNews.png"></image>
-    <view>没有消息</view>
+  <view wx:if="{{!cNews}}" class="empty">
+    <image src="/images/empty.png"></image>
   </view>
   <!-- 有消息 -->
   <view wx:else>

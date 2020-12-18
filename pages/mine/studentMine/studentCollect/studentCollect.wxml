@@ -1,5 +1,5 @@
 <!-- 内容 -->
-<view class="content">
+<view wx:if="{{!empty}}" class="content">
   <view bindtap="toJobDetailsPage" wx:for="{{job}}" wx:key="index" data-id="{{item.id}}" class="content-item">
     <view class="row content-top">
       <text class="name">{{item.name}}</text>
@@ -18,4 +18,8 @@
       <view class="company">{{item.company.industry}} | {{item.company.size}} | {{item.company.financingstage}}</view>
     </view>
   </view>
+</view>
+<!-- 空 -->
+<view wx:if="{{empty}}" class="empty">
+  <image src="/images/empty.png"></image>
 </view>

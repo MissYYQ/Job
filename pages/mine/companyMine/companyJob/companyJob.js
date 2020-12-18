@@ -24,6 +24,15 @@ Page({
         that.setData({
           job: res.data,
         })
+        if (that.data.job.length >= 1) {
+          that.setData({
+            empty: false
+          })
+        } else {
+          that.setData({
+            empty: true
+          })
+        }
       },
     })
   },

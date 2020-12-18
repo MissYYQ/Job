@@ -161,6 +161,22 @@ Page({
     })
   },
 
+  //跳转至求职期望页面
+  toIntentionJobPage: function () {
+    if (this.data.isWxLogin) {
+      wx.navigateTo({
+        url: '/pages/mine/studentMine/intentionJob/intentionJob',
+      })
+    } else {
+      wx.showToast({
+        title: '未登录！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
+    }
+  },
+
   //沟通
   toNewsPage: function () {
     if (this.data.isWxLogin) {

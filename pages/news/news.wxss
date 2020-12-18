@@ -34,20 +34,8 @@ page {
 }
 
 /* ========已登录================== */
-/* 没消息 */
-.noNews {
-  width: 100%;
-  text-align: center;
-  font-size: 9pt;
-  color: #999;
-}
 
-.noNews image {
-  width: 77%;
-  margin-top: 13%;
-}
 
-/* 有消息 */
 /* =========studentChat.wxml========= */
 .news-item {
   margin-top: 30rpx;

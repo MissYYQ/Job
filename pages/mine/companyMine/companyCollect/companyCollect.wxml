@@ -1,4 +1,4 @@
-<view class="content" wx:for="{{student}}" wx:key="index" data-userid="{{item.userId}}" bindtap="toPreviewResumePage" >
+<view wx:if="{{!empty}}" class="content" wx:for="{{student}}" wx:key="index" data-userid="{{item.userId}}" bindtap="toPreviewResumePage" >
   <view class="row content-top">
     <view class="name">{{item.name}}</view>
     <view class="educationBackground">{{item.education.school}} · {{item.education.degree}} · {{item.education.profession}}</view>
@@ -8,4 +8,8 @@
       <view>{{item}}</view>
     </view>
   </view>
+</view>
+<!-- 空 -->
+<view wx:if="{{empty}}" class="empty">
+  <image src="/images/empty.png"></image>
 </view>

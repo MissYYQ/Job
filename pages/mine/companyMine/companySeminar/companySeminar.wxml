@@ -1,4 +1,4 @@
-<view wx:for="{{seminar}}" wx:key="index" class="row item">
+<view wx:if="{{!empty}}" wx:for="{{seminar}}" wx:key="index" class="row item">
   <view class="position">
     <view>{{item.school}}</view>
     <view>{{item.position}}</view>
@@ -10,6 +10,11 @@
     <view class="edit" data-id="{{item.id}}" bindtap="edit">编辑</view>
     <view class="delete" data-id="{{item.id}}" bindtap="delete">删除</view>
   </view>
+</view>
+
+<!-- 空 -->
+<view wx:if="{{empty}}" class="empty">
+  <image src="/images/empty.png"></image>
 </view>
 
 <!-- 添加 -->

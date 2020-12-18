@@ -24,6 +24,15 @@ Page({
         that.setData({
           seminar: res.data,
         })
+        if (that.data.seminar.length >= 1) {
+          that.setData({
+            empty: false
+          })
+        } else {
+          that.setData({
+            empty: true
+          })
+        }
       },
     })
   },

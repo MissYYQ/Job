@@ -1,4 +1,4 @@
-<view wx:for="{{interview}}" wx:key="index" data-jobid="{{item.jobId}}" class="interview-item"
+<view wx:if="{{!empty}}" wx:for="{{interview}}" wx:key="index" data-jobid="{{item.jobId}}" class="interview-item"
   bindtap="toJobDetailsPage">
   <view class="row">
     <view class="name {{item.date < nowDateTime ? 'outdate' : ''}}">{{item.job.name}}</view>
@@ -15,4 +15,8 @@
     <view class="title-data {{item.date < nowDateTime ? 'outdate' : ''}}"> {{item.region}}{{item.detailedaddress}}
     </view>
   </view>
+</view>
+<!-- 空 -->
+<view wx:if="{{empty}}" class="empty">
+  <image src="/images/empty.png"></image>
 </view>

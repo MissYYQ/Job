@@ -21,8 +21,17 @@ Page({
         method: 'get',
         success: function (res) {
           that.setData({
-            job: res.data,
+            job: res.data
           })
+          if (that.data.job.length >= 1) {
+            that.setData({
+              empty: false
+            })
+          } else {
+            that.setData({
+              empty: true
+            })
+          }
         },
       })
     }
@@ -36,6 +45,15 @@ Page({
           that.setData({
             student: res.data
           })
+          if (that.data.student.length >= 1) {
+            that.setData({
+              empty: false
+            })
+          } else {
+            that.setData({
+              empty: true
+            })
+          }
           //数据处理
           for (var i = 0; i < that.data.student.length; i++) {
             if (that.data.student[i].skills) {
@@ -92,6 +110,15 @@ Page({
           that.setData({
             job: res.data,
           })
+          if (that.data.job.length >= 1) {
+            that.setData({
+              empty: false
+            })
+          } else {
+            that.setData({
+              empty: true
+            })
+          }
         },
       })
     } else {
@@ -152,22 +179,6 @@ Page({
     })
   },
 
-  //跳转至求职期望页面
-  toIntentionJobPage: function () {
-    if (this.data.isWxLogin) {
-      wx.navigateTo({
-        url: '/pages/mine/studentMine/intentionJob/intentionJob',
-      })
-    } else {
-      wx.showToast({
-        title: '未登录！',
-        icon: 'none',
-        duration: 1500,
-        mask: true
-      })
-    }
-  },
-
 
   // ===============企业端================
 
@@ -188,6 +199,15 @@ Page({
           that.setData({
             student: res.data
           })
+          if (that.data.student.length >= 1) {
+            that.setData({
+              empty: false
+            })
+          } else {
+            that.setData({
+              empty: true
+            })
+          }
           //数据处理
           for (var i = 0; i < that.data.student.length; i++) {
             if (that.data.student[i].skills) {
