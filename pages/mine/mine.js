@@ -31,6 +31,19 @@ Page({
     })
     var userId = wx.getStorageSync("userInfo").id;
     if (that.data.userKindTag == 1 && that.data.isWxLogin) {
+      //求职期望
+      wx.request({
+        url: 'http://localhost:81/intention/one',
+        method: 'GET',
+        data: {
+          userId: userId
+        },
+        success: function (res) {
+          that.setData({
+            intentionJob: res.data
+          })
+        }
+      })
       //沟通量
       wx.request({
         url: 'http://localhost:81/student/one',
@@ -44,7 +57,7 @@ Page({
           })
           wx.setStorageSync('studentId', that.data.studentId)
           wx.request({
-            url: 'http://localhost:81/chat/countStudentId',
+            url: 'http://localhost:81/news/countStudentId',
             method: 'GET',
             data: {
               studentId: that.data.studentId
@@ -114,7 +127,7 @@ Page({
           wx.setStorageSync('companyId', companyId)
           //沟通量
           wx.request({
-            url: 'http://localhost:81/caht/countCompanyId',
+            url: 'http://localhost:81/news/countCompanyId',
             method: 'GET',
             data: {
               companyId: companyId

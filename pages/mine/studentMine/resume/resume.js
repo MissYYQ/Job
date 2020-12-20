@@ -87,7 +87,6 @@ Page({
           intentionJob: res.data,
           rawIntentionJob: res.data
         })
-        wx.setStorageSync('intentionJob', that.data.intentionJob)
       }
     })
     //resumefile

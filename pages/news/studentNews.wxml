@@ -11,17 +11,17 @@
   </view>
   <!-- 有消息 -->
   <view wx:if="{{!empty}}">
-    <view wx:for="{{news}}" wx:key="index" bindtap="toChatPage" class="news-item">
+    <view wx:for="{{news}}" wx:key="index" data-jobId="{{item.jobId}}" data-companyId="{{item.companyId}}" bindtap="sToChatPage" class="news-item">
       <view class="row ">
         <image src="{{item.company.logourl}}"></image>
         <view>
           <view class="row">
             <view class="name">{{item.company.name}}</view>
-            <!-- <view class="otherInfo">{{item.industry}}</view> -->
+            <view class="otherInfo">{{item.company.industry}}</view>
           </view>
-          <view class="lastMsg">{{item.lastMsg}}</view>
+          <view class="lastMsg">{{item.lastmessage}}</view>
         </view>
-        <view class="lastChatTime">{{item.lastChatTime}}</view>
+        <view class="lastChatTime">{{item.lastdate}}</view>
       </view>
     </view>
   </view>

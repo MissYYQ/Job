@@ -46,7 +46,7 @@ page {
   margin-left: 10rpx;
   width: 88rpx;
   height: 88rpx;
-  border-radius: 10rpx;
+  border-radius: 50rpx;
   margin-right: 33rpx;
 }
 

@@ -27,7 +27,7 @@
 <!-- 底部发送消息区域 -->
 <view class="bottom">
   <view class="row bottomInput">
-    <input value="{{inputMsg}}" bindinput="inputMsg" placeholder="请输入..." />
+    <input  value="{{inputMsg}}" bindinput="inputMsg" placeholder-class="placeholderStyle" placeholder="请输入..." />
     <view class="sendBtn" bindtap="sendBtn">发送</view>
   </view>
 </view>

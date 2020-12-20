@@ -1,3 +1,5 @@
+var util = require("../../../utils/util");
+
 Page({
 
   /**
@@ -112,21 +114,57 @@ Page({
         },
         success: function (res) {
           if (res.data) {
-            // 刷新当前页
-            var pages = getCurrentPages();
-            var beforePage = pages[pages.length - 1];
-            beforePage.onLoad();
+            wx.request({
+              url: 'http://localhost:81/news/add',
+              method: 'get',
+              data: {
+                studentId: studentId,
+                companyId: companyId,
+                jobId: jobId,
+                lastMessage: message,
+                lastDate: util.formatDateTime(new Date())
+              },
+              success: function (res) {
+                if (res.data) {
+                  wx.request({
+                    url: 'http://localhost:81/chat/one',
+                    method: 'get',
+                    data: {
+                      companyId: companyId,
+                      studentId: studentId
+                    },
+                    success: function (res) {
+                      if (res.data) {
+                        console.log("重新获取成功")
+                      }
+                    }
+                  })
+                  // 刷新当前页
+                  // var pages = getCurrentPages();
+                  // var currentPage = pages[pages.length - 1];
+                  // currentPage.onLoad();
+                }
+              }
+            })
           }
         }
       })
+      //消息重定位
+      var length = this.data.msg.length;
+      let lastId = 'msg' + length;
+      this.setData({
+        inputMsg: null,
+        lastId: lastId
+      })
+    } else {
+      wx.showToast({
+        title: '消息不能为空！',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      })
     }
-    //消息重定位
-    var length = this.data.msg.length;
-    let lastId = 'msg' + length;
-    this.setData({
-      inputMsg: null,
-      lastId: lastId
-    })
+
   },
 
   // 更多

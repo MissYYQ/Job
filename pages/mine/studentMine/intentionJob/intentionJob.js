@@ -19,8 +19,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      intentionJob: wx.getStorageSync('intentionJob'),
+    var that = this;
+    wx.request({
+      url: 'http://localhost:81/intention/one',
+      method: 'GET',
+      data: {
+        userId: wx.getStorageSync('userInfo').id
+      },
+      success: function (res) {
+        that.setData({
+          intentionJob: res.data
+        })
+      }
     })
   },
 
@@ -50,7 +60,6 @@ Page({
 
   //确定
   determine: function () {
-    var that = this;
     var intentionJob = this.data.intentionJob;
     wx.request({
       url: 'http://localhost:81/intention/edit',
@@ -66,7 +75,6 @@ Page({
       },
       success: function (res) {
         if (res.data) {
-          wx.setStorageSync('intentionJob', that.data.intentionJob);
           // 返回上一页
           var pages = getCurrentPages();
           var beforePage = pages[pages.length - 2];

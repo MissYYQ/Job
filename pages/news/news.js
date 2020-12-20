@@ -19,7 +19,7 @@ Page({
     if (userKind == "学生") {
       userKindTag = 1;
       wx.request({
-        url: 'http://localhost:81/chat/allStudentId',
+        url: 'http://localhost:81/news/allStudentId',
         method: 'get',
         data: {
           studentId: wx.getStorageSync('studentId')
@@ -46,7 +46,7 @@ Page({
     if (userKind == "企业") {
       userKindTag = 2;
       wx.request({
-        url: 'http://localhost:81/chat/allCompanyId',
+        url: 'http://localhost:81/news/allCompanyId',
         method: 'get',
         data: {
           companyId: wx.getStorageSync('companyId')
@@ -65,6 +65,20 @@ Page({
               that.setData({
                 empty: true
               })
+            }
+            //数据处理
+            if (that.data.news.length >= 1) {
+              for (var i = 0; i < that.data.news.length; i++) {
+                var education = that.data.news[i].student.education.split("、");
+                let school = "news[" + i + "].student.education.school";
+                let profession = "news[" + i + "].student.education.profession";
+                let degree = "news[" + i + "].student.education.degree";
+                that.setData({
+                  [school]: education[0],
+                  [profession]: education[1],
+                  [degree]: education[2]
+                })
+              }
             }
           }
         }
@@ -85,10 +99,20 @@ Page({
     currentPage.onLoad();
   },
 
-  // 跳转至交流页面
-  toChatPageS: function () {
+  // 学生端-跳转至交流页面
+  sToChatPage: function (e) {
+    var jobId = e.currentTarget.dataset.jobid;
+    var companyId = e.currentTarget.dataset.companyid;
     wx.navigateTo({
-      url: '/pages/news/chat/chat',
+      url: '/pages/news/chat/chat?companyId=' + companyId + '&jobId=' + jobId,
+    })
+  },
+
+  // 企业端-跳转至交流页面
+  cToChatPage: function (e) {
+    var studentId = e.currentTarget.dataset.studentid;
+    wx.navigateTo({
+      url: '/pages/news/chat/chat?studentId=' + studentId,
     })
   },
 
