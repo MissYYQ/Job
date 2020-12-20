@@ -13,7 +13,7 @@ page {
   width: 95rpx;
   height: 95rpx;
   border-radius: 50%;
-  padding: 0 25rpx;
+  margin: 0 25rpx;
 }
 
 .sendBtn{

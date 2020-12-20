@@ -30,7 +30,6 @@ Page({
             that.setData({
               msg: res.data
             })
-            console.log(res.data)
           }
         }
       })
@@ -96,6 +95,7 @@ Page({
 
   //发送消息
   sendBtn: function () {
+    var that = this;
     if (this.data.inputMsg) {
       var studentId = this.data.studentId;
       var companyId = this.data.companyId;
@@ -135,14 +135,17 @@ Page({
                     },
                     success: function (res) {
                       if (res.data) {
-                        console.log("重新获取成功")
+                        that.setData({
+                          msg: res.data
+                        })
+                        var length = that.data.msg.length;
+                        let lastId = 'msg' + length;
+                        that.setData({
+                          lastId: lastId
+                        })
                       }
                     }
                   })
-                  // 刷新当前页
-                  // var pages = getCurrentPages();
-                  // var currentPage = pages[pages.length - 1];
-                  // currentPage.onLoad();
                 }
               }
             })

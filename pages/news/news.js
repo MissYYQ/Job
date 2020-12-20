@@ -1,4 +1,5 @@
 var app = getApp();
+var util = require("../../utils/util");
 
 Page({
 
@@ -29,16 +30,7 @@ Page({
             that.setData({
               news: res.data
             })
-            console.log(res.data);
-            if (that.data.news.length >= 1) {
-              that.setData({
-                empty: false
-              })
-            } else {
-              that.setData({
-                empty: true
-              })
-            }
+            that.deal();
           }
         }
       })
@@ -56,16 +48,7 @@ Page({
             that.setData({
               news: res.data
             })
-            console.log(res.data);
-            if (that.data.news.length >= 1) {
-              that.setData({
-                empty: false
-              })
-            } else {
-              that.setData({
-                empty: true
-              })
-            }
+            that.deal();
             //数据处理
             if (that.data.news.length >= 1) {
               for (var i = 0; i < that.data.news.length; i++) {
@@ -88,6 +71,37 @@ Page({
       isWxLogin: app.globalData.isWxLogin,
       userKindTag: userKindTag,
     })
+  },
+
+  deal: function () {
+    var that = this;
+    //数据处理
+    for (var i = 0; i < that.data.news.length; i++) {
+      var lastdate = that.data.news[i].lastdate.split(" ");
+      var date = lastdate[0];
+      var time = lastdate[1];
+      if (date < util.formatDate(new Date())) {
+        let last = "news[" + i + "].lastdate";
+        that.setData({
+          [last]: date
+        })
+      } else {
+        let last = "news[" + i + "].lastdate";
+        that.setData({
+          [last]: time
+        })
+      }
+    }
+    // 判空
+    if (that.data.news.length >= 1) {
+      that.setData({
+        empty: false
+      })
+    } else {
+      that.setData({
+        empty: true
+      })
+    }
   },
 
   //微信登录

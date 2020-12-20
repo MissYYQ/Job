@@ -19,6 +19,9 @@ Page({
       wx.request({
         url: 'http://localhost:81/job/all',
         method: 'get',
+        data:{
+          userId: wx.getStorageSync('userInfo').id
+        },
         success: function (res) {
           that.setData({
             job: res.data

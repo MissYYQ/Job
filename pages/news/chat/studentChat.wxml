@@ -16,7 +16,7 @@
     <view wx:if="{{item.sender == 0}}" class="row msgItem rightMsg">
       <view class="itemMsgRight">{{item.message}}</view>
       <view class="avatar">
-        <image src="{{item.student.avatar}}" mode="widthFix"></image>
+        <image src="{{item.student.avatar}}"></image>
       </view>
     </view>
 

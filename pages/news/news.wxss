@@ -63,10 +63,12 @@ page {
 }
 
 .lastMsg {
-  margin-top: 6rpx;
   font-size: 9pt;
   color: #999;
+  width: 65%;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .lastChatTime {

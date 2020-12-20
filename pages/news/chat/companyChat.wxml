@@ -6,7 +6,7 @@
     <!-- 学生文字消息 -->
     <view wx:if="{{item.sender == 0}}" class="row msgItem leftMsg">
       <view class="avatar">
-        <image src="{{item.student.avatar}}" mode="widthFix"></image>
+        <image src="{{item.student.avatar}}"></image>
       </view>
       <view class="itemMsgLeft">{{item.message}}</view>
     </view>

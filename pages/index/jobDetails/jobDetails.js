@@ -28,6 +28,9 @@ Page({
     })
     //职位详情数据
     var id = options.id;
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       url: 'http://localhost:81/job/one',
       method: 'get',
@@ -35,6 +38,7 @@ Page({
         id: id,
       },
       success: function (res) {
+        wx.hideLoading()
         that.setData({
           job: res.data
         })
