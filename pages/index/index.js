@@ -16,11 +16,16 @@ Page({
     if (userKind == "学生") {
       userKindTag = 1;
       //后台获取数据
+      if (wx.getStorageSync('userInfo')) {
+        var userId = wx.getStorageSync('userInfo').id;
+      } else {
+        var userId = 0;
+      }
       wx.request({
         url: 'http://localhost:81/job/all',
         method: 'get',
-        data:{
-          userId: wx.getStorageSync('userInfo').id
+        data: {
+          userId: userId
         },
         success: function (res) {
           that.setData({

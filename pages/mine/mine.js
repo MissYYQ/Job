@@ -6,7 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    expect: null //学生-期望职位
+    expect: null, //学生-期望职位
+    communicationNum: 0, //沟通量
+    collectionNum: 0, //收藏量
+    deliveryNum: 0, //投递量
+    interviewNum: 0, //面试量
+    jobNum: 0 //职位量
   },
 
   /**

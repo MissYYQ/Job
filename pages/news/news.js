@@ -73,14 +73,14 @@ Page({
     })
   },
 
+  //数据处理
   deal: function () {
     var that = this;
-    //数据处理
     for (var i = 0; i < that.data.news.length; i++) {
       var lastdate = that.data.news[i].lastdate.split(" ");
       var date = lastdate[0];
       var time = lastdate[1];
-      if (date < util.formatDate(new Date())) {
+      if (date < util.formatDateG(new Date())) {
         let last = "news[" + i + "].lastdate";
         that.setData({
           [last]: date

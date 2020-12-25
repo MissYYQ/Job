@@ -13,11 +13,14 @@
   <view wx:else>
     <view wx:for="{{news}}" wx:key="index" data-studentId="{{item.studentId}}" bindtap="cToChatPage" class="news-item">
       <view class="row ">
-        <image src="{{item.student.avatar}}"></image>
+        <view class="avatar">
+          <image src="{{item.student.avatar}}"></image>
+        </view>
         <view class="center-content">
           <view class="row">
             <view class="name">{{item.student.name}}</view>
-            <view class="otherInfo">{{item.student.education.school}} · {{item.student.education.profession}} · {{item.student.education.degree}}</view>
+            <view class="otherInfo">{{item.student.education.school}} · {{item.student.education.profession}} ·
+              {{item.student.education.degree}}</view>
           </view>
           <view class="lastMsg">{{item.lastmessage}}</view>
         </view>

@@ -11,9 +11,12 @@
   </view>
   <!-- 有消息 -->
   <view wx:if="{{!empty}}">
-    <view wx:for="{{news}}" wx:key="index" data-jobId="{{item.jobId}}" data-companyId="{{item.companyId}}" bindtap="sToChatPage" class="news-item">
+    <view wx:for="{{news}}" wx:key="index" data-jobId="{{item.jobId}}" data-companyId="{{item.companyId}}"
+      bindtap="sToChatPage" class="news-item">
       <view class="row ">
-        <image src="{{item.company.logourl}}"></image>
+        <view class="avatar">
+          <image src="{{item.company.logourl}}"></image>
+        </view>
         <view>
           <view class="row">
             <view class="name">{{item.company.name}}</view>

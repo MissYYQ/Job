@@ -8,7 +8,7 @@
 <view class="content">
   <!-- 待通过 -->
   <view wx:if="{{tab == 0}}">
-    <view wx:for="{{delivery}}" wx:if="{{item.status == 1}}" wx:key="index" class="row item">
+    <view wx:if="{{!passEmpty}}" wx:for="{{delivery}}" wx:if="{{item.status == 1}}" wx:key="index" class="row item">
       <label class="checkbox">
         <checkbox checked="{{item.checked}}" data-index="{{index}}" data-checked="{{item.checked}}" value="{{item.id}}"
           bindtap="check" />
@@ -35,7 +35,8 @@
   </view>
   <!-- 邀请面试 -->
   <view wx:if="{{tab == 1}}">
-    <view wx:for="{{delivery}}" wx:if="{{item.status == 2}}" wx:key="index" class="row item">
+    <view wx:if="{{!interviewEmpty}}" wx:for="{{delivery}}" wx:if="{{item.status == 2}}" wx:key="index"
+      class="row item">
       <label class="checkbox">
         <checkbox checked="{{item.checked}}" data-index="{{index}}" data-checked="{{item.checked}}" value="{{item.id}}"
           bindtap="check" />
@@ -64,9 +65,9 @@
 
 <!-- 批量操作 -->
 <!-- 空 -->
-<view wx:if="{{!interviewEmpty || !passEmpty}}"  style="height:150rpx;"></view>
+<view wx:if="{{!interviewEmpty || !passEmpty}}" style="height:150rpx;"></view>
 <!-- 操作选项 -->
-<view wx:if="{{!interviewEmpty || !passEmpty}}"  class="row bottom">
+<view wx:if="{{!interviewEmpty || !passEmpty}}" class="row bottom">
   <view class="left">
     <checkbox wx:if="{{all}}" checked bindtap="checkAll" />
     <checkbox wx:else bindtap="checkAll" />全选

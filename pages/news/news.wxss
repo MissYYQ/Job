@@ -42,10 +42,10 @@ page {
   padding-bottom: 30rpx;
 }
 
-.row image {
+.avatar image {
   margin-left: 10rpx;
-  width: 88rpx;
-  height: 88rpx;
+  width: 95rpx;
+  height: 95rpx;
   border-radius: 50rpx;
   margin-right: 33rpx;
 }
@@ -54,7 +54,10 @@ page {
   color: #999;
   font-size: 8pt;
   margin-left: 12rpx;
+  width: 60%;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .name {
@@ -65,7 +68,7 @@ page {
 .lastMsg {
   font-size: 9pt;
   color: #999;
-  width: 65%;
+  width: 60%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

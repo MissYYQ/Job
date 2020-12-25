@@ -20,11 +20,18 @@ const formatDate = date => {
   return [year, month, day].map(formatNumber).join('-')
 }
 
+// 格式化日期
+const formatDateG = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return [year, month, day].map(formatNumber).join('/')
+}
+
 //格式化时间
 const formatTime = date => {
   const hour = date.getHours()
   const minute = date.getMinutes()
-
   return [hour, minute].map(formatNumber).join(':')
 }
 
@@ -77,6 +84,7 @@ function isArrayObjectValueEqual(a, b) {
 module.exports = {
   formatDateTime: formatDateTime,
   formatDate: formatDate,
+  formatDateG:formatDateG,
   formatTime: formatTime,
   isObjectValueEqual: isObjectValueEqual,
   isArrayObjectValueEqual: isArrayObjectValueEqual

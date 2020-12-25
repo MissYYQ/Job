@@ -4,7 +4,8 @@
 	<view class="top-front">
 		<view class="row front-data">
 			<view class="userInfo">
-				<image src="{{company.logourl}}"></image>
+				<image wx:if="{{isWxLogin}}" src="{{company.logourl}}"></image>
+        <image wx:else src="/images/mine/head.png"></image>
 				<view class="userKind" bindtap="toUserKindPage">{{userKind}}</view>
 			</view>
 			<view class="userInfo-right">

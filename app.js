@@ -67,7 +67,7 @@ App({
                   'content-type': 'application/x-www-form-urlencoded',
                 },
                 success: function (data) {
-                  console.log("==data===", data)
+                  console.log("获取用户信息成功", data)
                   //设置全局数据及缓存数据
                   that.globalData.userInfo = data.data.obj;
                   wx.setStorageSync("userInfo", data.data.obj)
